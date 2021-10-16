@@ -10,7 +10,7 @@ width: 100%;
 h1 {
     color         : white;
     font-size     : 6rem;
-    font-family   : 'Comfortaa', sans-serif;
+    font-family   : 'Comfortaa';
     display       : table-cell;
     vertical-align: middle;
 }
