@@ -1,6 +1,16 @@
 .first {
     height          : 100vh;
     background-color: #263238;
+    margin          : 0%;
     text-align      : center;
-    margin:0%
+    display         : table;
+width: 100%;
+}
+
+h1 {
+    color         : white;
+    font-size     : 6rem;
+    font-family   : 'Comfortaa', sans-serif;
+    display       : table-cell;
+    vertical-align: middle;
 }
