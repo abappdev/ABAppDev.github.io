@@ -7,7 +7,7 @@
     width           : 100%;
 }
 
-h1 {
+.text {
     color         : white;
     font-family   : 'Comfortaa';
     display       : table-cell;
