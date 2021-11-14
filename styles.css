@@ -36,8 +36,8 @@ body {
 
 
 .text {
-    color  : white;
-    padding: 1%;
+    color     : white;
+    padding   : 1%;
     text-align: center;
 }
 
@@ -62,13 +62,16 @@ body {
     height: 100vh;
 }
 
-.edu-img{
-    margin: 10%;
+.edu-img {
+    width  : 80%;
+    height: 80%;
+    padding: 10%;
+
 }
 
 
 #footer {
-    color: white;
+    color : white;
     width : 100%;
     height: fit-content;
 }
