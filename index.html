@@ -777,7 +777,7 @@
         .journey-container::before {
             content: '';
             position: absolute;
-            top: calc(50% + 40px);
+            top: 120px;
             left: 0;
             right: 0;
             height: 2px;
@@ -802,21 +802,20 @@
             align-items: flex-start;
         }
 
-
-
         .journey-item {
             position: relative;
             min-width: 280px;
             max-width: 300px;
             background-color: var(--md-sys-color-surface-container);
             border-radius: 20px;
-            padding: 20px;
+            padding: 24px 20px 20px 20px;
             flex-shrink: 0;
             box-shadow: var(--md-sys-elevation-level1);
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 2;
             opacity: 1;
             transform: translateY(0);
+            margin-top: 60px;
         }
 
         .journey-item.current {
@@ -839,14 +838,20 @@
         }
 
         .journey-item-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px;
             transition: all 0.3s ease;
+            z-index: 4;
+            border: 4px solid var(--md-sys-color-background);
+            box-shadow: var(--md-sys-elevation-level2);
         }
 
         .journey-item-icon.education {
@@ -906,6 +911,7 @@
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            text-align: center;
         }
 
         .journey-title {
@@ -914,12 +920,14 @@
             margin-bottom: 12px;
             color: var(--md-sys-color-on-surface);
             line-height: 1.3;
+            text-align: center;
         }
 
         .journey-description {
             color: var(--md-sys-color-on-surface-variant);
             font-size: 14px;
             line-height: 1.5;
+            text-align: center;
         }
 
         /* Journey navigation buttons */
@@ -960,12 +968,21 @@
         /* Responsive design for journey */
         @media (max-width: 768px) {
             .journey-container::before {
-                top: calc(50% + 30px);
+                top: 110px;
             }
             
             .journey-item {
                 min-width: 280px;
                 max-width: 300px;
+                margin-top: 50px;
+                padding: 20px 16px 16px 16px;
+            }
+            
+            .journey-item-icon {
+                width: 56px;
+                height: 56px;
+                top: -28px;
+                border-radius: 14px;
             }
             
             .journey-timeline {
@@ -1040,17 +1057,7 @@
             margin: 0;
         }
 
-        .contact-illustration {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
 
-        .contact-illustration > div {
-            width: 100%;
-            max-width: 300px;
-            height: 200px;
-        }
 
         /* Footer */
         .footer {
@@ -1398,19 +1405,19 @@
              }
              
              .contact-content {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 48px;
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
                 align-items: center;
+                max-width: 600px;
+                margin: 0 auto;
              }
              
              .contact-info {
                 gap: 20px;
              }
              
-             .contact-illustration > div {
-                height: 300px;
-             }
+
          }
 
         /* Large Desktop (1025px+) */
@@ -1560,12 +1567,12 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">AB</div>
+            <div class="logo">AB AppDev</div>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
+                <li><a href="#about">About Me</a></li>
                 <li><a href="#android">Android</a></li>
                 <li><a href="#ios">iOS & Mac</a></li>
-                <li><a href="#journey">Journey</a></li>
+                <li><a href="#journey">My Journey</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="theme-toggle" id="themeToggle">
@@ -1580,9 +1587,9 @@
             <div class="container">
                 <div class="hero">
                     <div class="hero-content">
-                        <h1>Hello, I'm AB</h1>
+                        <h1>Hello, I'm Abhishek Bhalerao</h1>
                         <p class="motto">"Code with purpose, create with passion"</p>
-                        <p>A passionate developer crafting innovative mobile and web applications. I specialize in creating seamless user experiences across Android, iOS, and Mac platforms, bringing ideas to life through clean code and thoughtful design.</p>
+                        <p>A passionate developer crafting innovative applications. I specialize in creating seamless user experiences across Android, iOS, and Mac platforms, bringing ideas to life through clean code and thoughtful design.</p>
                         <div class="hero-buttons">
                             <a href="#contact" class="btn btn-primary">
                                 <i data-lucide="mail"></i>
@@ -1700,7 +1707,7 @@
                         
                         <a href="https://www.instagram.com/abhishekbhalerao04" class="contact-item">
                             <div class="contact-icon">
-                                <i data-lucide="twitter"></i>
+                                <i data-lucide="instagram"></i>
                             </div>
                             <div class="contact-item-text">
                                 <h3>Instagram</h3>
@@ -1739,13 +1746,7 @@
                         </a>
                     </div>
                 
-                    <div class="contact-illustration">
-                        <div
-                            style="display: flex; justify-content: center; align-items: center; height: 300px; background-color: var(--md-sys-color-primary-container); border-radius: 24px;">
-                            <i data-lucide="message-circle"
-                                style="width: 120px; height: 120px; color: var(--md-sys-color-on-primary-container);"></i>
-                        </div>
-                    </div>
+
                 </div>
                 </div>
         </section>
