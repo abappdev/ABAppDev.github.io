@@ -1331,7 +1331,8 @@
              
              .journey-timeline {
                 gap: 40px;
-                padding: 40px 50%;
+                padding: 40px 0;
+                justify-content: flex-start;
              }
              
              .journey-item {
@@ -1470,7 +1471,8 @@
              
              .journey-timeline {
                 gap: 48px;
-                padding: 40px 50%;
+                padding: 40px 0;
+                justify-content: flex-start;
              }
         }
 
@@ -2658,9 +2660,16 @@
             currentJourneyIndex = index;
             
             if (isJourneyDesktop()) {
-                // Desktop: Center-focus behavior (working correctly)
-                const itemWidth = getJourneyItemWidth();
-                const offset = -(index * itemWidth);
+                // Desktop: Center the selected card in viewport
+                const containerWidth = document.querySelector('.journey-container').clientWidth;
+                const itemWidth = journeyItems[0]?.offsetWidth || 350;
+                const gap = 40; // Desktop gap
+                
+                // Calculate position to center the selected card
+                const cardPosition = index * (itemWidth + gap);
+                const centerOffset = (containerWidth / 2) - (itemWidth / 2);
+                const offset = centerOffset - cardPosition;
+                
                 journeyTimeline.style.transform = `translateX(${offset}px)`;
             } else {
                 // Mobile: Scroll item by item
@@ -2688,11 +2697,18 @@
 
         // Journey resize handler
         function handleJourneyResize() {
-            // Re-initialize journey position on resize
+            // Re-initialize journey position on resize and orientation change
             setTimeout(() => {
                 scrollJourneyTo(currentJourneyIndex);
             }, 100);
         }
+
+        // Handle orientation changes specifically
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                scrollJourneyTo(currentJourneyIndex);
+            }, 200);
+        });
 
         window.addEventListener('resize', handleJourneyResize);
 
