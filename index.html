@@ -1124,6 +1124,72 @@
         }
 
 
+        .contact-social-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            background: #f5f5f5;
+            border-radius: 1rem;
+            padding: 1rem;
+            width: 80px;
+            height: 80px;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .contact-item:hover {
+            background: #e0e0e0;
+            width: 180px;
+            height: 120px;
+        }
+
+        .contact-icon {
+            font-size: 24px;
+            color: #333;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.2);
+        }
+
+        .contact-item-text {
+            opacity: 0;
+            transform: translateY(10px);
+            text-align: center;
+            color: #111;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .contact-item:hover .contact-item-text {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .contact-item-text h3 {
+            margin: 0.25rem 0 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .contact-item-text p {
+            margin: 0;
+            font-size: 0.75rem;
+            color: #555;
+        }
+
 
         /* Responsive Design - Progressive Enhancement */
 
@@ -1729,50 +1795,36 @@
                 <div class="contact-content">
                     <div class="contact-info">
                         <div class="contact-social-row">
-                            <a href="mailto:ab.appdev.ai@gmail.com" class="contact-item">
-                                <div class="contact-icon">
-                                    <i data-lucide="mail"></i>
-                                </div>
+                            <a href="mailto:ab.appdev.ai@gmail.com" class="contact-item" aria-label="Email">
+                                <div class="contact-icon"><i data-lucide="mail"></i></div>
                                 <div class="contact-item-text">
                                     <h3>Email</h3>
                                     <p>ab.appdev.ai@gmail.com</p>
                                 </div>
                             </a>
-
-                            <a href="https://www.linkedin.com/in/abappdev" class="contact-item">
-                                <div class="contact-icon">
-                                    <i data-lucide="linkedin"></i>
-                                </div>
+                            <a href="https://www.linkedin.com/in/abappdev" class="contact-item" aria-label="LinkedIn">
+                                <div class="contact-icon"><i data-lucide="linkedin"></i></div>
                                 <div class="contact-item-text">
                                     <h3>LinkedIn</h3>
                                     <p>Connect professionally</p>
                                 </div>
                             </a>
-
-                            <a href="https://github.com/abappdev" class="contact-item">
-                                <div class="contact-icon">
-                                    <i data-lucide="github"></i>
-                                </div>
+                            <a href="https://github.com/abappdev" class="contact-item" aria-label="GitHub">
+                                <div class="contact-icon"><i data-lucide="github"></i></div>
                                 <div class="contact-item-text">
                                     <h3>GitHub</h3>
                                     <p>View my repositories</p>
                                 </div>
                             </a>
-
-                            <a href="https://www.instagram.com/abhishekbhalerao04" class="contact-item">
-                                <div class="contact-icon">
-                                    <i data-lucide="instagram"></i>
-                                </div>
+                            <a href="https://www.instagram.com/abhishekbhalerao04" class="contact-item" aria-label="Instagram">
+                                <div class="contact-icon"><i data-lucide="instagram"></i></div>
                                 <div class="contact-item-text">
                                     <h3>Instagram</h3>
-                                    <p>Connect Socially</p>
+                                    <p>Connect socially</p>
                                 </div>
                             </a>
-
-                            <a href="https://x.com/abappdev" class="contact-item">
-                                <div class="contact-icon">
-                                    <i data-lucide="twitter"></i>
-                                </div>
+                            <a href="https://x.com/abappdev" class="contact-item" aria-label="X">
+                                <div class="contact-icon"><i data-lucide="twitter"></i></div>
                                 <div class="contact-item-text">
                                     <h3>X</h3>
                                     <p>Follow my journey</p>
