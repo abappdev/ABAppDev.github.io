@@ -1303,7 +1303,7 @@
             .roadmap {
                 gap: 24px;
                 padding: 24px 32px;
-                justify-content: center;
+                justify-content: flex-start;
             }
             
             .roadmap-item {
@@ -1442,7 +1442,7 @@
             .roadmap {
                 gap: 28px;
                 padding: 28px 40px;
-                justify-content: center;
+                justify-content: flex-start;
             }
             
             .roadmap-item {
@@ -1469,7 +1469,7 @@
             .roadmap {
                 gap: 32px;
                 padding: 32px 40px;
-                justify-content: center;
+                justify-content: flex-start;
             }
             
             .roadmap-item {
@@ -2362,60 +2362,73 @@
             let itemsPerView = 1;
             let maxIndex = 0;
 
-            function calculateLayout() {
-                items = container.querySelectorAll('.roadmap-item');
-                if (items.length === 0) return;
+                         function calculateLayout() {
+                 items = container.querySelectorAll('.roadmap-item');
+                 if (items.length === 0) return;
 
-                const containerWidth = container.parentElement.clientWidth;
-                const screenWidth = window.innerWidth;
-                
-                // Calculate items per view based on screen size
-                if (screenWidth <= 480) {
-                    itemsPerView = 1;
-                } else if (screenWidth <= 768) {
-                    itemsPerView = 1;
-                } else if (screenWidth <= 1024) {
-                    itemsPerView = Math.min(2, items.length);
-                } else if (screenWidth <= 1440) {
-                    itemsPerView = Math.min(3, items.length);
-                } else {
-                    itemsPerView = Math.min(3, items.length);
-                }
+                 const containerWidth = container.parentElement.clientWidth;
+                 const screenWidth = window.innerWidth;
+                 
+                 // Calculate items per view based on screen size
+                 if (screenWidth <= 480) {
+                     itemsPerView = 1;
+                 } else if (screenWidth <= 768) {
+                     itemsPerView = 1;
+                 } else if (screenWidth <= 1024) {
+                     itemsPerView = Math.min(2, items.length);
+                 } else if (screenWidth <= 1440) {
+                     itemsPerView = Math.min(3, items.length);
+                 } else {
+                     itemsPerView = Math.min(4, items.length);
+                 }
 
-                maxIndex = Math.max(0, items.length - itemsPerView);
-                
-                // Update item widths for proper spacing
-                const gapSize = screenWidth <= 768 ? 16 : 24;
-                const padding = screenWidth <= 768 ? 32 : 64;
-                const itemWidth = (containerWidth - padding - (gapSize * (itemsPerView - 1))) / itemsPerView;
-                
-                items.forEach(item => {
-                    if (screenWidth <= 768) {
-                        item.style.minWidth = `${Math.min(itemWidth, 320)}px`;
-                        item.style.maxWidth = `${Math.min(itemWidth, 320)}px`;
-                    } else {
-                        item.style.minWidth = `${Math.min(itemWidth, 400)}px`;
-                        item.style.maxWidth = `${Math.min(itemWidth, 400)}px`;
-                    }
-                });
-            }
+                 // For desktop: calculate how many "pages" we need
+                 // Each page shows itemsPerView items, so we need to scroll by pages
+                 maxIndex = Math.max(0, Math.ceil(items.length / itemsPerView) - 1);
+                 
+                 // Update item widths for proper spacing
+                 const gapSize = screenWidth <= 768 ? 16 : 24;
+                 const padding = screenWidth <= 768 ? 32 : 64;
+                 let itemWidth;
+                 
+                 if (screenWidth <= 768) {
+                     // Mobile: full width minus padding
+                     itemWidth = Math.min(320, containerWidth - padding);
+                 } else {
+                     // Desktop: divide available space by items per view
+                     itemWidth = Math.min(400, (containerWidth - padding - (gapSize * (itemsPerView - 1))) / itemsPerView);
+                 }
+                 
+                 items.forEach(item => {
+                     item.style.minWidth = `${itemWidth}px`;
+                     item.style.maxWidth = `${itemWidth}px`;
+                 });
+             }
 
-            function generateIndicators() {
-                indicators.innerHTML = '';
-                const totalPages = maxIndex + 1;
-                
-                for (let i = 0; i < totalPages; i++) {
-                    const dot = document.createElement('div');
-                    dot.className = 'portfolio-nav-dot';
-                    if (i === currentIndex) dot.classList.add('active');
-                    
-                    dot.addEventListener('click', () => {
-                        goToIndex(i);
-                    });
-                    
-                    indicators.appendChild(dot);
-                }
-            }
+                         function generateIndicators() {
+                 indicators.innerHTML = '';
+                 const totalPages = maxIndex + 1;
+                 
+                 // Only show indicators if there are multiple pages
+                 if (totalPages <= 1) {
+                     indicators.style.display = 'none';
+                     return;
+                 }
+                 
+                 indicators.style.display = 'flex';
+                 
+                 for (let i = 0; i < totalPages; i++) {
+                     const dot = document.createElement('div');
+                     dot.className = 'portfolio-nav-dot';
+                     if (i === currentIndex) dot.classList.add('active');
+                     
+                     dot.addEventListener('click', () => {
+                         goToIndex(i);
+                     });
+                     
+                     indicators.appendChild(dot);
+                 }
+             }
 
             function updateNavigation() {
                 // Update button states
@@ -2429,18 +2442,27 @@
                 });
             }
 
-            function goToIndex(index) {
-                index = Math.max(0, Math.min(maxIndex, index));
-                currentIndex = index;
-                
-                // Calculate transform
-                const itemWidth = items[0]?.offsetWidth || 300;
-                const gap = window.innerWidth <= 768 ? 16 : 24;
-                const offset = -(index * (itemWidth + gap));
-                
-                container.style.transform = `translateX(${offset}px)`;
-                updateNavigation();
-            }
+                         function goToIndex(index) {
+                 index = Math.max(0, Math.min(maxIndex, index));
+                 currentIndex = index;
+                 
+                 // Calculate transform based on whether we're on mobile or desktop
+                 const itemWidth = items[0]?.offsetWidth || 300;
+                 const gap = window.innerWidth <= 768 ? 16 : 24;
+                 let offset;
+                 
+                 if (window.innerWidth <= 768) {
+                     // Mobile: scroll one item at a time
+                     offset = -(index * (itemWidth + gap));
+                 } else {
+                     // Desktop: scroll by pages (showing multiple items)
+                     const itemsToScroll = index * itemsPerView;
+                     offset = -(itemsToScroll * (itemWidth + gap));
+                 }
+                 
+                 container.style.transform = `translateX(${offset}px)`;
+                 updateNavigation();
+             }
 
             function handleResize() {
                 calculateLayout();
@@ -2474,18 +2496,25 @@
                 container.style.transition = 'none';
             });
 
-            container.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                e.preventDefault();
-                
-                currentX = e.touches[0].clientX;
-                const diffX = currentX - startX;
-                const itemWidth = items[0]?.offsetWidth || 300;
-                const gap = window.innerWidth <= 768 ? 16 : 24;
-                const baseOffset = -(currentIndex * (itemWidth + gap));
-                
-                container.style.transform = `translateX(${baseOffset + diffX}px)`;
-            });
+                         container.addEventListener('touchmove', (e) => {
+                 if (!isDragging) return;
+                 e.preventDefault();
+                 
+                 currentX = e.touches[0].clientX;
+                 const diffX = currentX - startX;
+                 const itemWidth = items[0]?.offsetWidth || 300;
+                 const gap = window.innerWidth <= 768 ? 16 : 24;
+                 
+                 let baseOffset;
+                 if (window.innerWidth <= 768) {
+                     baseOffset = -(currentIndex * (itemWidth + gap));
+                 } else {
+                     const itemsToScroll = currentIndex * itemsPerView;
+                     baseOffset = -(itemsToScroll * (itemWidth + gap));
+                 }
+                 
+                 container.style.transform = `translateX(${baseOffset + diffX}px)`;
+             });
 
             container.addEventListener('touchend', (e) => {
                 if (!isDragging) return;
