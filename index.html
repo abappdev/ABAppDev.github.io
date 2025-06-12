@@ -434,6 +434,246 @@
             transform: none;
         }
 
+        /* App Dialog Modal */
+        .app-dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .app-dialog-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .app-dialog {
+            background-color: var(--md-sys-color-surface-container-high);
+            border-radius: 28px;
+            max-width: 600px;
+            width: 90vw;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: var(--md-sys-elevation-level3);
+            transform: scale(0.8) translateY(40px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .app-dialog-overlay.active .app-dialog {
+            transform: scale(1) translateY(0);
+        }
+
+        .app-dialog-header {
+            padding: 24px 24px 16px;
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .app-dialog-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            position: relative;
+        }
+
+        .app-dialog-header-text {
+            flex: 1;
+        }
+
+        .app-dialog-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--md-sys-color-on-surface);
+            margin-bottom: 4px;
+        }
+
+        .app-dialog-platform {
+            font-size: 14px;
+            color: var(--md-sys-color-on-surface-variant);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .app-dialog-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--md-sys-color-on-surface);
+            transition: all 0.3s ease;
+        }
+
+        .app-dialog-close:hover {
+            background-color: var(--md-sys-color-surface-container-highest);
+        }
+
+        .app-dialog-content {
+            padding: 24px;
+            overflow-y: auto;
+            max-height: 60vh;
+        }
+
+        .app-dialog-description {
+            color: var(--md-sys-color-on-surface-variant);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+
+        .app-dialog-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .app-dialog-tech-chip {
+            background-color: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .app-dialog-section {
+            margin-bottom: 24px;
+        }
+
+        .app-dialog-section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--md-sys-color-on-surface);
+            margin-bottom: 12px;
+        }
+
+        .app-dialog-section-content {
+            color: var(--md-sys-color-on-surface-variant);
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .app-dialog-actions {
+            padding: 16px 24px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-top: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .app-dialog-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            min-height: 40px;
+        }
+
+        .app-dialog-btn-primary {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
+
+        .app-dialog-btn-primary:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            transform: translateY(-2px);
+            box-shadow: var(--md-sys-elevation-level2);
+        }
+
+        .app-dialog-btn-secondary {
+            background-color: var(--md-sys-color-surface-container-highest);
+            color: var(--md-sys-color-on-surface);
+            border: 1px solid var(--md-sys-color-outline);
+        }
+
+        .app-dialog-btn-secondary:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        .app-dialog-btn-text {
+            background: none;
+            color: var(--md-sys-color-primary);
+            border: none;
+            padding: 8px 16px;
+        }
+
+        .app-dialog-btn-text:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+        }
+
+        .loading-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .loading-spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--md-sys-color-outline-variant);
+            border-top: 2px solid var(--md-sys-color-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 12px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive dialog */
+        @media (max-width: 768px) {
+            .app-dialog {
+                width: 95vw;
+                max-height: 90vh;
+                border-radius: 24px;
+            }
+
+            .app-dialog-actions {
+                flex-direction: column;
+            }
+
+            .app-dialog-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
         /* Journey timeline - Horizontal with center focus */
         .journey-container {
             position: relative;
@@ -1178,6 +1418,41 @@
         </div>
     </footer>
 
+    <!-- App Dialog Modal -->
+    <div class="app-dialog-overlay" id="appDialogOverlay">
+        <div class="app-dialog">
+            <div class="app-dialog-header">
+                <div class="app-dialog-icon" id="appDialogIcon">
+                    <i data-lucide="smartphone" id="appDialogIconLucide"></i>
+                    <div class="platform-badge" id="appDialogPlatformBadge">
+                        <i data-lucide="android" id="appDialogPlatformIcon"></i>
+                    </div>
+                </div>
+                <div class="app-dialog-header-text">
+                    <h3 class="app-dialog-title" id="appDialogTitle">App Title</h3>
+                    <div class="app-dialog-platform" id="appDialogPlatform">Android Application</div>
+                </div>
+                <button class="app-dialog-close" id="appDialogClose">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="app-dialog-content" id="appDialogContentContainer">
+                <div class="app-dialog-description" id="appDialogDescription">
+                    App description will be loaded here...
+                </div>
+                <div class="app-dialog-tech-stack" id="appDialogTechStack">
+                    <!-- Tech stack chips will be dynamically added -->
+                </div>
+                <div id="appDialogSections">
+                    <!-- Dynamic sections will be added here -->
+                </div>
+            </div>
+            <div class="app-dialog-actions" id="appDialogActions">
+                <!-- Dynamic buttons will be added here -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // Initialize Lucide icons
         lucide.createIcons();
@@ -1272,25 +1547,75 @@
                 icon: 'smartphone',
                 title: 'TaskFlow Pro',
                 description: 'A comprehensive task management app with Material Design 3, offline sync, and AI-powered productivity insights. Features smart categorization and team collaboration.',
-                techStack: ['Kotlin', 'Jetpack Compose', 'Room', 'Material 3']
+                longDescription: 'TaskFlow Pro revolutionizes task management with its intuitive Material Design 3 interface and powerful AI-driven insights. The app seamlessly syncs across devices, ensuring your productivity never skips a beat. With advanced categorization algorithms, collaborative workspaces, and intelligent deadline reminders, TaskFlow Pro adapts to your workflow.',
+                techStack: ['Kotlin', 'Jetpack Compose', 'Room', 'Material 3'],
+                platform: 'Android',
+                features: [
+                    'AI-powered task categorization',
+                    'Real-time team collaboration',
+                    'Offline synchronization',
+                    'Smart deadline reminders',
+                    'Analytics and insights'
+                ],
+                playStoreUrl: 'https://play.google.com/store/apps/details?id=com.example.taskflow',
+                privacyPolicyUrl: '#privacy-taskflow',
+                termsUrl: '#terms-taskflow',
+                aboutUrl: '#about-taskflow'
             },
             {
                 icon: 'camera',
                 title: 'PhotoCraft',
                 description: 'Professional photo editing app with advanced filters, RAW support, and cloud storage integration. Features ML-powered auto-enhancement and batch processing capabilities.',
-                techStack: ['Kotlin', 'CameraX', 'OpenCV', 'Firebase']
+                longDescription: 'PhotoCraft brings professional-grade photo editing to your Android device. With support for RAW formats, advanced color grading tools, and machine learning-powered enhancement algorithms, every photo becomes a masterpiece. The app features non-destructive editing, cloud synchronization, and batch processing capabilities.',
+                techStack: ['Kotlin', 'CameraX', 'OpenCV', 'Firebase'],
+                platform: 'Android',
+                features: [
+                    'RAW image support',
+                    'ML-powered auto-enhancement',
+                    'Non-destructive editing',
+                    'Cloud storage integration',
+                    'Batch processing'
+                ],
+                playStoreUrl: 'https://play.google.com/store/apps/details?id=com.example.photocraft',
+                privacyPolicyUrl: '#privacy-photocraft',
+                websiteUrl: 'https://photocraft.example.com'
             },
             {
                 icon: 'heart',
                 title: 'HealthTracker',
                 description: 'Comprehensive health monitoring app with wearable integration, medication reminders, and health data visualization. Connects with fitness devices and provides insights.',
-                techStack: ['Kotlin', 'Health Connect', 'Wear OS', 'ML Kit']
+                longDescription: 'HealthTracker is your comprehensive health companion, seamlessly integrating with wearable devices and providing personalized health insights. Track medications, monitor vital signs, and visualize your health journey with beautiful, interactive charts. The app supports integration with major fitness platforms and provides AI-driven health recommendations.',
+                techStack: ['Kotlin', 'Health Connect', 'Wear OS', 'ML Kit'],
+                platform: 'Android',
+                features: [
+                    'Wearable device integration',
+                    'Medication reminders',
+                    'Health data visualization',
+                    'AI health insights',
+                    'Emergency contacts'
+                ],
+                playStoreUrl: 'https://play.google.com/store/apps/details?id=com.example.healthtracker',
+                privacyPolicyUrl: '#privacy-healthtracker',
+                termsUrl: '#terms-healthtracker',
+                supportUrl: '#support-healthtracker'
             },
             {
                 icon: 'music',
                 title: 'AudioWave',
                 description: 'High-quality music player with equalizer, lyrics sync, and podcast support. Features adaptive themes and cross-device synchronization for seamless listening.',
-                techStack: ['Kotlin', 'ExoPlayer', 'Media3', 'Dynamic Colors']
+                longDescription: 'AudioWave delivers an unparalleled audio experience with high-fidelity playback, intelligent equalizer settings, and seamless cross-device synchronization. Enjoy your favorite music with real-time lyrics, podcast support, and adaptive themes that match your mood and environment.',
+                techStack: ['Kotlin', 'ExoPlayer', 'Media3', 'Dynamic Colors'],
+                platform: 'Android',
+                features: [
+                    'High-fidelity audio playback',
+                    'Real-time lyrics sync',
+                    'Podcast support',
+                    'Cross-device sync',
+                    'Adaptive themes'
+                ],
+                playStoreUrl: 'https://play.google.com/store/apps/details?id=com.example.audiowave',
+                websiteUrl: 'https://audiowave.example.com',
+                privacyPolicyUrl: '#privacy-audiowave'
             }
         ];
 
@@ -1301,7 +1626,19 @@
                 platform: 'mac',
                 platformIcon: 'apple',
                 description: 'Advanced code editor for macOS with intelligent syntax highlighting, Git integration, and project management. Built with SwiftUI and optimized for Apple Silicon performance.',
-                techStack: ['SwiftUI', 'Combine', 'AppKit', 'Git']
+                longDescription: 'CodeMaster is a powerful, native macOS code editor designed for modern developers. With intelligent syntax highlighting, seamless Git integration, and advanced project management features, it provides everything you need for productive coding. Optimized for Apple Silicon with native performance and energy efficiency.',
+                techStack: ['SwiftUI', 'Combine', 'AppKit', 'Git'],
+                features: [
+                    'Intelligent syntax highlighting',
+                    'Integrated Git workflow',
+                    'Project management tools',
+                    'Apple Silicon optimization',
+                    'Custom themes and extensions'
+                ],
+                appStoreUrl: 'https://apps.apple.com/app/codemaster/id123456',
+                websiteUrl: 'https://codemaster.example.com',
+                privacyPolicyUrl: '#privacy-codemaster',
+                termsUrl: '#terms-codemaster'
             },
             {
                 icon: 'music',
@@ -1309,7 +1646,18 @@
                 platform: 'ios',
                 platformIcon: 'smartphone',
                 description: 'Immersive music player with spatial audio support, intelligent playlists, and social sharing features. Seamlessly integrates with Apple Music and streaming platforms.',
-                techStack: ['Swift', 'AVFoundation', 'MusicKit', 'Core Data']
+                longDescription: 'SoundWave transforms your iOS device into the ultimate music experience. With spatial audio support, AI-powered playlist generation, and seamless Apple Music integration, discover music like never before. Share your favorite tracks with friends and enjoy high-quality audio with advanced equalization.',
+                techStack: ['Swift', 'AVFoundation', 'MusicKit', 'Core Data'],
+                features: [
+                    'Spatial audio support',
+                    'AI-powered playlists',
+                    'Apple Music integration',
+                    'Social sharing features',
+                    'Advanced equalizer'
+                ],
+                appStoreUrl: 'https://apps.apple.com/app/soundwave/id234567',
+                privacyPolicyUrl: '#privacy-soundwave',
+                supportUrl: '#support-soundwave'
             },
             {
                 icon: 'brain',
@@ -1317,7 +1665,20 @@
                 platform: 'swift',
                 platformIcon: 'layers',
                 description: 'Cross-platform note-taking and knowledge management app with AI-powered organization, handwriting recognition, and seamless sync across all Apple devices.',
-                techStack: ['SwiftUI', 'CloudKit', 'PencilKit', 'Core ML']
+                longDescription: 'MindPalace is your digital second brain, powered by advanced AI and designed for the Apple ecosystem. Capture thoughts with handwriting recognition, organize knowledge with intelligent tagging, and access everything seamlessly across iPhone, iPad, and Mac with CloudKit synchronization.',
+                techStack: ['SwiftUI', 'CloudKit', 'PencilKit', 'Core ML'],
+                features: [
+                    'AI-powered organization',
+                    'Handwriting recognition',
+                    'Universal app (iOS/macOS)',
+                    'CloudKit synchronization',
+                    'Smart search and tagging'
+                ],
+                appStoreUrl: 'https://apps.apple.com/app/mindpalace/id345678',
+                websiteUrl: 'https://mindpalace.example.com',
+                privacyPolicyUrl: '#privacy-mindpalace',
+                termsUrl: '#terms-mindpalace',
+                aboutUrl: '#about-mindpalace'
             },
             {
                 icon: 'camera',
@@ -1325,7 +1686,18 @@
                 platform: 'ios',
                 platformIcon: 'smartphone',
                 description: 'Professional camera app with manual controls, RAW capture, and advanced editing tools. Features computational photography and Live Photos enhancement.',
-                techStack: ['Swift', 'AVFoundation', 'Core Image', 'Metal']
+                longDescription: 'LensFlare brings professional photography to your iPhone with advanced manual controls, RAW capture capabilities, and cutting-edge computational photography. Enhance Live Photos, apply professional-grade filters, and capture stunning images with precision control over every aspect of your shot.',
+                techStack: ['Swift', 'AVFoundation', 'Core Image', 'Metal'],
+                features: [
+                    'Manual camera controls',
+                    'RAW image capture',
+                    'Live Photos enhancement',
+                    'Computational photography',
+                    'Professional filters'
+                ],
+                appStoreUrl: 'https://apps.apple.com/app/lensflare/id456789',
+                privacyPolicyUrl: '#privacy-lensflare',
+                websiteUrl: 'https://lensflare.example.com'
             }
         ];
 
@@ -1544,6 +1916,276 @@
             
             touchStartX = 0;
         });
+
+        // App Dialog System
+        const appDialogOverlay = document.getElementById('appDialogOverlay');
+        const appDialogClose = document.getElementById('appDialogClose');
+        const appDialogIcon = document.getElementById('appDialogIcon');
+        const appDialogIconLucide = document.getElementById('appDialogIconLucide');
+        const appDialogPlatformBadge = document.getElementById('appDialogPlatformBadge');
+        const appDialogPlatformIcon = document.getElementById('appDialogPlatformIcon');
+        const appDialogTitle = document.getElementById('appDialogTitle');
+        const appDialogPlatform = document.getElementById('appDialogPlatform');
+        const appDialogDescription = document.getElementById('appDialogDescription');
+        const appDialogTechStack = document.getElementById('appDialogTechStack');
+        const appDialogSections = document.getElementById('appDialogSections');
+        const appDialogActions = document.getElementById('appDialogActions');
+
+        // Close dialog functionality
+        function closeAppDialog() {
+            appDialogOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        appDialogClose.addEventListener('click', closeAppDialog);
+        appDialogOverlay.addEventListener('click', (e) => {
+            if (e.target === appDialogOverlay) {
+                closeAppDialog();
+            }
+        });
+
+        // ESC key to close dialog
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && appDialogOverlay.classList.contains('active')) {
+                closeAppDialog();
+            }
+        });
+
+        // Fetch content from URL (for privacy policy, terms, etc.)
+        async function fetchPageContent(url) {
+            try {
+                // For demo purposes, return mock content based on URL
+                // In a real app, you would fetch from the actual URL
+                const mockContent = {
+                    '#privacy-taskflow': 'TaskFlow Pro Privacy Policy: We respect your privacy and are committed to protecting your personal data. This app collects minimal data necessary for functionality including task data, preferences, and usage analytics. All data is encrypted and stored securely.',
+                    '#terms-taskflow': 'TaskFlow Pro Terms of Service: By using this app, you agree to our terms of service. The app is provided as-is with no warranties. Users are responsible for backing up their data.',
+                    '#about-taskflow': 'About TaskFlow Pro: Developed by AB, TaskFlow Pro is designed to revolutionize productivity and task management for individuals and teams worldwide.',
+                    '#privacy-photocraft': 'PhotoCraft Privacy Policy: Your photos and personal data are private. We do not access, store, or share your images. All processing happens locally on your device.',
+                    '#privacy-healthtracker': 'HealthTracker Privacy Policy: Your health data is extremely sensitive. We use industry-standard encryption and comply with HIPAA guidelines to protect your information.',
+                    '#terms-healthtracker': 'HealthTracker Terms of Service: This app is for informational purposes only and should not replace professional medical advice.',
+                    '#support-healthtracker': 'HealthTracker Support: For technical support, please contact support@healthtracker.com or visit our FAQ section.',
+                    '#privacy-audiowave': 'AudioWave Privacy Policy: We collect minimal data to enhance your music experience including listening preferences and app usage statistics.',
+                    '#privacy-codemaster': 'CodeMaster Privacy Policy: We respect developer privacy. Your code and projects remain private and are never transmitted to our servers.',
+                    '#terms-codemaster': 'CodeMaster Terms of Service: This software is licensed for personal and commercial use. Redistribution requires explicit permission.',
+                    '#privacy-soundwave': 'SoundWave Privacy Policy: Your music preferences and playlists are private. We only collect anonymous usage statistics to improve the app.',
+                    '#support-soundwave': 'SoundWave Support: Need help? Visit our support center or contact us through the app settings.',
+                    '#privacy-mindpalace': 'MindPalace Privacy Policy: Your notes and thoughts are private. All data is encrypted end-to-end and synced securely via CloudKit.',
+                    '#terms-mindpalace': 'MindPalace Terms of Service: By using this app, you agree to our terms. Your intellectual property remains yours.',
+                    '#about-mindpalace': 'About MindPalace: Created to be your digital second brain, helping you capture, organize, and connect ideas seamlessly.',
+                    '#privacy-lensflare': 'LensFlare Privacy Policy: Your photos are processed locally on your device. We do not access or store your images on our servers.'
+                };
+
+                if (url.startsWith('#')) {
+                    return mockContent[url] || 'Content not available.';
+                }
+
+                // For external URLs, show loading message
+                return 'Loading content...';
+            } catch (error) {
+                return 'Error loading content. Please try again.';
+            }
+        }
+
+        // Open app dialog
+        async function openAppDialog(app, appType) {
+            // Set basic app info
+            appDialogTitle.textContent = app.title;
+            appDialogDescription.textContent = app.longDescription || app.description;
+            
+            // Set platform info
+            let platformText = app.platform || appType;
+            if (platformText === 'android') platformText = 'Android Application';
+            else if (platformText === 'ios') platformText = 'iOS Application';
+            else if (platformText === 'mac') platformText = 'macOS Application';
+            else if (platformText === 'swift') platformText = 'Universal Apple App';
+            
+            appDialogPlatform.textContent = platformText;
+
+            // Set icon and platform styling
+            appDialogIconLucide.setAttribute('data-lucide', app.icon);
+            
+            // Set icon background based on platform
+            appDialogIcon.className = 'app-dialog-icon';
+            appDialogPlatformBadge.className = 'platform-badge';
+            
+            if (appType === 'android') {
+                appDialogIcon.classList.add('android');
+                appDialogPlatformBadge.classList.add('android');
+                appDialogPlatformIcon.setAttribute('data-lucide', 'android');
+            } else {
+                const platform = app.platform || 'ios';
+                appDialogIcon.classList.add(platform);
+                appDialogPlatformBadge.classList.add(platform);
+                appDialogPlatformIcon.setAttribute('data-lucide', app.platformIcon || 'smartphone');
+            }
+
+            // Set tech stack
+            appDialogTechStack.innerHTML = '';
+            app.techStack.forEach(tech => {
+                const chip = document.createElement('span');
+                chip.className = 'app-dialog-tech-chip';
+                chip.textContent = tech;
+                appDialogTechStack.appendChild(chip);
+            });
+
+            // Add features section if available
+            appDialogSections.innerHTML = '';
+            if (app.features && app.features.length > 0) {
+                const featuresSection = document.createElement('div');
+                featuresSection.className = 'app-dialog-section';
+                featuresSection.innerHTML = `
+                    <h4 class="app-dialog-section-title">Key Features</h4>
+                    <div class="app-dialog-section-content">
+                        <ul style="margin-left: 20px; color: var(--md-sys-color-on-surface-variant);">
+                            ${app.features.map(feature => `<li style="margin-bottom: 4px;">${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+                appDialogSections.appendChild(featuresSection);
+            }
+
+            // Create dynamic action buttons
+            appDialogActions.innerHTML = '';
+            
+            // App Store / Play Store button (primary)
+            const storeUrl = app.playStoreUrl || app.appStoreUrl;
+            if (storeUrl) {
+                const storeBtn = document.createElement('a');
+                storeBtn.href = storeUrl;
+                storeBtn.target = '_blank';
+                storeBtn.className = 'app-dialog-btn app-dialog-btn-primary';
+                storeBtn.innerHTML = `
+                    <i data-lucide="${appType === 'android' ? 'play' : 'app-store'}"></i>
+                    ${appType === 'android' ? 'Get on Play Store' : 'Get on App Store'}
+                `;
+                appDialogActions.appendChild(storeBtn);
+            }
+
+            // Website button
+            if (app.websiteUrl) {
+                const websiteBtn = document.createElement('a');
+                websiteBtn.href = app.websiteUrl;
+                websiteBtn.target = '_blank';
+                websiteBtn.className = 'app-dialog-btn app-dialog-btn-secondary';
+                websiteBtn.innerHTML = `
+                    <i data-lucide="globe"></i>
+                    Visit Website
+                `;
+                appDialogActions.appendChild(websiteBtn);
+            }
+
+            // About button
+            if (app.aboutUrl) {
+                const aboutBtn = document.createElement('button');
+                aboutBtn.className = 'app-dialog-btn app-dialog-btn-text';
+                aboutBtn.innerHTML = `
+                    <i data-lucide="info"></i>
+                    About
+                `;
+                aboutBtn.onclick = () => showDialogSection('About', app.aboutUrl);
+                appDialogActions.appendChild(aboutBtn);
+            }
+
+            // Privacy Policy button
+            if (app.privacyPolicyUrl) {
+                const privacyBtn = document.createElement('button');
+                privacyBtn.className = 'app-dialog-btn app-dialog-btn-text';
+                privacyBtn.innerHTML = `
+                    <i data-lucide="shield"></i>
+                    Privacy Policy
+                `;
+                privacyBtn.onclick = () => showDialogSection('Privacy Policy', app.privacyPolicyUrl);
+                appDialogActions.appendChild(privacyBtn);
+            }
+
+            // Terms & Conditions button
+            if (app.termsUrl) {
+                const termsBtn = document.createElement('button');
+                termsBtn.className = 'app-dialog-btn app-dialog-btn-text';
+                termsBtn.innerHTML = `
+                    <i data-lucide="file-text"></i>
+                    Terms & Conditions
+                `;
+                termsBtn.onclick = () => showDialogSection('Terms & Conditions', app.termsUrl);
+                appDialogActions.appendChild(termsBtn);
+            }
+
+            // Support button
+            if (app.supportUrl) {
+                const supportBtn = document.createElement('button');
+                supportBtn.className = 'app-dialog-btn app-dialog-btn-text';
+                supportBtn.innerHTML = `
+                    <i data-lucide="help-circle"></i>
+                    Support
+                `;
+                supportBtn.onclick = () => showDialogSection('Support', app.supportUrl);
+                appDialogActions.appendChild(supportBtn);
+            }
+
+            // Show dialog
+            lucide.createIcons();
+            appDialogOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Show content in dialog section
+        async function showDialogSection(title, url) {
+            const loadingHtml = `
+                <div class="app-dialog-section">
+                    <h4 class="app-dialog-section-title">${title}</h4>
+                    <div class="loading-content">
+                        <div class="loading-spinner"></div>
+                        Loading ${title.toLowerCase()}...
+                    </div>
+                </div>
+            `;
+            
+            appDialogSections.innerHTML = loadingHtml;
+            
+            try {
+                const content = await fetchPageContent(url);
+                const sectionHtml = `
+                    <div class="app-dialog-section">
+                        <h4 class="app-dialog-section-title">${title}</h4>
+                        <div class="app-dialog-section-content">
+                            ${content}
+                        </div>
+                    </div>
+                `;
+                appDialogSections.innerHTML = sectionHtml;
+            } catch (error) {
+                appDialogSections.innerHTML = `
+                    <div class="app-dialog-section">
+                        <h4 class="app-dialog-section-title">${title}</h4>
+                        <div class="app-dialog-section-content">
+                            Error loading content. Please try again later.
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Add click listeners to app cards
+        function addAppClickListeners() {
+            // Android apps
+            document.querySelectorAll('#androidRoadmap .roadmap-card').forEach((card, index) => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    openAppDialog(androidApps[index], 'android');
+                });
+            });
+
+            // iOS apps
+            document.querySelectorAll('#iosRoadmap .roadmap-card').forEach((card, index) => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', () => {
+                    openAppDialog(iosApps[index], 'ios');
+                });
+            });
+        }
+
+        // Initialize app click listeners after a short delay to ensure DOM is ready
+        setTimeout(addAppClickListeners, 500);
     </script>
 </body>
 
