@@ -188,34 +188,53 @@
         .hero {
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 40px;
             align-items: center;
             min-height: 70vh;
             text-align: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .hero-content h1 {
             font-size: 36px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             color: var(--md-sys-color-on-surface);
             line-height: 1.1;
+            width: 100%;
         }
 
         .hero-content .motto {
             font-size: 18px;
             color: var(--md-sys-color-primary);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             font-style: italic;
             line-height: 1.3;
+            width: 100%;
         }
 
         .hero-content p {
             font-size: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             color: var(--md-sys-color-on-surface-variant);
             line-height: 1.5;
-            max-width: 500px;
+            width: 100%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
         }
 
         .hero-image {
@@ -223,6 +242,7 @@
             justify-content: center;
             align-items: center;
             order: -1;
+            width: 100%;
         }
 
         .profile-image {
@@ -265,31 +285,32 @@
             margin-bottom: 16px;
         }
 
-        /* App portfolio sections - Mobile First */
-        .roadmap {
+        /* App portfolio sections - Rearchitected */
+        .roadmap-container {
+            width: 100%;
             position: relative;
-            display: flex;
-            overflow-x: auto;
-            gap: 16px;
-            padding: 16px 0 32px;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            scroll-padding-left: 16px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            user-select: none;
         }
 
-        .roadmap::-webkit-scrollbar {
-            display: none;
+        .roadmap {
+            display: flex;
+            gap: 16px;
+            padding: 20px 16px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(0);
+            align-items: stretch;
         }
 
         .roadmap-item {
             min-width: 280px;
             max-width: 320px;
             flex-shrink: 0;
-            scroll-snap-align: start;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateY(30px);
             opacity: 0;
+            display: flex;
         }
 
         .roadmap-item.animate-in {
@@ -428,17 +449,18 @@
             white-space: nowrap;
         }
 
-        /* Portfolio navigation - Mobile First */
+        /* Portfolio navigation - Improved */
         .portfolio-nav {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
+            align-items: center;
+            gap: 16px;
+            margin-top: 24px;
         }
 
         .portfolio-nav-btn {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             border: 2px solid var(--md-sys-color-outline);
             background-color: var(--md-sys-color-surface-container);
@@ -448,31 +470,52 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 16px;
+            font-size: 18px;
+            user-select: none;
         }
 
-        .portfolio-nav-btn:hover {
+        .portfolio-nav-btn:hover:not(:disabled) {
             background-color: var(--md-sys-color-primary);
             color: var(--md-sys-color-on-primary);
             border-color: var(--md-sys-color-primary);
             transform: scale(1.05);
+            box-shadow: var(--md-sys-elevation-level2);
         }
 
-        .portfolio-nav-btn:active {
+        .portfolio-nav-btn:active:not(:disabled) {
             transform: scale(0.95);
             transition-duration: 0.1s;
         }
 
         .portfolio-nav-btn:disabled {
-            opacity: 0.4;
+            opacity: 0.3;
             cursor: not-allowed;
             transform: none;
         }
 
-        .portfolio-nav-btn:disabled:hover {
-            background-color: var(--md-sys-color-surface-container);
-            color: var(--md-sys-color-on-surface);
-            border-color: var(--md-sys-color-outline);
+        .portfolio-nav-indicators {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .portfolio-nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--md-sys-color-outline-variant);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-nav-dot.active {
+            background-color: var(--md-sys-color-primary);
+            transform: scale(1.25);
+        }
+
+        .portfolio-nav-dot:hover {
+            background-color: var(--md-sys-color-primary);
+            opacity: 0.7;
         }
 
         /* App Dialog Modal */
@@ -715,20 +758,22 @@
             }
         }
 
-        /* Journey timeline - Horizontal with center focus */
+        /* Journey timeline - Mobile First */
         .journey-container {
             position: relative;
-            max-width: 100%;
+            width: 100%;
             overflow: hidden;
+            padding: 0 16px;
         }
 
         .journey-timeline {
             position: relative;
             display: flex;
-            gap: 40px;
-            padding: 40px 50%;
+            gap: 24px;
+            padding: 40px 0 50px;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(0);
+            align-items: flex-start;
         }
 
         .journey-timeline::before {
@@ -751,29 +796,30 @@
 
         .journey-item {
             position: relative;
-            min-width: 320px;
-            max-width: 350px;
+            min-width: 280px;
+            max-width: 300px;
             background-color: var(--md-sys-color-surface-container);
             border-radius: 20px;
-            padding: 24px;
+            padding: 20px;
             flex-shrink: 0;
             box-shadow: var(--md-sys-elevation-level1);
             transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 2;
-            opacity: 0.4;
-            transform: scale(0.85) translateY(20px);
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .journey-item.current {
             opacity: 1;
-            transform: scale(1) translateY(0);
+            transform: translateY(0);
             box-shadow: var(--md-sys-elevation-level3);
             background-color: var(--md-sys-color-surface-container-high);
+            border: 2px solid var(--md-sys-color-primary);
         }
 
         .journey-item.future {
-            opacity: 0.3;
-            transform: scale(0.8) translateY(30px);
+            opacity: 0.7;
+            transform: translateY(0);
         }
 
         .journey-item:hover {
@@ -1067,6 +1113,11 @@
                 font-size: 64px;
             }
             
+            .roadmap {
+                padding: 16px 12px;
+                gap: 12px;
+            }
+            
             .roadmap-item {
                 min-width: 260px;
                 max-width: 280px;
@@ -1083,6 +1134,21 @@
             .roadmap-description {
                 font-size: 13px;
                 -webkit-line-clamp: 3;
+            }
+             
+            .journey-container {
+                padding: 0 8px;
+            }
+             
+            .journey-timeline {
+                gap: 20px;
+                padding: 30px 0 40px;
+            }
+            
+            .journey-item {
+                min-width: 260px;
+                max-width: 280px;
+                padding: 16px;
             }
         }
 
@@ -1118,9 +1184,29 @@
                 font-size: 88px;
             }
             
+            .roadmap {
+                padding: 18px 16px;
+                gap: 16px;
+            }
+            
             .roadmap-item {
-                min-width: 320px;
-                max-width: 360px;
+                min-width: 300px;
+                max-width: 340px;
+            }
+             
+            .journey-container {
+                padding: 0 12px;
+            }
+             
+            .journey-timeline {
+                gap: 24px;
+                padding: 35px 0 45px;
+            }
+            
+            .journey-item {
+                min-width: 300px;
+                max-width: 320px;
+                padding: 18px;
             }
         }
 
@@ -1170,13 +1256,30 @@
             .hero {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 48px;
+                gap: 60px;
                 text-align: left;
                 min-height: 75vh;
+                align-items: center;
+            }
+            
+            .hero-content {
+                max-width: none;
+                align-items: flex-start;
+            }
+            
+            .hero-content h1,
+            .hero-content .motto,
+            .hero-content p {
+                text-align: left;
+            }
+            
+            .hero-buttons {
+                justify-content: flex-start;
             }
             
             .hero-image {
                 order: 0;
+                justify-content: flex-end;
             }
             
             .hero-content h1 {
@@ -1189,7 +1292,6 @@
             
             .hero-content p {
                 font-size: 17px;
-                max-width: none;
             }
             
             .profile-image {
@@ -1199,15 +1301,56 @@
             }
             
             .roadmap {
-                gap: 20px;
-                padding: 20px 0 40px;
+                gap: 24px;
+                padding: 24px 32px;
+                justify-content: center;
             }
             
             .roadmap-item {
                 min-width: 340px;
                 max-width: 380px;
-                scroll-snap-align: center;
             }
+            
+                         .journey-container {
+                padding: 0 32px;
+             }
+             
+             .journey-timeline {
+                gap: 40px;
+                padding: 40px 50%;
+             }
+             
+             .journey-item {
+                min-width: 320px;
+                max-width: 350px;
+                padding: 24px;
+                opacity: 0.4;
+                transform: scale(0.85) translateY(20px);
+             }
+             
+             .journey-item.current {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+                border: none;
+             }
+             
+             .journey-item.future {
+                opacity: 0.3;
+                transform: scale(0.8) translateY(30px);
+             }
+             
+             .journey-item:hover {
+                opacity: 1;
+                transform: scale(1.05) translateY(-8px);
+                box-shadow: var(--md-sys-elevation-level3);
+             }
+             
+             .btn {
+                flex: none;
+                max-width: none;
+                padding: 16px 32px;
+                font-size: 16px;
+             }
             
             .roadmap-card {
                 padding: 24px;
@@ -1273,8 +1416,8 @@
                 font-size: 20px;
             }
             
-            .hero {
-                gap: 60px;
+                         .hero {
+                gap: 80px;
                 min-height: 80vh;
             }
             
@@ -1297,19 +1440,36 @@
             }
             
             .roadmap {
-                gap: 24px;
+                gap: 28px;
+                padding: 28px 40px;
+                justify-content: center;
             }
             
             .roadmap-item {
                 min-width: 360px;
                 max-width: 400px;
             }
+            
+                         .journey-container {
+                padding: 0 40px;
+             }
+             
+             .journey-timeline {
+                gap: 48px;
+                padding: 40px 50%;
+             }
         }
 
         /* Extra Large Desktop (1440px+) */
         @media (min-width: 1440px) {
             .container {
                 max-width: 1320px;
+            }
+            
+            .roadmap {
+                gap: 32px;
+                padding: 32px 40px;
+                justify-content: center;
             }
             
             .roadmap-item {
@@ -1323,18 +1483,24 @@
             scroll-behavior: smooth;
         }
 
-        /* Button styles */
+        /* Button styles - Mobile First */
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            padding: 12px 24px;
+            padding: 14px 24px;
             border-radius: 24px;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             cursor: pointer;
+            font-size: 14px;
+            min-height: 48px;
+            white-space: nowrap;
+            flex: 1;
+            max-width: 200px;
         }
 
         .btn-primary {
@@ -1349,6 +1515,11 @@
             box-shadow: var(--md-sys-elevation-level2);
         }
 
+        .btn-primary:active {
+            transform: translateY(0);
+            transition-duration: 0.1s;
+        }
+
         .btn-outline {
             background-color: transparent;
             color: var(--md-sys-color-primary);
@@ -1358,6 +1529,13 @@
         .btn-outline:hover {
             background-color: var(--md-sys-color-primary);
             color: var(--md-sys-color-on-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--md-sys-elevation-level2);
+        }
+
+        .btn-outline:active {
+            transform: translateY(0);
+            transition-duration: 0.1s;
         }
     </style>
 </head>
@@ -1389,7 +1567,7 @@
                         <h1>Hello, I'm AB</h1>
                         <p class="motto">"Code with purpose, create with passion"</p>
                         <p>A passionate developer crafting innovative mobile and web applications. I specialize in creating seamless user experiences across Android, iOS, and Mac platforms, bringing ideas to life through clean code and thoughtful design.</p>
-                        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <div class="hero-buttons">
                             <a href="#contact" class="btn btn-primary">
                                 <i data-lucide="mail"></i>
                                 Get In Touch
@@ -1415,7 +1593,8 @@
                 <h2 class="section-title">Android Applications</h2>
                 <p class="section-subtitle">Innovative mobile solutions for the Android ecosystem</p>
                 
-                <div class="roadmap" id="androidRoadmap">
+                <div class="roadmap-container">
+                    <div class="roadmap" id="androidRoadmap">
                     <div class="roadmap-item" data-delay="100">
                         <div class="roadmap-card">
                             <div class="roadmap-card-header">
@@ -1499,12 +1678,16 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                 </div>
                 
                 <div class="portfolio-nav">
                     <button class="portfolio-nav-btn" id="androidPrev">
                         <i data-lucide="chevron-left"></i>
                     </button>
+                    <div class="portfolio-nav-indicators" id="androidIndicators">
+                        <!-- Dots will be generated dynamically -->
+                    </div>
                     <button class="portfolio-nav-btn" id="androidNext">
                         <i data-lucide="chevron-right"></i>
                     </button>
@@ -1518,7 +1701,8 @@
                 <h2 class="section-title">iOS & Mac Applications</h2>
                 <p class="section-subtitle">Elegant solutions for the Apple ecosystem</p>
                 
-                <div class="roadmap" id="iosRoadmap">
+                <div class="roadmap-container">
+                    <div class="roadmap" id="iosRoadmap">
                     <div class="roadmap-item" data-delay="100">
                         <div class="roadmap-card">
                             <div class="roadmap-card-header">
@@ -1602,12 +1786,16 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                 </div>
                 
                 <div class="portfolio-nav">
                     <button class="portfolio-nav-btn" id="iosPrev">
                         <i data-lucide="chevron-left"></i>
                     </button>
+                    <div class="portfolio-nav-indicators" id="iosIndicators">
+                        <!-- Dots will be generated dynamically -->
+                    </div>
                     <button class="portfolio-nav-btn" id="iosNext">
                         <i data-lucide="chevron-right"></i>
                     </button>
@@ -2123,8 +2311,9 @@
                 animationObserver.observe(el);
             });
             
-            // Observe portfolio sections
-            document.querySelectorAll('.roadmap').forEach(roadmap => {
+            // Observe portfolio sections for animations only
+            document.querySelectorAll('.roadmap-container').forEach((container, index) => {
+                const roadmap = container.querySelector('.roadmap');
                 animationObserver.observe(roadmap);
             });
         }
@@ -2159,129 +2348,241 @@
             initializeAnimations();
         }, 100);
 
-        // Portfolio navigation functionality - Responsive
-        function createPortfolioNavigation(sectionId, prevBtnId, nextBtnId) {
-            const section = document.getElementById(sectionId);
+        // New Portfolio Navigation System - Transform Based
+        function createPortfolioNavigation(sectionId, prevBtnId, nextBtnId, indicatorsId) {
+            const container = document.getElementById(sectionId);
             const prevBtn = document.getElementById(prevBtnId);
             const nextBtn = document.getElementById(nextBtnId);
+            const indicators = document.getElementById(indicatorsId);
             
-            if (!section || !prevBtn || !nextBtn) return;
+            if (!container || !prevBtn || !nextBtn || !indicators) return;
 
             let currentIndex = 0;
+            let items = [];
+            let itemsPerView = 1;
+            let maxIndex = 0;
 
-            function getItemWidth() {
-                // Responsive item width calculation
+            function calculateLayout() {
+                items = container.querySelectorAll('.roadmap-item');
+                if (items.length === 0) return;
+
+                const containerWidth = container.parentElement.clientWidth;
                 const screenWidth = window.innerWidth;
-                if (screenWidth <= 480) return 276; // 260px + 16px gap
-                if (screenWidth <= 768) return 336; // 320px + 16px gap  
-                if (screenWidth <= 1024) return 360; // 340px + 20px gap
-                return 384; // 360px + 24px gap
+                
+                // Calculate items per view based on screen size
+                if (screenWidth <= 480) {
+                    itemsPerView = 1;
+                } else if (screenWidth <= 768) {
+                    itemsPerView = 1;
+                } else if (screenWidth <= 1024) {
+                    itemsPerView = Math.min(2, items.length);
+                } else if (screenWidth <= 1440) {
+                    itemsPerView = Math.min(3, items.length);
+                } else {
+                    itemsPerView = Math.min(3, items.length);
+                }
+
+                maxIndex = Math.max(0, items.length - itemsPerView);
+                
+                // Update item widths for proper spacing
+                const gapSize = screenWidth <= 768 ? 16 : 24;
+                const padding = screenWidth <= 768 ? 32 : 64;
+                const itemWidth = (containerWidth - padding - (gapSize * (itemsPerView - 1))) / itemsPerView;
+                
+                items.forEach(item => {
+                    if (screenWidth <= 768) {
+                        item.style.minWidth = `${Math.min(itemWidth, 320)}px`;
+                        item.style.maxWidth = `${Math.min(itemWidth, 320)}px`;
+                    } else {
+                        item.style.minWidth = `${Math.min(itemWidth, 400)}px`;
+                        item.style.maxWidth = `${Math.min(itemWidth, 400)}px`;
+                    }
+                });
+            }
+
+            function generateIndicators() {
+                indicators.innerHTML = '';
+                const totalPages = maxIndex + 1;
+                
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'portfolio-nav-dot';
+                    if (i === currentIndex) dot.classList.add('active');
+                    
+                    dot.addEventListener('click', () => {
+                        goToIndex(i);
+                    });
+                    
+                    indicators.appendChild(dot);
+                }
             }
 
             function updateNavigation() {
-                const maxScroll = section.scrollWidth - section.clientWidth;
-                const tolerance = 10;
+                // Update button states
+                prevBtn.disabled = currentIndex <= 0;
+                nextBtn.disabled = currentIndex >= maxIndex;
                 
-                prevBtn.disabled = section.scrollLeft <= tolerance;
-                nextBtn.disabled = section.scrollLeft >= maxScroll - tolerance;
-                
-                // Update button states visually
-                if (prevBtn.disabled) {
-                    prevBtn.style.opacity = '0.4';
-                } else {
-                    prevBtn.style.opacity = '1';
-                }
-                
-                if (nextBtn.disabled) {
-                    nextBtn.style.opacity = '0.4';
-                } else {
-                    nextBtn.style.opacity = '1';
-                }
+                // Update indicators
+                const dots = indicators.querySelectorAll('.portfolio-nav-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
             }
 
-            function scrollToIndex(index) {
-                const itemWidth = getItemWidth();
-                const scrollPosition = index * itemWidth;
-                
-                section.scrollTo({
-                    left: scrollPosition,
-                    behavior: 'smooth'
-                });
+            function goToIndex(index) {
+                index = Math.max(0, Math.min(maxIndex, index));
                 currentIndex = index;
-                setTimeout(updateNavigation, 300);
-            }
-
-            function scrollByAmount(direction) {
-                const itemWidth = getItemWidth();
-                const scrollAmount = itemWidth * direction;
                 
-                section.scrollBy({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-                setTimeout(updateNavigation, 300);
+                // Calculate transform
+                const itemWidth = items[0]?.offsetWidth || 300;
+                const gap = window.innerWidth <= 768 ? 16 : 24;
+                const offset = -(index * (itemWidth + gap));
+                
+                container.style.transform = `translateX(${offset}px)`;
+                updateNavigation();
             }
 
+            function handleResize() {
+                calculateLayout();
+                generateIndicators();
+                // Reset to first item on resize
+                currentIndex = 0;
+                goToIndex(0);
+            }
+
+            // Button event listeners
             prevBtn.addEventListener('click', () => {
-                scrollByAmount(-1);
+                if (currentIndex > 0) {
+                    goToIndex(currentIndex - 1);
+                }
             });
 
             nextBtn.addEventListener('click', () => {
-                scrollByAmount(1);
-            });
-
-            // Update navigation on scroll
-            section.addEventListener('scroll', updateNavigation);
-            
-            // Update navigation on resize
-            window.addEventListener('resize', () => {
-                setTimeout(updateNavigation, 100);
-            });
-            
-            // Initialize navigation state
-            setTimeout(updateNavigation, 200);
-
-            // Enhanced mouse wheel horizontal scroll
-            section.addEventListener('wheel', (e) => {
-                // Only hijack vertical scroll, allow horizontal scroll to pass through
-                if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-                
-                e.preventDefault();
-                const scrollSpeed = window.innerWidth <= 768 ? 0.8 : 1.2;
-                section.scrollLeft += e.deltaY * scrollSpeed;
-                setTimeout(updateNavigation, 50);
-            });
-
-            // Touch scroll improvements for mobile
-            let isScrolling = false;
-            section.addEventListener('touchstart', () => {
-                isScrolling = true;
-            });
-            
-            section.addEventListener('touchend', () => {
-                if (isScrolling) {
-                    setTimeout(() => {
-                        updateNavigation();
-                        isScrolling = false;
-                    }, 150);
+                if (currentIndex < maxIndex) {
+                    goToIndex(currentIndex + 1);
                 }
             });
 
-            return { updateNavigation, scrollToIndex, scrollByAmount };
+            // Touch/swipe support
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+
+            container.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+                container.style.transition = 'none';
+            });
+
+            container.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                currentX = e.touches[0].clientX;
+                const diffX = currentX - startX;
+                const itemWidth = items[0]?.offsetWidth || 300;
+                const gap = window.innerWidth <= 768 ? 16 : 24;
+                const baseOffset = -(currentIndex * (itemWidth + gap));
+                
+                container.style.transform = `translateX(${baseOffset + diffX}px)`;
+            });
+
+            container.addEventListener('touchend', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                container.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                
+                const diffX = currentX - startX;
+                const threshold = 50;
+                
+                if (Math.abs(diffX) > threshold) {
+                    if (diffX > 0 && currentIndex > 0) {
+                        goToIndex(currentIndex - 1);
+                    } else if (diffX < 0 && currentIndex < maxIndex) {
+                        goToIndex(currentIndex + 1);
+                    } else {
+                        goToIndex(currentIndex); // Snap back
+                    }
+                } else {
+                    goToIndex(currentIndex); // Snap back
+                }
+            });
+
+            // Mouse wheel support
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                
+                if (e.deltaY > 0 && currentIndex < maxIndex) {
+                    goToIndex(currentIndex + 1);
+                } else if (e.deltaY < 0 && currentIndex > 0) {
+                    goToIndex(currentIndex - 1);
+                }
+            });
+
+            // Keyboard navigation
+            container.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    goToIndex(currentIndex - 1);
+                } else if (e.key === 'ArrowRight' && currentIndex < maxIndex) {
+                    goToIndex(currentIndex + 1);
+                }
+            });
+
+            // Resize handler
+            window.addEventListener('resize', handleResize);
+
+            // Initialize
+            function initialize() {
+                calculateLayout();
+                generateIndicators();
+                goToIndex(0);
+            }
+
+            // Wait for animations to complete before initializing
+            setTimeout(initialize, 600);
+
+            return { goToIndex, initialize, handleResize };
         }
 
         // Initialize portfolio navigations
-        const androidNav = createPortfolioNavigation('androidRoadmap', 'androidPrev', 'androidNext');
-        const iosNav = createPortfolioNavigation('iosRoadmap', 'iosPrev', 'iosNext');
+        let androidNav, iosNav;
+        
+        // Initialize after DOM content is loaded and elements are rendered
+        function initializePortfolioNavigation() {
+            // Wait for animations and rendering to complete
+            setTimeout(() => {
+                androidNav = createPortfolioNavigation('androidRoadmap', 'androidPrev', 'androidNext', 'androidIndicators');
+                iosNav = createPortfolioNavigation('iosRoadmap', 'iosPrev', 'iosNext', 'iosIndicators');
+            }, 1000);
+        }
+        
+        // Initialize when page is fully loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePortfolioNavigation);
+        } else {
+            initializePortfolioNavigation();
+        }
 
-        // Journey timeline navigation with center focus
+        // Journey timeline navigation - Responsive
         const journeyTimeline = document.getElementById('journeyTimeline');
         const journeyItems = document.querySelectorAll('.journey-item');
         const journeyPrev = document.getElementById('journeyPrev');
         const journeyNext = document.getElementById('journeyNext');
 
         let currentJourneyIndex = careerJourney.findIndex(item => item.current) || 3; // Default to current position
-        const journeyItemWidth = 360; // 320px width + 40px gap
+
+        function getJourneyItemWidth() {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 480) return 304; // 280px + 24px gap
+            if (screenWidth <= 768) return 324; // 300px + 24px gap
+            if (screenWidth <= 1024) return 360; // 320px + 40px gap
+            return 398; // 350px + 48px gap
+        }
+
+        function isJourneyDesktop() {
+            return window.innerWidth >= 769;
+        }
 
         function updateJourneyItems() {
             journeyItems.forEach((item, index) => {
@@ -2298,6 +2599,10 @@
         function updateJourneyNavigation() {
             journeyPrev.disabled = currentJourneyIndex <= 0;
             journeyNext.disabled = currentJourneyIndex >= journeyItems.length - 1;
+            
+            // Update button visual states
+            journeyPrev.style.opacity = journeyPrev.disabled ? '0.5' : '1';
+            journeyNext.style.opacity = journeyNext.disabled ? '0.5' : '1';
         }
 
         function scrollJourneyTo(index) {
@@ -2305,9 +2610,15 @@
             
             currentJourneyIndex = index;
             
-            // Calculate offset to center the current item
-            const offset = -(index * journeyItemWidth);
-            journeyTimeline.style.transform = `translateX(${offset}px)`;
+            if (isJourneyDesktop()) {
+                // Desktop: Center-focus behavior
+                const itemWidth = getJourneyItemWidth();
+                const offset = -(index * itemWidth);
+                journeyTimeline.style.transform = `translateX(${offset}px)`;
+            } else {
+                // Mobile: Simple left alignment 
+                journeyTimeline.style.transform = `translateX(0px)`;
+            }
             
             updateJourneyItems();
             updateJourneyNavigation();
@@ -2325,10 +2636,26 @@
             }
         });
 
+        // Journey resize handler
+        function handleJourneyResize() {
+            // Re-initialize journey position on resize
+            setTimeout(() => {
+                scrollJourneyTo(currentJourneyIndex);
+            }, 100);
+        }
+
+        window.addEventListener('resize', handleJourneyResize);
+
         // Initialize journey timeline
         setTimeout(() => {
-            scrollJourneyTo(currentJourneyIndex);
-        }, 100);
+            // On mobile, start with first item visible, on desktop center current
+            if (isJourneyDesktop()) {
+                scrollJourneyTo(currentJourneyIndex);
+            } else {
+                scrollJourneyTo(0);
+                currentJourneyIndex = 0;
+            }
+        }, 300);
 
         // Journey timeline touch support
         let touchStartX = 0;
