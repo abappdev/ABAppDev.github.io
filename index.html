@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AB - Developer Portfolio</title>
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+
     <style>
         * {
             margin: 0;
@@ -44,7 +44,7 @@
             --md-sys-color-surface-container: #F7EFEC;
             --md-sys-color-surface-container-high: #F1E9E6;
             --md-sys-color-surface-container-highest: #EBE3E0;
-            
+
             /* Elevation shadows */
             --md-sys-elevation-level1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
             --md-sys-elevation-level2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
@@ -744,8 +744,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Responsive dialog */
@@ -781,13 +786,13 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--md-sys-color-outline-variant) 10%, 
-                var(--md-sys-color-primary) 30%, 
-                var(--md-sys-color-primary) 70%, 
-                var(--md-sys-color-outline-variant) 90%, 
-                transparent 100%);
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    var(--md-sys-color-outline-variant) 10%,
+                    var(--md-sys-color-primary) 30%,
+                    var(--md-sys-color-primary) 70%,
+                    var(--md-sys-color-outline-variant) 90%,
+                    transparent 100%);
             z-index: 0;
             pointer-events: none;
         }
@@ -970,21 +975,21 @@
             .journey-container::before {
                 top: 110px;
             }
-            
+
             .journey-item {
                 min-width: 280px;
                 max-width: 300px;
                 margin-top: 50px;
                 padding: 20px 16px 16px 16px;
             }
-            
+
             .journey-item-icon {
                 width: 56px;
                 height: 56px;
                 top: -28px;
                 border-radius: 14px;
             }
-            
+
             .journey-timeline {
                 gap: 24px;
                 padding: 30px 0 50px;
@@ -1000,10 +1005,57 @@
         }
 
         .contact-info {
-            display: flex;
-            flex-direction: column;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .contact-social-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
             width: 100%;
+        }
+
+        /* Desktop: show full button info */
+        @media (min-width: 769px) {
+            .contact-social-row {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 16px;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 768px) and (min-width: 481px) {
+            .contact-social-row {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 14px;
+            }
+        }
+
+        /* Mobile: show only icons */
+        @media (max-width: 480px) {
+            .contact-social-row {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 8px;
+            }
+            
+            .contact-social-row .contact-item {
+                flex-direction: column;
+                padding: 12px 8px;
+                text-align: center;
+                min-height: 70px;
+                border-radius: 12px;
+            }
+            
+            .contact-social-row .contact-item-text {
+                display: none;
+            }
+            
+            .contact-social-row .contact-icon {
+                width: 36px;
+                height: 36px;
+                margin: 0 auto;
+            }
         }
 
         .contact-item {
@@ -1071,101 +1123,80 @@
             margin-bottom: 16px;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-        }
 
-        .social-link {
-            width: 48px;
-            height: 48px;
-            background-color: var(--md-sys-color-surface-container);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--md-sys-color-on-surface);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background-color: var(--md-sys-color-primary);
-            color: var(--md-sys-color-on-primary);
-            transform: translateY(-4px);
-        }
 
         /* Responsive Design - Progressive Enhancement */
-        
+
         /* Small Mobile (320px - 480px) */
         @media (max-width: 480px) {
             .container {
                 padding: 0 12px;
             }
-            
+
+
+
             .section {
                 padding: 32px 0;
             }
-            
+
             .section-title {
                 font-size: 28px;
             }
-            
+
             .section-subtitle {
                 font-size: 15px;
             }
-            
+
             .hero-content h1 {
                 font-size: 32px;
             }
-            
+
             .hero-content .motto {
                 font-size: 16px;
             }
-            
+
             .hero-content p {
                 font-size: 15px;
             }
-            
+
             .profile-image {
                 width: 160px;
                 height: 160px;
                 font-size: 64px;
             }
-            
+
             .roadmap {
                 padding: 16px 12px;
                 gap: 12px;
             }
-            
+
             .roadmap-item {
                 min-width: 260px;
                 max-width: 280px;
             }
-            
+
             .roadmap-card {
                 padding: 16px;
             }
-            
+
             .roadmap-title {
                 font-size: 16px;
             }
-            
+
             .roadmap-description {
                 font-size: 13px;
                 -webkit-line-clamp: 3;
             }
-             
+
             .journey-container {
                 padding: 0 8px;
             }
-             
+
             .journey-timeline {
                 gap: 20px;
                 padding: 30px 0 40px;
             }
-            
+
             .journey-item {
                 min-width: 260px;
                 max-width: 280px;
@@ -1178,52 +1209,52 @@
             .container {
                 padding: 0 20px;
             }
-            
+
             .section {
                 padding: 48px 0;
             }
-            
+
             .section-title {
                 font-size: 36px;
             }
-            
+
             .section-subtitle {
                 font-size: 17px;
             }
-            
+
             .hero-content h1 {
                 font-size: 40px;
             }
-            
+
             .hero-content .motto {
                 font-size: 20px;
             }
-            
+
             .profile-image {
                 width: 220px;
                 height: 220px;
                 font-size: 88px;
             }
-            
+
             .roadmap {
                 padding: 18px 16px;
                 gap: 16px;
             }
-            
+
             .roadmap-item {
                 min-width: 300px;
                 max-width: 340px;
             }
-             
+
             .journey-container {
                 padding: 0 12px;
             }
-             
+
             .journey-timeline {
                 gap: 24px;
                 padding: 35px 0 45px;
             }
-            
+
             .journey-item {
                 min-width: 300px;
                 max-width: 320px;
@@ -1236,44 +1267,44 @@
             .navbar {
                 padding: 16px 0;
             }
-            
+
             .nav-container {
                 padding: 0 24px;
             }
-            
+
             .nav-links {
                 display: flex;
             }
-            
+
             .logo {
                 font-size: 24px;
             }
-            
+
             .theme-toggle {
                 width: 48px;
                 height: 48px;
             }
-            
+
             main {
                 margin-top: 80px;
             }
-            
+
             .container {
                 padding: 0 32px;
             }
-            
+
             .section {
                 padding: 64px 0;
             }
-            
+
             .section-title {
                 font-size: 42px;
             }
-            
+
             .section-subtitle {
                 font-size: 18px;
             }
-            
+
             .hero {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -1282,205 +1313,205 @@
                 min-height: 75vh;
                 align-items: center;
             }
-            
+
             .hero-content {
                 max-width: none;
                 align-items: flex-start;
             }
-            
+
             .hero-content h1,
             .hero-content .motto,
             .hero-content p {
                 text-align: left;
             }
-            
+
             .hero-buttons {
                 justify-content: flex-start;
             }
-            
+
             .hero-image {
                 order: 0;
                 justify-content: flex-end;
             }
-            
+
             .hero-content h1 {
                 font-size: 48px;
             }
-            
+
             .hero-content .motto {
                 font-size: 22px;
             }
-            
+
             .hero-content p {
                 font-size: 17px;
             }
-            
+
             .profile-image {
                 width: 280px;
                 height: 280px;
                 font-size: 112px;
             }
-            
+
             .roadmap {
                 gap: 24px;
                 padding: 24px 32px;
                 justify-content: flex-start;
             }
-            
+
             .roadmap-item {
                 min-width: 340px;
                 max-width: 380px;
             }
-            
-                         .journey-container {
+
+            .journey-container {
                 padding: 0 32px;
-             }
-             
-             .journey-timeline {
+            }
+
+            .journey-timeline {
                 gap: 40px;
                 padding: 40px 0;
                 justify-content: flex-start;
-             }
-             
-             .journey-item {
+            }
+
+            .journey-item {
                 min-width: 320px;
                 max-width: 350px;
                 padding: 24px;
                 opacity: 0.4;
                 transform: scale(0.85) translateY(20px);
-             }
-             
-             .journey-item.current {
+            }
+
+            .journey-item.current {
                 opacity: 1;
                 transform: scale(1) translateY(0);
                 border: none;
-             }
-             
-             .journey-item.future {
+            }
+
+            .journey-item.future {
                 opacity: 0.3;
                 transform: scale(0.8) translateY(30px);
-             }
-             
-             .journey-item:hover {
+            }
+
+            .journey-item:hover {
                 opacity: 1;
                 transform: scale(1.05) translateY(-8px);
                 box-shadow: var(--md-sys-elevation-level3);
-             }
-             
-             .btn {
+            }
+
+            .btn {
                 flex: none;
                 max-width: none;
                 padding: 16px 32px;
                 font-size: 16px;
-             }
-            
+            }
+
             .roadmap-card {
                 padding: 24px;
                 border-radius: 24px;
             }
-            
+
             .roadmap-icon {
                 width: 56px;
                 height: 56px;
                 border-radius: 16px;
                 font-size: 24px;
             }
-            
+
             .roadmap-title {
                 font-size: 20px;
             }
-            
+
             .roadmap-description {
                 font-size: 15px;
                 -webkit-line-clamp: 5;
             }
-            
+
             .portfolio-nav {
                 margin-top: 32px;
             }
-            
-                         .portfolio-nav-btn {
+
+            .portfolio-nav-btn {
                 width: 52px;
                 height: 52px;
-             }
-             
-             .contact-content {
+            }
+
+            .contact-content {
                 display: flex;
                 flex-direction: column;
                 gap: 32px;
                 align-items: center;
                 max-width: 600px;
                 margin: 0 auto;
-             }
-             
-             .contact-info {
-                gap: 20px;
-             }
-             
+            }
 
-         }
+            .contact-info {
+                gap: 20px;
+            }
+
+
+        }
 
         /* Large Desktop (1025px+) */
         @media (min-width: 1025px) {
             .container {
                 padding: 0 40px;
             }
-            
+
             .section {
                 padding: 80px 0;
             }
-            
+
             .section-title {
                 font-size: 48px;
             }
-            
+
             .section-subtitle {
                 font-size: 20px;
             }
-            
-                         .hero {
+
+            .hero {
                 gap: 80px;
                 min-height: 80vh;
             }
-            
+
             .hero-content h1 {
                 font-size: 56px;
             }
-            
+
             .hero-content .motto {
                 font-size: 24px;
             }
-            
+
             .hero-content p {
                 font-size: 18px;
             }
-            
+
             .profile-image {
                 width: 320px;
                 height: 320px;
                 font-size: 128px;
             }
-            
+
             .roadmap {
                 gap: 28px;
                 padding: 28px 40px;
                 justify-content: flex-start;
             }
-            
+
             .roadmap-item {
                 min-width: 360px;
                 max-width: 400px;
             }
-            
-                         .journey-container {
+
+            .journey-container {
                 padding: 0 40px;
-             }
-             
-             .journey-timeline {
+            }
+
+            .journey-timeline {
                 gap: 48px;
                 padding: 40px 0;
                 justify-content: flex-start;
-             }
+            }
         }
 
         /* Extra Large Desktop (1440px+) */
@@ -1488,13 +1519,13 @@
             .container {
                 max-width: 1320px;
             }
-            
+
             .roadmap {
                 gap: 32px;
                 padding: 32px 40px;
                 justify-content: flex-start;
             }
-            
+
             .roadmap-item {
                 min-width: 380px;
                 max-width: 420px;
@@ -1589,7 +1620,9 @@
                     <div class="hero-content">
                         <h1>Hello, I'm Abhishek Bhalerao</h1>
                         <p class="motto">"Code with purpose, create with passion"</p>
-                        <p>A passionate developer crafting innovative applications. I specialize in creating seamless user experiences across Android, iOS, and Mac platforms, bringing ideas to life through clean code and thoughtful design.</p>
+                        <p>A passionate developer crafting innovative applications. I specialize in creating seamless
+                            user experiences across Android, iOS, and Mac platforms, bringing ideas to life through
+                            clean code and thoughtful design.</p>
                         <div class="hero-buttons">
                             <a href="#contact" class="btn btn-primary">
                                 <i data-lucide="mail"></i>
@@ -1618,13 +1651,13 @@
             <div class="container">
                 <h2 class="section-title">Android Applications</h2>
                 <p class="section-subtitle">Innovative mobile solutions for the Android ecosystem</p>
-                
+
                 <div class="roadmap-container">
                     <div class="roadmap" id="androidRoadmap">
                         <!-- Android apps will be dynamically generated -->
                     </div>
                 </div>
-                
+
                 <div class="portfolio-nav">
                     <button class="portfolio-nav-btn" id="androidPrev">
                         <i data-lucide="chevron-left"></i>
@@ -1644,13 +1677,13 @@
             <div class="container">
                 <h2 class="section-title">iOS & Mac Applications</h2>
                 <p class="section-subtitle">Elegant solutions for the Apple ecosystem</p>
-                
+
                 <div class="roadmap-container">
                     <div class="roadmap" id="iosRoadmap">
                         <!-- iOS apps will be dynamically generated -->
                     </div>
                 </div>
-                
+
                 <div class="portfolio-nav">
                     <button class="portfolio-nav-btn" id="iosPrev">
                         <i data-lucide="chevron-left"></i>
@@ -1670,13 +1703,13 @@
             <div class="container">
                 <h2 class="section-title">Professional Journey</h2>
                 <p class="section-subtitle">From student to seasoned developer</p>
-                
+
                 <div class="journey-container">
                     <div class="journey-timeline" id="journeyTimeline">
                         <!-- Journey items will be dynamically generated -->
                     </div>
                 </div>
-                
+
                 <div class="journey-nav">
                     <button class="journey-nav-btn" id="journeyPrev">
                         <i data-lucide="chevron-left"></i>
@@ -1695,81 +1728,68 @@
                 <p class="section-subtitle">Ready to bring your ideas to life? Let's talk!</p>
                 <div class="contact-content">
                     <div class="contact-info">
-                        <a href="mailto:ab.appdev.ai@gmail.com" class="contact-item">
-                            <div class="contact-icon">
-                                <i data-lucide="mail"></i>
-                            </div>
-                            <div class="contact-item-text">
-                                <h3>Email</h3>
-                                <p>ab.appdev.ai@gmail.com</p>
-                            </div>
-                        </a>
-                        
-                        <a href="https://www.instagram.com/abhishekbhalerao04" class="contact-item">
-                            <div class="contact-icon">
-                                <i data-lucide="instagram"></i>
-                            </div>
-                            <div class="contact-item-text">
-                                <h3>Instagram</h3>
-                                <p>Connect Socially</p>
-                            </div>
-                        </a>
+                        <div class="contact-social-row">
+                            <a href="mailto:ab.appdev.ai@gmail.com" class="contact-item">
+                                <div class="contact-icon">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <div class="contact-item-text">
+                                    <h3>Email</h3>
+                                    <p>ab.appdev.ai@gmail.com</p>
+                                </div>
+                            </a>
 
-                        <a href="https://www.linkedin.com/in/abappdev                        " class="contact-item">
-                            <div class="contact-icon">
-                                <i data-lucide="linkedin"></i>
-                            </div>
-                            <div class="contact-item-text">
-                                <h3>LinkedIn</h3>
-                                <p>Connect professionally</p>
-                            </div>
-                        </a>
-                
-                        <a href="https://github.com/abappdev" class="contact-item">
-                            <div class="contact-icon">
-                                <i data-lucide="github"></i>
-                            </div>
-                            <div class="contact-item-text">
-                                <h3>GitHub</h3>
-                                <p>View my repositories</p>
-                            </div>
-                        </a>
-                
-                        <a href="https://x.com/abappdev" class="contact-item">
-                            <div class="contact-icon">
-                                <i data-lucide="twitter"></i>
-                            </div>
-                            <div class="contact-item-text">
-                                <h3>X</h3>
-                                <p>Follow my journey</p>
-                            </div>
-                        </a>
+                            <a href="https://www.linkedin.com/in/abappdev" class="contact-item">
+                                <div class="contact-icon">
+                                    <i data-lucide="linkedin"></i>
+                                </div>
+                                <div class="contact-item-text">
+                                    <h3>LinkedIn</h3>
+                                    <p>Connect professionally</p>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/abappdev" class="contact-item">
+                                <div class="contact-icon">
+                                    <i data-lucide="github"></i>
+                                </div>
+                                <div class="contact-item-text">
+                                    <h3>GitHub</h3>
+                                    <p>View my repositories</p>
+                                </div>
+                            </a>
+
+                            <a href="https://www.instagram.com/abhishekbhalerao04" class="contact-item">
+                                <div class="contact-icon">
+                                    <i data-lucide="instagram"></i>
+                                </div>
+                                <div class="contact-item-text">
+                                    <h3>Instagram</h3>
+                                    <p>Connect Socially</p>
+                                </div>
+                            </a>
+
+                            <a href="https://x.com/abappdev" class="contact-item">
+                                <div class="contact-icon">
+                                    <i data-lucide="twitter"></i>
+                                </div>
+                                <div class="contact-item-text">
+                                    <h3>X</h3>
+                                    <p>Follow my journey</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                
-
                 </div>
-                </div>
+            </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 AB. All rights reserved. Built with passion and Material Design 3.</p>
-            <div class="social-links">
-                <a href="https://github.com/yourusername" class="social-link">
-                    <i data-lucide="github"></i>
-                </a>
-                <a href="https://linkedin.com/in/yourprofile" class="social-link">
-                    <i data-lucide="linkedin"></i>
-                </a>
-                <a href="https://twitter.com/yourhandle" class="social-link">
-                    <i data-lucide="twitter"></i>
-                </a>
-                <a href="mailto:hello@example.com" class="social-link">
-                    <i data-lucide="mail"></i>
-                </a>
-            </div>
+            <p>Made with ❤️ in India</p>
+            <p>&copy; 2025 AB AppDev. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1843,7 +1863,7 @@
         themeToggle.addEventListener('click', () => {
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
+
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateThemeIcon();
@@ -1894,7 +1914,7 @@
             const delay = (index + 1) * 100;
             const platformClass = appType === 'android' ? 'android' : app.platform;
             const platformIcon = appType === 'android' ? 'android' : app.platformIcon;
-            
+
             return `
                 <div class="roadmap-item" data-delay="${delay}">
                     <div class="roadmap-card">
@@ -2037,18 +2057,18 @@
                             }, delay);
                         });
                     }
-                    
+
                     // Handle other animated elements
                     if (entry.target.classList.contains('hero')) {
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'translateY(0)';
                     }
-                    
+
                     if (entry.target.classList.contains('section-title')) {
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'translateY(0)';
                     }
-                    
+
                     if (entry.target.classList.contains('section-subtitle')) {
                         setTimeout(() => {
                             entry.target.style.opacity = '1';
@@ -2057,7 +2077,7 @@
                     }
                 }
             });
-        }, { 
+        }, {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         });
@@ -2071,21 +2091,21 @@
                 el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
                 animationObserver.observe(el);
             });
-            
+
             document.querySelectorAll('.section-title').forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(20px)';
                 el.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
                 animationObserver.observe(el);
             });
-            
+
             document.querySelectorAll('.section-subtitle').forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(15px)';
                 el.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
                 animationObserver.observe(el);
             });
-            
+
             // Observe portfolio sections for animations only
             document.querySelectorAll('.roadmap-container').forEach((container, index) => {
                 const roadmap = container.querySelector('.roadmap');
@@ -2098,7 +2118,7 @@
         function updateScrollEffects() {
             const scrollY = window.pageYOffset;
             const navbar = document.querySelector('.navbar');
-            
+
             // Update navbar background based on scroll
             if (scrollY > 100) {
                 navbar.style.backgroundColor = 'var(--md-sys-color-surface-container-high)';
@@ -2107,7 +2127,7 @@
                 navbar.style.backgroundColor = 'var(--md-sys-color-surface-container)';
                 navbar.style.boxShadow = 'var(--md-sys-elevation-level2)';
             }
-            
+
             ticking = false;
         }
 
@@ -2122,19 +2142,19 @@
         function populatePortfolioSections() {
             // Populate Android apps
             const androidContainer = document.getElementById('androidRoadmap');
-            androidContainer.innerHTML = androidApps.map((app, index) => 
+            androidContainer.innerHTML = androidApps.map((app, index) =>
                 createAppCard(app, index, 'android')
             ).join('');
 
             // Populate iOS apps
             const iosContainer = document.getElementById('iosRoadmap');
-            iosContainer.innerHTML = iosApps.map((app, index) => 
+            iosContainer.innerHTML = iosApps.map((app, index) =>
                 createAppCard(app, index, 'ios')
             ).join('');
 
             // Populate journey timeline
             const journeyContainer = document.getElementById('journeyTimeline');
-            journeyContainer.innerHTML = careerJourney.map((item, index) => 
+            journeyContainer.innerHTML = careerJourney.map((item, index) =>
                 createJourneyItem(item, index)
             ).join('');
 
@@ -2157,7 +2177,7 @@
             const prevBtn = document.getElementById(prevBtnId);
             const nextBtn = document.getElementById(nextBtnId);
             const indicators = document.getElementById(indicatorsId);
-            
+
             if (!container || !prevBtn || !nextBtn || !indicators) return;
 
             let currentIndex = 0;
@@ -2165,79 +2185,79 @@
             let itemsPerView = 1;
             let maxIndex = 0;
 
-                         function calculateLayout() {
-                 items = container.querySelectorAll('.roadmap-item');
-                 if (items.length === 0) return;
+            function calculateLayout() {
+                items = container.querySelectorAll('.roadmap-item');
+                if (items.length === 0) return;
 
-                 const containerWidth = container.parentElement.clientWidth;
-                 const screenWidth = window.innerWidth;
-                 
-                 // Calculate items per view based on screen size
-                 if (screenWidth <= 480) {
-                     itemsPerView = 1;
-                 } else if (screenWidth <= 768) {
-                     itemsPerView = 1;
-                 } else if (screenWidth <= 1024) {
-                     itemsPerView = Math.min(2, items.length);
-                 } else if (screenWidth <= 1440) {
-                     itemsPerView = Math.min(3, items.length);
-                 } else {
-                     itemsPerView = Math.min(4, items.length);
-                 }
+                const containerWidth = container.parentElement.clientWidth;
+                const screenWidth = window.innerWidth;
 
-                 // For desktop: calculate how many "pages" we need
-                 // Each page shows itemsPerView items, so we need to scroll by pages
-                 maxIndex = Math.max(0, Math.ceil(items.length / itemsPerView) - 1);
-                 
-                 // Update item widths for proper spacing
-                 const gapSize = screenWidth <= 768 ? 16 : 24;
-                 const padding = screenWidth <= 768 ? 32 : 64;
-                 let itemWidth;
-                 
-                 if (screenWidth <= 768) {
-                     // Mobile: full width minus padding
-                     itemWidth = Math.min(320, containerWidth - padding);
-                 } else {
-                     // Desktop: divide available space by items per view
-                     itemWidth = Math.min(400, (containerWidth - padding - (gapSize * (itemsPerView - 1))) / itemsPerView);
-                 }
-                 
-                 items.forEach(item => {
-                     item.style.minWidth = `${itemWidth}px`;
-                     item.style.maxWidth = `${itemWidth}px`;
-                 });
-             }
+                // Calculate items per view based on screen size
+                if (screenWidth <= 480) {
+                    itemsPerView = 1;
+                } else if (screenWidth <= 768) {
+                    itemsPerView = 1;
+                } else if (screenWidth <= 1024) {
+                    itemsPerView = Math.min(2, items.length);
+                } else if (screenWidth <= 1440) {
+                    itemsPerView = Math.min(3, items.length);
+                } else {
+                    itemsPerView = Math.min(4, items.length);
+                }
 
-                         function generateIndicators() {
-                 indicators.innerHTML = '';
-                 const totalPages = maxIndex + 1;
-                 
-                 // Only show indicators if there are multiple pages
-                 if (totalPages <= 1) {
-                     indicators.style.display = 'none';
-                     return;
-                 }
-                 
-                 indicators.style.display = 'flex';
-                 
-                 for (let i = 0; i < totalPages; i++) {
-                     const dot = document.createElement('div');
-                     dot.className = 'portfolio-nav-dot';
-                     if (i === currentIndex) dot.classList.add('active');
-                     
-                     dot.addEventListener('click', () => {
-                         goToIndex(i);
-                     });
-                     
-                     indicators.appendChild(dot);
-                 }
-             }
+                // For desktop: calculate how many "pages" we need
+                // Each page shows itemsPerView items, so we need to scroll by pages
+                maxIndex = Math.max(0, Math.ceil(items.length / itemsPerView) - 1);
+
+                // Update item widths for proper spacing
+                const gapSize = screenWidth <= 768 ? 16 : 24;
+                const padding = screenWidth <= 768 ? 32 : 64;
+                let itemWidth;
+
+                if (screenWidth <= 768) {
+                    // Mobile: full width minus padding
+                    itemWidth = Math.min(320, containerWidth - padding);
+                } else {
+                    // Desktop: divide available space by items per view
+                    itemWidth = Math.min(400, (containerWidth - padding - (gapSize * (itemsPerView - 1))) / itemsPerView);
+                }
+
+                items.forEach(item => {
+                    item.style.minWidth = `${itemWidth}px`;
+                    item.style.maxWidth = `${itemWidth}px`;
+                });
+            }
+
+            function generateIndicators() {
+                indicators.innerHTML = '';
+                const totalPages = maxIndex + 1;
+
+                // Only show indicators if there are multiple pages
+                if (totalPages <= 1) {
+                    indicators.style.display = 'none';
+                    return;
+                }
+
+                indicators.style.display = 'flex';
+
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'portfolio-nav-dot';
+                    if (i === currentIndex) dot.classList.add('active');
+
+                    dot.addEventListener('click', () => {
+                        goToIndex(i);
+                    });
+
+                    indicators.appendChild(dot);
+                }
+            }
 
             function updateNavigation() {
                 // Update button states
                 prevBtn.disabled = currentIndex <= 0;
                 nextBtn.disabled = currentIndex >= maxIndex;
-                
+
                 // Update indicators
                 const dots = indicators.querySelectorAll('.portfolio-nav-dot');
                 dots.forEach((dot, index) => {
@@ -2245,27 +2265,27 @@
                 });
             }
 
-                         function goToIndex(index) {
-                 index = Math.max(0, Math.min(maxIndex, index));
-                 currentIndex = index;
-                 
-                 // Calculate transform based on whether we're on mobile or desktop
-                 const itemWidth = items[0]?.offsetWidth || 300;
-                 const gap = window.innerWidth <= 768 ? 16 : 24;
-                 let offset;
-                 
-                 if (window.innerWidth <= 768) {
-                     // Mobile: scroll one item at a time
-                     offset = -(index * (itemWidth + gap));
-                 } else {
-                     // Desktop: scroll by pages (showing multiple items)
-                     const itemsToScroll = index * itemsPerView;
-                     offset = -(itemsToScroll * (itemWidth + gap));
-                 }
-                 
-                 container.style.transform = `translateX(${offset}px)`;
-                 updateNavigation();
-             }
+            function goToIndex(index) {
+                index = Math.max(0, Math.min(maxIndex, index));
+                currentIndex = index;
+
+                // Calculate transform based on whether we're on mobile or desktop
+                const itemWidth = items[0]?.offsetWidth || 300;
+                const gap = window.innerWidth <= 768 ? 16 : 24;
+                let offset;
+
+                if (window.innerWidth <= 768) {
+                    // Mobile: scroll one item at a time
+                    offset = -(index * (itemWidth + gap));
+                } else {
+                    // Desktop: scroll by pages (showing multiple items)
+                    const itemsToScroll = index * itemsPerView;
+                    offset = -(itemsToScroll * (itemWidth + gap));
+                }
+
+                container.style.transform = `translateX(${offset}px)`;
+                updateNavigation();
+            }
 
             function handleResize() {
                 calculateLayout();
@@ -2299,35 +2319,35 @@
                 container.style.transition = 'none';
             });
 
-                         container.addEventListener('touchmove', (e) => {
-                 if (!isDragging) return;
-                 e.preventDefault();
-                 
-                 currentX = e.touches[0].clientX;
-                 const diffX = currentX - startX;
-                 const itemWidth = items[0]?.offsetWidth || 300;
-                 const gap = window.innerWidth <= 768 ? 16 : 24;
-                 
-                 let baseOffset;
-                 if (window.innerWidth <= 768) {
-                     baseOffset = -(currentIndex * (itemWidth + gap));
-                 } else {
-                     const itemsToScroll = currentIndex * itemsPerView;
-                     baseOffset = -(itemsToScroll * (itemWidth + gap));
-                 }
-                 
-                 container.style.transform = `translateX(${baseOffset + diffX}px)`;
-             });
+            container.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+
+                currentX = e.touches[0].clientX;
+                const diffX = currentX - startX;
+                const itemWidth = items[0]?.offsetWidth || 300;
+                const gap = window.innerWidth <= 768 ? 16 : 24;
+
+                let baseOffset;
+                if (window.innerWidth <= 768) {
+                    baseOffset = -(currentIndex * (itemWidth + gap));
+                } else {
+                    const itemsToScroll = currentIndex * itemsPerView;
+                    baseOffset = -(itemsToScroll * (itemWidth + gap));
+                }
+
+                container.style.transform = `translateX(${baseOffset + diffX}px)`;
+            });
 
             container.addEventListener('touchend', (e) => {
                 if (!isDragging) return;
                 isDragging = false;
-                
+
                 container.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-                
+
                 const diffX = currentX - startX;
                 const threshold = 50;
-                
+
                 if (Math.abs(diffX) > threshold) {
                     if (diffX > 0 && currentIndex > 0) {
                         goToIndex(currentIndex - 1);
@@ -2344,7 +2364,7 @@
             // Mouse wheel support
             container.addEventListener('wheel', (e) => {
                 e.preventDefault();
-                
+
                 if (e.deltaY > 0 && currentIndex < maxIndex) {
                     goToIndex(currentIndex + 1);
                 } else if (e.deltaY < 0 && currentIndex > 0) {
@@ -2379,7 +2399,7 @@
 
         // Initialize portfolio navigations
         let androidNav, iosNav;
-        
+
         // Initialize after DOM content is loaded and elements are rendered
         function initializePortfolioNavigation() {
             // Wait for content to be populated and animations to complete
@@ -2395,7 +2415,7 @@
         const journeyPrev = document.getElementById('journeyPrev');
         const journeyNext = document.getElementById('journeyNext');
 
-        let currentJourneyIndex = careerJourney.findIndex(item => item.current) !== -1 ? 
+        let currentJourneyIndex = careerJourney.findIndex(item => item.current) !== -1 ?
             careerJourney.findIndex(item => item.current) : 3; // Default to current position
 
         function getJourneyItemWidth() {
@@ -2413,7 +2433,7 @@
         function updateJourneyItems() {
             journeyItems.forEach((item, index) => {
                 item.classList.remove('current', 'future');
-                
+
                 if (index === currentJourneyIndex) {
                     item.classList.add('current');
                 } else if (index > currentJourneyIndex) {
@@ -2425,7 +2445,7 @@
         function updateJourneyNavigation() {
             journeyPrev.disabled = currentJourneyIndex <= 0;
             journeyNext.disabled = currentJourneyIndex >= journeyItems.length - 1;
-            
+
             // Update button visual states
             journeyPrev.style.opacity = journeyPrev.disabled ? '0.5' : '1';
             journeyNext.style.opacity = journeyNext.disabled ? '0.5' : '1';
@@ -2433,20 +2453,20 @@
 
         function scrollJourneyTo(index) {
             if (index < 0 || index >= journeyItems.length) return;
-            
+
             currentJourneyIndex = index;
-            
+
             if (isJourneyDesktop()) {
                 // Desktop: Center the selected card in viewport
                 const containerWidth = document.querySelector('.journey-container').clientWidth;
                 const itemWidth = journeyItems[0]?.offsetWidth || 350;
                 const gap = 40; // Desktop gap
-                
+
                 // Calculate position to center the selected card
                 const cardPosition = index * (itemWidth + gap);
                 const centerOffset = (containerWidth / 2) - (itemWidth / 2);
                 const offset = centerOffset - cardPosition;
-                
+
                 journeyTimeline.style.transform = `translateX(${offset}px)`;
             } else {
                 // Mobile: Scroll item by item
@@ -2455,7 +2475,7 @@
                 const offset = -(index * (itemWidth + gap));
                 journeyTimeline.style.transform = `translateX(${offset}px)`;
             }
-            
+
             updateJourneyItems();
             updateJourneyNavigation();
         }
@@ -2493,7 +2513,7 @@
         function initializeJourneyTimeline() {
             // Get journey items after they are populated
             journeyItems = document.querySelectorAll('.journey-item');
-            
+
             setTimeout(() => {
                 // Always start with the current item (last one) on both mobile and desktop
                 scrollJourneyTo(currentJourneyIndex);
@@ -2508,31 +2528,31 @@
             touchStartX = e.touches[0].clientX;
             const transform = journeyTimeline.style.transform;
             touchStartTransform = transform ? parseInt(transform.match(/-?\d+/)[0]) : 0;
-            
+
             // Disable transition during drag
             journeyTimeline.style.transition = 'none';
         });
 
         journeyTimeline.addEventListener('touchmove', (e) => {
             if (!touchStartX) return;
-            
+
             e.preventDefault();
             const touchX = e.touches[0].clientX;
             const diff = touchX - touchStartX;
             const newTransform = touchStartTransform + diff;
-            
+
             journeyTimeline.style.transform = `translateX(${newTransform}px)`;
         });
 
         journeyTimeline.addEventListener('touchend', (e) => {
             if (!touchStartX) return;
-            
+
             const touchEndX = e.changedTouches[0].clientX;
             const diff = touchEndX - touchStartX;
-            
+
             // Reset transition for smooth snap
             journeyTimeline.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-            
+
             if (Math.abs(diff) > 50) {
                 if (diff > 0 && currentJourneyIndex > 0) {
                     scrollJourneyTo(currentJourneyIndex - 1);
@@ -2544,12 +2564,12 @@
             } else {
                 scrollJourneyTo(currentJourneyIndex); // Snap back
             }
-            
+
             // Clear transition after animation
             setTimeout(() => {
                 journeyTimeline.style.transition = '';
             }, 600);
-            
+
             touchStartX = 0;
         });
 
@@ -2605,23 +2625,23 @@
             // Set basic app info
             appDialogTitle.textContent = app.title;
             appDialogDescription.textContent = app.longDescription || app.description;
-            
+
             // Set platform info
             let platformText = app.platform || appType;
             if (platformText === 'android') platformText = 'Android Application';
             else if (platformText === 'ios') platformText = 'iOS Application';
             else if (platformText === 'mac') platformText = 'macOS Application';
             else if (platformText === 'swift') platformText = 'Universal Apple App';
-            
+
             appDialogPlatform.textContent = platformText;
 
             // Set icon and platform styling
             appDialogIconLucide.setAttribute('data-lucide', app.icon);
-            
+
             // Set icon background based on platform
             appDialogIcon.className = 'app-dialog-icon';
             appDialogPlatformBadge.className = 'platform-badge';
-            
+
             if (appType === 'android') {
                 appDialogIcon.classList.add('android');
                 appDialogPlatformBadge.classList.add('android');
@@ -2660,7 +2680,7 @@
 
             // Create dynamic action buttons
             appDialogActions.innerHTML = '';
-            
+
             // App Store / Play Store button (primary)
             const storeUrl = app.playStoreUrl || app.appStoreUrl;
             if (storeUrl) {
@@ -2754,7 +2774,7 @@
         // Profile image fallback handler
         const profileImg = document.querySelector('.profile-image img');
         const fallbackIcon = document.querySelector('.profile-image i[data-lucide="user"]');
-        
+
         if (profileImg) {
             profileImg.addEventListener('error', () => {
                 // Hide the broken image and show the fallback icon
@@ -2763,7 +2783,7 @@
                 // Restore gradient background as fallback
                 profileImg.parentElement.style.background = 'linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary))';
             });
-            
+
             profileImg.addEventListener('load', () => {
                 // Image loaded successfully, hide fallback
                 fallbackIcon.style.display = 'none';
