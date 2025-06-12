@@ -23,27 +23,27 @@
         }
 
         :root {
-            /* Light theme colors - Material Design 3 */
-            --md-sys-color-primary: #6750A4;
+            /* Light theme colors - Material Design 3 with #ED6237 Primary */
+            --md-sys-color-primary: #ED6237;
             --md-sys-color-on-primary: #FFFFFF;
-            --md-sys-color-primary-container: #EADDFF;
-            --md-sys-color-on-primary-container: #21005D;
-            --md-sys-color-secondary: #625B71;
+            --md-sys-color-primary-container: #FFDAD4;
+            --md-sys-color-on-primary-container: #410E00;
+            --md-sys-color-secondary: #77574F;
             --md-sys-color-on-secondary: #FFFFFF;
-            --md-sys-color-secondary-container: #E8DEF8;
-            --md-sys-color-on-secondary-container: #1D192B;
-            --md-sys-color-tertiary: #7D5260;
-            --md-sys-color-surface: #FEF7FF;
-            --md-sys-color-on-surface: #1C1B1F;
-            --md-sys-color-surface-variant: #E7E0EC;
-            --md-sys-color-on-surface-variant: #49454F;
-            --md-sys-color-outline: #79747E;
-            --md-sys-color-outline-variant: #CAC4D0;
-            --md-sys-color-background: #FEF7FF;
-            --md-sys-color-on-background: #1C1B1F;
-            --md-sys-color-surface-container: #F3EDF7;
-            --md-sys-color-surface-container-high: #ECE6F0;
-            --md-sys-color-surface-container-highest: #E6E0E9;
+            --md-sys-color-secondary-container: #FFDAD4;
+            --md-sys-color-on-secondary-container: #2C1510;
+            --md-sys-color-tertiary: #6F5B40;
+            --md-sys-color-surface: #FFF8F6;
+            --md-sys-color-on-surface: #231917;
+            --md-sys-color-surface-variant: #F5DDDA;
+            --md-sys-color-on-surface-variant: #53433F;
+            --md-sys-color-outline: #85736F;
+            --md-sys-color-outline-variant: #D8C2BE;
+            --md-sys-color-background: #FFF8F6;
+            --md-sys-color-on-background: #231917;
+            --md-sys-color-surface-container: #F7EFEC;
+            --md-sys-color-surface-container-high: #F1E9E6;
+            --md-sys-color-surface-container-highest: #EBE3E0;
             
             /* Elevation shadows */
             --md-sys-elevation-level1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
@@ -52,27 +52,27 @@
         }
 
         [data-theme="dark"] {
-            /* Dark theme colors */
-            --md-sys-color-primary: #D0BCFF;
-            --md-sys-color-on-primary: #381E72;
-            --md-sys-color-primary-container: #4F378B;
-            --md-sys-color-on-primary-container: #EADDFF;
-            --md-sys-color-secondary: #CCC2DC;
-            --md-sys-color-on-secondary: #332D41;
-            --md-sys-color-secondary-container: #4A4458;
-            --md-sys-color-on-secondary-container: #E8DEF8;
-            --md-sys-color-tertiary: #EFB8C8;
-            --md-sys-color-surface: #141218;
-            --md-sys-color-on-surface: #E6E0E9;
-            --md-sys-color-surface-variant: #49454F;
-            --md-sys-color-on-surface-variant: #CAC4D0;
-            --md-sys-color-outline: #938F99;
-            --md-sys-color-outline-variant: #49454F;
-            --md-sys-color-background: #141218;
-            --md-sys-color-on-background: #E6E0E9;
-            --md-sys-color-surface-container: #211F26;
-            --md-sys-color-surface-container-high: #2B2930;
-            --md-sys-color-surface-container-highest: #36343B;
+            /* Dark theme colors with #ED6237 Primary */
+            --md-sys-color-primary: #FFB4A8;
+            --md-sys-color-on-primary: #690100;
+            --md-sys-color-primary-container: #A42C00;
+            --md-sys-color-on-primary-container: #FFDAD4;
+            --md-sys-color-secondary: #E7BDB6;
+            --md-sys-color-on-secondary: #442B24;
+            --md-sys-color-secondary-container: #5D4239;
+            --md-sys-color-on-secondary-container: #FFDAD4;
+            --md-sys-color-tertiary: #D3C4A7;
+            --md-sys-color-surface: #1A110F;
+            --md-sys-color-on-surface: #F1E9E6;
+            --md-sys-color-surface-variant: #53433F;
+            --md-sys-color-on-surface-variant: #D8C2BE;
+            --md-sys-color-outline: #A08C88;
+            --md-sys-color-outline-variant: #53433F;
+            --md-sys-color-background: #1A110F;
+            --md-sys-color-on-background: #F1E9E6;
+            --md-sys-color-surface-container: #221B19;
+            --md-sys-color-surface-container-high: #2D2521;
+            --md-sys-color-surface-container-highest: #382F2C;
         }
 
         body {
@@ -246,16 +246,24 @@
         }
 
         .profile-image {
-            width: 200px;
-            height: 200px;
+            width: 275px;
+            height: 275px;
             border-radius: 24px;
-            background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 80px;
             color: var(--md-sys-color-on-primary);
-            box-shadow: var(--md-sys-elevation-level3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
         }
 
         /* Card styles */
@@ -766,6 +774,24 @@
             padding: 0 16px;
         }
 
+        .journey-container::before {
+            content: '';
+            position: absolute;
+            top: calc(50% + 40px);
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--md-sys-color-outline-variant) 10%, 
+                var(--md-sys-color-primary) 30%, 
+                var(--md-sys-color-primary) 70%, 
+                var(--md-sys-color-outline-variant) 90%, 
+                transparent 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .journey-timeline {
             position: relative;
             display: flex;
@@ -776,23 +802,7 @@
             align-items: flex-start;
         }
 
-        .journey-timeline::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--md-sys-color-outline-variant) 20%, 
-                var(--md-sys-color-primary) 48%, 
-                var(--md-sys-color-primary) 52%, 
-                var(--md-sys-color-outline-variant) 80%, 
-                transparent 100%);
-            transform: translateY(-50%);
-            z-index: 1;
-        }
+
 
         .journey-item {
             position: relative;
@@ -949,6 +959,10 @@
 
         /* Responsive design for journey */
         @media (max-width: 768px) {
+            .journey-container::before {
+                top: calc(50% + 30px);
+            }
+            
             .journey-item {
                 min-width: 280px;
                 max-width: 300px;
@@ -1580,7 +1594,10 @@
                     </div>
                     <div class="hero-image">
                         <div class="profile-image">
-                            <i data-lucide="user"></i>
+                            <!-- Replace the src with your actual image path -->
+                            <img src="images/profilepic.png" alt="AB Profile Photo" />
+                            <!-- Fallback icon if image doesn't load -->
+                            <i data-lucide="user" style="position: absolute; display: none;"></i>
                         </div>
                     </div>
                 </div>
@@ -2593,17 +2610,18 @@
             initializePortfolioNavigation();
         }
 
-        // Journey timeline navigation - Responsive
+        // Journey timeline navigation - Fixed for Mobile and Desktop
         const journeyTimeline = document.getElementById('journeyTimeline');
         const journeyItems = document.querySelectorAll('.journey-item');
         const journeyPrev = document.getElementById('journeyPrev');
         const journeyNext = document.getElementById('journeyNext');
 
-        let currentJourneyIndex = careerJourney.findIndex(item => item.current) || 3; // Default to current position
+        let currentJourneyIndex = careerJourney.findIndex(item => item.current) !== -1 ? 
+            careerJourney.findIndex(item => item.current) : 3; // Default to current position
 
         function getJourneyItemWidth() {
             const screenWidth = window.innerWidth;
-            if (screenWidth <= 480) return 304; // 280px + 24px gap
+            if (screenWidth <= 480) return 284; // 260px + 24px gap
             if (screenWidth <= 768) return 324; // 300px + 24px gap
             if (screenWidth <= 1024) return 360; // 320px + 40px gap
             return 398; // 350px + 48px gap
@@ -2640,13 +2658,16 @@
             currentJourneyIndex = index;
             
             if (isJourneyDesktop()) {
-                // Desktop: Center-focus behavior
+                // Desktop: Center-focus behavior (working correctly)
                 const itemWidth = getJourneyItemWidth();
                 const offset = -(index * itemWidth);
                 journeyTimeline.style.transform = `translateX(${offset}px)`;
             } else {
-                // Mobile: Simple left alignment 
-                journeyTimeline.style.transform = `translateX(0px)`;
+                // Mobile: Scroll item by item
+                const itemWidth = journeyItems[0]?.offsetWidth || 280;
+                const gap = 24; // Match CSS gap
+                const offset = -(index * (itemWidth + gap));
+                journeyTimeline.style.transform = `translateX(${offset}px)`;
             }
             
             updateJourneyItems();
@@ -2677,13 +2698,8 @@
 
         // Initialize journey timeline
         setTimeout(() => {
-            // On mobile, start with first item visible, on desktop center current
-            if (isJourneyDesktop()) {
-                scrollJourneyTo(currentJourneyIndex);
-            } else {
-                scrollJourneyTo(0);
-                currentJourneyIndex = 0;
-            }
+            // Always start with the current item (last one) on both mobile and desktop
+            scrollJourneyTo(currentJourneyIndex);
         }, 300);
 
         // Journey timeline touch support
@@ -2694,6 +2710,9 @@
             touchStartX = e.touches[0].clientX;
             const transform = journeyTimeline.style.transform;
             touchStartTransform = transform ? parseInt(transform.match(/-?\d+/)[0]) : 0;
+            
+            // Disable transition during drag
+            journeyTimeline.style.transition = 'none';
         });
 
         journeyTimeline.addEventListener('touchmove', (e) => {
@@ -2713,6 +2732,9 @@
             const touchEndX = e.changedTouches[0].clientX;
             const diff = touchEndX - touchStartX;
             
+            // Reset transition for smooth snap
+            journeyTimeline.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            
             if (Math.abs(diff) > 50) {
                 if (diff > 0 && currentJourneyIndex > 0) {
                     scrollJourneyTo(currentJourneyIndex - 1);
@@ -2724,6 +2746,11 @@
             } else {
                 scrollJourneyTo(currentJourneyIndex); // Snap back
             }
+            
+            // Clear transition after animation
+            setTimeout(() => {
+                journeyTimeline.style.transition = '';
+            }, 600);
             
             touchStartX = 0;
         });
@@ -2997,6 +3024,25 @@
 
         // Initialize app click listeners after a short delay to ensure DOM is ready
         setTimeout(addAppClickListeners, 500);
+
+        // Profile image fallback handler
+        const profileImg = document.querySelector('.profile-image img');
+        const fallbackIcon = document.querySelector('.profile-image i[data-lucide="user"]');
+        
+        if (profileImg) {
+            profileImg.addEventListener('error', () => {
+                // Hide the broken image and show the fallback icon
+                profileImg.style.display = 'none';
+                fallbackIcon.style.display = 'flex';
+                // Restore gradient background as fallback
+                profileImg.parentElement.style.background = 'linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary))';
+            });
+            
+            profileImg.addEventListener('load', () => {
+                // Image loaded successfully, hide fallback
+                fallbackIcon.style.display = 'none';
+            });
+        }
     </script>
 </body>
 
