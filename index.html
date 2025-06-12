@@ -253,32 +253,120 @@
             margin-bottom: 16px;
         }
 
-        /* Roadmap timeline */
+        /* App portfolio sections - Horizontal */
         .roadmap {
-            display: grid;
-            gap: 32px;
+            position: relative;
+            display: flex;
+            overflow-x: auto;
+            gap: 24px;
+            padding: 20px 0 40px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .roadmap::-webkit-scrollbar {
+            display: none;
         }
 
         .roadmap-item {
+            min-width: 350px;
+            max-width: 380px;
+            flex-shrink: 0;
+            scroll-snap-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .roadmap-item.animate-in {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .roadmap-card {
+            background-color: var(--md-sys-color-surface-container);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: var(--md-sys-elevation-level2);
+            transition: all 0.3s ease;
+            height: 100%;
             display: flex;
-            gap: 24px;
-            align-items: flex-start;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roadmap-card:hover {
+            box-shadow: var(--md-sys-elevation-level3);
+            transform: translateY(-8px);
+        }
+
+        .roadmap-card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
         }
 
         .roadmap-icon {
-            width: 48px;
-            height: 48px;
-            background-color: var(--md-sys-color-primary);
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .roadmap-icon.android {
+            background: linear-gradient(135deg, #3DDC84, #00C851);
+            color: #FFFFFF;
+        }
+
+        .roadmap-icon.ios {
+            background: linear-gradient(135deg, #007AFF, #5856D6);
+            color: #FFFFFF;
+        }
+
+        .roadmap-icon.mac {
+            background: linear-gradient(135deg, #8E8E93, #48484A);
+            color: #FFFFFF;
+        }
+
+        .roadmap-icon.swift {
+            background: linear-gradient(135deg, #FA7343, #F7431A);
+            color: #FFFFFF;
+        }
+
+        .platform-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--md-sys-color-on-primary);
-            flex-shrink: 0;
+            font-size: 10px;
+            border: 2px solid var(--md-sys-color-surface-container);
         }
 
-        .roadmap-content {
-            flex: 1;
+        .platform-badge.android {
+            background-color: #3DDC84;
+            color: #FFFFFF;
+        }
+
+        .platform-badge.ios {
+            background-color: #007AFF;
+            color: #FFFFFF;
+        }
+
+        .platform-badge.mac {
+            background-color: #8E8E93;
+            color: #FFFFFF;
         }
 
         .roadmap-title {
@@ -286,26 +374,80 @@
             font-weight: 600;
             margin-bottom: 8px;
             color: var(--md-sys-color-on-surface);
+            flex: 1;
         }
 
         .roadmap-description {
             color: var(--md-sys-color-on-surface-variant);
+            line-height: 1.5;
+            font-size: 14px;
         }
 
-        /* Journey timeline - Horizontal */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tech-chip {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Portfolio navigation */
+        .portfolio-nav {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .portfolio-nav-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--md-sys-color-outline);
+            background-color: var(--md-sys-color-surface-container);
+            color: var(--md-sys-color-on-surface);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-nav-btn:hover {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border-color: var(--md-sys-color-primary);
+            transform: scale(1.1);
+        }
+
+        .portfolio-nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Journey timeline - Horizontal with center focus */
+        .journey-container {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
         .journey-timeline {
             position: relative;
             display: flex;
-            overflow-x: auto;
-            padding: 40px 0 60px;
             gap: 40px;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .journey-timeline::-webkit-scrollbar {
-            display: none;
+            padding: 40px 50%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(0);
         }
 
         .journey-timeline::before {
@@ -315,35 +457,79 @@
             left: 0;
             right: 0;
             height: 2px;
-            background-color: var(--md-sys-color-outline-variant);
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--md-sys-color-outline-variant) 20%, 
+                var(--md-sys-color-primary) 48%, 
+                var(--md-sys-color-primary) 52%, 
+                var(--md-sys-color-outline-variant) 80%, 
+                transparent 100%);
             transform: translateY(-50%);
             z-index: 1;
         }
 
         .journey-item {
             position: relative;
-            min-width: 300px;
+            min-width: 320px;
             max-width: 350px;
             background-color: var(--md-sys-color-surface-container);
             border-radius: 20px;
             padding: 24px;
-            scroll-snap-align: center;
             flex-shrink: 0;
-            box-shadow: var(--md-sys-elevation-level2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(20px);
-            opacity: 0;
+            box-shadow: var(--md-sys-elevation-level1);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 2;
+            opacity: 0.4;
+            transform: scale(0.85) translateY(20px);
         }
 
-        .journey-item.animate-in {
-            transform: translateY(0);
+        .journey-item.current {
             opacity: 1;
+            transform: scale(1) translateY(0);
+            box-shadow: var(--md-sys-elevation-level3);
+            background-color: var(--md-sys-color-surface-container-high);
+        }
+
+        .journey-item.future {
+            opacity: 0.3;
+            transform: scale(0.8) translateY(30px);
         }
 
         .journey-item:hover {
+            opacity: 1;
+            transform: scale(1.05) translateY(-8px);
             box-shadow: var(--md-sys-elevation-level3);
-            transform: translateY(-8px) scale(1.02);
+        }
+
+        .journey-item-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .journey-item-icon.education {
+            background: linear-gradient(135deg, #4285F4, #34A853);
+            color: #FFFFFF;
+        }
+
+        .journey-item-icon.internship {
+            background: linear-gradient(135deg, #FF9800, #FF5722);
+            color: #FFFFFF;
+        }
+
+        .journey-item-icon.junior {
+            background: linear-gradient(135deg, #9C27B0, #673AB7);
+            color: #FFFFFF;
+        }
+
+        .journey-item-icon.senior {
+            background: linear-gradient(135deg, #6750A4, #1976D2);
+            color: #FFFFFF;
         }
 
         .journey-item::before {
@@ -352,20 +538,28 @@
             top: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background-color: var(--md-sys-color-primary);
+            width: 16px;
+            height: 16px;
+            background-color: var(--md-sys-color-outline-variant);
             border-radius: 50%;
-            border: 4px solid var(--md-sys-color-background);
+            border: 3px solid var(--md-sys-color-background);
             z-index: 3;
             transition: all 0.3s ease;
         }
 
-        .journey-item:hover::before {
+        .journey-item.current::before {
             width: 24px;
             height: 24px;
             top: -12px;
+            background-color: var(--md-sys-color-primary);
             box-shadow: 0 0 0 4px var(--md-sys-color-primary-container);
+        }
+
+        .journey-item:hover::before {
+            width: 20px;
+            height: 20px;
+            top: -10px;
+            background-color: var(--md-sys-color-primary);
         }
 
         .journey-year {
@@ -647,42 +841,99 @@
                 <h2 class="section-title">Android Applications</h2>
                 <p class="section-subtitle">Innovative mobile solutions for the Android ecosystem</p>
                 
-                <div class="roadmap">
-                    <div class="roadmap-item">
-                        <div class="roadmap-icon">
-                            <i data-lucide="smartphone"></i>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="card">
+                <div class="roadmap" id="androidRoadmap">
+                    <div class="roadmap-item" data-delay="100">
+                        <div class="roadmap-card">
+                            <div class="roadmap-card-header">
+                                <div class="roadmap-icon android">
+                                    <i data-lucide="smartphone"></i>
+                                    <div class="platform-badge android">
+                                        <i data-lucide="android"></i>
+                                    </div>
+                                </div>
                                 <h3 class="roadmap-title">TaskFlow Pro</h3>
-                                <p class="roadmap-description">A comprehensive task management app with Material Design 3, offline sync, and AI-powered productivity insights. Built with Kotlin, Jetpack Compose, and Room database.</p>
+                            </div>
+                            <p class="roadmap-description">A comprehensive task management app with Material Design 3, offline sync, and AI-powered productivity insights. Features smart categorization and team collaboration.</p>
+                            <div class="tech-stack">
+                                <span class="tech-chip">Kotlin</span>
+                                <span class="tech-chip">Jetpack Compose</span>
+                                <span class="tech-chip">Room</span>
+                                <span class="tech-chip">Material 3</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="roadmap-item">
-                        <div class="roadmap-icon">
-                            <i data-lucide="camera"></i>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="card">
+                    <div class="roadmap-item" data-delay="200">
+                        <div class="roadmap-card">
+                            <div class="roadmap-card-header">
+                                <div class="roadmap-icon android">
+                                    <i data-lucide="camera"></i>
+                                    <div class="platform-badge android">
+                                        <i data-lucide="android"></i>
+                                    </div>
+                                </div>
                                 <h3 class="roadmap-title">PhotoCraft</h3>
-                                <p class="roadmap-description">Professional photo editing app with advanced filters, RAW support, and cloud storage integration. Features ML-powered auto-enhancement and batch processing capabilities.</p>
+                            </div>
+                            <p class="roadmap-description">Professional photo editing app with advanced filters, RAW support, and cloud storage integration. Features ML-powered auto-enhancement and batch processing capabilities.</p>
+                            <div class="tech-stack">
+                                <span class="tech-chip">Kotlin</span>
+                                <span class="tech-chip">CameraX</span>
+                                <span class="tech-chip">OpenCV</span>
+                                <span class="tech-chip">Firebase</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="roadmap-item">
-                        <div class="roadmap-icon">
-                            <i data-lucide="heart"></i>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="card">
+                    <div class="roadmap-item" data-delay="300">
+                        <div class="roadmap-card">
+                            <div class="roadmap-card-header">
+                                <div class="roadmap-icon android">
+                                    <i data-lucide="heart"></i>
+                                    <div class="platform-badge android">
+                                        <i data-lucide="android"></i>
+                                    </div>
+                                </div>
                                 <h3 class="roadmap-title">HealthTracker</h3>
-                                <p class="roadmap-description">Comprehensive health monitoring app with wearable integration, medication reminders, and health data visualization. Built with modern Android architecture patterns.</p>
+                            </div>
+                            <p class="roadmap-description">Comprehensive health monitoring app with wearable integration, medication reminders, and health data visualization. Connects with fitness devices and provides insights.</p>
+                            <div class="tech-stack">
+                                <span class="tech-chip">Kotlin</span>
+                                <span class="tech-chip">Health Connect</span>
+                                <span class="tech-chip">Wear OS</span>
+                                <span class="tech-chip">ML Kit</span>
                             </div>
                         </div>
                     </div>
+
+                    <div class="roadmap-item" data-delay="400">
+                        <div class="roadmap-card">
+                            <div class="roadmap-card-header">
+                                <div class="roadmap-icon android">
+                                    <i data-lucide="music"></i>
+                                    <div class="platform-badge android">
+                                        <i data-lucide="android"></i>
+                                    </div>
+                                </div>
+                                <h3 class="roadmap-title">AudioWave</h3>
+                            </div>
+                            <p class="roadmap-description">High-quality music player with equalizer, lyrics sync, and podcast support. Features adaptive themes and cross-device synchronization for seamless listening.</p>
+                            <div class="tech-stack">
+                                <span class="tech-chip">Kotlin</span>
+                                <span class="tech-chip">ExoPlayer</span>
+                                <span class="tech-chip">Media3</span>
+                                <span class="tech-chip">Dynamic Colors</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-nav">
+                    <button class="portfolio-nav-btn" id="androidPrev">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <button class="portfolio-nav-btn" id="androidNext">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -693,42 +944,99 @@
                 <h2 class="section-title">iOS & Mac Applications</h2>
                 <p class="section-subtitle">Elegant solutions for the Apple ecosystem</p>
                 
-                <div class="roadmap">
-                    <div class="roadmap-item">
-                        <div class="roadmap-icon">
-                            <i data-lucide="laptop"></i>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="card">
-                                <h3 class="roadmap-title">CodeMaster (macOS)</h3>
-                                <p class="roadmap-description">Advanced code editor for macOS with intelligent syntax highlighting, Git integration, and project management. Built with SwiftUI and optimized for Apple Silicon.</p>
+                <div class="roadmap" id="iosRoadmap">
+                    <div class="roadmap-item" data-delay="100">
+                        <div class="roadmap-card">
+                            <div class="roadmap-card-header">
+                                <div class="roadmap-icon mac">
+                                    <i data-lucide="laptop"></i>
+                                    <div class="platform-badge mac">
+                                        <i data-lucide="apple"></i>
+                                    </div>
+                                </div>
+                                <h3 class="roadmap-title">CodeMaster</h3>
+                            </div>
+                            <p class="roadmap-description">Advanced code editor for macOS with intelligent syntax highlighting, Git integration, and project management. Built with SwiftUI and optimized for Apple Silicon performance.</p>
+                            <div class="tech-stack">
+                                <span class="tech-chip">SwiftUI</span>
+                                <span class="tech-chip">Combine</span>
+                                <span class="tech-chip">AppKit</span>
+                                <span class="tech-chip">Git</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="roadmap-item">
-                        <div class="roadmap-icon">
-                            <i data-lucide="music"></i>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="card">
-                                <h3 class="roadmap-title">SoundWave (iOS)</h3>
-                                <p class="roadmap-description">Immersive music player with spatial audio support, intelligent playlists, and social sharing features. Seamlessly integrates with Apple Music and streaming platforms.</p>
+                    <div class="roadmap-item" data-delay="200">
+                        <div class="roadmap-card">
+                            <div class="roadmap-card-header">
+                                <div class="roadmap-icon ios">
+                                    <i data-lucide="music"></i>
+                                    <div class="platform-badge ios">
+                                        <i data-lucide="smartphone"></i>
+                                    </div>
+                                </div>
+                                <h3 class="roadmap-title">SoundWave</h3>
+                            </div>
+                            <p class="roadmap-description">Immersive music player with spatial audio support, intelligent playlists, and social sharing features. Seamlessly integrates with Apple Music and streaming platforms.</p>
+                            <div class="tech-stack">
+                                <span class="tech-chip">Swift</span>
+                                <span class="tech-chip">AVFoundation</span>
+                                <span class="tech-chip">MusicKit</span>
+                                <span class="tech-chip">Core Data</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="roadmap-item">
-                        <div class="roadmap-icon">
-                            <i data-lucide="brain"></i>
-                        </div>
-                        <div class="roadmap-content">
-                            <div class="card">
-                                <h3 class="roadmap-title">MindPalace (Universal)</h3>
-                                <p class="roadmap-description">Cross-platform note-taking and knowledge management app with AI-powered organization, handwriting recognition, and seamless sync across all Apple devices.</p>
+                    <div class="roadmap-item" data-delay="300">
+                        <div class="roadmap-card">
+                            <div class="roadmap-card-header">
+                                <div class="roadmap-icon swift">
+                                    <i data-lucide="brain"></i>
+                                    <div class="platform-badge ios">
+                                        <i data-lucide="layers"></i>
+                                    </div>
+                                </div>
+                                <h3 class="roadmap-title">MindPalace</h3>
+                            </div>
+                            <p class="roadmap-description">Cross-platform note-taking and knowledge management app with AI-powered organization, handwriting recognition, and seamless sync across all Apple devices.</p>
+                            <div class="tech-stack">
+                                <span class="tech-chip">SwiftUI</span>
+                                <span class="tech-chip">CloudKit</span>
+                                <span class="tech-chip">PencilKit</span>
+                                <span class="tech-chip">Core ML</span>
                             </div>
                         </div>
                     </div>
+
+                    <div class="roadmap-item" data-delay="400">
+                        <div class="roadmap-card">
+                            <div class="roadmap-card-header">
+                                <div class="roadmap-icon ios">
+                                    <i data-lucide="camera"></i>
+                                    <div class="platform-badge ios">
+                                        <i data-lucide="smartphone"></i>
+                                    </div>
+                                </div>
+                                <h3 class="roadmap-title">LensFlare</h3>
+                            </div>
+                            <p class="roadmap-description">Professional camera app with manual controls, RAW capture, and advanced editing tools. Features computational photography and Live Photos enhancement.</p>
+                            <div class="tech-stack">
+                                <span class="tech-chip">Swift</span>
+                                <span class="tech-chip">AVFoundation</span>
+                                <span class="tech-chip">Core Image</span>
+                                <span class="tech-chip">Metal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-nav">
+                    <button class="portfolio-nav-btn" id="iosPrev">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <button class="portfolio-nav-btn" id="iosNext">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -739,29 +1047,43 @@
                 <h2 class="section-title">Professional Journey</h2>
                 <p class="section-subtitle">From student to seasoned developer</p>
                 
-                <div class="journey-timeline" id="journeyTimeline">
-                    <div class="journey-item" data-delay="100">
-                        <div class="journey-year">2018 - 2022</div>
-                        <h3 class="journey-title">Computer Science Degree</h3>
-                        <p class="journey-description">Graduated with honors from a prestigious university, specializing in mobile development and human-computer interaction. Developed strong foundations in algorithms, data structures, and software engineering principles.</p>
-                    </div>
-                    
-                    <div class="journey-item" data-delay="200">
-                        <div class="journey-year">2021 - 2022</div>
-                        <h3 class="journey-title">Mobile Development Intern</h3>
-                        <p class="journey-description">Gained hands-on experience at a leading tech startup, contributing to Android and iOS applications used by thousands of users. Learned agile development practices and modern mobile architecture patterns.</p>
-                    </div>
-                    
-                    <div class="journey-item" data-delay="300">
-                        <div class="journey-year">2022 - 2023</div>
-                        <h3 class="journey-title">Junior Mobile Developer</h3>
-                        <p class="journey-description">Joined a dynamic product team, shipping features for consumer-facing mobile applications. Collaborated with designers and product managers to deliver intuitive user experiences.</p>
-                    </div>
-                    
-                    <div class="journey-item" data-delay="400">
-                        <div class="journey-year">2023 - Present</div>
-                        <h3 class="journey-title">Senior Mobile Developer</h3>
-                        <p class="journey-description">Leading mobile development initiatives, mentoring junior developers, and architecting scalable solutions. Passionate about emerging technologies and continuous learning in the ever-evolving mobile landscape.</p>
+                <div class="journey-container">
+                    <div class="journey-timeline" id="journeyTimeline">
+                        <div class="journey-item">
+                            <div class="journey-item-icon education">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                            <div class="journey-year">2018 - 2022</div>
+                            <h3 class="journey-title">Computer Science Degree</h3>
+                            <p class="journey-description">Graduated with honors from a prestigious university, specializing in mobile development and human-computer interaction. Developed strong foundations in algorithms, data structures, and software engineering principles.</p>
+                        </div>
+                        
+                        <div class="journey-item">
+                            <div class="journey-item-icon internship">
+                                <i data-lucide="briefcase"></i>
+                            </div>
+                            <div class="journey-year">2021 - 2022</div>
+                            <h3 class="journey-title">Mobile Development Intern</h3>
+                            <p class="journey-description">Gained hands-on experience at a leading tech startup, contributing to Android and iOS applications used by thousands of users. Learned agile development practices and modern mobile architecture patterns.</p>
+                        </div>
+                        
+                        <div class="journey-item">
+                            <div class="journey-item-icon junior">
+                                <i data-lucide="code"></i>
+                            </div>
+                            <div class="journey-year">2022 - 2023</div>
+                            <h3 class="journey-title">Junior Mobile Developer</h3>
+                            <p class="journey-description">Joined a dynamic product team, shipping features for consumer-facing mobile applications. Collaborated with designers and product managers to deliver intuitive user experiences.</p>
+                        </div>
+                        
+                        <div class="journey-item current">
+                            <div class="journey-item-icon senior">
+                                <i data-lucide="crown"></i>
+                            </div>
+                            <div class="journey-year">2023 - Present</div>
+                            <h3 class="journey-title">Senior Mobile Developer</h3>
+                            <p class="journey-description">Leading mobile development initiatives, mentoring junior developers, and architecting scalable solutions. Passionate about emerging technologies and continuous learning in the ever-evolving mobile landscape.</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -944,54 +1266,223 @@
             });
         }, observerOptions);
 
-        // Observe all cards and timeline items
-        document.querySelectorAll('.card, .roadmap-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+        // Data arrays for portfolio sections
+        const androidApps = [
+            {
+                icon: 'smartphone',
+                title: 'TaskFlow Pro',
+                description: 'A comprehensive task management app with Material Design 3, offline sync, and AI-powered productivity insights. Features smart categorization and team collaboration.',
+                techStack: ['Kotlin', 'Jetpack Compose', 'Room', 'Material 3']
+            },
+            {
+                icon: 'camera',
+                title: 'PhotoCraft',
+                description: 'Professional photo editing app with advanced filters, RAW support, and cloud storage integration. Features ML-powered auto-enhancement and batch processing capabilities.',
+                techStack: ['Kotlin', 'CameraX', 'OpenCV', 'Firebase']
+            },
+            {
+                icon: 'heart',
+                title: 'HealthTracker',
+                description: 'Comprehensive health monitoring app with wearable integration, medication reminders, and health data visualization. Connects with fitness devices and provides insights.',
+                techStack: ['Kotlin', 'Health Connect', 'Wear OS', 'ML Kit']
+            },
+            {
+                icon: 'music',
+                title: 'AudioWave',
+                description: 'High-quality music player with equalizer, lyrics sync, and podcast support. Features adaptive themes and cross-device synchronization for seamless listening.',
+                techStack: ['Kotlin', 'ExoPlayer', 'Media3', 'Dynamic Colors']
+            }
+        ];
 
-        // Journey timeline animation and navigation
-        const journeyTimeline = document.getElementById('journeyTimeline');
-        const journeyItems = document.querySelectorAll('.journey-item');
-        const journeyPrev = document.getElementById('journeyPrev');
-        const journeyNext = document.getElementById('journeyNext');
+        const iosApps = [
+            {
+                icon: 'laptop',
+                title: 'CodeMaster',
+                platform: 'mac',
+                platformIcon: 'apple',
+                description: 'Advanced code editor for macOS with intelligent syntax highlighting, Git integration, and project management. Built with SwiftUI and optimized for Apple Silicon performance.',
+                techStack: ['SwiftUI', 'Combine', 'AppKit', 'Git']
+            },
+            {
+                icon: 'music',
+                title: 'SoundWave',
+                platform: 'ios',
+                platformIcon: 'smartphone',
+                description: 'Immersive music player with spatial audio support, intelligent playlists, and social sharing features. Seamlessly integrates with Apple Music and streaming platforms.',
+                techStack: ['Swift', 'AVFoundation', 'MusicKit', 'Core Data']
+            },
+            {
+                icon: 'brain',
+                title: 'MindPalace',
+                platform: 'swift',
+                platformIcon: 'layers',
+                description: 'Cross-platform note-taking and knowledge management app with AI-powered organization, handwriting recognition, and seamless sync across all Apple devices.',
+                techStack: ['SwiftUI', 'CloudKit', 'PencilKit', 'Core ML']
+            },
+            {
+                icon: 'camera',
+                title: 'LensFlare',
+                platform: 'ios',
+                platformIcon: 'smartphone',
+                description: 'Professional camera app with manual controls, RAW capture, and advanced editing tools. Features computational photography and Live Photos enhancement.',
+                techStack: ['Swift', 'AVFoundation', 'Core Image', 'Metal']
+            }
+        ];
 
-        // Animate journey items on scroll
-        const journeyObserver = new IntersectionObserver((entries) => {
+        const careerJourney = [
+            {
+                year: '2018 - 2022',
+                title: 'Computer Science Degree',
+                icon: 'graduation-cap',
+                iconClass: 'education',
+                description: 'Graduated with honors from a prestigious university, specializing in mobile development and human-computer interaction. Developed strong foundations in algorithms, data structures, and software engineering principles.'
+            },
+            {
+                year: '2021 - 2022',
+                title: 'Mobile Development Intern',
+                icon: 'briefcase',
+                iconClass: 'internship',
+                description: 'Gained hands-on experience at a leading tech startup, contributing to Android and iOS applications used by thousands of users. Learned agile development practices and modern mobile architecture patterns.'
+            },
+            {
+                year: '2022 - 2023',
+                title: 'Junior Mobile Developer',
+                icon: 'code',
+                iconClass: 'junior',
+                description: 'Joined a dynamic product team, shipping features for consumer-facing mobile applications. Collaborated with designers and product managers to deliver intuitive user experiences.'
+            },
+            {
+                year: '2023 - Present',
+                title: 'Senior Mobile Developer',
+                icon: 'crown',
+                iconClass: 'senior',
+                description: 'Leading mobile development initiatives, mentoring junior developers, and architecting scalable solutions. Passionate about emerging technologies and continuous learning in the ever-evolving mobile landscape.',
+                current: true
+            }
+        ];
+
+        // Animate roadmap items on scroll
+        const roadmapObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const journeyItems = entry.target.querySelectorAll('.journey-item');
-                    journeyItems.forEach((item, index) => {
-                        const delay = parseInt(item.dataset.delay) || 0;
+                    const items = entry.target.querySelectorAll('.roadmap-item');
+                    items.forEach((item, index) => {
+                        const delay = parseInt(item.dataset.delay) || (index + 1) * 100;
                         setTimeout(() => {
                             item.classList.add('animate-in');
                         }, delay);
                     });
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.2 });
 
-        journeyObserver.observe(document.getElementById('journeyTimeline'));
+        // Observe portfolio sections
+        document.querySelectorAll('.roadmap').forEach(roadmap => {
+            roadmapObserver.observe(roadmap);
+        });
 
-        // Journey navigation functionality
-        let currentJourneyIndex = 0;
-        const itemWidth = 340; // 300px width + 40px gap
+        // Portfolio navigation functionality
+        function createPortfolioNavigation(sectionId, prevBtnId, nextBtnId) {
+            const section = document.getElementById(sectionId);
+            const prevBtn = document.getElementById(prevBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+            
+            if (!section || !prevBtn || !nextBtn) return;
+
+            const itemWidth = 390; // 350px width + 40px gap
+            let currentIndex = 0;
+
+            function updateNavigation() {
+                const maxScroll = section.scrollWidth - section.clientWidth;
+                prevBtn.disabled = section.scrollLeft <= 10;
+                nextBtn.disabled = section.scrollLeft >= maxScroll - 10;
+            }
+
+            function scrollToIndex(index) {
+                const scrollPosition = index * itemWidth;
+                section.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+                currentIndex = index;
+                setTimeout(updateNavigation, 300);
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    scrollToIndex(currentIndex - 1);
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                const items = section.querySelectorAll('.roadmap-item');
+                const maxIndex = Math.max(0, items.length - Math.floor(section.clientWidth / itemWidth));
+                if (currentIndex < maxIndex) {
+                    scrollToIndex(currentIndex + 1);
+                }
+            });
+
+            // Update navigation on scroll
+            section.addEventListener('scroll', updateNavigation);
+            
+            // Update navigation on resize
+            window.addEventListener('resize', updateNavigation);
+            
+            // Initialize navigation state
+            setTimeout(updateNavigation, 100);
+
+            // Mouse wheel horizontal scroll
+            section.addEventListener('wheel', (e) => {
+                if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+                
+                e.preventDefault();
+                section.scrollLeft += e.deltaY;
+                setTimeout(updateNavigation, 50);
+            });
+
+            return { updateNavigation, scrollToIndex };
+        }
+
+        // Initialize portfolio navigations
+        const androidNav = createPortfolioNavigation('androidRoadmap', 'androidPrev', 'androidNext');
+        const iosNav = createPortfolioNavigation('iosRoadmap', 'iosPrev', 'iosNext');
+
+        // Journey timeline navigation with center focus
+        const journeyTimeline = document.getElementById('journeyTimeline');
+        const journeyItems = document.querySelectorAll('.journey-item');
+        const journeyPrev = document.getElementById('journeyPrev');
+        const journeyNext = document.getElementById('journeyNext');
+
+        let currentJourneyIndex = careerJourney.findIndex(item => item.current) || 3; // Default to current position
+        const journeyItemWidth = 360; // 320px width + 40px gap
+
+        function updateJourneyItems() {
+            journeyItems.forEach((item, index) => {
+                item.classList.remove('current', 'future');
+                
+                if (index === currentJourneyIndex) {
+                    item.classList.add('current');
+                } else if (index > currentJourneyIndex) {
+                    item.classList.add('future');
+                }
+            });
+        }
 
         function updateJourneyNavigation() {
-            const maxScroll = journeyTimeline.scrollWidth - journeyTimeline.clientWidth;
-            journeyPrev.disabled = journeyTimeline.scrollLeft <= 0;
-            journeyNext.disabled = journeyTimeline.scrollLeft >= maxScroll;
+            journeyPrev.disabled = currentJourneyIndex <= 0;
+            journeyNext.disabled = currentJourneyIndex >= journeyItems.length - 1;
         }
 
         function scrollJourneyTo(index) {
-            const scrollPosition = index * itemWidth;
-            journeyTimeline.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
-            });
+            if (index < 0 || index >= journeyItems.length) return;
+            
             currentJourneyIndex = index;
+            
+            // Calculate offset to center the current item
+            const offset = -(index * journeyItemWidth);
+            journeyTimeline.style.transform = `translateX(${offset}px)`;
+            
+            updateJourneyItems();
             updateJourneyNavigation();
         }
 
@@ -1002,51 +1493,56 @@
         });
 
         journeyNext.addEventListener('click', () => {
-            const maxIndex = journeyItems.length - Math.floor(journeyTimeline.clientWidth / itemWidth);
-            if (currentJourneyIndex < maxIndex) {
+            if (currentJourneyIndex < journeyItems.length - 1) {
                 scrollJourneyTo(currentJourneyIndex + 1);
             }
         });
 
-        // Update navigation on scroll
-        journeyTimeline.addEventListener('scroll', updateJourneyNavigation);
-        
-        // Update navigation on resize
-        window.addEventListener('resize', updateJourneyNavigation);
-        
-        // Initialize navigation state
-        updateJourneyNavigation();
+        // Initialize journey timeline
+        setTimeout(() => {
+            scrollJourneyTo(currentJourneyIndex);
+        }, 100);
 
-        // Auto-scroll journey timeline on mouse wheel
-        journeyTimeline.addEventListener('wheel', (e) => {
-            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-            
-            e.preventDefault();
-            journeyTimeline.scrollLeft += e.deltaY;
-            updateJourneyNavigation();
-        });
-
-        // Touch scroll for mobile
-        let startX = 0;
-        let scrollLeft = 0;
+        // Journey timeline touch support
+        let touchStartX = 0;
+        let touchStartTransform = 0;
 
         journeyTimeline.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].pageX - journeyTimeline.offsetLeft;
-            scrollLeft = journeyTimeline.scrollLeft;
+            touchStartX = e.touches[0].clientX;
+            const transform = journeyTimeline.style.transform;
+            touchStartTransform = transform ? parseInt(transform.match(/-?\d+/)[0]) : 0;
         });
 
         journeyTimeline.addEventListener('touchmove', (e) => {
-            if (!startX) return;
+            if (!touchStartX) return;
             
             e.preventDefault();
-            const x = e.touches[0].pageX - journeyTimeline.offsetLeft;
-            const walk = (x - startX) * 2;
-            journeyTimeline.scrollLeft = scrollLeft - walk;
+            const touchX = e.touches[0].clientX;
+            const diff = touchX - touchStartX;
+            const newTransform = touchStartTransform + diff;
+            
+            journeyTimeline.style.transform = `translateX(${newTransform}px)`;
         });
 
-        journeyTimeline.addEventListener('touchend', () => {
-            startX = 0;
-            updateJourneyNavigation();
+        journeyTimeline.addEventListener('touchend', (e) => {
+            if (!touchStartX) return;
+            
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchEndX - touchStartX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && currentJourneyIndex > 0) {
+                    scrollJourneyTo(currentJourneyIndex - 1);
+                } else if (diff < 0 && currentJourneyIndex < journeyItems.length - 1) {
+                    scrollJourneyTo(currentJourneyIndex + 1);
+                } else {
+                    scrollJourneyTo(currentJourneyIndex); // Snap back
+                }
+            } else {
+                scrollJourneyTo(currentJourneyIndex); // Snap back
+            }
+            
+            touchStartX = 0;
         });
     </script>
 </body>
