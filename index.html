@@ -81,16 +81,17 @@
             color: var(--md-sys-color-on-background);
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 16px;
         }
 
-        /* Navbar */
+        /* Navbar - Mobile First */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
             background-color: var(--md-sys-color-surface-container);
             backdrop-filter: blur(10px);
-            padding: 16px 0;
+            padding: 12px 0;
             z-index: 1000;
             box-shadow: var(--md-sys-elevation-level2);
         }
@@ -98,21 +99,21 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--md-sys-color-primary);
         }
 
         .nav-links {
-            display: flex;
-            gap: 32px;
+            display: none;
+            gap: 24px;
             list-style: none;
         }
 
@@ -123,6 +124,7 @@
             padding: 8px 16px;
             border-radius: 20px;
             transition: background-color 0.3s ease;
+            font-size: 14px;
         }
 
         .nav-links a:hover {
@@ -134,8 +136,8 @@
             background: none;
             border: 2px solid var(--md-sys-color-outline);
             border-radius: 50%;
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -150,78 +152,88 @@
             border-color: var(--md-sys-color-primary);
         }
 
-        /* Main content */
+        /* Main content - Mobile First */
         main {
-            margin-top: 80px;
+            margin-top: 64px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 16px;
         }
 
         .section {
-            padding: 80px 0;
+            padding: 40px 0;
         }
 
         .section-title {
-            font-size: 48px;
+            font-size: 32px;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             color: var(--md-sys-color-primary);
+            text-align: center;
+            line-height: 1.2;
         }
 
         .section-subtitle {
-            font-size: 20px;
+            font-size: 16px;
             color: var(--md-sys-color-on-surface-variant);
-            margin-bottom: 40px;
+            margin-bottom: 32px;
+            text-align: center;
+            line-height: 1.4;
         }
 
-        /* Hero/About section */
+        /* Hero/About section - Mobile First */
         .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
             align-items: center;
-            min-height: 80vh;
+            min-height: 70vh;
+            text-align: center;
         }
 
         .hero-content h1 {
-            font-size: 56px;
+            font-size: 36px;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             color: var(--md-sys-color-on-surface);
+            line-height: 1.1;
         }
 
         .hero-content .motto {
-            font-size: 24px;
+            font-size: 18px;
             color: var(--md-sys-color-primary);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             font-style: italic;
+            line-height: 1.3;
         }
 
         .hero-content p {
-            font-size: 18px;
-            margin-bottom: 32px;
+            font-size: 16px;
+            margin-bottom: 24px;
             color: var(--md-sys-color-on-surface-variant);
+            line-height: 1.5;
+            max-width: 500px;
         }
 
         .hero-image {
             display: flex;
             justify-content: center;
             align-items: center;
+            order: -1;
         }
 
         .profile-image {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             border-radius: 24px;
             background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 120px;
+            font-size: 80px;
             color: var(--md-sys-color-on-primary);
             box-shadow: var(--md-sys-elevation-level3);
         }
@@ -253,16 +265,17 @@
             margin-bottom: 16px;
         }
 
-        /* App portfolio sections - Horizontal */
+        /* App portfolio sections - Mobile First */
         .roadmap {
             position: relative;
             display: flex;
             overflow-x: auto;
-            gap: 24px;
-            padding: 20px 0 40px;
+            gap: 16px;
+            padding: 16px 0 32px;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
             -ms-overflow-style: none;
+            scroll-padding-left: 16px;
         }
 
         .roadmap::-webkit-scrollbar {
@@ -270,12 +283,12 @@
         }
 
         .roadmap-item {
-            min-width: 350px;
-            max-width: 380px;
+            min-width: 280px;
+            max-width: 320px;
             flex-shrink: 0;
-            scroll-snap-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(20px);
+            scroll-snap-align: start;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(30px);
             opacity: 0;
         }
 
@@ -286,38 +299,47 @@
 
         .roadmap-card {
             background-color: var(--md-sys-color-surface-container);
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: var(--md-sys-elevation-level2);
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: var(--md-sys-elevation-level1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            border: 1px solid var(--md-sys-color-outline-variant);
         }
 
         .roadmap-card:hover {
             box-shadow: var(--md-sys-elevation-level3);
-            transform: translateY(-8px);
+            transform: translateY(-4px) scale(1.02);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        .roadmap-card:active {
+            transform: translateY(-2px) scale(1.01);
+            transition-duration: 0.1s;
         }
 
         .roadmap-card-header {
             display: flex;
-            align-items: center;
-            gap: 16px;
+            align-items: flex-start;
+            gap: 12px;
             margin-bottom: 16px;
         }
 
         .roadmap-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
             position: relative;
+            font-size: 20px;
         }
 
         .roadmap-icon.android {
@@ -342,15 +364,15 @@
 
         .platform-badge {
             position: absolute;
-            top: -4px;
-            right: -4px;
-            width: 20px;
-            height: 20px;
+            top: -3px;
+            right: -3px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
+            font-size: 8px;
             border: 2px solid var(--md-sys-color-surface-container);
         }
 
@@ -370,46 +392,53 @@
         }
 
         .roadmap-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: var(--md-sys-color-on-surface);
             flex: 1;
+            line-height: 1.3;
         }
 
         .roadmap-description {
             color: var(--md-sys-color-on-surface-variant);
-            line-height: 1.5;
+            line-height: 1.4;
             font-size: 14px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 16px;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 16px;
+            gap: 6px;
+            margin-top: auto;
         }
 
         .tech-chip {
             background-color: var(--md-sys-color-primary-container);
             color: var(--md-sys-color-on-primary-container);
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 11px;
             font-weight: 500;
+            white-space: nowrap;
         }
 
-        /* Portfolio navigation */
+        /* Portfolio navigation - Mobile First */
         .portfolio-nav {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-top: 24px;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .portfolio-nav-btn {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             border: 2px solid var(--md-sys-color-outline);
             background-color: var(--md-sys-color-surface-container);
@@ -418,20 +447,32 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 16px;
         }
 
         .portfolio-nav-btn:hover {
             background-color: var(--md-sys-color-primary);
             color: var(--md-sys-color-on-primary);
             border-color: var(--md-sys-color-primary);
-            transform: scale(1.1);
+            transform: scale(1.05);
+        }
+
+        .portfolio-nav-btn:active {
+            transform: scale(0.95);
+            transition-duration: 0.1s;
         }
 
         .portfolio-nav-btn:disabled {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
             transform: none;
+        }
+
+        .portfolio-nav-btn:disabled:hover {
+            background-color: var(--md-sys-color-surface-container);
+            color: var(--md-sys-color-on-surface);
+            border-color: var(--md-sys-color-outline);
         }
 
         /* App Dialog Modal */
@@ -873,18 +914,19 @@
             }
         }
 
-        /* Contact section */
+        /* Contact section - Mobile First */
         .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
             align-items: center;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 16px;
+            width: 100%;
         }
 
         .contact-item {
@@ -896,12 +938,21 @@
             border-radius: 16px;
             text-decoration: none;
             color: var(--md-sys-color-on-surface);
-            transition: background-color 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--md-sys-color-outline-variant);
         }
 
         .contact-item:hover {
             background-color: var(--md-sys-color-primary-container);
             color: var(--md-sys-color-on-primary-container);
+            transform: translateY(-2px);
+            box-shadow: var(--md-sys-elevation-level2);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        .contact-item:active {
+            transform: translateY(0);
+            transition-duration: 0.1s;
         }
 
         .contact-icon {
@@ -913,6 +964,32 @@
             align-items: center;
             justify-content: center;
             color: var(--md-sys-color-on-primary);
+            flex-shrink: 0;
+        }
+
+        .contact-item-text h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: inherit;
+        }
+
+        .contact-item-text p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .contact-illustration {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-illustration > div {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
         }
 
         /* Footer */
@@ -952,35 +1029,292 @@
             transform: translateY(-4px);
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+        /* Responsive Design - Progressive Enhancement */
+        
+        /* Small Mobile (320px - 480px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
             }
-
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 40px;
+            
+            .section {
+                padding: 32px 0;
             }
-
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .section-subtitle {
+                font-size: 15px;
+            }
+            
             .hero-content h1 {
-                font-size: 40px;
+                font-size: 32px;
             }
+            
+            .hero-content .motto {
+                font-size: 16px;
+            }
+            
+            .hero-content p {
+                font-size: 15px;
+            }
+            
+            .profile-image {
+                width: 160px;
+                height: 160px;
+                font-size: 64px;
+            }
+            
+            .roadmap-item {
+                min-width: 260px;
+                max-width: 280px;
+            }
+            
+            .roadmap-card {
+                padding: 16px;
+            }
+            
+            .roadmap-title {
+                font-size: 16px;
+            }
+            
+            .roadmap-description {
+                font-size: 13px;
+                -webkit-line-clamp: 3;
+            }
+        }
 
+        /* Tablet Portrait (481px - 768px) */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .section {
+                padding: 48px 0;
+            }
+            
             .section-title {
                 font-size: 36px;
             }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            
+            .section-subtitle {
+                font-size: 17px;
             }
-
+            
+            .hero-content h1 {
+                font-size: 40px;
+            }
+            
+            .hero-content .motto {
+                font-size: 20px;
+            }
+            
             .profile-image {
-                width: 200px;
-                height: 200px;
-                font-size: 80px;
+                width: 220px;
+                height: 220px;
+                font-size: 88px;
+            }
+            
+            .roadmap-item {
+                min-width: 320px;
+                max-width: 360px;
+            }
+        }
+
+        /* Tablet Landscape & Small Desktop (769px - 1024px) */
+        @media (min-width: 769px) {
+            .navbar {
+                padding: 16px 0;
+            }
+            
+            .nav-container {
+                padding: 0 24px;
+            }
+            
+            .nav-links {
+                display: flex;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
+            .theme-toggle {
+                width: 48px;
+                height: 48px;
+            }
+            
+            main {
+                margin-top: 80px;
+            }
+            
+            .container {
+                padding: 0 32px;
+            }
+            
+            .section {
+                padding: 64px 0;
+            }
+            
+            .section-title {
+                font-size: 42px;
+            }
+            
+            .section-subtitle {
+                font-size: 18px;
+            }
+            
+            .hero {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 48px;
+                text-align: left;
+                min-height: 75vh;
+            }
+            
+            .hero-image {
+                order: 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 48px;
+            }
+            
+            .hero-content .motto {
+                font-size: 22px;
+            }
+            
+            .hero-content p {
+                font-size: 17px;
+                max-width: none;
+            }
+            
+            .profile-image {
+                width: 280px;
+                height: 280px;
+                font-size: 112px;
+            }
+            
+            .roadmap {
+                gap: 20px;
+                padding: 20px 0 40px;
+            }
+            
+            .roadmap-item {
+                min-width: 340px;
+                max-width: 380px;
+                scroll-snap-align: center;
+            }
+            
+            .roadmap-card {
+                padding: 24px;
+                border-radius: 24px;
+            }
+            
+            .roadmap-icon {
+                width: 56px;
+                height: 56px;
+                border-radius: 16px;
+                font-size: 24px;
+            }
+            
+            .roadmap-title {
+                font-size: 20px;
+            }
+            
+            .roadmap-description {
+                font-size: 15px;
+                -webkit-line-clamp: 5;
+            }
+            
+            .portfolio-nav {
+                margin-top: 32px;
+            }
+            
+                         .portfolio-nav-btn {
+                width: 52px;
+                height: 52px;
+             }
+             
+             .contact-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 48px;
+                align-items: center;
+             }
+             
+             .contact-info {
+                gap: 20px;
+             }
+             
+             .contact-illustration > div {
+                height: 300px;
+             }
+         }
+
+        /* Large Desktop (1025px+) */
+        @media (min-width: 1025px) {
+            .container {
+                padding: 0 40px;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 48px;
+            }
+            
+            .section-subtitle {
+                font-size: 20px;
+            }
+            
+            .hero {
+                gap: 60px;
+                min-height: 80vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 56px;
+            }
+            
+            .hero-content .motto {
+                font-size: 24px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .profile-image {
+                width: 320px;
+                height: 320px;
+                font-size: 128px;
+            }
+            
+            .roadmap {
+                gap: 24px;
+            }
+            
+            .roadmap-item {
+                min-width: 360px;
+                max-width: 400px;
+            }
+        }
+
+        /* Extra Large Desktop (1440px+) */
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1320px;
+            }
+            
+            .roadmap-item {
+                min-width: 380px;
+                max-width: 420px;
             }
         }
 
@@ -1350,7 +1684,7 @@
                             <div class="contact-icon">
                                 <i data-lucide="mail"></i>
                             </div>
-                            <div>
+                            <div class="contact-item-text">
                                 <h3>Email</h3>
                                 <p>hello@example.com</p>
                             </div>
@@ -1360,7 +1694,7 @@
                             <div class="contact-icon">
                                 <i data-lucide="linkedin"></i>
                             </div>
-                            <div>
+                            <div class="contact-item-text">
                                 <h3>LinkedIn</h3>
                                 <p>Connect professionally</p>
                             </div>
@@ -1370,7 +1704,7 @@
                             <div class="contact-icon">
                                 <i data-lucide="github"></i>
                             </div>
-                            <div>
+                            <div class="contact-item-text">
                                 <h3>GitHub</h3>
                                 <p>View my repositories</p>
                             </div>
@@ -1380,7 +1714,7 @@
                             <div class="contact-icon">
                                 <i data-lucide="twitter"></i>
                             </div>
-                            <div>
+                            <div class="contact-item-text">
                                 <h3>Twitter</h3>
                                 <p>Follow my journey</p>
                             </div>
@@ -1516,15 +1850,8 @@
             });
         });
 
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.backgroundColor = 'var(--md-sys-color-surface-container-high)';
-            } else {
-                navbar.style.backgroundColor = 'var(--md-sys-color-surface-container)';
-            }
-        });
+        // Add optimized scroll effects
+        window.addEventListener('scroll', requestScrollUpdate, { passive: true });
 
         // Animate cards on scroll
         const observerOptions = {
@@ -1733,27 +2060,106 @@
             }
         ];
 
-        // Animate roadmap items on scroll
-        const roadmapObserver = new IntersectionObserver((entries) => {
+        // Enhanced animation system
+        const animationObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const items = entry.target.querySelectorAll('.roadmap-item');
-                    items.forEach((item, index) => {
-                        const delay = parseInt(item.dataset.delay) || (index + 1) * 100;
+                    // Handle roadmap items
+                    if (entry.target.classList.contains('roadmap')) {
+                        const items = entry.target.querySelectorAll('.roadmap-item');
+                        items.forEach((item, index) => {
+                            const delay = parseInt(item.dataset.delay) || (index + 1) * 150;
+                            setTimeout(() => {
+                                item.classList.add('animate-in');
+                            }, delay);
+                        });
+                    }
+                    
+                    // Handle other animated elements
+                    if (entry.target.classList.contains('hero')) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                    
+                    if (entry.target.classList.contains('section-title')) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                    
+                    if (entry.target.classList.contains('section-subtitle')) {
                         setTimeout(() => {
-                            item.classList.add('animate-in');
-                        }, delay);
-                    });
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 200);
+                    }
                 }
             });
-        }, { threshold: 0.2 });
-
-        // Observe portfolio sections
-        document.querySelectorAll('.roadmap').forEach(roadmap => {
-            roadmapObserver.observe(roadmap);
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         });
 
-        // Portfolio navigation functionality
+        // Initialize animations
+        function initializeAnimations() {
+            // Set initial states for animated elements
+            document.querySelectorAll('.hero').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                animationObserver.observe(el);
+            });
+            
+            document.querySelectorAll('.section-title').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                animationObserver.observe(el);
+            });
+            
+            document.querySelectorAll('.section-subtitle').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(15px)';
+                el.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                animationObserver.observe(el);
+            });
+            
+            // Observe portfolio sections
+            document.querySelectorAll('.roadmap').forEach(roadmap => {
+                animationObserver.observe(roadmap);
+            });
+        }
+
+        // Performance-optimized scroll effects
+        let ticking = false;
+        function updateScrollEffects() {
+            const scrollY = window.pageYOffset;
+            const navbar = document.querySelector('.navbar');
+            
+            // Update navbar background based on scroll
+            if (scrollY > 100) {
+                navbar.style.backgroundColor = 'var(--md-sys-color-surface-container-high)';
+                navbar.style.boxShadow = 'var(--md-sys-elevation-level3)';
+            } else {
+                navbar.style.backgroundColor = 'var(--md-sys-color-surface-container)';
+                navbar.style.boxShadow = 'var(--md-sys-elevation-level2)';
+            }
+            
+            ticking = false;
+        }
+
+        function requestScrollUpdate() {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollEffects);
+                ticking = true;
+            }
+        }
+
+        // Initialize everything
+        setTimeout(() => {
+            initializeAnimations();
+        }, 100);
+
+        // Portfolio navigation functionality - Responsive
         function createPortfolioNavigation(sectionId, prevBtnId, nextBtnId) {
             const section = document.getElementById(sectionId);
             const prevBtn = document.getElementById(prevBtnId);
@@ -1761,17 +2167,42 @@
             
             if (!section || !prevBtn || !nextBtn) return;
 
-            const itemWidth = 390; // 350px width + 40px gap
             let currentIndex = 0;
+
+            function getItemWidth() {
+                // Responsive item width calculation
+                const screenWidth = window.innerWidth;
+                if (screenWidth <= 480) return 276; // 260px + 16px gap
+                if (screenWidth <= 768) return 336; // 320px + 16px gap  
+                if (screenWidth <= 1024) return 360; // 340px + 20px gap
+                return 384; // 360px + 24px gap
+            }
 
             function updateNavigation() {
                 const maxScroll = section.scrollWidth - section.clientWidth;
-                prevBtn.disabled = section.scrollLeft <= 10;
-                nextBtn.disabled = section.scrollLeft >= maxScroll - 10;
+                const tolerance = 10;
+                
+                prevBtn.disabled = section.scrollLeft <= tolerance;
+                nextBtn.disabled = section.scrollLeft >= maxScroll - tolerance;
+                
+                // Update button states visually
+                if (prevBtn.disabled) {
+                    prevBtn.style.opacity = '0.4';
+                } else {
+                    prevBtn.style.opacity = '1';
+                }
+                
+                if (nextBtn.disabled) {
+                    nextBtn.style.opacity = '0.4';
+                } else {
+                    nextBtn.style.opacity = '1';
+                }
             }
 
             function scrollToIndex(index) {
+                const itemWidth = getItemWidth();
                 const scrollPosition = index * itemWidth;
+                
                 section.scrollTo({
                     left: scrollPosition,
                     behavior: 'smooth'
@@ -1780,39 +2211,63 @@
                 setTimeout(updateNavigation, 300);
             }
 
+            function scrollByAmount(direction) {
+                const itemWidth = getItemWidth();
+                const scrollAmount = itemWidth * direction;
+                
+                section.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+                setTimeout(updateNavigation, 300);
+            }
+
             prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    scrollToIndex(currentIndex - 1);
-                }
+                scrollByAmount(-1);
             });
 
             nextBtn.addEventListener('click', () => {
-                const items = section.querySelectorAll('.roadmap-item');
-                const maxIndex = Math.max(0, items.length - Math.floor(section.clientWidth / itemWidth));
-                if (currentIndex < maxIndex) {
-                    scrollToIndex(currentIndex + 1);
-                }
+                scrollByAmount(1);
             });
 
             // Update navigation on scroll
             section.addEventListener('scroll', updateNavigation);
             
             // Update navigation on resize
-            window.addEventListener('resize', updateNavigation);
+            window.addEventListener('resize', () => {
+                setTimeout(updateNavigation, 100);
+            });
             
             // Initialize navigation state
-            setTimeout(updateNavigation, 100);
+            setTimeout(updateNavigation, 200);
 
-            // Mouse wheel horizontal scroll
+            // Enhanced mouse wheel horizontal scroll
             section.addEventListener('wheel', (e) => {
+                // Only hijack vertical scroll, allow horizontal scroll to pass through
                 if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
                 
                 e.preventDefault();
-                section.scrollLeft += e.deltaY;
+                const scrollSpeed = window.innerWidth <= 768 ? 0.8 : 1.2;
+                section.scrollLeft += e.deltaY * scrollSpeed;
                 setTimeout(updateNavigation, 50);
             });
 
-            return { updateNavigation, scrollToIndex };
+            // Touch scroll improvements for mobile
+            let isScrolling = false;
+            section.addEventListener('touchstart', () => {
+                isScrolling = true;
+            });
+            
+            section.addEventListener('touchend', () => {
+                if (isScrolling) {
+                    setTimeout(() => {
+                        updateNavigation();
+                        isScrolling = false;
+                    }, 150);
+                }
+            });
+
+            return { updateNavigation, scrollToIndex, scrollByAmount };
         }
 
         // Initialize portfolio navigations
