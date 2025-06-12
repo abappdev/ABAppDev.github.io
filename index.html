@@ -2092,9 +2092,13 @@
                     'Analytics and insights'
                 ],
                 playStoreUrl: 'https://play.google.com/store/apps/details?id=com.example.taskflow',
-                privacyPolicyUrl: '#privacy-taskflow',
-                termsUrl: '#terms-taskflow',
-                aboutUrl: '#about-taskflow'
+                // App documentation URLs - these files exist
+                docs: {
+                    website: '',
+                    privacyPolicy: 'app_docs/taskflow/privacy-policy.html',
+                    termsAndConditions: 'app_docs/taskflow/terms-and-conditions.html',
+                    support: 'app_docs/taskflow/support.html'
+                }
             },
             {
                 icon: 'camera',
@@ -2111,8 +2115,12 @@
                     'Batch processing'
                 ],
                 playStoreUrl: 'https://play.google.com/store/apps/details?id=com.example.photocraft',
-                privacyPolicyUrl: '#privacy-photocraft',
-                websiteUrl: 'https://photocraft.example.com'
+                docs: {
+                    website: '',
+                    privacyPolicy: '',
+                    termsAndConditions: '',
+                    support: ''
+                }
             },
             {
                 icon: 'heart',
@@ -2129,9 +2137,12 @@
                     'Emergency contacts'
                 ],
                 playStoreUrl: 'https://play.google.com/store/apps/details?id=com.example.healthtracker',
-                privacyPolicyUrl: '#privacy-healthtracker',
-                termsUrl: '#terms-healthtracker',
-                supportUrl: '#support-healthtracker'
+                docs: {
+                    website: '',
+                    privacyPolicy: '',
+                    termsAndConditions: '',
+                    support: ''
+                }
             },
             {
                 icon: 'music',
@@ -2148,8 +2159,12 @@
                     'Adaptive themes'
                 ],
                 playStoreUrl: 'https://play.google.com/store/apps/details?id=com.example.audiowave',
-                websiteUrl: 'https://audiowave.example.com',
-                privacyPolicyUrl: '#privacy-audiowave'
+                docs: {
+                    website: '',
+                    privacyPolicy: '',
+                    termsAndConditions: '',
+                    support: ''
+                }
             }
         ];
 
@@ -2170,9 +2185,12 @@
                     'Custom themes and extensions'
                 ],
                 appStoreUrl: 'https://apps.apple.com/app/codemaster/id123456',
-                websiteUrl: 'https://codemaster.example.com',
-                privacyPolicyUrl: '#privacy-codemaster',
-                termsUrl: '#terms-codemaster'
+                docs: {
+                    website: '',
+                    privacyPolicy: '',
+                    termsAndConditions: '',
+                    support: ''
+                }
             },
             {
                 icon: 'music',
@@ -2190,8 +2208,12 @@
                     'Advanced equalizer'
                 ],
                 appStoreUrl: 'https://apps.apple.com/app/soundwave/id234567',
-                privacyPolicyUrl: '#privacy-soundwave',
-                supportUrl: '#support-soundwave'
+                docs: {
+                    website: '',
+                    privacyPolicy: '',
+                    termsAndConditions: '',
+                    support: ''
+                }
             },
             {
                 icon: 'brain',
@@ -2209,10 +2231,12 @@
                     'Smart search and tagging'
                 ],
                 appStoreUrl: 'https://apps.apple.com/app/mindpalace/id345678',
-                websiteUrl: 'https://mindpalace.example.com',
-                privacyPolicyUrl: '#privacy-mindpalace',
-                termsUrl: '#terms-mindpalace',
-                aboutUrl: '#about-mindpalace'
+                docs: {
+                    website: '',
+                    privacyPolicy: '',
+                    termsAndConditions: '',
+                    support: ''
+                }
             },
             {
                 icon: 'camera',
@@ -2230,8 +2254,12 @@
                     'Professional filters'
                 ],
                 appStoreUrl: 'https://apps.apple.com/app/lensflare/id456789',
-                privacyPolicyUrl: '#privacy-lensflare',
-                websiteUrl: 'https://lensflare.example.com'
+                docs: {
+                    website: '',
+                    privacyPolicy: '',
+                    termsAndConditions: '',
+                    support: ''
+                }
             }
         ];
 
@@ -2805,38 +2833,16 @@
             }
         });
 
-        // Fetch content from URL (for privacy policy, terms, etc.)
-        async function fetchPageContent(url) {
-            try {
-                // For demo purposes, return mock content based on URL
-                // In a real app, you would fetch from the actual URL
-                const mockContent = {
-                    '#privacy-taskflow': 'TaskFlow Pro Privacy Policy: We respect your privacy and are committed to protecting your personal data. This app collects minimal data necessary for functionality including task data, preferences, and usage analytics. All data is encrypted and stored securely.',
-                    '#terms-taskflow': 'TaskFlow Pro Terms of Service: By using this app, you agree to our terms of service. The app is provided as-is with no warranties. Users are responsible for backing up their data.',
-                    '#about-taskflow': 'About TaskFlow Pro: Developed by AB, TaskFlow Pro is designed to revolutionize productivity and task management for individuals and teams worldwide.',
-                    '#privacy-photocraft': 'PhotoCraft Privacy Policy: Your photos and personal data are private. We do not access, store, or share your images. All processing happens locally on your device.',
-                    '#privacy-healthtracker': 'HealthTracker Privacy Policy: Your health data is extremely sensitive. We use industry-standard encryption and comply with HIPAA guidelines to protect your information.',
-                    '#terms-healthtracker': 'HealthTracker Terms of Service: This app is for informational purposes only and should not replace professional medical advice.',
-                    '#support-healthtracker': 'HealthTracker Support: For technical support, please contact support@healthtracker.com or visit our FAQ section.',
-                    '#privacy-audiowave': 'AudioWave Privacy Policy: We collect minimal data to enhance your music experience including listening preferences and app usage statistics.',
-                    '#privacy-codemaster': 'CodeMaster Privacy Policy: We respect developer privacy. Your code and projects remain private and are never transmitted to our servers.',
-                    '#terms-codemaster': 'CodeMaster Terms of Service: This software is licensed for personal and commercial use. Redistribution requires explicit permission.',
-                    '#privacy-soundwave': 'SoundWave Privacy Policy: Your music preferences and playlists are private. We only collect anonymous usage statistics to improve the app.',
-                    '#support-soundwave': 'SoundWave Support: Need help? Visit our support center or contact us through the app settings.',
-                    '#privacy-mindpalace': 'MindPalace Privacy Policy: Your notes and thoughts are private. All data is encrypted end-to-end and synced securely via CloudKit.',
-                    '#terms-mindpalace': 'MindPalace Terms of Service: By using this app, you agree to our terms. Your intellectual property remains yours.',
-                    '#about-mindpalace': 'About MindPalace: Created to be your digital second brain, helping you capture, organize, and connect ideas seamlessly.',
-                    '#privacy-lensflare': 'LensFlare Privacy Policy: Your photos are processed locally on your device. We do not access or store your images on our servers.'
-                };
+        // Check if documentation file exists for an app
+        function hasDocumentation(app, docType) {
+            return app.docs && app.docs[docType] && app.docs[docType].trim() !== '';
+        }
 
-                if (url.startsWith('#')) {
-                    return mockContent[url] || 'Content not available.';
-                }
-
-                // For external URLs, show loading message
-                return 'Loading content...';
-            } catch (error) {
-                return 'Error loading content. Please try again.';
+        // Open documentation in new tab
+        function openDocumentation(app, docType) {
+            if (hasDocumentation(app, docType)) {
+                const url = app.docs[docType];
+                window.open(url, '_blank');
             }
         }
 
@@ -2915,10 +2921,10 @@
                 appDialogActions.appendChild(storeBtn);
             }
 
-            // Website button
-            if (app.websiteUrl) {
+            // Website button (from docs structure)
+            if (hasDocumentation(app, 'website')) {
                 const websiteBtn = document.createElement('a');
-                websiteBtn.href = app.websiteUrl;
+                websiteBtn.href = app.docs.website;
                 websiteBtn.target = '_blank';
                 websiteBtn.className = 'app-dialog-btn app-dialog-btn-secondary';
                 websiteBtn.innerHTML = `
@@ -2928,51 +2934,39 @@
                 appDialogActions.appendChild(websiteBtn);
             }
 
-            // About button
-            if (app.aboutUrl) {
-                const aboutBtn = document.createElement('button');
-                aboutBtn.className = 'app-dialog-btn app-dialog-btn-text';
-                aboutBtn.innerHTML = `
-                    <i data-lucide="info"></i>
-                    About
-                `;
-                aboutBtn.onclick = () => showDialogSection('About', app.aboutUrl);
-                appDialogActions.appendChild(aboutBtn);
-            }
-
-            // Privacy Policy button
-            if (app.privacyPolicyUrl) {
+            // Privacy Policy button (only if documentation exists)
+            if (hasDocumentation(app, 'privacyPolicy')) {
                 const privacyBtn = document.createElement('button');
                 privacyBtn.className = 'app-dialog-btn app-dialog-btn-text';
                 privacyBtn.innerHTML = `
                     <i data-lucide="shield"></i>
                     Privacy Policy
                 `;
-                privacyBtn.onclick = () => showDialogSection('Privacy Policy', app.privacyPolicyUrl);
+                privacyBtn.onclick = () => openDocumentation(app, 'privacyPolicy');
                 appDialogActions.appendChild(privacyBtn);
             }
 
-            // Terms & Conditions button
-            if (app.termsUrl) {
+            // Terms & Conditions button (only if documentation exists)
+            if (hasDocumentation(app, 'termsAndConditions')) {
                 const termsBtn = document.createElement('button');
                 termsBtn.className = 'app-dialog-btn app-dialog-btn-text';
                 termsBtn.innerHTML = `
                     <i data-lucide="file-text"></i>
                     Terms & Conditions
                 `;
-                termsBtn.onclick = () => showDialogSection('Terms & Conditions', app.termsUrl);
+                termsBtn.onclick = () => openDocumentation(app, 'termsAndConditions');
                 appDialogActions.appendChild(termsBtn);
             }
 
-            // Support button
-            if (app.supportUrl) {
+            // Support button (only if documentation exists)
+            if (hasDocumentation(app, 'support')) {
                 const supportBtn = document.createElement('button');
                 supportBtn.className = 'app-dialog-btn app-dialog-btn-text';
                 supportBtn.innerHTML = `
                     <i data-lucide="help-circle"></i>
                     Support
                 `;
-                supportBtn.onclick = () => showDialogSection('Support', app.supportUrl);
+                supportBtn.onclick = () => openDocumentation(app, 'support');
                 appDialogActions.appendChild(supportBtn);
             }
 
@@ -2982,42 +2976,7 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Show content in dialog section
-        async function showDialogSection(title, url) {
-            const loadingHtml = `
-                <div class="app-dialog-section">
-                    <h4 class="app-dialog-section-title">${title}</h4>
-                    <div class="loading-content">
-                        <div class="loading-spinner"></div>
-                        Loading ${title.toLowerCase()}...
-                    </div>
-                </div>
-            `;
-            
-            appDialogSections.innerHTML = loadingHtml;
-            
-            try {
-                const content = await fetchPageContent(url);
-                const sectionHtml = `
-                    <div class="app-dialog-section">
-                        <h4 class="app-dialog-section-title">${title}</h4>
-                        <div class="app-dialog-section-content">
-                            ${content}
-                        </div>
-                    </div>
-                `;
-                appDialogSections.innerHTML = sectionHtml;
-            } catch (error) {
-                appDialogSections.innerHTML = `
-                    <div class="app-dialog-section">
-                        <h4 class="app-dialog-section-title">${title}</h4>
-                        <div class="app-dialog-section-content">
-                            Error loading content. Please try again later.
-                        </div>
-                    </div>
-                `;
-            }
-        }
+
 
         // Add click listeners to app cards
         function addAppClickListeners() {
