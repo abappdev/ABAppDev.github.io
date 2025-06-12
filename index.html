@@ -5,59 +5,1050 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abhishek Bhalerao</title>
+    <title>AB - Developer Portfolio</title>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light theme colors - Material Design 3 */
+            --md-sys-color-primary: #6750A4;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #EADDFF;
+            --md-sys-color-on-primary-container: #21005D;
+            --md-sys-color-secondary: #625B71;
+            --md-sys-color-on-secondary: #FFFFFF;
+            --md-sys-color-secondary-container: #E8DEF8;
+            --md-sys-color-on-secondary-container: #1D192B;
+            --md-sys-color-tertiary: #7D5260;
+            --md-sys-color-surface: #FEF7FF;
+            --md-sys-color-on-surface: #1C1B1F;
+            --md-sys-color-surface-variant: #E7E0EC;
+            --md-sys-color-on-surface-variant: #49454F;
+            --md-sys-color-outline: #79747E;
+            --md-sys-color-outline-variant: #CAC4D0;
+            --md-sys-color-background: #FEF7FF;
+            --md-sys-color-on-background: #1C1B1F;
+            --md-sys-color-surface-container: #F3EDF7;
+            --md-sys-color-surface-container-high: #ECE6F0;
+            --md-sys-color-surface-container-highest: #E6E0E9;
+            
+            /* Elevation shadows */
+            --md-sys-elevation-level1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+            --md-sys-elevation-level2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+            --md-sys-elevation-level3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] {
+            /* Dark theme colors */
+            --md-sys-color-primary: #D0BCFF;
+            --md-sys-color-on-primary: #381E72;
+            --md-sys-color-primary-container: #4F378B;
+            --md-sys-color-on-primary-container: #EADDFF;
+            --md-sys-color-secondary: #CCC2DC;
+            --md-sys-color-on-secondary: #332D41;
+            --md-sys-color-secondary-container: #4A4458;
+            --md-sys-color-on-secondary-container: #E8DEF8;
+            --md-sys-color-tertiary: #EFB8C8;
+            --md-sys-color-surface: #141218;
+            --md-sys-color-on-surface: #E6E0E9;
+            --md-sys-color-surface-variant: #49454F;
+            --md-sys-color-on-surface-variant: #CAC4D0;
+            --md-sys-color-outline: #938F99;
+            --md-sys-color-outline-variant: #49454F;
+            --md-sys-color-background: #141218;
+            --md-sys-color-on-background: #E6E0E9;
+            --md-sys-color-surface-container: #211F26;
+            --md-sys-color-surface-container-high: #2B2930;
+            --md-sys-color-surface-container-highest: #36343B;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--md-sys-color-surface-container);
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            z-index: 1000;
+            box-shadow: var(--md-sys-elevation-level2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--md-sys-color-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--md-sys-color-on-surface);
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--md-sys-color-outline);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--md-sys-color-on-surface);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        /* Main content */
+        main {
+            margin-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--md-sys-color-primary);
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 40px;
+        }
+
+        /* Hero/About section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .hero-content .motto {
+            font-size: 24px;
+            color: var(--md-sys-color-primary);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            color: var(--md-sys-color-on-primary);
+            box-shadow: var(--md-sys-elevation-level3);
+        }
+
+        /* Card styles */
+        .card {
+            background-color: var(--md-sys-color-surface-container);
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--md-sys-elevation-level1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--md-sys-elevation-level3);
+            transform: translateY(-4px);
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .card-description {
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 16px;
+        }
+
+        /* Roadmap timeline */
+        .roadmap {
+            display: grid;
+            gap: 32px;
+        }
+
+        .roadmap-item {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .roadmap-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--md-sys-color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--md-sys-color-on-primary);
+            flex-shrink: 0;
+        }
+
+        .roadmap-content {
+            flex: 1;
+        }
+
+        .roadmap-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .roadmap-description {
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        /* Journey timeline - Horizontal */
+        .journey-timeline {
+            position: relative;
+            display: flex;
+            overflow-x: auto;
+            padding: 40px 0 60px;
+            gap: 40px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .journey-timeline::-webkit-scrollbar {
+            display: none;
+        }
+
+        .journey-timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--md-sys-color-outline-variant);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .journey-item {
+            position: relative;
+            min-width: 300px;
+            max-width: 350px;
+            background-color: var(--md-sys-color-surface-container);
+            border-radius: 20px;
+            padding: 24px;
+            scroll-snap-align: center;
+            flex-shrink: 0;
+            box-shadow: var(--md-sys-elevation-level2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .journey-item.animate-in {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .journey-item:hover {
+            box-shadow: var(--md-sys-elevation-level3);
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .journey-item::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--md-sys-color-primary);
+            border-radius: 50%;
+            border: 4px solid var(--md-sys-color-background);
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+
+        .journey-item:hover::before {
+            width: 24px;
+            height: 24px;
+            top: -12px;
+            box-shadow: 0 0 0 4px var(--md-sys-color-primary-container);
+        }
+
+        .journey-year {
+            color: var(--md-sys-color-primary);
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .journey-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--md-sys-color-on-surface);
+            line-height: 1.3;
+        }
+
+        .journey-description {
+            color: var(--md-sys-color-on-surface-variant);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Journey navigation buttons */
+        .journey-nav {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .journey-nav-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--md-sys-color-outline);
+            background-color: var(--md-sys-color-surface-container);
+            color: var(--md-sys-color-on-surface);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .journey-nav-btn:hover {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border-color: var(--md-sys-color-primary);
+            transform: scale(1.1);
+        }
+
+        .journey-nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Responsive design for journey */
+        @media (max-width: 768px) {
+            .journey-item {
+                min-width: 280px;
+                max-width: 300px;
+            }
+            
+            .journey-timeline {
+                gap: 24px;
+                padding: 30px 0 50px;
+            }
+        }
+
+        /* Contact section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background-color: var(--md-sys-color-surface-container);
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--md-sys-color-on-surface);
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--md-sys-color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--md-sys-color-on-primary);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--md-sys-color-surface-container-high);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .footer p {
+            margin-bottom: 16px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background-color: var(--md-sys-color-surface-container);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--md-sys-color-on-surface);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            transform: translateY(-4px);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+                font-size: 80px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            transform: translateY(-2px);
+            box-shadow: var(--md-sys-elevation-level2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--md-sys-color-primary);
+            border: 2px solid var(--md-sys-color-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
+    </style>
 </head>
 
 <body>
-    <h1>
-        Abhishek Pralhad Bhalerao
-    </h1>
-    <p>
-        <strong>Mobile Number:</strong> <a href="tel:8485842407">+918485842407</a><br>
-        <strong>Email:</strong> <a
-            href="mailto:abhishekbhalerao.appdev@gmail.com">abhishekbhalerao.appdev@gmail.com</a><br>
-        <strong> Address:</strong> Plot No. 4, Borole Nagar 3, Chopda, Tal. Chopda
-        Dist. Jalgaon, Maharashtra, 425107
-    </p>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">AB</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#android">Android</a></li>
+                <li><a href="#ios">iOS & Mac</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle">
+                <i data-lucide="sun" id="themeIcon"></i>
+            </button>
+        </div>
+    </nav>
 
-    <h2>ABOUT</h2>
-    <p>
-        I am a certified android app developer, tech-savvy, highly passionate about UI/UX in the software and web field.
-        I also like to learn about new technology. Currently pursuing computer engineering and along with this, I have
-        built few application projects by myself and some of them are available on the Play Store too.
-    </p>
+    <main>
+        <!-- About Me Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>Hello, I'm AB</h1>
+                        <p class="motto">"Code with purpose, create with passion"</p>
+                        <p>A passionate developer crafting innovative mobile and web applications. I specialize in creating seamless user experiences across Android, iOS, and Mac platforms, bringing ideas to life through clean code and thoughtful design.</p>
+                        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                            <a href="#contact" class="btn btn-primary">
+                                <i data-lucide="mail"></i>
+                                Get In Touch
+                            </a>
+                            <a href="#android" class="btn btn-outline">
+                                <i data-lucide="smartphone"></i>
+                                View My Work
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="profile-image">
+                            <i data-lucide="user"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <h2>ACADEMICS</h2>
-    <ul>
-        <li>MET Institute of Engineering, Nashik – CGPA. 9.4<br>
-            B. E. Computer Engineering – 2022</li>
-        <li>Smt. Sharchchandrika Suresh Patil Institute of Technology (Polytechnic), Chopda – 75.00%<br>
-            Diploma in Computer Engineering – 2019</li>
-        <li>Pankaj Vidyalaya, Chopda – 83.80%<br>
-            S.S.C. (10th) – 2016</li>
-    </ul>
+        <!-- Android Apps Section -->
+        <section id="android" class="section">
+            <div class="container">
+                <h2 class="section-title">Android Applications</h2>
+                <p class="section-subtitle">Innovative mobile solutions for the Android ecosystem</p>
+                
+                <div class="roadmap">
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">
+                            <i data-lucide="smartphone"></i>
+                        </div>
+                        <div class="roadmap-content">
+                            <div class="card">
+                                <h3 class="roadmap-title">TaskFlow Pro</h3>
+                                <p class="roadmap-description">A comprehensive task management app with Material Design 3, offline sync, and AI-powered productivity insights. Built with Kotlin, Jetpack Compose, and Room database.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">
+                            <i data-lucide="camera"></i>
+                        </div>
+                        <div class="roadmap-content">
+                            <div class="card">
+                                <h3 class="roadmap-title">PhotoCraft</h3>
+                                <p class="roadmap-description">Professional photo editing app with advanced filters, RAW support, and cloud storage integration. Features ML-powered auto-enhancement and batch processing capabilities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <div class="roadmap-content">
+                            <div class="card">
+                                <h3 class="roadmap-title">HealthTracker</h3>
+                                <p class="roadmap-description">Comprehensive health monitoring app with wearable integration, medication reminders, and health data visualization. Built with modern Android architecture patterns.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <h2>SOFTWARE EXPLOSURE</h2>
-    <ul>
-        <li>Java</li>
-        <li>Android Development</li>
-        <li>Database</li>
-    </ul>
+        <!-- iOS & Mac Apps Section -->
+        <section id="ios" class="section">
+            <div class="container">
+                <h2 class="section-title">iOS & Mac Applications</h2>
+                <p class="section-subtitle">Elegant solutions for the Apple ecosystem</p>
+                
+                <div class="roadmap">
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">
+                            <i data-lucide="laptop"></i>
+                        </div>
+                        <div class="roadmap-content">
+                            <div class="card">
+                                <h3 class="roadmap-title">CodeMaster (macOS)</h3>
+                                <p class="roadmap-description">Advanced code editor for macOS with intelligent syntax highlighting, Git integration, and project management. Built with SwiftUI and optimized for Apple Silicon.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">
+                            <i data-lucide="music"></i>
+                        </div>
+                        <div class="roadmap-content">
+                            <div class="card">
+                                <h3 class="roadmap-title">SoundWave (iOS)</h3>
+                                <p class="roadmap-description">Immersive music player with spatial audio support, intelligent playlists, and social sharing features. Seamlessly integrates with Apple Music and streaming platforms.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roadmap-item">
+                        <div class="roadmap-icon">
+                            <i data-lucide="brain"></i>
+                        </div>
+                        <div class="roadmap-content">
+                            <div class="card">
+                                <h3 class="roadmap-title">MindPalace (Universal)</h3>
+                                <p class="roadmap-description">Cross-platform note-taking and knowledge management app with AI-powered organization, handwriting recognition, and seamless sync across all Apple devices.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <h2>AREA OF INTEREST</h2>
-    <ul>
-        <li>Software Development</li>
-        <li>Application Development</li>
-        <li>UI Designing</li>
-    </ul>
+        <!-- Education to Professional Journey -->
+        <section id="journey" class="section">
+            <div class="container">
+                <h2 class="section-title">Professional Journey</h2>
+                <p class="section-subtitle">From student to seasoned developer</p>
+                
+                <div class="journey-timeline" id="journeyTimeline">
+                    <div class="journey-item" data-delay="100">
+                        <div class="journey-year">2018 - 2022</div>
+                        <h3 class="journey-title">Computer Science Degree</h3>
+                        <p class="journey-description">Graduated with honors from a prestigious university, specializing in mobile development and human-computer interaction. Developed strong foundations in algorithms, data structures, and software engineering principles.</p>
+                    </div>
+                    
+                    <div class="journey-item" data-delay="200">
+                        <div class="journey-year">2021 - 2022</div>
+                        <h3 class="journey-title">Mobile Development Intern</h3>
+                        <p class="journey-description">Gained hands-on experience at a leading tech startup, contributing to Android and iOS applications used by thousands of users. Learned agile development practices and modern mobile architecture patterns.</p>
+                    </div>
+                    
+                    <div class="journey-item" data-delay="300">
+                        <div class="journey-year">2022 - 2023</div>
+                        <h3 class="journey-title">Junior Mobile Developer</h3>
+                        <p class="journey-description">Joined a dynamic product team, shipping features for consumer-facing mobile applications. Collaborated with designers and product managers to deliver intuitive user experiences.</p>
+                    </div>
+                    
+                    <div class="journey-item" data-delay="400">
+                        <div class="journey-year">2023 - Present</div>
+                        <h3 class="journey-title">Senior Mobile Developer</h3>
+                        <p class="journey-description">Leading mobile development initiatives, mentoring junior developers, and architecting scalable solutions. Passionate about emerging technologies and continuous learning in the ever-evolving mobile landscape.</p>
+                    </div>
+                </div>
+                
+                <div class="journey-nav">
+                    <button class="journey-nav-btn" id="journeyPrev">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <button class="journey-nav-btn" id="journeyNext">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
 
-    <h2>PROJECTS</h2>
-    <ul>
-        <li>Opacity - Social Productivity</li>
-        <li>MEETMYCITY - ctSeVA</li>
-        <li>METCoviBeds</li>
-    </ul>
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Ready to bring your ideas to life? Let's talk!</p>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <a href="mailto:hello@example.com" class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>hello@example.com</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://linkedin.com/in/yourprofile" class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="linkedin"></i>
+                            </div>
+                            <div>
+                                <h3>LinkedIn</h3>
+                                <p>Connect professionally</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://github.com/yourusername" class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="github"></i>
+                            </div>
+                            <div>
+                                <h3>GitHub</h3>
+                                <p>View my repositories</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://twitter.com/yourhandle" class="contact-item">
+                            <div class="contact-icon">
+                                <i data-lucide="twitter"></i>
+                            </div>
+                            <div>
+                                <h3>Twitter</h3>
+                                <p>Follow my journey</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="contact-illustration">
+                        <div style="display: flex; justify-content: center; align-items: center; height: 300px; background-color: var(--md-sys-color-primary-container); border-radius: 24px;">
+                            <i data-lucide="message-circle" style="width: 120px; height: 120px; color: var(--md-sys-color-on-primary-container);"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AB. All rights reserved. Built with passion and Material Design 3.</p>
+            <div class="social-links">
+                <a href="https://github.com/yourusername" class="social-link">
+                    <i data-lucide="github"></i>
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" class="social-link">
+                    <i data-lucide="linkedin"></i>
+                </a>
+                <a href="https://twitter.com/yourhandle" class="social-link">
+                    <i data-lucide="twitter"></i>
+                </a>
+                <a href="mailto:hello@example.com" class="social-link">
+                    <i data-lucide="mail"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Theme management
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (systemPrefersDark) {
+            html.setAttribute('data-theme', 'dark');
+        }
+
+        function updateThemeIcon() {
+            const currentTheme = html.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                themeIcon.setAttribute('data-lucide', 'moon');
+            } else {
+                themeIcon.setAttribute('data-lucide', 'sun');
+            }
+            lucide.createIcons();
+        }
+
+        // Update icon on page load
+        updateThemeIcon();
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon();
+        });
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                updateThemeIcon();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.backgroundColor = 'var(--md-sys-color-surface-container-high)';
+            } else {
+                navbar.style.backgroundColor = 'var(--md-sys-color-surface-container)';
+            }
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and timeline items
+        document.querySelectorAll('.card, .roadmap-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Journey timeline animation and navigation
+        const journeyTimeline = document.getElementById('journeyTimeline');
+        const journeyItems = document.querySelectorAll('.journey-item');
+        const journeyPrev = document.getElementById('journeyPrev');
+        const journeyNext = document.getElementById('journeyNext');
+
+        // Animate journey items on scroll
+        const journeyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const journeyItems = entry.target.querySelectorAll('.journey-item');
+                    journeyItems.forEach((item, index) => {
+                        const delay = parseInt(item.dataset.delay) || 0;
+                        setTimeout(() => {
+                            item.classList.add('animate-in');
+                        }, delay);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        journeyObserver.observe(document.getElementById('journeyTimeline'));
+
+        // Journey navigation functionality
+        let currentJourneyIndex = 0;
+        const itemWidth = 340; // 300px width + 40px gap
+
+        function updateJourneyNavigation() {
+            const maxScroll = journeyTimeline.scrollWidth - journeyTimeline.clientWidth;
+            journeyPrev.disabled = journeyTimeline.scrollLeft <= 0;
+            journeyNext.disabled = journeyTimeline.scrollLeft >= maxScroll;
+        }
+
+        function scrollJourneyTo(index) {
+            const scrollPosition = index * itemWidth;
+            journeyTimeline.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+            currentJourneyIndex = index;
+            updateJourneyNavigation();
+        }
+
+        journeyPrev.addEventListener('click', () => {
+            if (currentJourneyIndex > 0) {
+                scrollJourneyTo(currentJourneyIndex - 1);
+            }
+        });
+
+        journeyNext.addEventListener('click', () => {
+            const maxIndex = journeyItems.length - Math.floor(journeyTimeline.clientWidth / itemWidth);
+            if (currentJourneyIndex < maxIndex) {
+                scrollJourneyTo(currentJourneyIndex + 1);
+            }
+        });
+
+        // Update navigation on scroll
+        journeyTimeline.addEventListener('scroll', updateJourneyNavigation);
+        
+        // Update navigation on resize
+        window.addEventListener('resize', updateJourneyNavigation);
+        
+        // Initialize navigation state
+        updateJourneyNavigation();
+
+        // Auto-scroll journey timeline on mouse wheel
+        journeyTimeline.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+            
+            e.preventDefault();
+            journeyTimeline.scrollLeft += e.deltaY;
+            updateJourneyNavigation();
+        });
+
+        // Touch scroll for mobile
+        let startX = 0;
+        let scrollLeft = 0;
+
+        journeyTimeline.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].pageX - journeyTimeline.offsetLeft;
+            scrollLeft = journeyTimeline.scrollLeft;
+        });
+
+        journeyTimeline.addEventListener('touchmove', (e) => {
+            if (!startX) return;
+            
+            e.preventDefault();
+            const x = e.touches[0].pageX - journeyTimeline.offsetLeft;
+            const walk = (x - startX) * 2;
+            journeyTimeline.scrollLeft = scrollLeft - walk;
+        });
+
+        journeyTimeline.addEventListener('touchend', () => {
+            startX = 0;
+            updateJourneyNavigation();
+        });
+    </script>
 </body>
 
 </html>
