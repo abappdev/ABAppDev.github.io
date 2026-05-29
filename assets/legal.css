@@ -1,0 +1,239 @@
+/* Shared styles for legal/compliance pages on abappdev.in */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --md-sys-color-primary: #ED6237;
+    --md-sys-color-on-primary: #FFFFFF;
+    --md-sys-color-primary-container: #FFDAD4;
+    --md-sys-color-on-primary-container: #410E00;
+    --md-sys-color-surface: #FFF8F6;
+    --md-sys-color-on-surface: #231917;
+    --md-sys-color-surface-variant: #F5DDDA;
+    --md-sys-color-on-surface-variant: #53433F;
+    --md-sys-color-outline: #85736F;
+    --md-sys-color-outline-variant: #D8C2BE;
+    --md-sys-color-background: #FFF8F6;
+    --md-sys-color-on-background: #231917;
+    --md-sys-color-surface-container: #F7EFEC;
+    --md-sys-color-surface-container-high: #F1E9E6;
+    --shadow-1: 0 1px 2px 0 rgba(0,0,0,.3), 0 1px 3px 1px rgba(0,0,0,.15);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --md-sys-color-primary: #FFB4A8;
+        --md-sys-color-on-primary: #690100;
+        --md-sys-color-primary-container: #A42C00;
+        --md-sys-color-on-primary-container: #FFDAD4;
+        --md-sys-color-surface: #1A110F;
+        --md-sys-color-on-surface: #F1E9E6;
+        --md-sys-color-surface-variant: #53433F;
+        --md-sys-color-on-surface-variant: #D8C2BE;
+        --md-sys-color-outline: #A08C88;
+        --md-sys-color-outline-variant: #53433F;
+        --md-sys-color-background: #1A110F;
+        --md-sys-color-on-background: #F1E9E6;
+        --md-sys-color-surface-container: #221B19;
+        --md-sys-color-surface-container-high: #2D2521;
+    }
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--md-sys-color-surface-container);
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    backdrop-filter: blur(10px);
+}
+
+.topbar-inner {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.brand {
+    font-weight: 700;
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 0.2px;
+}
+
+.topbar-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.topbar-links a {
+    color: var(--md-sys-color-on-surface);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.topbar-links a:hover,
+.topbar-links a[aria-current="page"] {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+main.legal {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+}
+
+.legal-card {
+    background-color: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--shadow-1);
+}
+
+@media (max-width: 640px) {
+    .legal-card { padding: 24px; border-radius: 18px; }
+    main.legal { padding: 20px 14px 48px; }
+}
+
+.legal-card h1 {
+    color: var(--md-sys-color-primary);
+    font-size: 2.2em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+}
+
+.legal-card .subtitle {
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 1.05em;
+    margin-bottom: 24px;
+}
+
+.meta {
+    background: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+}
+
+.meta strong { color: var(--md-sys-color-on-surface); }
+
+.legal-card h2 {
+    color: var(--md-sys-color-primary);
+    font-size: 1.4em;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    scroll-margin-top: 80px;
+}
+
+.legal-card h3 {
+    color: var(--md-sys-color-on-surface);
+    font-size: 1.1em;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+.legal-card p { margin-bottom: 14px; color: var(--md-sys-color-on-surface-variant); }
+.legal-card ul, .legal-card ol { margin: 0 0 16px 22px; color: var(--md-sys-color-on-surface-variant); }
+.legal-card li { margin-bottom: 6px; }
+.legal-card a {
+    color: var(--md-sys-color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.callout {
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    border-left: 4px solid var(--md-sys-color-primary);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin: 18px 0 22px;
+}
+
+.callout p { color: inherit; margin: 0; }
+.callout p + p { margin-top: 8px; }
+
+.toc {
+    background: var(--md-sys-color-surface-container-high);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+}
+
+.toc strong { display: block; margin-bottom: 8px; color: var(--md-sys-color-on-surface); }
+.toc ol { margin: 0 0 0 20px; columns: 2; column-gap: 24px; }
+.toc li { margin-bottom: 4px; break-inside: avoid; }
+.toc a { color: var(--md-sys-color-primary); text-decoration: none; font-size: 14px; }
+.toc a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+    .toc ol { columns: 1; }
+}
+
+table.compact {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 22px;
+    font-size: 14px;
+}
+
+table.compact th,
+table.compact td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    vertical-align: top;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+table.compact th {
+    color: var(--md-sys-color-on-surface);
+    background: var(--md-sys-color-surface-container-high);
+}
+
+footer.legal-footer {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 13px;
+    text-align: center;
+}
+
+footer.legal-footer a {
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+}
+
+footer.legal-footer a:hover { text-decoration: underline; }

@@ -1123,6 +1123,28 @@
             margin-bottom: 16px;
         }
 
+        .footer-legal {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 20px;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .footer-legal a {
+            color: var(--md-sys-color-primary);
+            text-decoration: none;
+            padding: 4px 10px;
+            border-radius: 14px;
+            transition: background-color .25s ease, color .25s ease;
+        }
+
+        .footer-legal a:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+        }
+
 
         .contact-social-row {
             display: flex;
@@ -1841,9 +1863,20 @@
     <footer class="footer">
         <div class="container">
             <p>Made with ❤️ in India</p>
-            <p>&copy; 2025 AB AppDev. All rights reserved.</p>
+            <p>&copy; <span id="footerYear">2025</span> AB AppDev. All rights reserved.</p>
+            <nav class="footer-legal" aria-label="Legal">
+                <a href="/privacy-policy.html">Privacy Policy</a>
+                <a href="/terms-and-conditions.html">Terms &amp; Conditions</a>
+                <a href="/support.html">Support</a>
+            </nav>
         </div>
     </footer>
+    <script>
+        (function () {
+            var y = document.getElementById('footerYear');
+            if (y) y.textContent = new Date().getFullYear();
+        })();
+    </script>
 
     <!-- App Dialog Modal -->
     <div class="app-dialog-overlay" id="appDialogOverlay">
