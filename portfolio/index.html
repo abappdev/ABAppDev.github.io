@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Bhalerao — Developer Portfolio | AB App Dev</title>
+    <meta name="description" content="Portfolio of Abhishek Bhalerao — Android, iOS, and macOS developer. Apps, professional journey, and contact.">
+    <link rel="canonical" href="https://www.abappdev.in/portfolio/">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="/portfolio/css/tokens.css">
+    <link rel="stylesheet" href="/portfolio/css/layout.css">
+    <link rel="stylesheet" href="/portfolio/css/main.css">
+    <script src="/shared/js/theme.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="/portfolio/">AB AppDev</a></div>
+            <ul class="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#android">Android</a></li>
+                <li><a href="#ios">iOS & Mac</a></li>
+                <li><a href="#journey">My Journey</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/">Services</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i data-lucide="moon" id="themeIcon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about" class="section">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>Hello, I'm Abhishek Bhalerao</h1>
+                        <p class="motto">"Code with purpose, create with passion"</p>
+                        <p>A passionate developer crafting innovative applications. I specialize in creating seamless user experiences across Android, iOS, and Mac platforms, bringing ideas to life through clean code and thoughtful design.</p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn btn-primary">
+                                <i data-lucide="mail"></i>
+                                Get In Touch
+                            </a>
+                            <a href="#android" class="btn btn-outline">
+                                <i data-lucide="smartphone"></i>
+                                View My Work
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="profile-image">
+                            <img src="/shared/images/profilepic.png" alt="AB Profile Photo" />
+                            <i data-lucide="user" style="position: absolute; display: none;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="android" class="section">
+            <div class="container">
+                <h2 class="section-title">Android Applications</h2>
+                <p class="section-subtitle">Innovative mobile solutions for the Android ecosystem</p>
+                <div class="roadmap-container">
+                    <div class="roadmap" id="androidRoadmap"></div>
+                </div>
+                <div class="portfolio-nav">
+                    <button class="portfolio-nav-btn" id="androidPrev" type="button" aria-label="Previous">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <div class="portfolio-nav-indicators" id="androidIndicators"></div>
+                    <button class="portfolio-nav-btn" id="androidNext" type="button" aria-label="Next">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="ios" class="section">
+            <div class="container">
+                <h2 class="section-title">iOS & Mac Applications</h2>
+                <p class="section-subtitle">Elegant solutions for the Apple ecosystem</p>
+                <div class="roadmap-container">
+                    <div class="roadmap" id="iosRoadmap"></div>
+                </div>
+                <div class="portfolio-nav">
+                    <button class="portfolio-nav-btn" id="iosPrev" type="button" aria-label="Previous">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <div class="portfolio-nav-indicators" id="iosIndicators"></div>
+                    <button class="portfolio-nav-btn" id="iosNext" type="button" aria-label="Next">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="section">
+            <div class="container">
+                <h2 class="section-title">Professional Journey</h2>
+                <p class="section-subtitle">From student to seasoned developer</p>
+                <div class="journey-container">
+                    <div class="journey-timeline" id="journeyTimeline"></div>
+                </div>
+                <div class="journey-nav">
+                    <button class="journey-nav-btn" id="journeyPrev" type="button" aria-label="Previous">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <button class="journey-nav-btn" id="journeyNext" type="button" aria-label="Next">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Ready to bring your ideas to life? Let's talk!</p>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-social-row">
+                            <a href="mailto:ab.appdev.ai@gmail.com" class="contact-item" aria-label="Email">
+                                <div class="contact-icon"><i data-lucide="mail"></i></div>
+                                <div class="contact-item-text">
+                                    <h3>Email</h3>
+                                    <p>ab.appdev.ai@gmail.com</p>
+                                </div>
+                            </a>
+                            <a href="https://www.linkedin.com/in/abappdev" class="contact-item" aria-label="LinkedIn">
+                                <div class="contact-icon"><i data-lucide="linkedin"></i></div>
+                                <div class="contact-item-text">
+                                    <h3>LinkedIn</h3>
+                                    <p>Connect professionally</p>
+                                </div>
+                            </a>
+                            <a href="https://github.com/abappdev" class="contact-item" aria-label="GitHub">
+                                <div class="contact-icon"><i data-lucide="github"></i></div>
+                                <div class="contact-item-text">
+                                    <h3>GitHub</h3>
+                                    <p>View my repositories</p>
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com/abhishekbhalerao04" class="contact-item" aria-label="Instagram">
+                                <div class="contact-icon"><i data-lucide="instagram"></i></div>
+                                <div class="contact-item-text">
+                                    <h3>Instagram</h3>
+                                    <p>Connect socially</p>
+                                </div>
+                            </a>
+                            <a href="https://x.com/abappdev" class="contact-item" aria-label="X">
+                                <div class="contact-icon"><i data-lucide="twitter"></i></div>
+                                <div class="contact-item-text">
+                                    <h3>X</h3>
+                                    <p>Follow my journey</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Made with care in India</p>
+            <p>&copy; <span id="footerYear">2026</span> AB AppDev. All rights reserved.</p>
+            <nav class="footer-legal" aria-label="Footer">
+                <a href="/">Services</a>
+                <a href="/home/legal/privacy.html">Privacy</a>
+                <a href="/home/legal/terms.html">Terms</a>
+                <a href="/home/legal/support.html">Support</a>
+            </nav>
+        </div>
+    </footer>
+
+    <div class="app-dialog-overlay" id="appDialogOverlay">
+        <div class="app-dialog">
+            <div class="app-dialog-header">
+                <div class="app-dialog-icon" id="appDialogIcon">
+                    <i data-lucide="smartphone" id="appDialogIconLucide"></i>
+                    <div class="platform-badge" id="appDialogPlatformBadge">
+                        <i data-lucide="android" id="appDialogPlatformIcon"></i>
+                    </div>
+                </div>
+                <div class="app-dialog-header-text">
+                    <h3 class="app-dialog-title" id="appDialogTitle">App Title</h3>
+                    <div class="app-dialog-platform" id="appDialogPlatform">Android Application</div>
+                </div>
+                <button class="app-dialog-close" id="appDialogClose" type="button" aria-label="Close">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="app-dialog-content" id="appDialogContentContainer">
+                <div class="app-dialog-description" id="appDialogDescription"></div>
+                <div class="app-dialog-tech-stack" id="appDialogTechStack"></div>
+                <div id="appDialogSections"></div>
+            </div>
+            <div class="app-dialog-actions" id="appDialogActions"></div>
+        </div>
+    </div>
+
+    <script type="module" src="/portfolio/js/main.js"></script>
+</body>
+</html>

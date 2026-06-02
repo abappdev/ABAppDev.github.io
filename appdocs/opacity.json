@@ -1,0 +1,404 @@
+{
+  "id": "opacity",
+  "appName": "Opacity Social",
+  "publisher": "AB App Dev",
+  "meta": {
+    "effectiveDate": "May 29, 2026",
+    "lastUpdated": "May 29, 2026"
+  },
+  "publisherPolicyLinks": {
+    "privacy": "/home/legal/privacy.html",
+    "terms": "/home/legal/terms.html",
+    "refunds": "/home/legal/refunds.html"
+  },
+  "tabs": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "subtitle": "For the Opacity Social mobile application.",
+      "description": "Privacy Policy for the Opacity Social application by AB App Dev.",
+      "sections": [
+        {
+          "type": "meta",
+          "items": [
+            { "label": "Effective Date", "value": "May 29, 2026" },
+            { "label": "Last Updated", "value": "May 29, 2026" },
+            { "label": "Publisher", "value": "AB App Dev" }
+          ]
+        },
+        {
+          "type": "callout",
+          "paragraphs": [
+            "This notice covers the Opacity Social Android app. It supplements, and where it conflicts controls over, the publisher-wide <a href=\"/home/legal/privacy.html\">AB App Dev Privacy Policy</a>."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "1. What Opacity Social does"
+        },
+        {
+          "type": "paragraph",
+          "html": "Opacity Social is a project management and team collaboration app. It supports projects, chats, invites, and Kanban boards. To deliver these features the app needs to handle some personal data on your behalf."
+        },
+        {
+          "type": "heading",
+          "text": "2. Data we collect"
+        },
+        {
+          "type": "table",
+          "headers": ["Category", "Examples", "Purpose"],
+          "rows": [
+            ["Account data", "Display name, email address, profile photo, authentication identifiers", "Create and protect your account"],
+            ["Workspace content", "Projects, tasks, Kanban cards, messages, attachments, invitations", "Provide collaboration features"],
+            ["Contacts of invitees", "Email or username you provide when inviting someone", "Send them an invitation to your project"],
+            ["Device & diagnostic data", "Device model, OS version, app version, locale, crash logs, performance metrics, IP address", "Reliability, abuse prevention, support"],
+            ["Usage data", "Feature interactions, screens viewed, session duration", "Improve the product, prioritize fixes"],
+            ["Push tokens", "FCM/APNs registration token (if you allow notifications)", "Deliver in-app notifications"],
+            ["Purchase data", "Subscription status, plan, country of purchase, transaction identifier", "Enable paid features and receipts"]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "We do not request or store full payment card numbers. Payments are processed by the platform store you used (Apple or Google) or by Stripe for any web purchases."
+        },
+        {
+          "type": "heading",
+          "text": "3. Permissions we may request"
+        },
+        {
+          "type": "list",
+          "items": [
+            "<strong>Internet / network:</strong> required to sync your data and send messages.",
+            "<strong>Notifications:</strong> optional, used to alert you to invites, mentions, and updates.",
+            "<strong>Camera and photo library:</strong> optional, used only when you choose to attach an image or set a profile photo.",
+            "<strong>Storage:</strong> used to cache content for offline use."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "Permissions are requested when a feature needs them, and you can revoke them in your device settings at any time."
+        },
+        {
+          "type": "heading",
+          "text": "4. How we use your data"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Provide the core collaboration features (projects, chats, invites, Kanban).",
+            "Authenticate you and keep your workspace secure.",
+            "Send service notifications you opt into.",
+            "Diagnose crashes, prevent abuse, and improve quality.",
+            "Process subscriptions and comply with tax and accounting obligations.",
+            "Respond to support requests."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "5. Sharing"
+        },
+        {
+          "type": "paragraph",
+          "html": "We share data only with processors that help us run the app, such as cloud storage and database providers (for example, Google Firebase / Firestore), authentication providers, crash reporting, push notification gateways, and payment processors (Apple, Google, Stripe). We do not sell or rent personal information and do not use it for cross-context behavioral advertising."
+        },
+        {
+          "type": "paragraph",
+          "html": "Other members of a workspace will see content you post in shared projects, chats, and boards. If you invite a teammate, the invitation contains the contact identifier you provided."
+        },
+        {
+          "type": "heading",
+          "text": "6. Payments"
+        },
+        {
+          "type": "paragraph",
+          "html": "If you purchase a subscription through Google Play or the App Store, the platform handles the transaction under its terms and privacy policy. If you purchase through our website, Stripe handles the transaction under <a href=\"https://stripe.com/privacy\" rel=\"noopener\" target=\"_blank\">Stripe's Privacy Policy</a>. We receive only a transaction confirmation, an opaque customer/charge identifier, the amount and currency, the country of purchase, and limited card metadata (such as brand and last four digits) for receipts and dispute handling."
+        },
+        {
+          "type": "heading",
+          "text": "7. Data retention"
+        },
+        {
+          "type": "paragraph",
+          "html": "We keep account and workspace data while your account is active. Crash and diagnostic logs are typically retained for up to 90 days. Transaction records may be retained for up to 7–10 years where required by tax or accounting law. When you delete your account, your personal data is removed or anonymized within 30 days, except where we must retain certain records by law or to resolve disputes."
+        },
+        {
+          "type": "heading",
+          "text": "8. Security"
+        },
+        {
+          "type": "paragraph",
+          "html": "Data is encrypted in transit (TLS) and at rest by our cloud provider. Access to production systems is restricted, audited, and limited to least-privilege admins. To report a vulnerability, please email <a href=\"mailto:security@abappdev.in\">security@abappdev.in</a>."
+        },
+        {
+          "type": "heading",
+          "text": "9. International transfers"
+        },
+        {
+          "type": "paragraph",
+          "html": "Our processors may store and process data outside your country, including in the United States and the European Union. Where required, transfers are protected by Standard Contractual Clauses or comparable safeguards."
+        },
+        {
+          "type": "heading",
+          "text": "10. Your rights"
+        },
+        {
+          "type": "paragraph",
+          "html": "Depending on where you live, you may have the right to access, correct, port, restrict, or delete your data, to object to certain processing, to withdraw consent, and to lodge a complaint with a supervisory authority (such as your local Data Protection Authority, the UK ICO, or India's Data Protection Board under the DPDP Act, 2023). To exercise any right, email <a href=\"mailto:privacy@abappdev.in\">privacy@abappdev.in</a>. We do not sell or share personal information as defined under the CCPA/CPRA."
+        },
+        {
+          "type": "heading",
+          "text": "11. Children"
+        },
+        {
+          "type": "paragraph",
+          "html": "Opacity Social is not directed to children under 13 (or the equivalent minimum age in your country). We do not knowingly collect personal data from children. If you believe a child has provided us data, contact <a href=\"mailto:privacy@abappdev.in\">privacy@abappdev.in</a> and we will delete it."
+        },
+        {
+          "type": "heading",
+          "text": "12. Changes"
+        },
+        {
+          "type": "paragraph",
+          "html": "We may update this notice. Material changes will be flagged in-app or here. The \"Last Updated\" date reflects the most recent revision."
+        },
+        {
+          "type": "heading",
+          "text": "13. Contact"
+        },
+        {
+          "type": "paragraph",
+          "html": "Privacy: <a href=\"mailto:privacy@abappdev.in\">privacy@abappdev.in</a><br>Support: <a href=\"mailto:support@abappdev.in\">support@abappdev.in</a><br>Publisher: AB App Dev · <a href=\"https://www.abappdev.in\">www.abappdev.in</a>"
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms & Conditions",
+      "subtitle": "For the Opacity Social application.",
+      "description": "Terms and Conditions for the Opacity Social application by AB App Dev.",
+      "sections": [
+        {
+          "type": "meta",
+          "items": [
+            { "label": "Effective Date", "value": "May 29, 2026" },
+            { "label": "Last Updated", "value": "May 29, 2026" },
+            { "label": "Publisher", "value": "AB App Dev" }
+          ]
+        },
+        {
+          "type": "callout",
+          "paragraphs": [
+            "By using Opacity Social you agree to these Terms and to the publisher-wide <a href=\"/home/legal/terms.html\">AB App Dev Terms &amp; Conditions</a>. The app-specific terms below supplement, and where they conflict control over, the publisher-wide Terms for Opacity Social."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "1. Service description"
+        },
+        {
+          "type": "paragraph",
+          "html": "Opacity Social is a project management and team collaboration application that supports projects, chats, invites, and Kanban boards. Some features are free; some require a paid subscription."
+        },
+        {
+          "type": "heading",
+          "text": "2. Account"
+        },
+        {
+          "type": "paragraph",
+          "html": "You need an account to use most features. You agree to provide accurate information, keep credentials secure, and not share your account with others except as the workspace features allow. You are responsible for activity on your account."
+        },
+        {
+          "type": "heading",
+          "text": "3. License"
+        },
+        {
+          "type": "paragraph",
+          "html": "We grant you a limited, non-exclusive, non-transferable license to install and use Opacity Social on devices you own or control, for personal or internal business use. For installs from the Apple App Store, the Apple Licensed Application End User License Agreement (LAEULA) applies in addition to these Terms. For installs from Google Play, the Google Play Terms of Service apply in addition."
+        },
+        {
+          "type": "heading",
+          "text": "4. Workspaces and content"
+        },
+        {
+          "type": "paragraph",
+          "html": "You retain ownership of the projects, tasks, messages, attachments, and other content you create or upload (\"User Content\"). You grant AB App Dev a limited license to host, store, transmit, display, and back up your User Content solely to operate Opacity Social. You are responsible for ensuring you have the rights to share any User Content with collaborators you invite."
+        },
+        {
+          "type": "heading",
+          "text": "5. Acceptable use"
+        },
+        {
+          "type": "list",
+          "items": [
+            "No illegal, infringing, or harassing content.",
+            "No malware, spam, or attempts to bypass security or rate limits.",
+            "No reverse engineering, except where the law allows.",
+            "No use that interferes with other users or the integrity of the service."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "6. Subscriptions and payments"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pricing, billing frequency, and renewal terms are shown at the point of purchase."
+        },
+        {
+          "type": "list",
+          "items": [
+            "<strong>Google Play:</strong> subscriptions are billed by Google Play Billing and renew automatically until cancelled at least 24 hours before the end of the current period through your Google account.",
+            "<strong>App Store:</strong> if Opacity Social is later distributed on iOS, in-app purchases are billed by Apple under Apple Media Services Terms.",
+            "<strong>Stripe (web):</strong> direct purchases on our website are processed by Stripe, Inc."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "You authorize the platform processor to charge the listed amount and applicable taxes on each renewal until you cancel."
+        },
+        {
+          "type": "heading",
+          "text": "7. Refunds and cancellations"
+        },
+        {
+          "type": "list",
+          "items": [
+            "You can cancel a subscription at any time. Cancellation stops future renewals; access continues until the end of the current paid period.",
+            "<strong>All charges are non-refundable</strong>, except where a refund is required by law or granted by an app store. See the <a href=\"/home/legal/refunds.html\">Cancellation &amp; Refund Policy</a> for full details.",
+            "Google Play and Apple App Store refunds are governed by Google's and Apple's policies and are at their discretion. Requests should be submitted directly to those platforms.",
+            "For purchases billed by Stripe on our website, we do not refund change of mind, unused time, or failure to cancel before renewal. We will correct genuine billing errors and honor non-waivable statutory rights. Email <a href=\"mailto:billing@abappdev.in\">billing@abappdev.in</a> with your order details."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "8. Termination"
+        },
+        {
+          "type": "paragraph",
+          "html": "We may suspend or terminate access if you violate these Terms or to comply with law. You may stop using the app at any time. On termination, your subscription remains active until the end of the current paid period; we are not required to issue further refunds beyond what is provided in Section 7 or required by law."
+        },
+        {
+          "type": "heading",
+          "text": "9. Disclaimers and liability"
+        },
+        {
+          "type": "paragraph",
+          "html": "Opacity Social is provided \"as is\" to the extent permitted by law. The disclaimers, limitation of liability, indemnity, and governing-law provisions in the publisher-wide <a href=\"/home/legal/terms.html\">AB App Dev Terms &amp; Conditions</a> apply to your use of Opacity Social."
+        },
+        {
+          "type": "heading",
+          "text": "10. Changes"
+        },
+        {
+          "type": "paragraph",
+          "html": "We may update these Terms. Material changes will be flagged in-app or here. Continued use after the effective date constitutes acceptance."
+        },
+        {
+          "type": "heading",
+          "text": "11. Contact"
+        },
+        {
+          "type": "paragraph",
+          "html": "Legal: <a href=\"mailto:legal@abappdev.in\">legal@abappdev.in</a><br>Support: <a href=\"mailto:support@abappdev.in\">support@abappdev.in</a><br>Publisher: AB App Dev · <a href=\"https://www.abappdev.in\">www.abappdev.in</a>"
+        }
+      ]
+    },
+    "support": {
+      "title": "Opacity Social Support",
+      "subtitle": "Help with projects, chats, invites, Kanban boards, and your subscription.",
+      "description": "Help and support for the Opacity Social application by AB App Dev.",
+      "sections": [
+        {
+          "type": "callout",
+          "paragraphs": [
+            "<strong>Email us at</strong> <a href=\"mailto:support@abappdev.in\">support@abappdev.in</a> with the app version (Settings → About), your device model, and a short description of the issue. Most replies go out within 1 business day."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Common questions"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "How do I invite someone to a project?"
+        },
+        {
+          "type": "paragraph",
+          "html": "Open the project, tap the invite icon, and enter the person's email or username. They will receive an invitation they can accept inside the app."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "Why am I not getting notifications?"
+        },
+        {
+          "type": "paragraph",
+          "html": "Make sure notifications are enabled for Opacity Social in your device settings, that the app has run at least once after install, and that you're signed in. Some Android devices also need the app exempt from battery optimization."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "How do I move a card on the Kanban board?"
+        },
+        {
+          "type": "paragraph",
+          "html": "Long-press a card and drag it to another column, or open the card and change its status from the menu."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "text": "How do I delete my account?"
+        },
+        {
+          "type": "paragraph",
+          "html": "Open <em>Settings → Account → Delete account</em> in the app, or email <a href=\"mailto:privacy@abappdev.in\">privacy@abappdev.in</a>. Your personal data is removed or anonymized within 30 days, except where law requires us to keep limited records."
+        },
+        {
+          "type": "heading",
+          "text": "Subscriptions, billing, and refunds"
+        },
+        {
+          "type": "list",
+          "items": [
+            "<strong>Google Play:</strong> manage your plan in <em>Play Store → Profile → Payments &amp; subscriptions → Subscriptions</em>. Refunds: <a href=\"https://support.google.com/googleplay/answer/2479637\" rel=\"noopener\" target=\"_blank\">Google Play refund help</a>.",
+            "<strong>App Store (if available):</strong> manage in <em>Settings → [Your Name] → Subscriptions</em>. Refunds: <a href=\"https://support.apple.com/billing\" rel=\"noopener\" target=\"_blank\">Apple billing help</a>.",
+            "<strong>Web (Stripe):</strong> contact <a href=\"mailto:billing@abappdev.in\">billing@abappdev.in</a> with your order ID. Charges are non-refundable except where required by law — see our <a href=\"/home/legal/refunds.html\">Cancellation &amp; Refund Policy</a>."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Report a bug"
+        },
+        {
+          "type": "paragraph",
+          "html": "Email <a href=\"mailto:bugs@abappdev.in\">bugs@abappdev.in</a> and please include:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "App version (Settings → About)",
+            "Device model and OS version",
+            "Steps to reproduce",
+            "What you expected vs. what happened",
+            "Screenshots or a screen recording, if possible"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Feature requests"
+        },
+        {
+          "type": "paragraph",
+          "html": "We'd love to hear what would make Opacity Social better for your team. Email <a href=\"mailto:feedback@abappdev.in\">feedback@abappdev.in</a>."
+        },
+        {
+          "type": "heading",
+          "text": "Security"
+        },
+        {
+          "type": "paragraph",
+          "html": "To report a security issue privately, please email <a href=\"mailto:security@abappdev.in\">security@abappdev.in</a>. We take responsible disclosure seriously and will respond as quickly as we can."
+        }
+      ]
+    }
+  }
+}

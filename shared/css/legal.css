@@ -1,45 +1,9 @@
-/* Shared styles for legal/compliance pages on abappdev.in */
+@import url('tokens.css');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-:root {
-    --md-sys-color-primary: #ED6237;
-    --md-sys-color-on-primary: #FFFFFF;
-    --md-sys-color-primary-container: #FFDAD4;
-    --md-sys-color-on-primary-container: #410E00;
-    --md-sys-color-surface: #FFF8F6;
-    --md-sys-color-on-surface: #231917;
-    --md-sys-color-surface-variant: #F5DDDA;
-    --md-sys-color-on-surface-variant: #53433F;
-    --md-sys-color-outline: #85736F;
-    --md-sys-color-outline-variant: #D8C2BE;
-    --md-sys-color-background: #FFF8F6;
-    --md-sys-color-on-background: #231917;
-    --md-sys-color-surface-container: #F7EFEC;
-    --md-sys-color-surface-container-high: #F1E9E6;
-    --shadow-1: 0 1px 2px 0 rgba(0,0,0,.3), 0 1px 3px 1px rgba(0,0,0,.15);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --md-sys-color-primary: #FFB4A8;
-        --md-sys-color-on-primary: #690100;
-        --md-sys-color-primary-container: #A42C00;
-        --md-sys-color-on-primary-container: #FFDAD4;
-        --md-sys-color-surface: #1A110F;
-        --md-sys-color-on-surface: #F1E9E6;
-        --md-sys-color-surface-variant: #53433F;
-        --md-sys-color-on-surface-variant: #D8C2BE;
-        --md-sys-color-outline: #A08C88;
-        --md-sys-color-outline-variant: #53433F;
-        --md-sys-color-background: #1A110F;
-        --md-sys-color-on-background: #F1E9E6;
-        --md-sys-color-surface-container: #221B19;
-        --md-sys-color-surface-container-high: #2D2521;
-    }
 }
 
 html { scroll-behavior: smooth; }
@@ -51,6 +15,7 @@ body {
     line-height: 1.65;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .topbar {
@@ -237,3 +202,53 @@ footer.legal-footer a {
 }
 
 footer.legal-footer a:hover { text-decoration: underline; }
+
+/* Appdocs tabbed layout */
+.legal-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.legal-tabs .tab-btn {
+    background: transparent;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    color: var(--md-sys-color-on-surface);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.legal-tabs .tab-btn:hover {
+    background: var(--md-sys-color-surface-container-high);
+}
+
+.legal-tabs .tab-btn[aria-selected="true"] {
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    border-color: var(--md-sys-color-primary);
+}
+
+.legal-error {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.legal-error h1 {
+    color: var(--md-sys-color-primary);
+    margin-bottom: 12px;
+}
+
+.legal-loading {
+    text-align: center;
+    padding: 48px;
+    color: var(--md-sys-color-on-surface-variant);
+}

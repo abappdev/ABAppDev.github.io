@@ -1,0 +1,1616 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-background);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px;
+}
+
+/* Navbar - Mobile First */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--md-sys-color-surface-container);
+    backdrop-filter: blur(10px);
+    padding: 12px 0;
+    z-index: 1000;
+    box-shadow: var(--md-sys-elevation-level2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--md-sys-color-primary);
+}
+
+.nav-links {
+    display: none;
+    gap: 24px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--md-sys-color-on-surface);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--md-sys-color-outline);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--md-sys-color-on-surface);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border-color: var(--md-sys-color-primary);
+}
+
+/* Main content - Mobile First */
+main {
+    margin-top: 64px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.section {
+    padding: 40px 0;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--md-sys-color-primary);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 16px;
+    color: var(--md-sys-color-on-surface-variant);
+    margin-bottom: 32px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Hero/About section - Mobile First */
+.hero {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+    width: 100%;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-content h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--md-sys-color-on-surface);
+    line-height: 1.1;
+    width: 100%;
+}
+
+.hero-content .motto {
+    font-size: 18px;
+    color: var(--md-sys-color-primary);
+    margin-bottom: 24px;
+    font-style: italic;
+    line-height: 1.3;
+    width: 100%;
+}
+
+.hero-content p {
+    font-size: 16px;
+    margin-bottom: 32px;
+    color: var(--md-sys-color-on-surface-variant);
+    line-height: 1.5;
+    width: 100%;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: -1;
+    width: 100%;
+}
+
+.profile-image {
+    width: 275px;
+    height: 275px;
+    border-radius: 24px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    color: var(--md-sys-color-on-primary);
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+/* Card styles */
+.card {
+    background-color: var(--md-sys-color-surface-container);
+    border-radius: 24px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: var(--md-sys-elevation-level1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--md-sys-elevation-level3);
+    transform: translateY(-4px);
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--md-sys-color-on-surface);
+}
+
+.card-description {
+    color: var(--md-sys-color-on-surface-variant);
+    margin-bottom: 16px;
+}
+
+/* App portfolio sections - Rearchitected */
+.roadmap-container {
+    width: 100%;
+    position: relative;
+    margin-bottom: 40px;
+    overflow: hidden;
+    user-select: none;
+}
+
+.roadmap {
+    display: flex;
+    gap: 16px;
+    padding: 20px 16px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(0);
+    align-items: stretch;
+}
+
+.roadmap-item {
+    min-width: 280px;
+    max-width: 320px;
+    flex-shrink: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(30px);
+    opacity: 0;
+    display: flex;
+}
+
+.roadmap-item.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.roadmap-card {
+    background-color: var(--md-sys-color-surface-container);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--md-sys-elevation-level1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.roadmap-card:hover {
+    box-shadow: var(--md-sys-elevation-level3);
+    transform: translateY(-4px) scale(1.02);
+    border-color: var(--md-sys-color-primary);
+}
+
+.roadmap-card:active {
+    transform: translateY(-2px) scale(1.01);
+    transition-duration: 0.1s;
+}
+
+.roadmap-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.roadmap-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    font-size: 20px;
+}
+
+.roadmap-icon.android {
+    background: linear-gradient(135deg, #3DDC84, #00C851);
+    color: #FFFFFF;
+}
+
+.roadmap-icon.ios {
+    background: linear-gradient(135deg, #007AFF, #5856D6);
+    color: #FFFFFF;
+}
+
+.roadmap-icon.mac {
+    background: linear-gradient(135deg, #8E8E93, #48484A);
+    color: #FFFFFF;
+}
+
+.roadmap-icon.swift {
+    background: linear-gradient(135deg, #FA7343, #F7431A);
+    color: #FFFFFF;
+}
+
+.platform-badge {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    border: 2px solid var(--md-sys-color-surface-container);
+}
+
+.platform-badge.android {
+    background-color: #3DDC84;
+    color: #FFFFFF;
+}
+
+.platform-badge.ios {
+    background-color: #007AFF;
+    color: #FFFFFF;
+}
+
+.platform-badge.mac {
+    background-color: #8E8E93;
+    color: #FFFFFF;
+}
+
+.roadmap-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--md-sys-color-on-surface);
+    flex: 1;
+    line-height: 1.3;
+}
+
+.roadmap-description {
+    color: var(--md-sys-color-on-surface-variant);
+    line-height: 1.4;
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+}
+
+.tech-chip {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Portfolio navigation - Improved */
+.portfolio-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.portfolio-nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--md-sys-color-outline);
+    background-color: var(--md-sys-color-surface-container);
+    color: var(--md-sys-color-on-surface);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 18px;
+    user-select: none;
+}
+
+.portfolio-nav-btn:hover:not(:disabled) {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border-color: var(--md-sys-color-primary);
+    transform: scale(1.05);
+    box-shadow: var(--md-sys-elevation-level2);
+}
+
+.portfolio-nav-btn:active:not(:disabled) {
+    transform: scale(0.95);
+    transition-duration: 0.1s;
+}
+
+.portfolio-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.portfolio-nav-indicators {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.portfolio-nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-outline-variant);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.portfolio-nav-dot.active {
+    background-color: var(--md-sys-color-primary);
+    transform: scale(1.25);
+}
+
+.portfolio-nav-dot:hover {
+    background-color: var(--md-sys-color-primary);
+    opacity: 0.7;
+}
+
+/* App Dialog Modal */
+.app-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app-dialog-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.app-dialog {
+    background-color: var(--md-sys-color-surface-container-high);
+    border-radius: 28px;
+    max-width: 600px;
+    width: 90vw;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: var(--md-sys-elevation-level3);
+    transform: scale(0.8) translateY(40px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app-dialog-overlay.active .app-dialog {
+    transform: scale(1) translateY(0);
+}
+
+.app-dialog-header {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.app-dialog-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    position: relative;
+}
+
+.app-dialog-header-text {
+    flex: 1;
+}
+
+.app-dialog-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--md-sys-color-on-surface);
+    margin-bottom: 4px;
+}
+
+.app-dialog-platform {
+    font-size: 14px;
+    color: var(--md-sys-color-on-surface-variant);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.app-dialog-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--md-sys-color-on-surface);
+    transition: all 0.3s ease;
+}
+
+.app-dialog-close:hover {
+    background-color: var(--md-sys-color-surface-container-highest);
+}
+
+.app-dialog-content {
+    padding: 24px;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+.app-dialog-description {
+    color: var(--md-sys-color-on-surface-variant);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-size: 16px;
+}
+
+.app-dialog-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.app-dialog-tech-chip {
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    padding: 8px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.app-dialog-section {
+    margin-bottom: 24px;
+}
+
+.app-dialog-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--md-sys-color-on-surface);
+    margin-bottom: 12px;
+}
+
+.app-dialog-section-content {
+    color: var(--md-sys-color-on-surface-variant);
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.app-dialog-actions {
+    padding: 16px 24px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.app-dialog-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    min-height: 40px;
+}
+
+.app-dialog-btn-primary {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.app-dialog-btn-primary:hover {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    transform: translateY(-2px);
+    box-shadow: var(--md-sys-elevation-level2);
+}
+
+.app-dialog-btn-secondary {
+    background-color: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface);
+    border: 1px solid var(--md-sys-color-outline);
+}
+
+.app-dialog-btn-secondary:hover {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    border-color: var(--md-sys-color-primary);
+}
+
+.app-dialog-btn-text {
+    background: none;
+    color: var(--md-sys-color-primary);
+    border: none;
+    padding: 8px 16px;
+}
+
+.app-dialog-btn-text:hover {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+.loading-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--md-sys-color-outline-variant);
+    border-top: 2px solid var(--md-sys-color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 12px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive dialog */
+@media (max-width: 768px) {
+    .app-dialog {
+        width: 95vw;
+        max-height: 90vh;
+        border-radius: 24px;
+    }
+
+    .app-dialog-actions {
+        flex-direction: column;
+    }
+
+    .app-dialog-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Journey timeline - Mobile First */
+.journey-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 16px;
+}
+
+.journey-container::before {
+    content: '';
+    position: absolute;
+    top: 120px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--md-sys-color-outline-variant) 10%,
+            var(--md-sys-color-primary) 30%,
+            var(--md-sys-color-primary) 70%,
+            var(--md-sys-color-outline-variant) 90%,
+            transparent 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.journey-timeline {
+    position: relative;
+    display: flex;
+    gap: 24px;
+    padding: 40px 0 50px;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(0);
+    align-items: flex-start;
+}
+
+.journey-item {
+    position: relative;
+    min-width: 280px;
+    max-width: 300px;
+    background-color: var(--md-sys-color-surface-container);
+    border-radius: 20px;
+    padding: 24px 20px 20px 20px;
+    flex-shrink: 0;
+    box-shadow: var(--md-sys-elevation-level1);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+    opacity: 1;
+    transform: translateY(0);
+    margin-top: 60px;
+}
+
+.journey-item.current {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: var(--md-sys-elevation-level3);
+    background-color: var(--md-sys-color-surface-container-high);
+    border: 2px solid var(--md-sys-color-primary);
+}
+
+.journey-item.future {
+    opacity: 0.7;
+    transform: translateY(0);
+}
+
+.journey-item:hover {
+    opacity: 1;
+    transform: scale(1.05) translateY(-8px);
+    box-shadow: var(--md-sys-elevation-level3);
+}
+
+.journey-item-icon {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 4;
+    border: 4px solid var(--md-sys-color-background);
+    box-shadow: var(--md-sys-elevation-level2);
+}
+
+.journey-item-icon.education {
+    background: linear-gradient(135deg, #4285F4, #34A853);
+    color: #FFFFFF;
+}
+
+.journey-item-icon.internship {
+    background: linear-gradient(135deg, #FF9800, #FF5722);
+    color: #FFFFFF;
+}
+
+.journey-item-icon.junior {
+    background: linear-gradient(135deg, #9C27B0, #673AB7);
+    color: #FFFFFF;
+}
+
+.journey-item-icon.senior {
+    background: linear-gradient(135deg, #6750A4, #1976D2);
+    color: #FFFFFF;
+}
+
+.journey-item::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 16px;
+    background-color: var(--md-sys-color-outline-variant);
+    border-radius: 50%;
+    border: 3px solid var(--md-sys-color-background);
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+.journey-item.current::before {
+    width: 24px;
+    height: 24px;
+    top: -12px;
+    background-color: var(--md-sys-color-primary);
+    box-shadow: 0 0 0 4px var(--md-sys-color-primary-container);
+}
+
+.journey-item:hover::before {
+    width: 20px;
+    height: 20px;
+    top: -10px;
+    background-color: var(--md-sys-color-primary);
+}
+
+.journey-year {
+    color: var(--md-sys-color-primary);
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.journey-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--md-sys-color-on-surface);
+    line-height: 1.3;
+    text-align: center;
+}
+
+.journey-description {
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Journey navigation buttons */
+.journey-nav {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.journey-nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--md-sys-color-outline);
+    background-color: var(--md-sys-color-surface-container);
+    color: var(--md-sys-color-on-surface);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.journey-nav-btn:hover {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    border-color: var(--md-sys-color-primary);
+    transform: scale(1.1);
+}
+
+.journey-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Responsive design for journey */
+@media (max-width: 768px) {
+    .journey-container::before {
+        top: 110px;
+    }
+
+    .journey-item {
+        min-width: 280px;
+        max-width: 300px;
+        margin-top: 50px;
+        padding: 20px 16px 16px 16px;
+    }
+
+    .journey-item-icon {
+        width: 56px;
+        height: 56px;
+        top: -28px;
+        border-radius: 14px;
+    }
+
+    .journey-timeline {
+        gap: 24px;
+        padding: 30px 0 50px;
+    }
+}
+
+/* Contact section - Mobile First */
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+}
+
+.contact-info {
+    width: 100%;
+    max-width: 800px;
+}
+
+.contact-social-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+/* Desktop: show full button info */
+@media (min-width: 769px) {
+    .contact-social-row {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) and (min-width: 481px) {
+    .contact-social-row {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 14px;
+    }
+}
+
+/* Mobile: show only icons */
+@media (max-width: 480px) {
+    .contact-social-row {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+    }
+
+    .contact-social-row .contact-item {
+        flex-direction: column;
+        padding: 12px 8px;
+        text-align: center;
+        min-height: 70px;
+        border-radius: 12px;
+    }
+
+    .contact-social-row .contact-item-text {
+        display: none;
+    }
+
+    .contact-social-row .contact-icon {
+        width: 36px;
+        height: 36px;
+        margin: 0 auto;
+    }
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background-color: var(--md-sys-color-surface-container);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--md-sys-color-on-surface);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.contact-item:hover {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    transform: translateY(-2px);
+    box-shadow: var(--md-sys-elevation-level2);
+    border-color: var(--md-sys-color-primary);
+}
+
+.contact-item:active {
+    transform: translateY(0);
+    transition-duration: 0.1s;
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--md-sys-color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--md-sys-color-on-primary);
+    flex-shrink: 0;
+}
+
+.contact-item-text h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: inherit;
+}
+
+.contact-item-text p {
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 0;
+}
+
+
+
+/* Footer */
+.footer {
+    background-color: var(--md-sys-color-surface-container-high);
+    padding: 40px 0;
+    text-align: center;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.footer p {
+    margin-bottom: 16px;
+}
+
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.footer-legal a {
+    color: var(--md-sys-color-primary);
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 14px;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.footer-legal a:hover {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+
+.contact-social-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    background: #f5f5f5;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.contact-item:hover {
+    background: #e0e0e0;
+    width: 180px;
+    height: 120px;
+}
+
+.contact-icon {
+    font-size: 24px;
+    color: #333;
+    transition: transform 0.3s;
+}
+
+.contact-item:hover .contact-icon {
+    transform: scale(1.2);
+}
+
+.contact-item-text {
+    opacity: 0;
+    transform: translateY(10px);
+    text-align: center;
+    color: #111;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.contact-item:hover .contact-item-text {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.contact-item-text h3 {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.contact-item-text p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+
+/* Responsive Design - Progressive Enhancement */
+
+/* Small Mobile (320px - 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+
+
+    .section {
+        padding: 32px 0;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .section-subtitle {
+        font-size: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content .motto {
+        font-size: 16px;
+    }
+
+    .hero-content p {
+        font-size: 15px;
+    }
+
+    .profile-image {
+        width: 160px;
+        height: 160px;
+        font-size: 64px;
+    }
+
+    .roadmap {
+        padding: 16px 12px;
+        gap: 12px;
+    }
+
+    .roadmap-item {
+        min-width: 260px;
+        max-width: 280px;
+    }
+
+    .roadmap-card {
+        padding: 16px;
+    }
+
+    .roadmap-title {
+        font-size: 16px;
+    }
+
+    .roadmap-description {
+        font-size: 13px;
+        -webkit-line-clamp: 3;
+    }
+
+    .journey-container {
+        padding: 0 8px;
+    }
+
+    .journey-timeline {
+        gap: 20px;
+        padding: 30px 0 40px;
+    }
+
+    .journey-item {
+        min-width: 260px;
+        max-width: 280px;
+        padding: 16px;
+    }
+}
+
+/* Tablet Portrait (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .section {
+        padding: 48px 0;
+    }
+
+    .section-title {
+        font-size: 36px;
+    }
+
+    .section-subtitle {
+        font-size: 17px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content .motto {
+        font-size: 20px;
+    }
+
+    .profile-image {
+        width: 220px;
+        height: 220px;
+        font-size: 88px;
+    }
+
+    .roadmap {
+        padding: 18px 16px;
+        gap: 16px;
+    }
+
+    .roadmap-item {
+        min-width: 300px;
+        max-width: 340px;
+    }
+
+    .journey-container {
+        padding: 0 12px;
+    }
+
+    .journey-timeline {
+        gap: 24px;
+        padding: 35px 0 45px;
+    }
+
+    .journey-item {
+        min-width: 300px;
+        max-width: 320px;
+        padding: 18px;
+    }
+}
+
+/* Tablet Landscape & Small Desktop (769px - 1024px) */
+@media (min-width: 769px) {
+    .navbar {
+        padding: 16px 0;
+    }
+
+    .nav-container {
+        padding: 0 24px;
+    }
+
+    .nav-links {
+        display: flex;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .theme-toggle {
+        width: 48px;
+        height: 48px;
+    }
+
+    main {
+        margin-top: 80px;
+    }
+
+    .container {
+        padding: 0 32px;
+    }
+
+    .section {
+        padding: 64px 0;
+    }
+
+    .section-title {
+        font-size: 42px;
+    }
+
+    .section-subtitle {
+        font-size: 18px;
+    }
+
+    .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        text-align: left;
+        min-height: 75vh;
+        align-items: center;
+    }
+
+    .hero-content {
+        max-width: none;
+        align-items: flex-start;
+    }
+
+    .hero-content h1,
+    .hero-content .motto,
+    .hero-content p {
+        text-align: left;
+    }
+
+    .hero-buttons {
+        justify-content: flex-start;
+    }
+
+    .hero-image {
+        order: 0;
+        justify-content: flex-end;
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .hero-content .motto {
+        font-size: 22px;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+    }
+
+    .profile-image {
+        width: 280px;
+        height: 280px;
+        font-size: 112px;
+    }
+
+    .roadmap {
+        gap: 24px;
+        padding: 24px 32px;
+        justify-content: flex-start;
+    }
+
+    .roadmap-item {
+        min-width: 340px;
+        max-width: 380px;
+    }
+
+    .journey-container {
+        padding: 0 32px;
+    }
+
+    .journey-timeline {
+        gap: 40px;
+        padding: 40px 0;
+        justify-content: flex-start;
+    }
+
+    .journey-item {
+        min-width: 320px;
+        max-width: 350px;
+        padding: 24px;
+        opacity: 0.4;
+        transform: scale(0.85) translateY(20px);
+    }
+
+    .journey-item.current {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        border: none;
+    }
+
+    .journey-item.future {
+        opacity: 0.3;
+        transform: scale(0.8) translateY(30px);
+    }
+
+    .journey-item:hover {
+        opacity: 1;
+        transform: scale(1.05) translateY(-8px);
+        box-shadow: var(--md-sys-elevation-level3);
+    }
+
+    .btn {
+        flex: none;
+        max-width: none;
+        padding: 16px 32px;
+        font-size: 16px;
+    }
+
+    .roadmap-card {
+        padding: 24px;
+        border-radius: 24px;
+    }
+
+    .roadmap-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        font-size: 24px;
+    }
+
+    .roadmap-title {
+        font-size: 20px;
+    }
+
+    .roadmap-description {
+        font-size: 15px;
+        -webkit-line-clamp: 5;
+    }
+
+    .portfolio-nav {
+        margin-top: 32px;
+    }
+
+    .portfolio-nav-btn {
+        width: 52px;
+        height: 52px;
+    }
+
+    .contact-content {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .contact-info {
+        gap: 20px;
+    }
+
+
+}
+
+/* Large Desktop (1025px+) */
+@media (min-width: 1025px) {
+    .container {
+        padding: 0 40px;
+    }
+
+    .section {
+        padding: 80px 0;
+    }
+
+    .section-title {
+        font-size: 48px;
+    }
+
+    .section-subtitle {
+        font-size: 20px;
+    }
+
+    .hero {
+        gap: 80px;
+        min-height: 80vh;
+    }
+
+    .hero-content h1 {
+        font-size: 56px;
+    }
+
+    .hero-content .motto {
+        font-size: 24px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
+
+    .profile-image {
+        width: 320px;
+        height: 320px;
+        font-size: 128px;
+    }
+
+    .roadmap {
+        gap: 28px;
+        padding: 28px 40px;
+        justify-content: flex-start;
+    }
+
+    .roadmap-item {
+        min-width: 360px;
+        max-width: 400px;
+    }
+
+    .journey-container {
+        padding: 0 40px;
+    }
+
+    .journey-timeline {
+        gap: 48px;
+        padding: 40px 0;
+        justify-content: flex-start;
+    }
+}
+
+/* Extra Large Desktop (1440px+) */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1320px;
+    }
+
+    .roadmap {
+        gap: 32px;
+        padding: 32px 40px;
+        justify-content: flex-start;
+    }
+
+    .roadmap-item {
+        min-width: 380px;
+        max-width: 420px;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Button styles - Mobile First */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 24px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    min-height: 48px;
+    white-space: nowrap;
+    flex: 1;
+    max-width: 200px;
+}
+
+.btn-primary {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    transform: translateY(-2px);
+    box-shadow: var(--md-sys-elevation-level2);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    transition-duration: 0.1s;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--md-sys-color-primary);
+    border: 2px solid var(--md-sys-color-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--md-sys-elevation-level2);
+}
+
+.btn-outline:active {
+    transform: translateY(0);
+    transition-duration: 0.1s;
+}
+    

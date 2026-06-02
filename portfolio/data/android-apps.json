@@ -1,0 +1,18 @@
+[
+  {
+    "icon": "verified_user",
+    "title": "Opacity Social",
+    "description": "Project management and collaboration app for small teams",
+    "longDescription": "Opacity open to collab with project management in small teas",
+    "techStack": ["Kotlin", "Firebase", "Encryption APIs"],
+    "platform": "Android",
+    "features": ["Projects", "Chats", "Invites", "Kanban"],
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.opacity.india&hl=en",
+    "docs": {
+      "website": "https://abappdev.in",
+      "privacyPolicy": "/appdocs/?id=opacity&tab=privacy",
+      "termsAndConditions": "/appdocs/?id=opacity&tab=terms",
+      "support": "/appdocs/?id=opacity&tab=support"
+    }
+  }
+]

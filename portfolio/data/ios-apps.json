@@ -1,0 +1,25 @@
+[
+  {
+    "icon": "laptop",
+    "title": "CodeMaster",
+    "platform": "mac",
+    "platformIcon": "apple",
+    "description": "Advanced code editor for macOS with intelligent syntax highlighting, Git integration, and project management. Built with SwiftUI and optimized for Apple Silicon performance.",
+    "longDescription": "CodeMaster is a powerful, native macOS code editor designed for modern developers. With intelligent syntax highlighting, seamless Git integration, and advanced project management features, it provides everything you need for productive coding. Optimized for Apple Silicon with native performance and energy efficiency.",
+    "techStack": ["SwiftUI", "Combine", "AppKit", "Git"],
+    "features": [
+      "Intelligent syntax highlighting",
+      "Integrated Git workflow",
+      "Project management tools",
+      "Apple Silicon optimization",
+      "Custom themes and extensions"
+    ],
+    "appStoreUrl": "https://apps.apple.com/app/codemaster/id123456",
+    "docs": {
+      "website": "",
+      "privacyPolicy": "",
+      "termsAndConditions": "",
+      "support": ""
+    }
+  }
+]
