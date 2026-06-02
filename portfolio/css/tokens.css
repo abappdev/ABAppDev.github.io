@@ -1,52 +1,11 @@
-/* Portfolio theme — distinct from service landing */
-:root {
-    --md-sys-color-primary: #2DD4BF;
-    --md-sys-color-on-primary: #042F2E;
-    --md-sys-color-primary-container: #134E4A;
-    --md-sys-color-on-primary-container: #99F6E4;
-    --md-sys-color-secondary: #94A3B8;
-    --md-sys-color-on-secondary: #0F172A;
-    --md-sys-color-secondary-container: #1E293B;
-    --md-sys-color-on-secondary-container: #E2E8F0;
-    --md-sys-color-tertiary: #38BDF8;
-    --md-sys-color-surface: #0F172A;
-    --md-sys-color-on-surface: #F1F5F9;
-    --md-sys-color-surface-variant: #1E293B;
-    --md-sys-color-on-surface-variant: #94A3B8;
-    --md-sys-color-outline: #475569;
-    --md-sys-color-outline-variant: #334155;
-    --md-sys-color-background: #020617;
-    --md-sys-color-on-background: #F8FAFC;
-    --md-sys-color-surface-container: #0F172A;
-    --md-sys-color-surface-container-high: #1E293B;
-    --md-sys-color-surface-container-highest: #334155;
-    --md-sys-elevation-level1: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --md-sys-elevation-level2: 0 2px 8px rgba(0, 0, 0, 0.45);
-    --md-sys-elevation-level3: 0 4px 16px rgba(0, 0, 0, 0.5);
+/* Portfolio — Experience 2.0 (coral accent, dark-first) */
+@import url('/shared/css/tokens.css');
+
+:root,
+[data-theme="dark"] {
+    --portfolio-accent: #ED6237;
 }
 
 [data-theme="light"] {
-    --md-sys-color-primary: #0D9488;
-    --md-sys-color-on-primary: #FFFFFF;
-    --md-sys-color-primary-container: #CCFBF1;
-    --md-sys-color-on-primary-container: #134E4A;
-    --md-sys-color-secondary: #64748B;
-    --md-sys-color-on-secondary: #FFFFFF;
-    --md-sys-color-secondary-container: #F1F5F9;
-    --md-sys-color-on-secondary-container: #334155;
-    --md-sys-color-tertiary: #0284C7;
-    --md-sys-color-surface: #FFFFFF;
-    --md-sys-color-on-surface: #0F172A;
-    --md-sys-color-surface-variant: #F1F5F9;
-    --md-sys-color-on-surface-variant: #475569;
-    --md-sys-color-outline: #94A3B8;
-    --md-sys-color-outline-variant: #E2E8F0;
-    --md-sys-color-background: #F8FAFC;
-    --md-sys-color-on-background: #0F172A;
-    --md-sys-color-surface-container: #FFFFFF;
-    --md-sys-color-surface-container-high: #F1F5F9;
-    --md-sys-color-surface-container-highest: #E2E8F0;
-    --md-sys-elevation-level1: 0 1px 3px rgba(15, 23, 42, 0.08);
-    --md-sys-elevation-level2: 0 4px 12px rgba(15, 23, 42, 0.1);
-    --md-sys-elevation-level3: 0 8px 24px rgba(15, 23, 42, 0.12);
+    --portfolio-accent: #e04f26;
 }

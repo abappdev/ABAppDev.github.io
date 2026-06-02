@@ -11,14 +11,13 @@ export function initAnimations() {
         return;
     }
 
-    const hero = document.querySelector('.hero-content');
-    if (hero) {
-        animate(hero, { opacity: [0, 1], y: [32, 0] }, { duration: 0.7, easing: [0.22, 1, 0.36, 1] });
-    }
-
+    const heroContent = document.querySelector('.hero-content');
     const heroVisual = document.querySelector('.hero-visual');
+    if (heroContent) {
+        animate(heroContent, { opacity: [0, 1], y: [28, 0] }, { duration: 0.65, easing: [0.22, 1, 0.36, 1] });
+    }
     if (heroVisual) {
-        animate(heroVisual, { opacity: [0, 1], y: [24, 0] }, { duration: 0.7, delay: 0.15, easing: [0.22, 1, 0.36, 1] });
+        animate(heroVisual, { opacity: [0, 1], scale: [0.96, 1] }, { duration: 0.7, delay: 0.12, easing: [0.22, 1, 0.36, 1] });
     }
 
     document.querySelectorAll('[data-animate-section]').forEach((section) => {

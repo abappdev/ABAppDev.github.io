@@ -1,39 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Roboto:wght@300;400;500;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap');
 
 body {
-    font-family: 'DM Sans', 'Roboto', sans-serif;
-    background-color: var(--md-sys-color-background);
-    color: var(--md-sys-color-on-background);
-    line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: 16px;
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
 }
 
 .logo a {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text);
     text-decoration: none;
-    color: inherit;
+    letter-spacing: -0.02em;
 }
 
-.footer-legal {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 20px;
-    justify-content: center;
-    margin-top: 12px;
-}
-
-.footer-legal a {
-    color: var(--md-sys-color-primary);
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.footer-legal a:hover {
-    text-decoration: underline;
+.logo a span {
+    color: var(--accent);
 }

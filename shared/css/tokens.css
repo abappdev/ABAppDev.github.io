@@ -1,59 +1,106 @@
-/* AB App Dev — unified design tokens (home, index, appdocs) */
-:root {
-    --md-sys-color-primary: #ED6237;
-    --md-sys-color-on-primary: #FFFFFF;
-    --md-sys-color-primary-container: #FFDAD4;
-    --md-sys-color-on-primary-container: #410E00;
-    --md-sys-color-secondary: #77574F;
-    --md-sys-color-on-secondary: #FFFFFF;
-    --md-sys-color-secondary-container: #FFDAD4;
-    --md-sys-color-on-secondary-container: #2C1510;
-    --md-sys-color-tertiary: #6F5B40;
-    --md-sys-color-surface: #FFF8F6;
-    --md-sys-color-on-surface: #231917;
-    --md-sys-color-surface-variant: #F5DDDA;
-    --md-sys-color-on-surface-variant: #53433F;
-    --md-sys-color-outline: #85736F;
-    --md-sys-color-outline-variant: #D8C2BE;
-    --md-sys-color-background: #FFF8F6;
-    --md-sys-color-on-background: #231917;
-    --md-sys-color-surface-container: #F7EFEC;
-    --md-sys-color-surface-container-high: #F1E9E6;
-    --md-sys-color-surface-container-highest: #EBE3E0;
-    --md-sys-elevation-level1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-    --md-sys-elevation-level2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
-    --md-sys-elevation-level3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
-    --shadow-1: var(--md-sys-elevation-level1);
+/* Experience 2.0 — unified design tokens */
+:root,
+[data-theme="dark"] {
+    --accent: #ED6237;
+    --accent-hover: #ff7a52;
+    --accent-muted: rgba(237, 98, 55, 0.15);
+    --accent-glow: rgba(237, 98, 55, 0.45);
+
+    --bg: #0a0a0b;
+    --bg-elevated: #141416;
+    --bg-card: #1a1a1e;
+    --bg-muted: #222226;
+
+    --text: #fafafa;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+
+    --md-sys-color-primary: var(--accent);
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: rgba(237, 98, 55, 0.2);
+    --md-sys-color-on-primary-container: #ffb4a8;
+    --md-sys-color-surface: var(--bg-elevated);
+    --md-sys-color-on-surface: var(--text);
+    --md-sys-color-surface-variant: var(--bg-muted);
+    --md-sys-color-on-surface-variant: var(--text-secondary);
+    --md-sys-color-outline: var(--border-strong);
+    --md-sys-color-outline-variant: var(--border);
+    --md-sys-color-background: var(--bg);
+    --md-sys-color-on-background: var(--text);
+    --md-sys-color-surface-container: var(--bg-elevated);
+    --md-sys-color-surface-container-high: var(--bg-card);
+    --md-sys-color-surface-container-highest: var(--bg-muted);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.45);
+    --shadow-glow: 0 0 60px var(--accent-glow);
+    --shadow-1: var(--shadow-sm);
+    --md-sys-elevation-level1: var(--shadow-sm);
+    --md-sys-elevation-level2: var(--shadow-md);
+    --md-sys-elevation-level3: 0 16px 48px rgba(0, 0, 0, 0.55);
+
+    --font-display: 'Syne', 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+
     --space-xs: 4px;
     --space-sm: 8px;
     --space-md: 16px;
     --space-lg: 24px;
     --space-xl: 40px;
-    --radius-sm: 12px;
-    --radius-md: 20px;
-    --radius-lg: 24px;
-    --max-width: 1200px;
+    --space-2xl: 64px;
+    --space-3xl: 96px;
+
+    /* Set in spacing.css; fallback for pages that skip it */
+    --gutter: 1.25rem;
+    --section-pad-y: 3rem;
+    --section-pad-y-lg: 5rem;
+
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+    --max-width: 1140px;
+    --nav-height: 72px;
 }
 
-[data-theme="dark"] {
-    --md-sys-color-primary: #FFB4A8;
-    --md-sys-color-on-primary: #690100;
-    --md-sys-color-primary-container: #A42C00;
-    --md-sys-color-on-primary-container: #FFDAD4;
-    --md-sys-color-secondary: #E7BDB6;
-    --md-sys-color-on-secondary: #442B24;
-    --md-sys-color-secondary-container: #5D4239;
-    --md-sys-color-on-secondary-container: #FFDAD4;
-    --md-sys-color-tertiary: #D3C4A7;
-    --md-sys-color-surface: #1A110F;
-    --md-sys-color-on-surface: #F1E9E6;
-    --md-sys-color-surface-variant: #53433F;
-    --md-sys-color-on-surface-variant: #D8C2BE;
-    --md-sys-color-outline: #A08C88;
-    --md-sys-color-outline-variant: #53433F;
-    --md-sys-color-background: #1A110F;
-    --md-sys-color-on-background: #F1E9E6;
-    --md-sys-color-surface-container: #221B19;
-    --md-sys-color-surface-container-high: #2D2521;
-    --md-sys-color-surface-container-highest: #382F2C;
+[data-theme="light"] {
+    --accent: #e04f26;
+    --accent-hover: #c94420;
+    --accent-muted: rgba(224, 79, 38, 0.1);
+    --accent-glow: rgba(224, 79, 38, 0.25);
+
+    --bg: #fafafa;
+    --bg-elevated: #ffffff;
+    --bg-card: #ffffff;
+    --bg-muted: #f4f4f5;
+
+    --text: #0a0a0b;
+    --text-secondary: #52525b;
+    --text-muted: #71717a;
+
+    --border: rgba(0, 0, 0, 0.08);
+    --border-strong: rgba(0, 0, 0, 0.12);
+
+    --md-sys-color-primary: var(--accent);
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: #ffede8;
+    --md-sys-color-on-primary-container: #5c1a00;
+    --md-sys-color-surface: var(--bg-elevated);
+    --md-sys-color-on-surface: var(--text);
+    --md-sys-color-surface-variant: var(--bg-muted);
+    --md-sys-color-on-surface-variant: var(--text-secondary);
+    --md-sys-color-outline: var(--border-strong);
+    --md-sys-color-outline-variant: var(--border);
+    --md-sys-color-background: var(--bg);
+    --md-sys-color-on-background: var(--text);
+    --md-sys-color-surface-container: var(--bg-elevated);
+    --md-sys-color-surface-container-high: var(--bg-muted);
+    --md-sys-color-surface-container-highest: #e4e4e7;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.08);
+    --shadow-glow: 0 0 40px var(--accent-glow);
 }

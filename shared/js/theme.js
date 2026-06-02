@@ -18,7 +18,8 @@
 
     function initTheme() {
         const saved = getStoredTheme();
-        applyTheme(saved || getSystemTheme());
+        const htmlTheme = document.documentElement.getAttribute('data-theme');
+        applyTheme(saved || htmlTheme || getSystemTheme());
     }
 
     function updateToggleIcon(btn) {

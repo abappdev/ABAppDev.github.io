@@ -19,7 +19,7 @@ function initAnimations() {
                         setTimeout(() => item.classList.add('animate-in'), delay);
                     });
                 }
-                if (entry.target.classList.contains('hero')) {
+                if (entry.target.classList.contains('hero-content') || entry.target.classList.contains('hero-image')) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                 }
@@ -38,9 +38,9 @@ function initAnimations() {
         { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    document.querySelectorAll('.hero').forEach((el) => {
+    document.querySelectorAll('.hero-content, .hero-image').forEach((el) => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
+        el.style.transform = 'translateY(24px)';
         el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
         animationObserver.observe(el);
     });
@@ -59,52 +59,78 @@ function initAnimations() {
     document.querySelectorAll('.roadmap').forEach((roadmap) => animationObserver.observe(roadmap));
 }
 
-function initScrollEffects() {
-    let ticking = false;
+function initNavbar() {
+    const navbar = document.querySelector('.navbar');
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('navDrawer');
+
     window.addEventListener(
         'scroll',
-        () => {
-            if (ticking) return;
-            requestAnimationFrame(() => {
-                const scrollY = window.pageYOffset;
-                const navbar = document.querySelector('.navbar');
-                if (scrollY > 100) {
-                    navbar.style.backgroundColor = 'var(--md-sys-color-surface-container-high)';
-                    navbar.style.boxShadow = 'var(--md-sys-elevation-level3)';
-                } else {
-                    navbar.style.backgroundColor = 'var(--md-sys-color-surface-container)';
-                    navbar.style.boxShadow = 'var(--md-sys-elevation-level2)';
-                }
-                ticking = false;
-            });
-            ticking = true;
-        },
+        () => navbar?.classList.toggle('scrolled', window.pageYOffset > 24),
         { passive: true }
     );
+
+    function setMenuIcon(open) {
+        if (!toggle) return;
+        const icon = toggle.querySelector('[data-lucide]');
+        if (icon) icon.setAttribute('data-lucide', open ? 'x' : 'menu');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    if (toggle && drawer) {
+        toggle.addEventListener('click', () => {
+            const open = drawer.classList.toggle('open');
+            drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+            toggle.setAttribute('aria-expanded', String(open));
+            setMenuIcon(open);
+        });
+        drawer.querySelectorAll('a').forEach((a) => {
+            a.addEventListener('click', () => {
+                drawer.classList.remove('open');
+                drawer.setAttribute('aria-hidden', 'true');
+                toggle.setAttribute('aria-expanded', 'false');
+                setMenuIcon(false);
+            });
+        });
+    }
+}
+
+function initScrollEffects() {
+    initNavbar();
 }
 
 function initSmoothScroll() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (!href || href === '#') return;
+            const target = document.querySelector(href);
+            if (!target) return;
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            target.scrollIntoView({
+                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                block: 'start',
+            });
         });
     });
 }
 
 function initProfileImage() {
     const profileImg = document.querySelector('.profile-image img');
-    const fallbackIcon = document.querySelector('.profile-image i[data-lucide="user"]');
-    if (!profileImg) return;
+    const fallbackIcon = document.querySelector('.profile-image__fallback');
+    if (!profileImg || !fallbackIcon) return;
     profileImg.addEventListener('error', () => {
-        profileImg.style.display = 'none';
-        fallbackIcon.style.display = 'flex';
-        profileImg.parentElement.style.background =
-            'linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-tertiary))';
+        profileImg.hidden = true;
+        fallbackIcon.hidden = false;
+        fallbackIcon.setAttribute('aria-hidden', 'false');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
     });
     profileImg.addEventListener('load', () => {
-        fallbackIcon.style.display = 'none';
+        profileImg.hidden = false;
+        fallbackIcon.hidden = true;
+        fallbackIcon.setAttribute('aria-hidden', 'true');
     });
 }
 

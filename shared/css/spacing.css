@@ -1,0 +1,85 @@
+/* Mobile-first page gutters + safe areas (home & portfolio) */
+
+:root {
+    --gutter: 1.25rem; /* 20px — mobile default */
+    --gutter-sm: 1rem;
+    --section-pad-y: 3rem;
+    --section-pad-y-lg: 4.5rem;
+}
+
+@media (min-width: 480px) {
+    :root {
+        --gutter: 1.5rem; /* 24px */
+    }
+}
+
+@media (min-width: 768px) {
+    :root {
+        --gutter: 2rem; /* 32px */
+        --section-pad-y: 3.5rem;
+        --section-pad-y-lg: 5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --gutter: 2.5rem; /* 40px */
+    }
+}
+
+@media (min-width: 1280px) {
+    :root {
+        --gutter: 3rem; /* 48px — max comfortable inset on wide screens */
+    }
+}
+
+/* Horizontal padding utility */
+.pad-x,
+.container,
+.nav-container,
+.tech-strip-inner {
+    padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+
+.container,
+.nav-container,
+.tech-strip-inner {
+    width: 100%;
+    max-width: var(--max-width, 1140px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Vertical rhythm */
+.section {
+    padding-top: var(--section-pad-y);
+    padding-bottom: var(--section-pad-y);
+}
+
+.section-tight {
+    padding-top: calc(var(--section-pad-y) * 0.75);
+    padding-bottom: calc(var(--section-pad-y) * 0.75);
+}
+
+/* Full-bleed bands: color edge-to-edge, content inset */
+.section-band,
+.tech-strip {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.section-band > .container,
+.tech-strip > .container,
+.tech-strip-inner.container {
+    padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+
+/* Nav drawer aligns with page gutter */
+.nav-drawer {
+    padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+    padding-top: var(--space-md, 16px);
+    padding-bottom: var(--space-md, 16px);
+}

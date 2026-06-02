@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>AB App Dev — Apps, AI & Software Development</title>
     <meta name="description" content="AB App Dev builds mobile apps, AI solutions, and custom software. Android, iOS, macOS, and secure cloud-backed products from abappdev.in.">
     <link rel="canonical" href="https://www.abappdev.in/">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/shared/css/tokens.css">
+    <link rel="stylesheet" href="/shared/css/spacing.css">
     <link rel="stylesheet" href="/home/css/base.css">
     <link rel="stylesheet" href="/home/css/layout.css">
     <link rel="stylesheet" href="/home/css/components.css">
@@ -19,12 +20,11 @@
 <body>
     <header class="navbar">
         <div class="nav-container">
-            <a class="logo" href="/">AB App Dev</a>
+            <a class="logo" href="/">AB <span>App Dev</span></a>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#process">Process</a></li>
-                <li><a href="#work">Work</a></li>
-                <li><a href="/portfolio/">Portfolio</a></li>
+                <li><a href="#work">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-actions">
@@ -32,141 +32,206 @@
                     <i data-lucide="menu"></i>
                 </button>
                 <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
-                    <i data-lucide="sun" id="themeIcon"></i>
+                    <i data-lucide="moon" id="themeIcon"></i>
                 </button>
             </div>
         </div>
     </header>
 
+    <nav class="nav-drawer" id="navDrawer" aria-hidden="true">
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#work">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
     <main>
         <section class="hero container" id="top">
-            <div class="hero-content">
-                <span class="hero-badge"><i data-lucide="sparkles"></i> Apps · AI · Software</span>
-                <h1>Build smarter products with <span>AB App Dev</span></h1>
-                <p class="hero-lead">We design and ship mobile apps, AI-powered workflows, and custom software for startups and teams who care about quality, security, and store-ready compliance.</p>
-                <div class="hero-cta">
-                    <a href="mailto:support@abappdev.in" class="btn btn-primary">
-                        <i data-lucide="mail"></i>
-                        Start a project
-                    </a>
-                    <a href="/portfolio/" class="btn btn-outline">
-                        <i data-lucide="user"></i>
-                        View portfolio
-                    </a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-card">
-                    <div class="hero-card-grid">
-                        <div class="hero-stat"><strong>3+</strong><span>Platforms</span></div>
-                        <div class="hero-stat"><strong>AI</strong><span>Integration</span></div>
-                        <div class="hero-stat"><strong>100%</strong><span>Store policies</span></div>
-                        <div class="hero-stat"><strong>24h</strong><span>Support SLA</span></div>
+            <div class="hero-grid hero-grid--text">
+                <div class="hero-content">
+                    <div class="hero-accent-line" aria-hidden="true"></div>
+                    <p class="hero-greeting">Hello.</p>
+                    <h1>We're <span class="highlight">AB App Dev</span> Software Studio</h1>
+                    <p class="hero-lead">We design and ship mobile apps, AI-powered workflows, and custom software for teams who care about quality, security, and store-ready compliance.</p>
+                    <div class="hero-cta">
+                        <a href="mailto:support@abappdev.in" class="btn btn-primary">
+                            <i data-lucide="rocket"></i>
+                            Got a project?
+                        </a>
+                        <a href="#contact" class="btn btn-ghost">
+                            <i data-lucide="mail"></i>
+                            Get in touch
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <div class="tech-strip">
+            <div class="container tech-strip-inner">
+                <span><strong>Kotlin</strong></span>
+                <span><strong>Swift</strong></span>
+                <span><strong>Firebase</strong></span>
+                <span><strong>React</strong></span>
+                <span><strong>Node.js</strong></span>
+                <span><strong>AI / ML</strong></span>
+                <span><strong>Git</strong></span>
+            </div>
+        </div>
+
         <section class="section container" id="services" data-animate-section>
-            <p class="section-label">What we do</p>
-            <h2 class="section-title">Development services</h2>
-            <p class="section-subtitle">End-to-end delivery from discovery through launch and ongoing support.</p>
-            <div class="services-grid">
-                <article class="service-card" data-animate>
-                    <div class="service-icon"><i data-lucide="smartphone"></i></div>
-                    <h3>Mobile apps</h3>
-                    <p>Native Android, iOS, and macOS applications with polished UX, offline-ready architecture, and Play Store / App Store compliance.</p>
-                </article>
-                <article class="service-card" data-animate>
-                    <div class="service-icon"><i data-lucide="brain"></i></div>
-                    <h3>AI & automation</h3>
-                    <p>Intelligent features, assistants, and workflow automation integrated responsibly into your product with clear data practices.</p>
-                </article>
-                <article class="service-card" data-animate>
-                    <div class="service-icon"><i data-lucide="code-2"></i></div>
-                    <h3>Custom software</h3>
-                    <p>Backend APIs, dashboards, and cross-platform clients built with maintainable code and production-grade reliability.</p>
-                </article>
+            <div class="section-head">
+                <p class="section-eyebrow">What we do</p>
+                <h2 class="section-title">Development services</h2>
+                <p class="section-desc">End-to-end delivery from discovery through launch and ongoing support.</p>
+            </div>
+            <div class="services-layout">
+                <div class="service-timeline">
+                    <div class="service-timeline-item" data-animate>
+                        <div class="timeline-dot"><i data-lucide="smartphone"></i></div>
+                        <div>
+                            <h3>Mobile apps</h3>
+                            <p>Android, iOS & macOS</p>
+                        </div>
+                    </div>
+                    <div class="service-timeline-item" data-animate>
+                        <div class="timeline-dot"><i data-lucide="brain"></i></div>
+                        <div>
+                            <h3>AI & automation</h3>
+                            <p>Smart product features</p>
+                        </div>
+                    </div>
+                    <div class="service-timeline-item" data-animate>
+                        <div class="timeline-dot"><i data-lucide="server"></i></div>
+                        <div>
+                            <h3>Custom software</h3>
+                            <p>APIs, backends & web</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="services-cards">
+                    <article class="service-card" data-animate>
+                        <div class="service-card-icon"><i data-lucide="smartphone"></i></div>
+                        <h3>Native mobile</h3>
+                        <p>Polished UX, offline-ready architecture, and Play Store / App Store compliance built in from day one.</p>
+                    </article>
+                    <article class="service-card" data-animate>
+                        <div class="service-card-icon"><i data-lucide="sparkles"></i></div>
+                        <h3>AI integration</h3>
+                        <p>Assistants, automation, and intelligent workflows with clear, responsible data practices.</p>
+                    </article>
+                    <article class="service-card" data-animate>
+                        <div class="service-card-icon"><i data-lucide="shield-check"></i></div>
+                        <h3>Production grade</h3>
+                        <p>Security, legal pages, and reliable releases — ready for real users and real scale.</p>
+                    </article>
+                    <article class="service-card" data-animate>
+                        <div class="service-card-icon"><i data-lucide="headphones"></i></div>
+                        <h3>Ongoing support</h3>
+                        <p>Monitoring, fixes, and enhancements after launch with dedicated support channels.</p>
+                    </article>
+                </div>
+            </div>
+            <div class="stats-row">
+                <div class="stat-item" data-animate>
+                    <strong>3+</strong>
+                    <span>Platforms shipped</span>
+                </div>
+                <div class="stat-item" data-animate>
+                    <strong>100%</strong>
+                    <span>Store policy ready</span>
+                </div>
+                <div class="stat-item" data-animate>
+                    <strong>24h</strong>
+                    <span>Support response</span>
+                </div>
             </div>
         </section>
 
-        <section class="section section-alt" id="process" data-animate-section>
+        <section class="section section-band" id="process" data-animate-section>
             <div class="container">
-                <p class="section-label text-center">How we work</p>
-                <h2 class="section-title text-center">From idea to shipped product</h2>
-                <p class="section-subtitle text-center">A clear process that keeps you informed at every stage.</p>
-                <div class="process-steps">
-                    <div class="process-step" data-animate>
+                <div class="section-head center">
+                    <p class="section-eyebrow">How we work</p>
+                    <h2 class="section-title">From idea to shipped product</h2>
+                    <p class="section-desc">A clear process that keeps you informed at every stage.</p>
+                </div>
+                <div class="process-grid">
+                    <div class="process-card" data-step="01" data-animate>
                         <h3>Discover</h3>
                         <p>Goals, users, constraints, and success metrics — aligned before we write code.</p>
                     </div>
-                    <div class="process-step" data-animate>
+                    <div class="process-card" data-step="02" data-animate>
                         <h3>Build</h3>
                         <p>Iterative development with reviewable milestones and transparent communication.</p>
                     </div>
-                    <div class="process-step" data-animate>
+                    <div class="process-card" data-step="03" data-animate>
                         <h3>Ship</h3>
                         <p>Store submission, privacy policies, and production deployment handled properly.</p>
                     </div>
-                    <div class="process-step" data-animate>
+                    <div class="process-card" data-step="04" data-animate>
                         <h3>Support</h3>
-                        <p>Monitoring, fixes, and enhancements so your product keeps improving after launch.</p>
+                        <p>Monitoring, fixes, and enhancements so your product keeps improving.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="section container" id="work" data-animate-section>
-            <p class="section-label">Featured work</p>
-            <h2 class="section-title">Apps we've built</h2>
-            <p class="section-subtitle">Real products in the store — explore the full portfolio for more.</p>
-            <div class="featured-card" data-animate>
-                <div class="featured-icon"><i data-lucide="users"></i></div>
-                <div class="featured-meta">
+            <div class="section-head">
+                <p class="section-eyebrow">Projects</p>
+                <h2 class="section-title">Featured work</h2>
+                <p class="section-desc">Real products in the store — built for teams and end users.</p>
+            </div>
+            <article class="project-card" data-animate>
+                <div class="project-icon"><i data-lucide="users"></i></div>
+                <div class="project-meta">
                     <h3>Opacity Social</h3>
                     <p>Project management and team collaboration for small teams — projects, chats, invites, and Kanban on Android.</p>
                 </div>
-                <div class="hero-cta">
+                <div class="project-actions">
                     <a href="https://play.google.com/store/apps/details?id=com.opacity.india&hl=en" class="btn btn-primary" target="_blank" rel="noopener">
                         <i data-lucide="play"></i>
                         Play Store
                     </a>
-                    <a href="/portfolio/" class="btn btn-outline">Full portfolio</a>
                 </div>
-            </div>
+            </article>
         </section>
 
-        <section class="section section-alt" data-animate-section>
+        <section class="section section-band" data-animate-section>
             <div class="container">
-                <p class="section-label text-center">Why AB App Dev</p>
-                <h2 class="section-title text-center">Built for trust and scale</h2>
+                <div class="section-head center">
+                    <p class="section-eyebrow">Why us</p>
+                    <h2 class="section-title">Built for trust and scale</h2>
+                </div>
                 <div class="why-grid">
-                    <div class="why-item" data-animate>
+                    <div class="why-card" data-animate>
                         <i data-lucide="shield-check"></i>
                         <div>
                             <h3>Security-first</h3>
                             <p>Encryption in transit, least-privilege access, and responsible disclosure practices.</p>
                         </div>
                     </div>
-                    <div class="why-item" data-animate>
+                    <div class="why-card" data-animate>
                         <i data-lucide="file-check"></i>
                         <div>
                             <h3>Store-ready legal</h3>
-                            <p>Privacy, terms, and support pages structured for App Store and Google Play requirements.</p>
+                            <p>Privacy, terms, and support pages structured for App Store and Google Play.</p>
                         </div>
                     </div>
-                    <div class="why-item" data-animate>
+                    <div class="why-card" data-animate>
                         <i data-lucide="layers"></i>
                         <div>
                             <h3>Modern stack</h3>
                             <p>Kotlin, Swift, Firebase, and cloud backends chosen for your product's needs.</p>
                         </div>
                     </div>
-                    <div class="why-item" data-animate>
-                        <i data-lucide="headphones"></i>
+                    <div class="why-card" data-animate>
+                        <i data-lucide="zap"></i>
                         <div>
-                            <h3>Responsive support</h3>
-                            <p>Dedicated channels for bugs, billing, and privacy requests with clear SLAs.</p>
+                            <h3>Fast iteration</h3>
+                            <p>Clear milestones, demos you can share, and code you can maintain long-term.</p>
                         </div>
                     </div>
                 </div>
@@ -174,29 +239,30 @@
         </section>
 
         <section class="section container" id="contact" data-animate-section>
-            <p class="section-label text-center">Contact</p>
-            <h2 class="section-title text-center">Let's build something</h2>
-            <div class="contact-panel" data-animate>
+            <div class="section-head center">
+                <p class="section-eyebrow">Contact</p>
+                <h2 class="section-title">Let's build something</h2>
+            </div>
+            <div class="contact-card" data-animate>
                 <p>Tell us about your app, AI feature, or software project. We typically respond within one business day.</p>
-                <div class="contact-links">
-                    <a href="mailto:support@abappdev.in"><i data-lucide="mail"></i> support@abappdev.in</a>
-                    <a href="https://www.linkedin.com/in/abappdev" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/abappdev" target="_blank" rel="noopener"><i data-lucide="github"></i> GitHub</a>
+                <div class="contact-chips">
+                    <a href="mailto:support@abappdev.in" class="contact-chip"><i data-lucide="mail"></i> support@abappdev.in</a>
+                    <a href="/portfolio/" class="contact-chip"><i data-lucide="briefcase"></i> Developer portfolio</a>
+                    <a href="https://www.linkedin.com/in/abappdev" class="contact-chip" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/abappdev" class="contact-chip" target="_blank" rel="noopener"><i data-lucide="github"></i> GitHub</a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container">
+        <div class="container footer-inner">
             <p>&copy; <span id="footerYear">2026</span> AB App Dev. All rights reserved.</p>
             <nav class="footer-legal" aria-label="Legal">
                 <a href="/home/legal/privacy.html">Privacy</a>
                 <a href="/home/legal/terms.html">Terms</a>
                 <a href="/home/legal/refunds.html">Refunds</a>
                 <a href="/home/legal/support.html">Support</a>
-                <a href="/portfolio/">Portfolio</a>
-                <a href="/appdocs/?id=opacity&tab=privacy">Opacity legal</a>
             </nav>
         </div>
     </footer>

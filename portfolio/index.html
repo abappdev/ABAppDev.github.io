@@ -1,68 +1,177 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" class="portfolio-page">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Abhishek Bhalerao — Developer Portfolio | AB App Dev</title>
     <meta name="description" content="Portfolio of Abhishek Bhalerao — Android, iOS, and macOS developer. Apps, professional journey, and contact.">
     <link rel="canonical" href="https://www.abappdev.in/portfolio/">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/portfolio/css/tokens.css">
+    <link rel="stylesheet" href="/shared/css/spacing.css">
     <link rel="stylesheet" href="/portfolio/css/layout.css">
     <link rel="stylesheet" href="/portfolio/css/main.css">
+    <link rel="stylesheet" href="/portfolio/css/experience.css">
+    <link rel="stylesheet" href="/portfolio/css/scroll.css">
     <script src="/shared/js/theme.js" defer></script>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo"><a href="/portfolio/">AB AppDev</a></div>
+            <div class="logo"><a href="/portfolio/">AB <span>AppDev</span></a></div>
             <ul class="nav-links">
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#android">Android</a></li>
-                <li><a href="#ios">iOS & Mac</a></li>
-                <li><a href="#journey">My Journey</a></li>
+                <li><a href="#about">Home</a></li>
+                <li><a href="#about-detail">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#journey">Journey</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="/">Services</a></li>
             </ul>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                <i data-lucide="moon" id="themeIcon"></i>
-            </button>
+            <div class="nav-actions">
+                <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false">
+                    <i data-lucide="menu"></i>
+                </button>
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+                    <i data-lucide="moon" id="themeIcon"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <main>
-        <section id="about" class="section">
-            <div class="container">
+    <nav class="nav-drawer" id="navDrawer" aria-hidden="true">
+        <ul>
+            <li><a href="#about">Home</a></li>
+            <li><a href="#about-detail">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="/">Services</a></li>
+        </ul>
+    </nav>
+
+    <main id="portfolio-main">
+        <section id="about" class="section snap-panel">
+            <div class="container snap-panel__inner">
                 <div class="hero">
                     <div class="hero-content">
-                        <h1>Hello, I'm Abhishek Bhalerao</h1>
+                        <div class="hero-accent-line" aria-hidden="true"></div>
+                        <h1>Hello.<span class="name">I'm Abhishek</span><span class="role">Software Developer</span></h1>
                         <p class="motto">"Code with purpose, create with passion"</p>
-                        <p>A passionate developer crafting innovative applications. I specialize in creating seamless user experiences across Android, iOS, and Mac platforms, bringing ideas to life through clean code and thoughtful design.</p>
+                        <p class="hero-lead">A passionate developer crafting innovative applications across Android, iOS, and Mac — bringing ideas to life through clean code and thoughtful design.</p>
                         <div class="hero-buttons">
                             <a href="#contact" class="btn btn-primary">
                                 <i data-lucide="mail"></i>
-                                Get In Touch
+                                Got a project?
                             </a>
-                            <a href="#android" class="btn btn-outline">
-                                <i data-lucide="smartphone"></i>
-                                View My Work
+                            <a href="#projects" class="btn btn-outline">
+                                <i data-lucide="folder-open"></i>
+                                My work
                             </a>
                         </div>
                     </div>
-                    <div class="hero-image">
-                        <div class="profile-image">
-                            <img src="/shared/images/profilepic.png" alt="AB Profile Photo" />
-                            <i data-lucide="user" style="position: absolute; display: none;"></i>
+                    <aside class="hero-image" aria-label="Portrait">
+                        <figure class="profile-image">
+                            <img src="/shared/images/profilepic.png" alt="Abhishek Bhalerao" width="320" height="320" decoding="async" />
+                            <i class="profile-image__fallback" data-lucide="user" hidden aria-hidden="true"></i>
+                        </figure>
+                    </aside>
+                </div>
+                <div class="tech-strip tech-strip--hero" aria-label="Technologies">
+                    <ul class="tech-strip__list" role="list">
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="code-xml"></i></span>
+                            <span class="tech-pill__label">Kotlin</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="bird"></i></span>
+                            <span class="tech-pill__label">Swift</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="flame"></i></span>
+                            <span class="tech-pill__label">Firebase</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="smartphone"></i></span>
+                            <span class="tech-pill__label">Android</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="apple"></i></span>
+                            <span class="tech-pill__label">iOS</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="laptop"></i></span>
+                            <span class="tech-pill__label">macOS</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="git-branch"></i></span>
+                            <span class="tech-pill__label">Git</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section snap-panel" id="about-detail">
+            <div class="container snap-panel__inner">
+                <div class="section-header">
+                    <p class="section-eyebrow">About me</p>
+                    <h2 class="section-title">What I do</h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-services">
+                        <div class="about-service-item">
+                            <div class="about-dot"><i data-lucide="smartphone"></i></div>
+                            <div>
+                                <h3>App Development</h3>
+                                <p>Android, iOS & macOS</p>
+                            </div>
+                        </div>
+                        <div class="about-service-item">
+                            <div class="about-dot"><i data-lucide="layout"></i></div>
+                            <div>
+                                <h3>UI / UX</h3>
+                                <p>Polished interfaces</p>
+                            </div>
+                        </div>
+                        <div class="about-service-item">
+                            <div class="about-dot"><i data-lucide="cloud"></i></div>
+                            <div>
+                                <h3>Cloud & Backend</h3>
+                                <p>Firebase, APIs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-bio">
+                        <p>I build production-ready mobile and desktop applications with a focus on reliability, performance, and store compliance. From internships to shipping macOS clients at scale, I bring full-stack ownership to every project.</p>
+                        <div class="stats-row">
+                            <div class="stat-box">
+                                <strong>5+</strong>
+                                <span>Years experience</span>
+                            </div>
+                            <div class="stat-box">
+                                <strong>10+</strong>
+                                <span>Apps & projects</span>
+                            </div>
+                            <div class="stat-box">
+                                <strong>3</strong>
+                                <span>Platforms</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="android" class="section">
-            <div class="container">
-                <h2 class="section-title">Android Applications</h2>
-                <p class="section-subtitle">Innovative mobile solutions for the Android ecosystem</p>
+        <section id="projects" class="section snap-panel snap-panel--carousel">
+            <div class="container snap-panel__inner">
+                <div class="section-header center">
+                    <p class="section-eyebrow">Projects</p>
+                    <h2 class="section-title">Android Applications</h2>
+                    <p class="section-subtitle">Innovative mobile solutions for the Android ecosystem</p>
+                </div>
                 <div class="roadmap-container">
                     <div class="roadmap" id="androidRoadmap"></div>
                 </div>
@@ -78,10 +187,13 @@
             </div>
         </section>
 
-        <section id="ios" class="section">
-            <div class="container">
-                <h2 class="section-title">iOS & Mac Applications</h2>
-                <p class="section-subtitle">Elegant solutions for the Apple ecosystem</p>
+        <section id="ios" class="section snap-panel snap-panel--carousel">
+            <div class="container snap-panel__inner">
+                <div class="section-header center">
+                    <p class="section-eyebrow">Projects</p>
+                    <h2 class="section-title">iOS & Mac Applications</h2>
+                    <p class="section-subtitle">Elegant solutions for the Apple ecosystem</p>
+                </div>
                 <div class="roadmap-container">
                     <div class="roadmap" id="iosRoadmap"></div>
                 </div>
@@ -97,10 +209,13 @@
             </div>
         </section>
 
-        <section id="journey" class="section">
-            <div class="container">
-                <h2 class="section-title">Professional Journey</h2>
-                <p class="section-subtitle">From student to seasoned developer</p>
+        <section id="journey" class="section snap-panel snap-panel--carousel">
+            <div class="container snap-panel__inner">
+                <div class="section-header center">
+                    <p class="section-eyebrow">Career</p>
+                    <h2 class="section-title">Professional Journey</h2>
+                    <p class="section-subtitle">From student to seasoned developer</p>
+                </div>
                 <div class="journey-container">
                     <div class="journey-timeline" id="journeyTimeline"></div>
                 </div>
@@ -115,67 +230,70 @@
             </div>
         </section>
 
-        <section id="contact" class="section">
-            <div class="container">
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Ready to bring your ideas to life? Let's talk!</p>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-social-row">
-                            <a href="mailto:ab.appdev.ai@gmail.com" class="contact-item" aria-label="Email">
-                                <div class="contact-icon"><i data-lucide="mail"></i></div>
-                                <div class="contact-item-text">
-                                    <h3>Email</h3>
-                                    <p>ab.appdev.ai@gmail.com</p>
-                                </div>
-                            </a>
-                            <a href="https://www.linkedin.com/in/abappdev" class="contact-item" aria-label="LinkedIn">
-                                <div class="contact-icon"><i data-lucide="linkedin"></i></div>
-                                <div class="contact-item-text">
-                                    <h3>LinkedIn</h3>
-                                    <p>Connect professionally</p>
-                                </div>
-                            </a>
-                            <a href="https://github.com/abappdev" class="contact-item" aria-label="GitHub">
-                                <div class="contact-icon"><i data-lucide="github"></i></div>
-                                <div class="contact-item-text">
-                                    <h3>GitHub</h3>
-                                    <p>View my repositories</p>
-                                </div>
-                            </a>
-                            <a href="https://www.instagram.com/abhishekbhalerao04" class="contact-item" aria-label="Instagram">
-                                <div class="contact-icon"><i data-lucide="instagram"></i></div>
-                                <div class="contact-item-text">
-                                    <h3>Instagram</h3>
-                                    <p>Connect socially</p>
-                                </div>
-                            </a>
-                            <a href="https://x.com/abappdev" class="contact-item" aria-label="X">
-                                <div class="contact-icon"><i data-lucide="twitter"></i></div>
-                                <div class="contact-item-text">
-                                    <h3>X</h3>
-                                    <p>Follow my journey</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+        <section id="contact" class="section snap-panel snap-panel--end">
+            <div class="container snap-panel__inner">
+                <div class="section-header center">
+                    <p class="section-eyebrow">Contact</p>
+                    <h2 class="section-title">Let's Connect</h2>
+                    <p class="section-subtitle">Ready to bring your ideas to life? Let's talk!</p>
+                </div>
+                <div class="contact-grid">
+                    <a href="mailto:ab.appdev.ai@gmail.com" class="contact-card">
+                        <span class="contact-card-icon" aria-hidden="true"><i data-lucide="mail"></i></span>
+                        <span class="contact-card-body">
+                            <span class="contact-card-label">Email</span>
+                            <span class="contact-card-value">ab.appdev.ai@gmail.com</span>
+                        </span>
+                        <span class="contact-card-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/abappdev" class="contact-card" target="_blank" rel="noopener">
+                        <span class="contact-card-icon" aria-hidden="true"><i data-lucide="linkedin"></i></span>
+                        <span class="contact-card-body">
+                            <span class="contact-card-label">LinkedIn</span>
+                            <span class="contact-card-value">Connect professionally</span>
+                        </span>
+                        <span class="contact-card-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                    </a>
+                    <a href="https://github.com/abappdev" class="contact-card" target="_blank" rel="noopener">
+                        <span class="contact-card-icon" aria-hidden="true"><i data-lucide="github"></i></span>
+                        <span class="contact-card-body">
+                            <span class="contact-card-label">GitHub</span>
+                            <span class="contact-card-value">View repositories</span>
+                        </span>
+                        <span class="contact-card-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                    </a>
+                    <a href="https://www.instagram.com/abhishekbhalerao04" class="contact-card" target="_blank" rel="noopener">
+                        <span class="contact-card-icon" aria-hidden="true"><i data-lucide="instagram"></i></span>
+                        <span class="contact-card-body">
+                            <span class="contact-card-label">Instagram</span>
+                            <span class="contact-card-value">Connect socially</span>
+                        </span>
+                        <span class="contact-card-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                    </a>
+                    <a href="https://x.com/abappdev" class="contact-card" target="_blank" rel="noopener">
+                        <span class="contact-card-icon" aria-hidden="true"><i data-lucide="twitter"></i></span>
+                        <span class="contact-card-body">
+                            <span class="contact-card-label">X</span>
+                            <span class="contact-card-value">Follow my journey</span>
+                        </span>
+                        <span class="contact-card-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                    </a>
                 </div>
             </div>
+            <footer class="footer site-footer">
+                <div class="container">
+                    <p>Made with care in India</p>
+                    <p>&copy; <span id="footerYear">2026</span> AB AppDev. All rights reserved.</p>
+                    <nav class="footer-legal" aria-label="Footer">
+                        <a href="/">Services</a>
+                        <a href="/home/legal/privacy.html">Privacy</a>
+                        <a href="/home/legal/terms.html">Terms</a>
+                        <a href="/home/legal/support.html">Support</a>
+                    </nav>
+                </div>
+            </footer>
         </section>
     </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>Made with care in India</p>
-            <p>&copy; <span id="footerYear">2026</span> AB AppDev. All rights reserved.</p>
-            <nav class="footer-legal" aria-label="Footer">
-                <a href="/">Services</a>
-                <a href="/home/legal/privacy.html">Privacy</a>
-                <a href="/home/legal/terms.html">Terms</a>
-                <a href="/home/legal/support.html">Support</a>
-            </nav>
-        </div>
-    </footer>
 
     <div class="app-dialog-overlay" id="appDialogOverlay">
         <div class="app-dialog">
