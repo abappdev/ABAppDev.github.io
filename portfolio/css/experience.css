@@ -374,8 +374,23 @@ main,
 /* Tech stack pills */
 .tech-strip--hero {
     background: var(--bg-elevated);
-    border-top: 1px solid var(--border);
-    border-bottom: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.tech-strip__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: var(--space-md);
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
 }
 
 .tech-strip__list {

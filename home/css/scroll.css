@@ -10,7 +10,7 @@
 }
 
 .snap-panel--hero .snap-panel__inner {
-    justify-content: space-between;
+    justify-content: center;
     gap: var(--space-md);
 }
 
@@ -27,13 +27,13 @@
 
 .snap-panel--hero .tech-strip--section {
     flex-shrink: 0;
-    margin-top: auto;
-    margin-inline: calc(-1 * max(var(--gutter), env(safe-area-inset-left, 0px)));
-    width: calc(100% + max(var(--gutter), env(safe-area-inset-left, 0px)) + max(var(--gutter), env(safe-area-inset-right, 0px)));
+    margin-top: 0;
+    width: 100%;
     max-width: none;
-    padding: var(--space-md) max(var(--gutter), env(safe-area-inset-right, 0px)) var(--space-md) max(var(--gutter), env(safe-area-inset-left, 0px));
-    border-top: 1px solid var(--border);
-    background: var(--bg-elevated);
+    margin-inline: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
 }
 
 .snap-panel--fit .section-head {

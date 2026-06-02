@@ -158,13 +158,13 @@ html.snap-page body {
     border-radius: 4px;
 }
 
-/* Hero: vertical balance, tech strip at bottom */
+/* Hero: keep content flow natural */
 .snap-panel--hero {
     justify-content: center;
 }
 
 .snap-panel--hero .snap-panel__inner {
-    justify-content: space-between;
+    justify-content: center;
     gap: var(--space-md);
 }
 
