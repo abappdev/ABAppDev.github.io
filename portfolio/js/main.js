@@ -1,6 +1,7 @@
 import { populateApps, initPortfolioNavigation } from './render-apps.js';
 import { populateJourney, initJourneyTimeline } from './render-journey.js';
 import { bindAppDialog, addAppClickListeners } from './app-dialog.js';
+import { initSectionScroll } from '/shared/js/section-scroll.js';
 
 async function fetchJson(path) {
     const res = await fetch(path);
@@ -98,24 +99,6 @@ function initScrollEffects() {
     initNavbar();
 }
 
-function initSmoothScroll() {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (!href || href === '#') return;
-            const target = document.querySelector(href);
-            if (!target) return;
-            e.preventDefault();
-            target.scrollIntoView({
-                behavior: prefersReducedMotion ? 'auto' : 'smooth',
-                block: 'start',
-            });
-        });
-    });
-}
-
 function initProfileImage() {
     const profileImg = document.querySelector('.profile-image img');
     const fallbackIcon = document.querySelector('.profile-image__fallback');
@@ -150,7 +133,7 @@ async function init() {
     initJourneyTimeline(careerJourney);
     initAnimations();
     initScrollEffects();
-    initSmoothScroll();
+    initSectionScroll();
     initProfileImage();
 
     const year = document.getElementById('footerYear');

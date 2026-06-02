@@ -14,6 +14,17 @@
     gap: var(--space-md);
 }
 
+.snap-panel--fit .section-head:not(.center) {
+    text-align: left;
+}
+
+.snap-panel--fit .services-layout,
+.snap-panel--fit .project-card,
+.snap-panel--fit .contact-card {
+    margin-inline: auto;
+    width: 100%;
+}
+
 .snap-panel--hero .tech-strip--section {
     flex-shrink: 0;
     margin-top: auto;

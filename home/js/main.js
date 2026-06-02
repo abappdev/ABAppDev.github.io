@@ -1,4 +1,5 @@
 import { initAnimations } from './animations.js';
+import { initSectionScroll } from '/shared/js/section-scroll.js';
 
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
@@ -49,23 +50,6 @@ function initNavbar() {
     }
 }
 
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', (e) => {
-            const href = anchor.getAttribute('href');
-            if (!href || href === '#') return;
-            const target = document.querySelector(href);
-            if (!target) return;
-            e.preventDefault();
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            target.scrollIntoView({
-                behavior: prefersReducedMotion ? 'auto' : 'smooth',
-                block: 'start',
-            });
-        });
-    });
-}
-
 function initFooterYear() {
     const el = document.getElementById('footerYear');
     if (el) el.textContent = new Date().getFullYear();
@@ -74,7 +58,7 @@ function initFooterYear() {
 document.addEventListener('DOMContentLoaded', () => {
     window.ABIcons?.applyIcons();
     initNavbar();
-    initSmoothScroll();
+    initSectionScroll();
     initFooterYear();
     initAnimations();
 });

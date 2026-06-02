@@ -33,7 +33,7 @@ export function initAnimations() {
                     );
                 }
             },
-            { margin: '-80px' }
+            { margin: '-12% 0px -12% 0px', amount: 0.35 }
         );
     });
 }

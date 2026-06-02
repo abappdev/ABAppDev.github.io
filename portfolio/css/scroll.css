@@ -9,7 +9,12 @@
 
 .snap-panel--carousel.snap-panel--fit .snap-panel__inner {
     justify-content: center;
+    align-items: stretch;
     gap: var(--space-sm);
+}
+
+.snap-panel--carousel .section-header.center {
+    text-align: center;
 }
 
 #about.snap-panel {
