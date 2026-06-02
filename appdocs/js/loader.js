@@ -27,7 +27,7 @@ function showError(message) {
         <div class="legal-error">
             <h1>Document not found</h1>
             <p>${message}</p>
-            <p><a href="/">Return to AB App Dev</a></p>
+            <p><a href="/">Return to ab appdev</a></p>
         </div>
     `;
     document.getElementById('legal-tabs').innerHTML = '';
@@ -72,13 +72,13 @@ function renderApp(data, activeTab) {
 
     document.title = `${tab.title} — ${data.appName}`;
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.content = tab.description || `${tab.title} for ${data.appName} by AB App Dev.`;
+    if (metaDesc) metaDesc.content = tab.description || `${tab.title} for ${data.appName} by ab appdev.`;
 
     setCanonical(`https://www.abappdev.in/appdocs/?id=${data.id}&tab=${activeTab}`);
 
     const brand = document.getElementById('app-brand');
     if (brand) {
-        brand.innerHTML = `<span class="brand-wordmark">AB App Dev</span> · ${data.appName}`;
+        brand.innerHTML = `<span class="brand-wordmark">ab appdev</span> · ${data.appName}`;
     }
 
     const content = document.getElementById('legal-content');

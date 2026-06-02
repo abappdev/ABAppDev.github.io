@@ -36,8 +36,10 @@ function innerCanScroll(el, deltaY) {
 
 export function scrollToPanel(panel, behavior = 'smooth') {
     if (!panel) return;
-    const top = panel.offsetTop - NAV_OFFSET();
-    getScrollParent().scrollTo({ top: Math.max(0, top), behavior });
+    panel.scrollIntoView({
+        behavior: behavior === 'auto' ? 'auto' : behavior,
+        block: 'start',
+    });
 }
 
 export function initSectionScroll() {

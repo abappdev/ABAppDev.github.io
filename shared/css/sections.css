@@ -46,12 +46,14 @@ html.snap-page body {
     scroll-margin-top: var(--nav-height);
     min-height: var(--panel-height-svh);
     min-height: var(--panel-height);
+    height: var(--panel-height);
+    max-height: var(--panel-height);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-block: clamp(var(--space-md), 2.5vh, var(--space-xl));
+    padding-block: 0;
     overflow: hidden;
 }
 
@@ -100,6 +102,13 @@ html.snap-page body {
     max-width: var(--max-width, 1140px);
     padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
     padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .snap-panel__inner:not(.container) {
+        padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+        padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+    }
 }
 
 /* Section enter animation */

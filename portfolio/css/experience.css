@@ -20,7 +20,7 @@ main,
 
 /* Nav */
 .navbar {
-    height: var(--nav-height, 72px);
+    height: var(--nav-height);
     padding: 0;
     background: transparent;
     border-bottom: 1px solid transparent;
@@ -103,7 +103,7 @@ main,
 .nav-drawer {
     display: none;
     position: fixed;
-    top: var(--nav-height, 72px);
+    top: var(--nav-height);
     left: 0;
     right: 0;
     background: var(--bg-elevated);
@@ -154,7 +154,7 @@ main,
 }
 
 .portfolio-page.snap-page main {
-    margin-top: var(--nav-height, 72px);
+    margin-top: var(--nav-height);
     padding-top: 0;
 }
 
@@ -210,7 +210,7 @@ main,
 
 #about.section:not(.snap-panel) {
     padding: var(--space-xl) 0 var(--space-2xl);
-    min-height: calc(100dvh - var(--nav-height, 72px));
+    min-height: calc(100dvh - var(--nav-height));
     display: flex;
     align-items: center;
 }

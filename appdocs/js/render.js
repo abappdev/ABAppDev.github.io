@@ -65,5 +65,5 @@ export function renderTab(tab) {
 
 export function renderFooter(appId, appName) {
     const base = `/appdocs/?id=${encodeURIComponent(appId)}`;
-    return `© ${new Date().getFullYear()} <span class="brand-wordmark">AB App Dev</span> · <a href="${base}&tab=privacy">Privacy</a> · <a href="${base}&tab=terms">Terms</a> · <a href="${base}&tab=support">Support</a> · ${escapeHtml(appName)}`;
+    return `© ${new Date().getFullYear()} <span class="brand-wordmark">ab appdev</span> · <a href="${base}&tab=privacy">Privacy</a> · <a href="${base}&tab=terms">Terms</a> · <a href="${base}&tab=support">Support</a> · ${escapeHtml(appName)}`;
 }

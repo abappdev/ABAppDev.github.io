@@ -1,7 +1,7 @@
 {
   "id": "opacity",
   "appName": "Opacity Social",
-  "publisher": "AB App Dev",
+  "publisher": "ab appdev",
   "meta": {
     "effectiveDate": "May 29, 2026",
     "lastUpdated": "May 29, 2026"
@@ -15,20 +15,20 @@
     "privacy": {
       "title": "Privacy Policy",
       "subtitle": "For the Opacity Social mobile application.",
-      "description": "Privacy Policy for the Opacity Social application by AB App Dev.",
+      "description": "Privacy Policy for the Opacity Social application by ab appdev.",
       "sections": [
         {
           "type": "meta",
           "items": [
             { "label": "Effective Date", "value": "May 29, 2026" },
             { "label": "Last Updated", "value": "May 29, 2026" },
-            { "label": "Publisher", "value": "AB App Dev" }
+            { "label": "Publisher", "value": "ab appdev" }
           ]
         },
         {
           "type": "callout",
           "paragraphs": [
-            "This notice covers the Opacity Social Android app. It supplements, and where it conflicts controls over, the publisher-wide <a href=\"/home/legal/privacy.html\">AB App Dev Privacy Policy</a>."
+            "This notice covers the Opacity Social Android app. It supplements, and where it conflicts controls over, the publisher-wide <a href=\"/home/legal/privacy.html\">ab appdev Privacy Policy</a>."
           ]
         },
         {
@@ -166,27 +166,27 @@
         },
         {
           "type": "paragraph",
-          "html": "Privacy: <a href=\"mailto:privacy@abappdev.in\">privacy@abappdev.in</a><br>Support: <a href=\"mailto:support@abappdev.in\">support@abappdev.in</a><br>Publisher: AB App Dev · <a href=\"https://www.abappdev.in\">www.abappdev.in</a>"
+          "html": "Privacy: <a href=\"mailto:privacy@abappdev.in\">privacy@abappdev.in</a><br>Support: <a href=\"mailto:support@abappdev.in\">support@abappdev.in</a><br>Publisher: ab appdev · <a href=\"https://www.abappdev.in\">www.abappdev.in</a>"
         }
       ]
     },
     "terms": {
       "title": "Terms & Conditions",
       "subtitle": "For the Opacity Social application.",
-      "description": "Terms and Conditions for the Opacity Social application by AB App Dev.",
+      "description": "Terms and Conditions for the Opacity Social application by ab appdev.",
       "sections": [
         {
           "type": "meta",
           "items": [
             { "label": "Effective Date", "value": "May 29, 2026" },
             { "label": "Last Updated", "value": "May 29, 2026" },
-            { "label": "Publisher", "value": "AB App Dev" }
+            { "label": "Publisher", "value": "ab appdev" }
           ]
         },
         {
           "type": "callout",
           "paragraphs": [
-            "By using Opacity Social you agree to these Terms and to the publisher-wide <a href=\"/home/legal/terms.html\">AB App Dev Terms &amp; Conditions</a>. The app-specific terms below supplement, and where they conflict control over, the publisher-wide Terms for Opacity Social."
+            "By using Opacity Social you agree to these Terms and to the publisher-wide <a href=\"/home/legal/terms.html\">ab appdev Terms &amp; Conditions</a>. The app-specific terms below supplement, and where they conflict control over, the publisher-wide Terms for Opacity Social."
           ]
         },
         {
@@ -219,7 +219,7 @@
         },
         {
           "type": "paragraph",
-          "html": "You retain ownership of the projects, tasks, messages, attachments, and other content you create or upload (\"User Content\"). You grant AB App Dev a limited license to host, store, transmit, display, and back up your User Content solely to operate Opacity Social. You are responsible for ensuring you have the rights to share any User Content with collaborators you invite."
+          "html": "You retain ownership of the projects, tasks, messages, attachments, and other content you create or upload (\"User Content\"). You grant ab appdev a limited license to host, store, transmit, display, and back up your User Content solely to operate Opacity Social. You are responsible for ensuring you have the rights to share any User Content with collaborators you invite."
         },
         {
           "type": "heading",
@@ -281,7 +281,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Opacity Social is provided \"as is\" to the extent permitted by law. The disclaimers, limitation of liability, indemnity, and governing-law provisions in the publisher-wide <a href=\"/home/legal/terms.html\">AB App Dev Terms &amp; Conditions</a> apply to your use of Opacity Social."
+          "html": "Opacity Social is provided \"as is\" to the extent permitted by law. The disclaimers, limitation of liability, indemnity, and governing-law provisions in the publisher-wide <a href=\"/home/legal/terms.html\">ab appdev Terms &amp; Conditions</a> apply to your use of Opacity Social."
         },
         {
           "type": "heading",
@@ -297,14 +297,14 @@
         },
         {
           "type": "paragraph",
-          "html": "Legal: <a href=\"mailto:legal@abappdev.in\">legal@abappdev.in</a><br>Support: <a href=\"mailto:support@abappdev.in\">support@abappdev.in</a><br>Publisher: AB App Dev · <a href=\"https://www.abappdev.in\">www.abappdev.in</a>"
+          "html": "Legal: <a href=\"mailto:legal@abappdev.in\">legal@abappdev.in</a><br>Support: <a href=\"mailto:support@abappdev.in\">support@abappdev.in</a><br>Publisher: ab appdev · <a href=\"https://www.abappdev.in\">www.abappdev.in</a>"
         }
       ]
     },
     "support": {
       "title": "Opacity Social Support",
       "subtitle": "Help with projects, chats, invites, Kanban boards, and your subscription.",
-      "description": "Help and support for the Opacity Social application by AB App Dev.",
+      "description": "Help and support for the Opacity Social application by ab appdev.",
       "sections": [
         {
           "type": "callout",
