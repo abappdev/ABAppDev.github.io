@@ -1,110 +1,15 @@
-/* Full-viewport scroll sections — portfolio only */
+/* Portfolio — full-viewport sections */
 
-html.portfolio-page {
-    scroll-behavior: smooth;
-    scroll-padding-top: var(--nav-height, 72px);
-    overflow-x: clip;
-}
+@import url('/shared/css/sections.css');
 
-html.portfolio-page,
-html.portfolio-page body {
-    min-height: 0;
-    height: auto;
-    margin: 0;
-    padding: 0;
-}
-
-html.portfolio-page body {
-    overflow-x: clip;
-}
-
-.portfolio-page main {
-    margin-top: var(--nav-height, 72px);
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    html.portfolio-page {
-        scroll-snap-type: y mandatory;
-    }
-}
-
-.snap-panel {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    scroll-margin-top: var(--nav-height, 72px);
-    min-height: calc(100svh - var(--nav-height, 72px));
-    min-height: calc(100dvh - var(--nav-height, 72px));
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    padding-block: clamp(var(--space-md), 3vh, var(--space-xl));
-}
-
-.portfolio-page .snap-panel.section {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-.snap-panel__inner {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 0;
-}
-
-.snap-panel__inner.container {
-    flex: 1;
-}
-
-/* Project / journey panels — content-heavy, top-aligned */
+/* Project / journey panels — content-heavy */
 .snap-panel--carousel {
     justify-content: flex-start;
-    padding-block: var(--space-md);
 }
 
-.snap-panel--carousel .snap-panel__inner {
+.snap-panel--carousel.snap-panel--fit .snap-panel__inner {
     justify-content: center;
     gap: var(--space-sm);
-}
-
-/* Contact + footer — last panel, no dead space below */
-.snap-panel--end {
-    justify-content: space-between;
-    padding-bottom: 0;
-    min-height: calc(100svh - var(--nav-height, 72px));
-    min-height: calc(100dvh - var(--nav-height, 72px));
-}
-
-.snap-panel--end .snap-panel__inner {
-    flex: 1 1 auto;
-    justify-content: center;
-    padding-bottom: var(--space-md);
-}
-
-.snap-panel--end > .site-footer {
-    flex-shrink: 0;
-    width: 100%;
-    margin-top: 0;
-    border-top: 1px solid var(--border);
-}
-
-/* Nothing after main — prevents phantom scroll past footer */
-.portfolio-page main::after {
-    display: none;
-    content: none;
-    height: 0;
-}
-
-/* Horizontal carousels shouldn't hijack vertical page scroll */
-.roadmap-container,
-.journey-container {
-    overscroll-behavior-x: contain;
 }
 
 #about.snap-panel {
@@ -142,24 +47,17 @@ html.portfolio-page body {
     gap: var(--space-md);
 }
 
+.roadmap-container,
+.journey-container {
+    overscroll-behavior-x: contain;
+}
+
 @media (max-width: 768px) {
-    .snap-panel--carousel .snap-panel__inner {
+    .snap-panel--carousel.snap-panel--fit .snap-panel__inner {
         justify-content: flex-start;
     }
 
     .snap-panel--end .contact-grid {
         max-width: 100%;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html.portfolio-page {
-        scroll-snap-type: none;
-        scroll-behavior: auto;
-    }
-
-    .snap-panel {
-        scroll-snap-stop: normal;
-        min-height: 0;
     }
 }

@@ -52,7 +52,7 @@
 }
 
 /* Vertical rhythm */
-.section {
+.section:not(.snap-panel) {
     padding-top: var(--section-pad-y);
     padding-bottom: var(--section-pad-y);
 }

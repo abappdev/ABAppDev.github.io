@@ -157,7 +157,12 @@
     height: 20px;
 }
 
-main {
+.snap-page main,
+.snap-page .site-main {
+    padding-top: 0;
+}
+
+main:not(.site-main) {
     padding-top: var(--nav-height);
 }
 

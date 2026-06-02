@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" class="home-page snap-page">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -20,16 +20,20 @@
     <link rel="stylesheet" href="/home/css/base.css">
     <link rel="stylesheet" href="/home/css/layout.css">
     <link rel="stylesheet" href="/home/css/components.css">
+    <link rel="stylesheet" href="/shared/css/sections.css">
+    <link rel="stylesheet" href="/home/css/scroll.css">
     <script src="/shared/js/theme.js" defer></script>
 </head>
 <body>
-    <header class="navbar">
+    <header class="site-header navbar">
         <div class="nav-container">
             <a class="logo brand-wordmark" href="/">AB <span>App Dev</span></a>
             <ul class="nav-links">
+                <li><a href="#top">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#process">Process</a></li>
                 <li><a href="#work">Projects</a></li>
+                <li><a href="#why">Why us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="nav-actions">
@@ -45,48 +49,54 @@
 
     <nav class="nav-drawer" id="navDrawer" aria-hidden="true">
         <ul>
+            <li><a href="#top">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#process">Process</a></li>
             <li><a href="#work">Projects</a></li>
+            <li><a href="#why">Why us</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <main>
-        <section class="hero container" id="top">
-            <div class="hero-grid hero-grid--text">
-                <div class="hero-content">
-                    <div class="hero-accent-line" aria-hidden="true"></div>
-                    <p class="hero-greeting">Hello.</p>
-                    <h1>We're <span class="brand-wordmark highlight">AB App Dev</span> Software Studio</h1>
-                    <p class="hero-lead">We design and ship mobile apps, AI-powered workflows, and custom software for teams who care about quality, security, and store-ready compliance.</p>
-                    <div class="hero-cta">
-                        <a href="mailto:support@abappdev.in" class="btn btn-primary">
-                            <i data-icon="rocket"></i>
-                            Got a project?
-                        </a>
-                        <a href="#contact" class="btn btn-ghost">
-                            <i data-icon="mail"></i>
-                            Get in touch
-                        </a>
+    <main class="site-main" id="main">
+        <section class="snap-panel snap-panel--hero" id="top" data-animate-section>
+            <div class="snap-panel__inner container">
+                <div class="hero">
+                    <div class="hero-grid hero-grid--text">
+                        <div class="hero-content">
+                            <div class="hero-accent-line" aria-hidden="true"></div>
+                            <p class="hero-greeting">Hello.</p>
+                            <h1>We're <span class="brand-wordmark highlight">AB App Dev</span> Software Studio</h1>
+                            <p class="hero-lead">We design and ship mobile apps, AI-powered workflows, and custom software for teams who care about quality, security, and store-ready compliance.</p>
+                            <div class="hero-cta">
+                                <a href="mailto:support@abappdev.in" class="btn btn-primary">
+                                    <i data-icon="rocket"></i>
+                                    Got a project?
+                                </a>
+                                <a href="#contact" class="btn btn-ghost">
+                                    <i data-icon="mail"></i>
+                                    Get in touch
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-strip tech-strip--section" aria-label="Technologies">
+                    <div class="tech-strip-inner">
+                        <span><strong>Kotlin</strong></span>
+                        <span><strong>Swift</strong></span>
+                        <span><strong>Firebase</strong></span>
+                        <span><strong>React</strong></span>
+                        <span><strong>Node.js</strong></span>
+                        <span><strong>AI / ML</strong></span>
+                        <span><strong>Git</strong></span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="tech-strip">
-            <div class="container tech-strip-inner">
-                <span><strong>Kotlin</strong></span>
-                <span><strong>Swift</strong></span>
-                <span><strong>Firebase</strong></span>
-                <span><strong>React</strong></span>
-                <span><strong>Node.js</strong></span>
-                <span><strong>AI / ML</strong></span>
-                <span><strong>Git</strong></span>
-            </div>
-        </div>
-
-        <section class="section container" id="services" data-animate-section>
+        <section class="snap-panel snap-panel--fit section" id="services" data-animate-section>
+            <div class="snap-panel__inner container">
             <div class="section-head">
                 <p class="section-eyebrow">What we do</p>
                 <h2 class="section-title">Development services</h2>
@@ -153,10 +163,11 @@
                     <span>Support response</span>
                 </div>
             </div>
+            </div>
         </section>
 
-        <section class="section section-band" id="process" data-animate-section>
-            <div class="container">
+        <section class="snap-panel snap-panel--fit section section-band" id="process" data-animate-section>
+            <div class="snap-panel__inner container">
                 <div class="section-head center">
                     <p class="section-eyebrow">How we work</p>
                     <h2 class="section-title">From idea to shipped product</h2>
@@ -183,7 +194,8 @@
             </div>
         </section>
 
-        <section class="section container" id="work" data-animate-section>
+        <section class="snap-panel snap-panel--fit section" id="work" data-animate-section>
+            <div class="snap-panel__inner container">
             <div class="section-head">
                 <p class="section-eyebrow">Projects</p>
                 <h2 class="section-title">Featured work</h2>
@@ -202,10 +214,11 @@
                     </a>
                 </div>
             </article>
+            </div>
         </section>
 
-        <section class="section section-band" data-animate-section>
-            <div class="container">
+        <section class="snap-panel snap-panel--fit section section-band" id="why" data-animate-section>
+            <div class="snap-panel__inner container">
                 <div class="section-head center">
                     <p class="section-eyebrow">Why us</p>
                     <h2 class="section-title">Built for trust and scale</h2>
@@ -243,7 +256,8 @@
             </div>
         </section>
 
-        <section class="section container" id="contact" data-animate-section>
+        <section class="snap-panel snap-panel--end section" id="contact" data-animate-section>
+            <div class="snap-panel__inner container">
             <div class="section-head center">
                 <p class="section-eyebrow">Contact</p>
                 <h2 class="section-title">Let's build something</h2>
@@ -257,21 +271,21 @@
                     <a href="https://github.com/abappdev" class="contact-chip" target="_blank" rel="noopener"><i data-icon="github"></i> GitHub</a>
                 </div>
             </div>
+            </div>
+            <footer class="site-footer footer">
+                <div class="container footer-inner">
+                    <p>&copy; <span id="footerYear">2026</span> <span class="brand-wordmark">AB App Dev</span>. All rights reserved.</p>
+                    <p class="icon-attribution"><a href="https://www.flaticon.com/uicons" target="_blank" rel="noopener noreferrer">Uicons by Flaticon</a></p>
+                    <nav class="footer-legal" aria-label="Legal">
+                        <a href="/home/legal/privacy.html">Privacy</a>
+                        <a href="/home/legal/terms.html">Terms</a>
+                        <a href="/home/legal/refunds.html">Refunds</a>
+                        <a href="/home/legal/support.html">Support</a>
+                    </nav>
+                </div>
+            </footer>
         </section>
     </main>
-
-    <footer class="footer">
-        <div class="container footer-inner">
-            <p>&copy; <span id="footerYear">2026</span> <span class="brand-wordmark">AB App Dev</span>. All rights reserved.</p>
-            <p class="icon-attribution"><a href="https://www.flaticon.com/uicons" target="_blank" rel="noopener noreferrer">Uicons by Flaticon</a></p>
-            <nav class="footer-legal" aria-label="Legal">
-                <a href="/home/legal/privacy.html">Privacy</a>
-                <a href="/home/legal/terms.html">Terms</a>
-                <a href="/home/legal/refunds.html">Refunds</a>
-                <a href="/home/legal/support.html">Support</a>
-            </nav>
-        </div>
-    </footer>
 
     <script type="module" src="/home/js/main.js"></script>
 </body>
