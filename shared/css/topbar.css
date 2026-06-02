@@ -1,0 +1,165 @@
+/* Site header — matches legal/refund topbar pattern */
+
+:root {
+    --nav-height: 58px;
+}
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--bg-elevated, var(--md-sys-color-surface-container));
+    border-bottom: 1px solid var(--border, var(--md-sys-color-outline-variant));
+    backdrop-filter: blur(10px);
+}
+
+.topbar-inner {
+    max-width: var(--max-width, 1140px);
+    margin: 0 auto;
+    min-height: var(--nav-height);
+    padding: 10px max(var(--gutter, 1.25rem), env(safe-area-inset-right, 0px)) 10px
+        max(var(--gutter, 1.25rem), env(safe-area-inset-left, 0px));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.topbar .brand {
+    color: var(--accent, var(--md-sys-color-primary));
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.topbar .brand > span {
+    color: var(--accent, var(--md-sys-color-primary));
+}
+
+.topbar-links {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.topbar-links a {
+    color: var(--text, var(--md-sys-color-on-surface));
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.topbar-links a:hover,
+.topbar-links a[aria-current="page"] {
+    background: var(--accent-muted, var(--md-sys-color-primary-container));
+    color: var(--accent, var(--md-sys-color-on-primary-container));
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.nav-toggle,
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border, var(--md-sys-color-outline-variant));
+    border-radius: var(--radius-md, 14px);
+    background: var(--bg-card, var(--md-sys-color-surface-container-high));
+    color: var(--text, var(--md-sys-color-on-surface));
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.nav-toggle:hover,
+.theme-toggle:hover {
+    border-color: var(--accent, var(--md-sys-color-primary));
+    color: var(--accent, var(--md-sys-color-primary));
+    background: var(--accent-muted, var(--md-sys-color-primary-container));
+}
+
+.nav-toggle .fi,
+.theme-toggle .fi {
+    font-size: 1.25rem;
+}
+
+@media (min-width: 900px) {
+    .nav-toggle {
+        display: none;
+    }
+
+    .topbar-links {
+        display: flex;
+    }
+}
+
+.nav-drawer {
+    display: none;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--bg-elevated, var(--md-sys-color-surface-container));
+    border-bottom: 1px solid var(--border, var(--md-sys-color-outline-variant));
+    box-shadow: var(--shadow-md, 0 8px 30px rgba(0, 0, 0, 0.2));
+    z-index: 999;
+    padding: var(--space-md, 16px) max(var(--gutter, 1.25rem), env(safe-area-inset-right, 0px))
+        var(--space-md, 16px) max(var(--gutter, 1.25rem), env(safe-area-inset-left, 0px));
+}
+
+.nav-drawer.open {
+    display: block;
+}
+
+.nav-drawer ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-drawer a {
+    display: block;
+    padding: 12px 14px;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--text, var(--md-sys-color-on-surface));
+    text-decoration: none;
+    border-radius: var(--radius-md, 14px);
+    transition: background 0.2s ease;
+}
+
+.nav-drawer a:hover {
+    background: var(--accent-muted, var(--md-sys-color-primary-container));
+    color: var(--accent, var(--md-sys-color-on-primary-container));
+}
+
+@media (min-width: 900px) {
+    .nav-drawer {
+        display: none !important;
+    }
+}
+
+/* Legal pages: sticky instead of fixed */
+body:not(.snap-page) .topbar {
+    position: sticky;
+}
+
+body:not(.snap-page) .nav-drawer {
+    top: 0;
+}

@@ -185,33 +185,56 @@
 }
 
 /* Tech strip */
-.tech-strip {
+.tech-strip--section {
     background: var(--bg-elevated);
     border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding-top: var(--space-lg);
-    padding-bottom: var(--space-lg);
-    overflow: hidden;
 }
 
-.tech-strip-inner {
+.tech-strip__list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--space-md) var(--space-xl);
+    align-items: center;
+    gap: var(--space-sm) var(--space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.tech-strip span {
-    font-size: 14px;
+.tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.5rem 0.875rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    color: var(--text-muted);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-}
-
-.tech-strip span strong {
     color: var(--text-secondary);
-    font-weight: 600;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.tech-pill:hover {
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+    color: var(--text);
+}
+
+.tech-pill__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+.tech-pill__icon .fi {
+    font-size: 1.125rem;
+}
+
+.tech-pill__label {
+    line-height: 1.2;
 }
 
 /* Services timeline */

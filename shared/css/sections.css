@@ -1,7 +1,6 @@
 /* Full-viewport scroll sections — home & portfolio */
 
 :root {
-    --nav-height: 72px;
     --panel-height: calc(100dvh - var(--nav-height));
     --panel-height-svh: calc(100svh - var(--nav-height));
     --section-divider: color-mix(in srgb, var(--accent) 28%, var(--border));
@@ -31,15 +30,6 @@ html.snap-page body {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;
-}
-
-.site-header.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--nav-height);
-    z-index: 1000;
 }
 
 @media (prefers-reduced-motion: no-preference) {

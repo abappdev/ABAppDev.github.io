@@ -25,18 +25,18 @@
     <script src="/shared/js/theme.js" defer></script>
 </head>
 <body>
-    <header class="site-header navbar">
-        <div class="nav-container">
-            <a class="logo brand-wordmark" href="/">AB <span>App Dev</span></a>
-            <ul class="nav-links">
-                <li><a href="#top">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#work">Projects</a></li>
-                <li><a href="#why">Why us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
+    <header class="site-header topbar navbar">
+        <div class="topbar-inner">
+            <a class="brand brand-wordmark" href="/">AB <span>App Dev</span></a>
+            <nav class="topbar-links" aria-label="Primary">
+                <a href="#top">Home</a>
+                <a href="#services">Services</a>
+                <a href="#process">Process</a>
+                <a href="#work">Projects</a>
+                <a href="#why">Why us</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="topbar-actions">
                 <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false">
                     <i data-icon="menu"></i>
                 </button>
@@ -82,15 +82,36 @@
                     </div>
                 </div>
                 <div class="tech-strip tech-strip--section" aria-label="Technologies">
-                    <div class="tech-strip-inner">
-                        <span><strong>Kotlin</strong></span>
-                        <span><strong>Swift</strong></span>
-                        <span><strong>Firebase</strong></span>
-                        <span><strong>React</strong></span>
-                        <span><strong>Node.js</strong></span>
-                        <span><strong>AI / ML</strong></span>
-                        <span><strong>Git</strong></span>
-                    </div>
+                    <ul class="tech-strip__list" role="list">
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="code-xml"></i></span>
+                            <span class="tech-pill__label">Kotlin</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="bird"></i></span>
+                            <span class="tech-pill__label">Swift</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="flame"></i></span>
+                            <span class="tech-pill__label">Firebase</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="react"></i></span>
+                            <span class="tech-pill__label">React</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="nodejs"></i></span>
+                            <span class="tech-pill__label">Node.js</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="ai-ml"></i></span>
+                            <span class="tech-pill__label">AI / ML</span>
+                        </li>
+                        <li class="tech-pill">
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="git-branch"></i></span>
+                            <span class="tech-pill__label">Git</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>

@@ -12,6 +12,7 @@
         'apple',
         'google',
         'app-store-ios',
+        'node-js',
     ]);
 
     /** Lucide / legacy names → Flaticon slug (without prefix) */
@@ -54,6 +55,10 @@
         rocket: 'rocket',
         sun: 'sun',
         moon: 'moon',
+        react: 'react',
+        nodejs: 'node-js',
+        'node.js': 'node-js',
+        'ai-ml': 'brain',
     };
 
     function slug(name) {

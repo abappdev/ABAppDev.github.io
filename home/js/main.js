@@ -5,7 +5,7 @@ function initNavbar() {
     const navbar = document.querySelector('.navbar');
     const toggle = document.getElementById('navToggle');
     const drawer = document.getElementById('navDrawer');
-    const desktopLinks = document.querySelector('.nav-links');
+    const desktopLinks = document.querySelector('.topbar-links');
 
     window.addEventListener(
         'scroll',

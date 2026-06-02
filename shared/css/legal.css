@@ -1,5 +1,6 @@
 @import url('tokens.css');
 @import url('brand.css');
+@import url('topbar.css');
 
 :root,
 [data-theme="dark"] {
@@ -28,51 +29,9 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.topbar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--md-sys-color-surface-container);
-    border-bottom: 1px solid var(--md-sys-color-outline-variant);
-    backdrop-filter: blur(10px);
-}
-
 .topbar-inner {
     max-width: 920px;
-    margin: 0 auto;
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-}
-
-.brand {
-    color: var(--md-sys-color-primary);
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.topbar-links {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.topbar-links a {
-    color: var(--md-sys-color-on-surface);
-    text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 16px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: background-color .25s ease, color .25s ease;
-}
-
-.topbar-links a:hover,
-.topbar-links a[aria-current="page"] {
-    background-color: var(--md-sys-color-primary-container);
-    color: var(--md-sys-color-on-primary-container);
+    margin-inline: auto;
 }
 
 main.legal {
