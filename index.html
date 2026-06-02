@@ -6,12 +6,17 @@
     <title>AB App Dev — Apps, AI & Software Development</title>
     <meta name="description" content="AB App Dev builds mobile apps, AI solutions, and custom software. Android, iOS, macOS, and secure cloud-backed products from abappdev.in.">
     <link rel="canonical" href="https://www.abappdev.in/">
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/regular/rounded.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/brands/all.css">
+    <link rel="stylesheet" href="/shared/css/icons.css">
+    <script src="/shared/js/icons.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/shared/css/tokens.css">
+    <link rel="stylesheet" href="/shared/css/brand.css">
     <link rel="stylesheet" href="/shared/css/spacing.css">
+    <script src="/shared/js/brand-wordmark.js" defer></script>
     <link rel="stylesheet" href="/home/css/base.css">
     <link rel="stylesheet" href="/home/css/layout.css">
     <link rel="stylesheet" href="/home/css/components.css">
@@ -20,7 +25,7 @@
 <body>
     <header class="navbar">
         <div class="nav-container">
-            <a class="logo" href="/">AB <span>App Dev</span></a>
+            <a class="logo brand-wordmark" href="/">AB <span>App Dev</span></a>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#process">Process</a></li>
@@ -29,10 +34,10 @@
             </ul>
             <div class="nav-actions">
                 <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false">
-                    <i data-lucide="menu"></i>
+                    <i data-icon="menu"></i>
                 </button>
                 <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
-                    <i data-lucide="moon" id="themeIcon"></i>
+                    <i data-icon="moon" id="themeIcon"></i>
                 </button>
             </div>
         </div>
@@ -53,15 +58,15 @@
                 <div class="hero-content">
                     <div class="hero-accent-line" aria-hidden="true"></div>
                     <p class="hero-greeting">Hello.</p>
-                    <h1>We're <span class="highlight">AB App Dev</span> Software Studio</h1>
+                    <h1>We're <span class="brand-wordmark highlight">AB App Dev</span> Software Studio</h1>
                     <p class="hero-lead">We design and ship mobile apps, AI-powered workflows, and custom software for teams who care about quality, security, and store-ready compliance.</p>
                     <div class="hero-cta">
                         <a href="mailto:support@abappdev.in" class="btn btn-primary">
-                            <i data-lucide="rocket"></i>
+                            <i data-icon="rocket"></i>
                             Got a project?
                         </a>
                         <a href="#contact" class="btn btn-ghost">
-                            <i data-lucide="mail"></i>
+                            <i data-icon="mail"></i>
                             Get in touch
                         </a>
                     </div>
@@ -90,21 +95,21 @@
             <div class="services-layout">
                 <div class="service-timeline">
                     <div class="service-timeline-item" data-animate>
-                        <div class="timeline-dot"><i data-lucide="smartphone"></i></div>
+                        <div class="timeline-dot"><i data-icon="smartphone"></i></div>
                         <div>
                             <h3>Mobile apps</h3>
                             <p>Android, iOS & macOS</p>
                         </div>
                     </div>
                     <div class="service-timeline-item" data-animate>
-                        <div class="timeline-dot"><i data-lucide="brain"></i></div>
+                        <div class="timeline-dot"><i data-icon="brain"></i></div>
                         <div>
                             <h3>AI & automation</h3>
                             <p>Smart product features</p>
                         </div>
                     </div>
                     <div class="service-timeline-item" data-animate>
-                        <div class="timeline-dot"><i data-lucide="server"></i></div>
+                        <div class="timeline-dot"><i data-icon="server"></i></div>
                         <div>
                             <h3>Custom software</h3>
                             <p>APIs, backends & web</p>
@@ -113,22 +118,22 @@
                 </div>
                 <div class="services-cards">
                     <article class="service-card" data-animate>
-                        <div class="service-card-icon"><i data-lucide="smartphone"></i></div>
+                        <div class="service-card-icon"><i data-icon="smartphone"></i></div>
                         <h3>Native mobile</h3>
                         <p>Polished UX, offline-ready architecture, and Play Store / App Store compliance built in from day one.</p>
                     </article>
                     <article class="service-card" data-animate>
-                        <div class="service-card-icon"><i data-lucide="sparkles"></i></div>
+                        <div class="service-card-icon"><i data-icon="sparkles"></i></div>
                         <h3>AI integration</h3>
                         <p>Assistants, automation, and intelligent workflows with clear, responsible data practices.</p>
                     </article>
                     <article class="service-card" data-animate>
-                        <div class="service-card-icon"><i data-lucide="shield-check"></i></div>
+                        <div class="service-card-icon"><i data-icon="shield-check"></i></div>
                         <h3>Production grade</h3>
                         <p>Security, legal pages, and reliable releases — ready for real users and real scale.</p>
                     </article>
                     <article class="service-card" data-animate>
-                        <div class="service-card-icon"><i data-lucide="headphones"></i></div>
+                        <div class="service-card-icon"><i data-icon="headphones"></i></div>
                         <h3>Ongoing support</h3>
                         <p>Monitoring, fixes, and enhancements after launch with dedicated support channels.</p>
                     </article>
@@ -185,14 +190,14 @@
                 <p class="section-desc">Real products in the store — built for teams and end users.</p>
             </div>
             <article class="project-card" data-animate>
-                <div class="project-icon"><i data-lucide="users"></i></div>
+                <div class="project-icon"><i data-icon="users"></i></div>
                 <div class="project-meta">
                     <h3>Opacity Social</h3>
                     <p>Project management and team collaboration for small teams — projects, chats, invites, and Kanban on Android.</p>
                 </div>
                 <div class="project-actions">
                     <a href="https://play.google.com/store/apps/details?id=com.opacity.india&hl=en" class="btn btn-primary" target="_blank" rel="noopener">
-                        <i data-lucide="play"></i>
+                        <i data-icon="play"></i>
                         Play Store
                     </a>
                 </div>
@@ -207,28 +212,28 @@
                 </div>
                 <div class="why-grid">
                     <div class="why-card" data-animate>
-                        <i data-lucide="shield-check"></i>
+                        <i data-icon="shield-check"></i>
                         <div>
                             <h3>Security-first</h3>
                             <p>Encryption in transit, least-privilege access, and responsible disclosure practices.</p>
                         </div>
                     </div>
                     <div class="why-card" data-animate>
-                        <i data-lucide="file-check"></i>
+                        <i data-icon="file-check"></i>
                         <div>
                             <h3>Store-ready legal</h3>
                             <p>Privacy, terms, and support pages structured for App Store and Google Play.</p>
                         </div>
                     </div>
                     <div class="why-card" data-animate>
-                        <i data-lucide="layers"></i>
+                        <i data-icon="layers"></i>
                         <div>
                             <h3>Modern stack</h3>
                             <p>Kotlin, Swift, Firebase, and cloud backends chosen for your product's needs.</p>
                         </div>
                     </div>
                     <div class="why-card" data-animate>
-                        <i data-lucide="zap"></i>
+                        <i data-icon="zap"></i>
                         <div>
                             <h3>Fast iteration</h3>
                             <p>Clear milestones, demos you can share, and code you can maintain long-term.</p>
@@ -246,10 +251,10 @@
             <div class="contact-card" data-animate>
                 <p>Tell us about your app, AI feature, or software project. We typically respond within one business day.</p>
                 <div class="contact-chips">
-                    <a href="mailto:support@abappdev.in" class="contact-chip"><i data-lucide="mail"></i> support@abappdev.in</a>
-                    <a href="/portfolio/" class="contact-chip"><i data-lucide="briefcase"></i> Developer portfolio</a>
-                    <a href="https://www.linkedin.com/in/abappdev" class="contact-chip" target="_blank" rel="noopener"><i data-lucide="linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/abappdev" class="contact-chip" target="_blank" rel="noopener"><i data-lucide="github"></i> GitHub</a>
+                    <a href="mailto:support@abappdev.in" class="contact-chip"><i data-icon="mail"></i> support@abappdev.in</a>
+                    <a href="/portfolio/" class="contact-chip"><i data-icon="briefcase"></i> Developer portfolio</a>
+                    <a href="https://www.linkedin.com/in/abappdev" class="contact-chip" target="_blank" rel="noopener"><i data-icon="linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/abappdev" class="contact-chip" target="_blank" rel="noopener"><i data-icon="github"></i> GitHub</a>
                 </div>
             </div>
         </section>
@@ -257,7 +262,8 @@
 
     <footer class="footer">
         <div class="container footer-inner">
-            <p>&copy; <span id="footerYear">2026</span> AB App Dev. All rights reserved.</p>
+            <p>&copy; <span id="footerYear">2026</span> <span class="brand-wordmark">AB App Dev</span>. All rights reserved.</p>
+            <p class="icon-attribution"><a href="https://www.flaticon.com/uicons" target="_blank" rel="noopener noreferrer">Uicons by Flaticon</a></p>
             <nav class="footer-legal" aria-label="Legal">
                 <a href="/home/legal/privacy.html">Privacy</a>
                 <a href="/home/legal/terms.html">Terms</a>

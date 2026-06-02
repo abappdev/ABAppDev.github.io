@@ -21,7 +21,7 @@ export function openAppDialog(app, appType) {
     const appDialogDescription = document.getElementById('appDialogDescription');
     const appDialogPlatform = document.getElementById('appDialogPlatform');
     const appDialogIcon = document.getElementById('appDialogIcon');
-    const appDialogIconLucide = document.getElementById('appDialogIconLucide');
+    const appDialogIconGlyph = document.getElementById('appDialogIconGlyph');
     const appDialogPlatformBadge = document.getElementById('appDialogPlatformBadge');
     const appDialogPlatformIcon = document.getElementById('appDialogPlatformIcon');
     const appDialogTechStack = document.getElementById('appDialogTechStack');
@@ -38,19 +38,19 @@ export function openAppDialog(app, appType) {
     else if (platformText === 'swift') platformText = 'Universal Apple App';
     appDialogPlatform.textContent = platformText;
 
-    appDialogIconLucide.setAttribute('data-lucide', app.icon);
+    window.ABIcons?.setIcon(appDialogIconGlyph, app.icon);
     appDialogIcon.className = 'app-dialog-icon';
     appDialogPlatformBadge.className = 'platform-badge';
 
     if (appType === 'android') {
         appDialogIcon.classList.add('android');
         appDialogPlatformBadge.classList.add('android');
-        appDialogPlatformIcon.setAttribute('data-lucide', 'android');
+        window.ABIcons?.setIcon(appDialogPlatformIcon, 'android');
     } else {
         const platform = app.platform || 'ios';
         appDialogIcon.classList.add(platform);
         appDialogPlatformBadge.classList.add(platform);
-        appDialogPlatformIcon.setAttribute('data-lucide', app.platformIcon || 'smartphone');
+        window.ABIcons?.setIcon(appDialogPlatformIcon, app.platformIcon || 'smartphone');
     }
 
     appDialogTechStack.innerHTML = '';
@@ -83,7 +83,8 @@ export function openAppDialog(app, appType) {
         storeBtn.href = storeUrl;
         storeBtn.target = '_blank';
         storeBtn.className = 'app-dialog-btn app-dialog-btn-primary';
-        storeBtn.innerHTML = `<i data-lucide="${appType === 'android' ? 'play' : 'app-store'}"></i> ${appType === 'android' ? 'Get on Play Store' : 'Get on App Store'}`;
+        const storeIcon = appType === 'android' ? 'play' : 'app-store';
+        storeBtn.innerHTML = `${window.ABIcons?.iconHtml(storeIcon) || ''} ${appType === 'android' ? 'Get on Play Store' : 'Get on App Store'}`;
         appDialogActions.appendChild(storeBtn);
     }
 
@@ -92,22 +93,22 @@ export function openAppDialog(app, appType) {
         websiteBtn.href = app.docs.website;
         websiteBtn.target = '_blank';
         websiteBtn.className = 'app-dialog-btn app-dialog-btn-secondary';
-        websiteBtn.innerHTML = '<i data-lucide="globe"></i> Visit Website';
+        websiteBtn.innerHTML = `${window.ABIcons?.iconHtml('globe') || ''} Visit Website`;
         appDialogActions.appendChild(websiteBtn);
     }
 
-    [['privacyPolicy', 'shield', 'Privacy Policy'], ['termsAndConditions', 'file-text', 'Terms & Conditions'], ['support', 'help-circle', 'Support']].forEach(
+    [['privacyPolicy', 'shield-check', 'Privacy Policy'], ['termsAndConditions', 'file-text', 'Terms & Conditions'], ['support', 'help-circle', 'Support']].forEach(
         ([key, icon, label]) => {
             if (!hasDocumentation(app, key)) return;
             const btn = document.createElement('button');
             btn.className = 'app-dialog-btn app-dialog-btn-text';
-            btn.innerHTML = `<i data-lucide="${icon}"></i> ${label}`;
+            btn.innerHTML = `${window.ABIcons?.iconHtml(icon) || ''} ${label}`;
             btn.onclick = () => openDocumentation(app, key);
             appDialogActions.appendChild(btn);
         }
     );
 
-    lucide.createIcons();
+    window.ABIcons?.applyIcons(overlay());
     overlay().classList.add('active');
     document.body.style.overflow = 'hidden';
 }

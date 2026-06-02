@@ -1,0 +1,31 @@
+/* Brand wordmark — Comfortaa Bold (Flaticon/Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+
+:root {
+    --font-brand: 'Comfortaa', system-ui, sans-serif;
+}
+
+.brand-wordmark,
+.logo,
+.logo a,
+.brand {
+    font-family: var(--font-brand);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.logo .brand-wordmark > span,
+.logo > span,
+.logo a > span,
+.brand-wordmark > span {
+    color: var(--accent);
+}
+
+.brand-wordmark.highlight,
+h1 .brand-wordmark {
+    color: var(--accent);
+}
+
+h1 .brand-wordmark {
+    display: inline;
+}

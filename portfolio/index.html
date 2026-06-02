@@ -6,12 +6,17 @@
     <title>Abhishek Bhalerao — Developer Portfolio | AB App Dev</title>
     <meta name="description" content="Portfolio of Abhishek Bhalerao — Android, iOS, and macOS developer. Apps, professional journey, and contact.">
     <link rel="canonical" href="https://www.abappdev.in/portfolio/">
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/regular/rounded.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/brands/all.css">
+    <link rel="stylesheet" href="/shared/css/icons.css">
+    <script src="/shared/js/icons.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/portfolio/css/tokens.css">
+    <link rel="stylesheet" href="/shared/css/brand.css">
     <link rel="stylesheet" href="/shared/css/spacing.css">
+    <script src="/shared/js/brand-wordmark.js" defer></script>
     <link rel="stylesheet" href="/portfolio/css/layout.css">
     <link rel="stylesheet" href="/portfolio/css/main.css">
     <link rel="stylesheet" href="/portfolio/css/experience.css">
@@ -21,7 +26,7 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo"><a href="/portfolio/">AB <span>AppDev</span></a></div>
+            <div class="logo"><a class="brand-wordmark" href="/portfolio/">AB <span>AppDev</span></a></div>
             <ul class="nav-links">
                 <li><a href="#about">Home</a></li>
                 <li><a href="#about-detail">About</a></li>
@@ -32,10 +37,10 @@
             </ul>
             <div class="nav-actions">
                 <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false">
-                    <i data-lucide="menu"></i>
+                    <i data-icon="menu"></i>
                 </button>
                 <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
-                    <i data-lucide="moon" id="themeIcon"></i>
+                    <i data-icon="moon" id="themeIcon"></i>
                 </button>
             </div>
         </div>
@@ -63,11 +68,11 @@
                         <p class="hero-lead">A passionate developer crafting innovative applications across Android, iOS, and Mac — bringing ideas to life through clean code and thoughtful design.</p>
                         <div class="hero-buttons">
                             <a href="#contact" class="btn btn-primary">
-                                <i data-lucide="mail"></i>
+                                <i data-icon="mail"></i>
                                 Got a project?
                             </a>
                             <a href="#projects" class="btn btn-outline">
-                                <i data-lucide="folder-open"></i>
+                                <i data-icon="folder-open"></i>
                                 My work
                             </a>
                         </div>
@@ -75,38 +80,38 @@
                     <aside class="hero-image" aria-label="Portrait">
                         <figure class="profile-image">
                             <img src="/shared/images/profilepic.png" alt="Abhishek Bhalerao" width="320" height="320" decoding="async" />
-                            <i class="profile-image__fallback" data-lucide="user" hidden aria-hidden="true"></i>
+                            <i class="profile-image__fallback" data-icon="user" hidden aria-hidden="true"></i>
                         </figure>
                     </aside>
                 </div>
                 <div class="tech-strip tech-strip--hero" aria-label="Technologies">
                     <ul class="tech-strip__list" role="list">
                         <li class="tech-pill">
-                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="code-xml"></i></span>
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="code-xml"></i></span>
                             <span class="tech-pill__label">Kotlin</span>
                         </li>
                         <li class="tech-pill">
-                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="bird"></i></span>
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="bird"></i></span>
                             <span class="tech-pill__label">Swift</span>
                         </li>
                         <li class="tech-pill">
-                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="flame"></i></span>
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="flame"></i></span>
                             <span class="tech-pill__label">Firebase</span>
                         </li>
                         <li class="tech-pill">
-                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="smartphone"></i></span>
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="smartphone"></i></span>
                             <span class="tech-pill__label">Android</span>
                         </li>
                         <li class="tech-pill">
-                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="apple"></i></span>
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="apple"></i></span>
                             <span class="tech-pill__label">iOS</span>
                         </li>
                         <li class="tech-pill">
-                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="laptop"></i></span>
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="laptop"></i></span>
                             <span class="tech-pill__label">macOS</span>
                         </li>
                         <li class="tech-pill">
-                            <span class="tech-pill__icon" aria-hidden="true"><i data-lucide="git-branch"></i></span>
+                            <span class="tech-pill__icon" aria-hidden="true"><i data-icon="git-branch"></i></span>
                             <span class="tech-pill__label">Git</span>
                         </li>
                     </ul>
@@ -123,21 +128,21 @@
                 <div class="about-grid">
                     <div class="about-services">
                         <div class="about-service-item">
-                            <div class="about-dot"><i data-lucide="smartphone"></i></div>
+                            <div class="about-dot"><i data-icon="smartphone"></i></div>
                             <div>
                                 <h3>App Development</h3>
                                 <p>Android, iOS & macOS</p>
                             </div>
                         </div>
                         <div class="about-service-item">
-                            <div class="about-dot"><i data-lucide="layout"></i></div>
+                            <div class="about-dot"><i data-icon="layout"></i></div>
                             <div>
                                 <h3>UI / UX</h3>
                                 <p>Polished interfaces</p>
                             </div>
                         </div>
                         <div class="about-service-item">
-                            <div class="about-dot"><i data-lucide="cloud"></i></div>
+                            <div class="about-dot"><i data-icon="cloud"></i></div>
                             <div>
                                 <h3>Cloud & Backend</h3>
                                 <p>Firebase, APIs</p>
@@ -177,11 +182,11 @@
                 </div>
                 <div class="portfolio-nav">
                     <button class="portfolio-nav-btn" id="androidPrev" type="button" aria-label="Previous">
-                        <i data-lucide="chevron-left"></i>
+                        <i data-icon="chevron-left"></i>
                     </button>
                     <div class="portfolio-nav-indicators" id="androidIndicators"></div>
                     <button class="portfolio-nav-btn" id="androidNext" type="button" aria-label="Next">
-                        <i data-lucide="chevron-right"></i>
+                        <i data-icon="chevron-right"></i>
                     </button>
                 </div>
             </div>
@@ -199,11 +204,11 @@
                 </div>
                 <div class="portfolio-nav">
                     <button class="portfolio-nav-btn" id="iosPrev" type="button" aria-label="Previous">
-                        <i data-lucide="chevron-left"></i>
+                        <i data-icon="chevron-left"></i>
                     </button>
                     <div class="portfolio-nav-indicators" id="iosIndicators"></div>
                     <button class="portfolio-nav-btn" id="iosNext" type="button" aria-label="Next">
-                        <i data-lucide="chevron-right"></i>
+                        <i data-icon="chevron-right"></i>
                     </button>
                 </div>
             </div>
@@ -221,10 +226,10 @@
                 </div>
                 <div class="journey-nav">
                     <button class="journey-nav-btn" id="journeyPrev" type="button" aria-label="Previous">
-                        <i data-lucide="chevron-left"></i>
+                        <i data-icon="chevron-left"></i>
                     </button>
                     <button class="journey-nav-btn" id="journeyNext" type="button" aria-label="Next">
-                        <i data-lucide="chevron-right"></i>
+                        <i data-icon="chevron-right"></i>
                     </button>
                 </div>
             </div>
@@ -239,51 +244,52 @@
                 </div>
                 <div class="contact-grid">
                     <a href="mailto:ab.appdev.ai@gmail.com" class="contact-card">
-                        <span class="contact-card-icon" aria-hidden="true"><i data-lucide="mail"></i></span>
+                        <span class="contact-card-icon" aria-hidden="true"><i data-icon="mail"></i></span>
                         <span class="contact-card-body">
                             <span class="contact-card-label">Email</span>
                             <span class="contact-card-value">ab.appdev.ai@gmail.com</span>
                         </span>
-                        <span class="contact-card-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                        <span class="contact-card-arrow" aria-hidden="true"><i data-icon="arrow-up-right"></i></span>
                     </a>
                     <a href="https://www.linkedin.com/in/abappdev" class="contact-card" target="_blank" rel="noopener">
-                        <span class="contact-card-icon" aria-hidden="true"><i data-lucide="linkedin"></i></span>
+                        <span class="contact-card-icon" aria-hidden="true"><i data-icon="linkedin"></i></span>
                         <span class="contact-card-body">
                             <span class="contact-card-label">LinkedIn</span>
                             <span class="contact-card-value">Connect professionally</span>
                         </span>
-                        <span class="contact-card-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                        <span class="contact-card-arrow" aria-hidden="true"><i data-icon="arrow-up-right"></i></span>
                     </a>
                     <a href="https://github.com/abappdev" class="contact-card" target="_blank" rel="noopener">
-                        <span class="contact-card-icon" aria-hidden="true"><i data-lucide="github"></i></span>
+                        <span class="contact-card-icon" aria-hidden="true"><i data-icon="github"></i></span>
                         <span class="contact-card-body">
                             <span class="contact-card-label">GitHub</span>
                             <span class="contact-card-value">View repositories</span>
                         </span>
-                        <span class="contact-card-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                        <span class="contact-card-arrow" aria-hidden="true"><i data-icon="arrow-up-right"></i></span>
                     </a>
                     <a href="https://www.instagram.com/abhishekbhalerao04" class="contact-card" target="_blank" rel="noopener">
-                        <span class="contact-card-icon" aria-hidden="true"><i data-lucide="instagram"></i></span>
+                        <span class="contact-card-icon" aria-hidden="true"><i data-icon="instagram"></i></span>
                         <span class="contact-card-body">
                             <span class="contact-card-label">Instagram</span>
                             <span class="contact-card-value">Connect socially</span>
                         </span>
-                        <span class="contact-card-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                        <span class="contact-card-arrow" aria-hidden="true"><i data-icon="arrow-up-right"></i></span>
                     </a>
                     <a href="https://x.com/abappdev" class="contact-card" target="_blank" rel="noopener">
-                        <span class="contact-card-icon" aria-hidden="true"><i data-lucide="twitter"></i></span>
+                        <span class="contact-card-icon" aria-hidden="true"><i data-icon="twitter"></i></span>
                         <span class="contact-card-body">
                             <span class="contact-card-label">X</span>
                             <span class="contact-card-value">Follow my journey</span>
                         </span>
-                        <span class="contact-card-arrow" aria-hidden="true"><i data-lucide="arrow-up-right"></i></span>
+                        <span class="contact-card-arrow" aria-hidden="true"><i data-icon="arrow-up-right"></i></span>
                     </a>
                 </div>
             </div>
             <footer class="footer site-footer">
                 <div class="container">
                     <p>Made with care in India</p>
-                    <p>&copy; <span id="footerYear">2026</span> AB AppDev. All rights reserved.</p>
+                    <p>&copy; <span id="footerYear">2026</span> <span class="brand-wordmark">AB AppDev</span>. All rights reserved.</p>
+                    <p class="icon-attribution"><a href="https://www.flaticon.com/uicons" target="_blank" rel="noopener noreferrer">Uicons by Flaticon</a></p>
                     <nav class="footer-legal" aria-label="Footer">
                         <a href="/">Services</a>
                         <a href="/home/legal/privacy.html">Privacy</a>
@@ -299,9 +305,9 @@
         <div class="app-dialog">
             <div class="app-dialog-header">
                 <div class="app-dialog-icon" id="appDialogIcon">
-                    <i data-lucide="smartphone" id="appDialogIconLucide"></i>
+                    <i data-icon="smartphone" id="appDialogIconGlyph"></i>
                     <div class="platform-badge" id="appDialogPlatformBadge">
-                        <i data-lucide="android" id="appDialogPlatformIcon"></i>
+                        <i data-icon="android" id="appDialogPlatformIcon"></i>
                     </div>
                 </div>
                 <div class="app-dialog-header-text">
@@ -309,7 +315,7 @@
                     <div class="app-dialog-platform" id="appDialogPlatform">Android Application</div>
                 </div>
                 <button class="app-dialog-close" id="appDialogClose" type="button" aria-label="Close">
-                    <i data-lucide="x"></i>
+                    <i data-icon="x"></i>
                 </button>
             </div>
             <div class="app-dialog-content" id="appDialogContentContainer">

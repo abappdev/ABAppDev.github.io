@@ -77,10 +77,16 @@ function renderApp(data, activeTab) {
     setCanonical(`https://www.abappdev.in/appdocs/?id=${data.id}&tab=${activeTab}`);
 
     const brand = document.getElementById('app-brand');
-    if (brand) brand.textContent = `AB App Dev · ${data.appName}`;
+    if (brand) {
+        brand.innerHTML = `<span class="brand-wordmark">AB App Dev</span> · ${data.appName}`;
+    }
 
-    document.getElementById('legal-content').innerHTML = renderTab(tab);
-    document.getElementById('legal-footer-inner').innerHTML = renderFooter(data.id, data.appName);
+    const content = document.getElementById('legal-content');
+    const footer = document.getElementById('legal-footer-inner');
+    content.innerHTML = renderTab(tab);
+    footer.innerHTML = renderFooter(data.id, data.appName);
+    window.ABBrandWordmark?.apply(content);
+    window.ABBrandWordmark?.apply(footer);
 
     updateTabUI(activeTab);
 }

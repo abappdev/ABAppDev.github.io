@@ -8,9 +8,9 @@ export function createAppCard(app, index, appType) {
             <div class="roadmap-card">
                 <div class="roadmap-card-header">
                     <div class="roadmap-icon ${platformClass}">
-                        <i data-lucide="${app.icon}"></i>
+                        <i data-icon="${app.icon}"></i>
                         <div class="platform-badge ${platformClass}">
-                            <i data-lucide="${platformIcon}"></i>
+                            <i data-icon="${platformIcon}"></i>
                         </div>
                     </div>
                     <h3 class="roadmap-title">${app.title}</h3>

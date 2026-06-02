@@ -72,9 +72,8 @@ function initNavbar() {
 
     function setMenuIcon(open) {
         if (!toggle) return;
-        const icon = toggle.querySelector('[data-lucide]');
-        if (icon) icon.setAttribute('data-lucide', open ? 'x' : 'menu');
-        if (typeof lucide !== 'undefined') lucide.createIcons();
+        const icon = toggle.querySelector('[data-icon]');
+        if (icon) window.ABIcons?.setIcon(icon, open ? 'x' : 'menu');
     }
 
     if (toggle && drawer) {
@@ -125,7 +124,7 @@ function initProfileImage() {
         profileImg.hidden = true;
         fallbackIcon.hidden = false;
         fallbackIcon.setAttribute('aria-hidden', 'false');
-        if (typeof lucide !== 'undefined') lucide.createIcons();
+        window.ABIcons?.applyIcons(profileImg.parentElement);
     });
     profileImg.addEventListener('load', () => {
         profileImg.hidden = false;
@@ -135,8 +134,6 @@ function initProfileImage() {
 }
 
 async function init() {
-    lucide.createIcons();
-
     const [androidApps, iosApps, careerJourney] = await Promise.all([
         fetchJson('/portfolio/data/android-apps.json'),
         fetchJson('/portfolio/data/ios-apps.json'),
@@ -145,7 +142,7 @@ async function init() {
 
     populateApps(androidApps, iosApps);
     populateJourney(careerJourney);
-    lucide.createIcons();
+    window.ABIcons?.applyIcons();
 
     bindAppDialog();
     addAppClickListeners(androidApps, iosApps);

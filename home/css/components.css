@@ -571,7 +571,20 @@
     color: var(--accent);
 }
 
-.contact-chip i {
-    width: 18px;
-    height: 18px;
+.contact-chip .fi {
+    font-size: 1.125rem;
+}
+
+.icon-attribution {
+    font-size: 12px;
+    margin-top: var(--space-sm);
+}
+
+.icon-attribution a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.icon-attribution a:hover {
+    color: var(--accent);
 }

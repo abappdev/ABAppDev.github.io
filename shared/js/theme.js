@@ -24,11 +24,14 @@
 
     function updateToggleIcon(btn) {
         if (!btn) return;
-        const icon = btn.querySelector('[data-lucide]');
+        const icon = btn.querySelector('[data-icon]');
         if (!icon) return;
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        icon.setAttribute('data-lucide', isDark ? 'moon' : 'sun');
-        if (typeof lucide !== 'undefined') lucide.createIcons();
+        if (window.ABIcons) {
+            window.ABIcons.setIcon(icon, isDark ? 'moon' : 'sun');
+        } else {
+            icon.setAttribute('data-icon', isDark ? 'moon' : 'sun');
+        }
     }
 
     function toggleTheme(btn) {

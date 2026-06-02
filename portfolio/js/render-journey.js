@@ -3,7 +3,7 @@ export function createJourneyItem(item) {
     return `
         <div class="journey-item${currentClass}">
             <div class="journey-item-icon ${item.iconClass}">
-                <i data-lucide="${item.icon}"></i>
+                <i data-icon="${item.icon}"></i>
             </div>
             <div class="journey-year">${item.year}</div>
             <h3 class="journey-title">${item.title}</h3>

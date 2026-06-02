@@ -363,9 +363,8 @@ main {
     display: flex;
 }
 
-.portfolio-page .profile-image__fallback svg {
-    width: 4rem;
-    height: 4rem;
+.portfolio-page .profile-image__fallback.fi {
+    font-size: 3rem;
 }
 
 .portfolio-page figure.profile-image {
@@ -892,6 +891,20 @@ main {
     color: var(--text-muted);
     font-size: 14px;
     margin-bottom: 8px;
+}
+
+.site-footer .icon-attribution {
+    font-size: 12px;
+    margin-bottom: var(--space-sm);
+}
+
+.site-footer .icon-attribution a {
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.site-footer .icon-attribution a:hover {
+    color: var(--accent);
 }
 
 .site-footer p:last-of-type {

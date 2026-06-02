@@ -18,9 +18,8 @@ function initNavbar() {
         drawer.setAttribute('aria-hidden', 'true');
         if (toggle) {
             toggle.setAttribute('aria-expanded', 'false');
-            const icon = toggle.querySelector('[data-lucide]');
-            if (icon) icon.setAttribute('data-lucide', 'menu');
-            if (typeof lucide !== 'undefined') lucide.createIcons();
+            const icon = toggle.querySelector('[data-icon]');
+            if (icon) window.ABIcons?.setIcon(icon, 'menu');
         }
     }
 
@@ -30,9 +29,8 @@ function initNavbar() {
         drawer.setAttribute('aria-hidden', 'false');
         if (toggle) {
             toggle.setAttribute('aria-expanded', 'true');
-            const icon = toggle.querySelector('[data-lucide]');
-            if (icon) icon.setAttribute('data-lucide', 'x');
-            if (typeof lucide !== 'undefined') lucide.createIcons();
+            const icon = toggle.querySelector('[data-icon]');
+            if (icon) window.ABIcons?.setIcon(icon, 'x');
         }
     }
 
@@ -70,7 +68,7 @@ function initFooterYear() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    if (typeof lucide !== 'undefined') lucide.createIcons();
+    window.ABIcons?.applyIcons();
     initNavbar();
     initSmoothScroll();
     initFooterYear();

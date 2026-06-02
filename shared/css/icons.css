@@ -1,0 +1,65 @@
+/* Flaticon Uicons sizing — https://www.flaticon.com/uicons */
+
+.fi {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    vertical-align: middle;
+    font-style: normal;
+}
+
+.fi::before {
+    line-height: 1;
+}
+
+.btn .fi,
+.hero-cta .fi {
+    font-size: 1.125rem;
+}
+
+.nav-toggle .fi,
+.theme-toggle .fi {
+    font-size: 1.375rem;
+}
+
+.timeline-dot .fi,
+.service-card-icon .fi,
+.about-dot .fi,
+.project-icon .fi {
+    font-size: 1.25rem;
+}
+
+.tech-pill__icon .fi {
+    font-size: 1.125rem;
+}
+
+.contact-chip .fi {
+    font-size: 1.125rem;
+}
+
+.contact-card-icon .fi,
+.contact-card-arrow .fi {
+    font-size: 1.25rem;
+}
+
+.portfolio-nav-btn .fi,
+.journey-nav-btn .fi {
+    font-size: 1.25rem;
+}
+
+.roadmap-icon .fi,
+.platform-badge .fi,
+.app-dialog-icon .fi,
+.app-dialog-close .fi,
+.app-dialog-btn .fi {
+    font-size: 1.25rem;
+}
+
+.journey-item-icon .fi {
+    font-size: 1.375rem;
+}
+
+.profile-image__fallback.fi {
+    font-size: 3rem;
+}
