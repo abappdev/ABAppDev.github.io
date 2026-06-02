@@ -1,9 +1,9 @@
 /**
- * Wrap visible "ab appdev" / "AB AppDev" text in .brand-wordmark (Comfortaa Bold).
+ * Wrap visible "ab appdev" / "ab appdev" text in .brand-wordmark (Comfortaa Bold).
  * Skips nodes already inside .brand-wordmark or .logo.
  */
 (function () {
-    const RE = /ab appdev|AB AppDev/g;
+    const RE = /ab appdev|ab appdev/g;
 
     function shouldSkip(node) {
         const parent = node.parentElement;

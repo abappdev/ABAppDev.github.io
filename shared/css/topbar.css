@@ -1,7 +1,7 @@
 /* Site header — matches legal/refund topbar pattern */
 
 :root {
-    --nav-height: 58px;
+    --nav-height: 72px;
 }
 
 .topbar {
@@ -19,7 +19,7 @@
     max-width: var(--max-width, 1140px);
     margin: 0 auto;
     min-height: var(--nav-height);
-    padding: 10px max(var(--gutter, 1.25rem), env(safe-area-inset-right, 0px)) 10px
+    padding: 0 max(var(--gutter, 1.25rem), env(safe-area-inset-right, 0px)) 0
         max(var(--gutter, 1.25rem), env(safe-area-inset-left, 0px));
     display: flex;
     align-items: center;
