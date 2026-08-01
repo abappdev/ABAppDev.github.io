@@ -7,6 +7,18 @@
     "AB AppDev Works",
     "ab appdev works"
   ],
+  "person": {
+    "name": "Abhishek Bhalerao",
+    "givenName": "Abhishek",
+    "familyName": "Bhalerao",
+    "alternateNames": [
+      "abhishek bhalerao",
+      "Abhishek Bhalerao developer",
+      "abappdev"
+    ],
+    "portfolioUrl": "https://www.abappdev.in/portfolio/",
+    "email": "ab.appdev.ai@gmail.com"
+  },
   "canonicalOrigin": "https://www.abappdev.in",
   "domains": [
     "abappdev.in",
@@ -14,12 +26,13 @@
     "abappdev.com",
     "www.abappdev.com"
   ],
-  "keywords": "ab appdev, abappdev, abappdevworks, ab appdev works, abappdev.in, abappdev.com, www.abappdev.in, www.abappdev.com",
+  "keywords": "Abhishek Bhalerao, abhishek bhalerao, ab appdev, abappdev, abappdevworks, ab appdev works, abappdev.in, abappdev.com, www.abappdev.in, www.abappdev.com",
   "social": {
     "twitter": "@abappdev",
     "linkedin": "https://www.linkedin.com/in/abappdev",
     "github": "https://github.com/abappdev",
-    "x": "https://x.com/abappdev"
+    "x": "https://x.com/abappdev",
+    "instagram": "https://www.instagram.com/abhishekbhalerao04"
   },
   "supportEmail": "support@abappdev.in"
 }
