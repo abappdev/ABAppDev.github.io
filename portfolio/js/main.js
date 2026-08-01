@@ -102,18 +102,9 @@ function initScrollEffects() {
 
 function initProfileImage() {
     const profileImg = document.querySelector('.profile-image img');
-    const fallbackIcon = document.querySelector('.profile-image__fallback');
-    if (!profileImg || !fallbackIcon) return;
+    if (!profileImg) return;
     profileImg.addEventListener('error', () => {
-        profileImg.hidden = true;
-        fallbackIcon.hidden = false;
-        fallbackIcon.setAttribute('aria-hidden', 'false');
-        window.ABIcons?.applyIcons(profileImg.parentElement);
-    });
-    profileImg.addEventListener('load', () => {
-        profileImg.hidden = false;
-        fallbackIcon.hidden = true;
-        fallbackIcon.setAttribute('aria-hidden', 'true');
+        profileImg.closest('.hero-image')?.setAttribute('hidden', '');
     });
 }
 
