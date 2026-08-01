@@ -2,6 +2,7 @@ import { populateApps, initPortfolioNavigation } from './render-apps.js';
 import { populateJourney, initJourneyTimeline } from './render-journey.js';
 import { bindAppDialog, addAppClickListeners } from './app-dialog.js';
 import { initSectionScroll } from '/shared/js/section-scroll.js';
+import { initTechStackReveal } from '/shared/js/tech-stack.js';
 
 async function fetchJson(path) {
     const res = await fetch(path);
@@ -135,6 +136,7 @@ async function init() {
     initScrollEffects();
     initSectionScroll();
     initProfileImage();
+    initTechStackReveal();
 
     const year = document.getElementById('footerYear');
     if (year) year.textContent = new Date().getFullYear();
