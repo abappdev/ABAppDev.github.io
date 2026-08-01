@@ -719,16 +719,124 @@ main,
     background: var(--accent) !important;
 }
 
-/* Journey */
+/* Journey — equal cards, in-card icons, vertical center string */
 .journey-container::before {
-    background: linear-gradient(90deg, transparent, var(--accent), transparent) !important;
-    opacity: 0.5;
+    display: none !important;
+}
+
+.journey-timeline {
+    align-items: stretch !important;
+    gap: var(--space-md) !important;
 }
 
 .journey-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    position: relative !important;
     background: var(--bg-card) !important;
     border: 1px solid var(--border) !important;
     border-radius: var(--radius-lg) !important;
+    min-width: 17.5rem !important;
+    width: 17.5rem !important;
+    max-width: 17.5rem !important;
+    min-height: 20rem !important;
+    height: 20rem !important;
+    margin-top: 0 !important;
+    padding: var(--space-lg) var(--space-md) var(--space-md) !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    transform: none !important;
+}
+
+.journey-item:hover {
+    transform: none !important;
+}
+
+.journey-item::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 8% !important;
+    bottom: 8% !important;
+    left: 50% !important;
+    width: 2px !important;
+    height: auto !important;
+    transform: translateX(-50%) !important;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        color-mix(in srgb, var(--accent) 40%, transparent) 12%,
+        color-mix(in srgb, var(--accent) 40%, transparent) 88%,
+        transparent 100%
+    ) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+.journey-item.current::before {
+    width: 2px !important;
+    height: auto !important;
+    top: 8% !important;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--accent) 12%,
+        var(--accent) 88%,
+        transparent 100%
+    ) !important;
+    box-shadow: none !important;
+}
+
+.journey-item:hover::before {
+    width: 2px !important;
+    height: auto !important;
+    top: 8% !important;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--accent) 12%,
+        var(--accent) 88%,
+        transparent 100%
+    ) !important;
+}
+
+.journey-item-icon {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0 auto var(--space-md) !important;
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+    border-radius: var(--radius-md) !important;
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border)) !important;
+    box-shadow: none !important;
+    flex-shrink: 0 !important;
+    z-index: 1 !important;
+}
+
+.journey-year,
+.journey-title,
+.journey-description {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.journey-title {
+    margin-bottom: var(--space-sm) !important;
+}
+
+.journey-description {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    margin: 0 !important;
+    padding-inline: 2px !important;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
 }
 
 .journey-item.current {
@@ -762,6 +870,23 @@ main,
 .journey-nav-btn:hover:not(:disabled) {
     border-color: var(--accent) !important;
     color: var(--accent) !important;
+}
+
+@media (max-width: 768px) {
+    .journey-item {
+        min-width: 16.25rem !important;
+        width: 16.25rem !important;
+        max-width: 16.25rem !important;
+        min-height: 18.5rem !important;
+        height: 18.5rem !important;
+        padding: var(--space-md) var(--space-sm) var(--space-sm) !important;
+    }
+
+    .journey-item-icon {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        margin-bottom: var(--space-sm) !important;
+    }
 }
 
 /* Contact — horizontal link cards */
