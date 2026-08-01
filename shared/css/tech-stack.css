@@ -1,0 +1,110 @@
+/* Icon-only tech stack with timed label reveal */
+
+.tech-stack--icons .tech-grid,
+.tech-stack--icons .tech-strip__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.tech-stack--icons .tech-grid__item,
+.tech-stack--icons .tech-pill {
+    --tech-chip-size: 2.75rem;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tech-chip-size);
+    min-width: var(--tech-chip-size);
+    height: var(--tech-chip-size);
+    padding: 0;
+    gap: 0;
+    margin: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
+    transition:
+        width 0.25s ease,
+        min-width 0.25s ease,
+        padding 0.25s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.tech-stack--icons .tech-grid__item:focus-visible,
+.tech-stack--icons .tech-pill:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.tech-stack--icons .tech-grid__item > i[data-icon],
+.tech-stack--icons .tech-pill__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tech-stack--icons .tech-pill__icon .fi,
+.tech-stack--icons .tech-grid__item > i[data-icon] .fi {
+    font-size: 1.25rem;
+}
+
+.tech-stack--icons .tech-grid__item > span,
+.tech-stack--icons .tech-pill__label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--text);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.tech-stack--icons .tech-grid__item.is-revealed,
+.tech-stack--icons .tech-pill.is-revealed {
+    width: auto;
+    min-width: var(--tech-chip-size);
+    max-width: 11rem;
+    padding: 0 0.75rem;
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+    color: var(--text);
+}
+
+.tech-stack--icons .tech-grid__item.is-revealed > i[data-icon],
+.tech-stack--icons .tech-pill.is-revealed .tech-pill__icon {
+    opacity: 0;
+    transform: scale(0.85);
+}
+
+.tech-stack--icons .tech-grid__item.is-revealed > span,
+.tech-stack--icons .tech-pill.is-revealed .tech-pill__label {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tech-stack--icons .tech-grid__item,
+    .tech-stack--icons .tech-pill,
+    .tech-stack--icons .tech-grid__item > i[data-icon],
+    .tech-stack--icons .tech-pill__icon,
+    .tech-stack--icons .tech-grid__item > span,
+    .tech-stack--icons .tech-pill__label {
+        transition: none;
+    }
+}

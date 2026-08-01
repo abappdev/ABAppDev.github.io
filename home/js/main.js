@@ -1,5 +1,6 @@
 import { initAnimations } from './animations.js';
 import { initSectionScroll } from '/shared/js/section-scroll.js';
+import { initTechStackReveal } from '/shared/js/tech-stack.js';
 
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
@@ -61,4 +62,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initSectionScroll();
     initFooterYear();
     initAnimations();
+    initTechStackReveal();
 });
