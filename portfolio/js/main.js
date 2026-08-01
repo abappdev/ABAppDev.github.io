@@ -21,7 +21,7 @@ function initAnimations() {
                         setTimeout(() => item.classList.add('animate-in'), delay);
                     });
                 }
-                if (entry.target.classList.contains('hero-content') || entry.target.classList.contains('hero-image')) {
+                if (entry.target.classList.contains('hero-content') || entry.target.classList.contains('hero-image--desktop')) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                 }
@@ -40,7 +40,7 @@ function initAnimations() {
         { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
 
-    document.querySelectorAll('.hero-content, .hero-image').forEach((el) => {
+    document.querySelectorAll('.hero-content, .hero-image--desktop').forEach((el) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(24px)';
         el.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -104,7 +104,7 @@ function initProfileImage() {
     const profileImg = document.querySelector('.profile-image img');
     if (!profileImg) return;
     profileImg.addEventListener('error', () => {
-        profileImg.closest('.hero-image')?.setAttribute('hidden', '');
+        profileImg.closest('.hero-image--desktop')?.setAttribute('hidden', '');
     });
 }
 
