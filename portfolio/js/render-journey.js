@@ -18,19 +18,19 @@ export function populateJourney(careerJourney) {
 }
 
 export function initJourneyTimeline(careerJourney) {
+    const journeyContainer = document.querySelector('.journey-container');
     const journeyTimeline = document.getElementById('journeyTimeline');
     const journeyPrev = document.getElementById('journeyPrev');
     const journeyNext = document.getElementById('journeyNext');
+
+    if (!journeyContainer || !journeyTimeline || !journeyPrev || !journeyNext) return;
 
     let journeyItems = [];
     let currentJourneyIndex =
         careerJourney.findIndex((item) => item.current) !== -1
             ? careerJourney.findIndex((item) => item.current)
             : 3;
-
-    function isJourneyDesktop() {
-        return window.innerWidth >= 769;
-    }
+    let scrollRaf = null;
 
     function updateJourneyItems() {
         journeyItems.forEach((item, index) => {
@@ -47,26 +47,52 @@ export function initJourneyTimeline(careerJourney) {
         journeyNext.style.opacity = journeyNext.disabled ? '0.5' : '1';
     }
 
-    function scrollJourneyTo(index) {
+    function scrollJourneyTo(index, behavior = 'smooth') {
         if (index < 0 || index >= journeyItems.length) return;
         currentJourneyIndex = index;
-
-        if (isJourneyDesktop()) {
-            const containerWidth = document.querySelector('.journey-container').clientWidth;
-            const itemWidth = journeyItems[0]?.offsetWidth || 350;
-            const gap = 40;
-            const cardPosition = index * (itemWidth + gap);
-            const centerOffset = containerWidth / 2 - itemWidth / 2;
-            journeyTimeline.style.transform = `translateX(${centerOffset - cardPosition}px)`;
-        } else {
-            const itemWidth = journeyItems[0]?.offsetWidth || 280;
-            const gap = 24;
-            journeyTimeline.style.transform = `translateX(${-(index * (itemWidth + gap))}px)`;
-        }
-
+        journeyItems[index].scrollIntoView({
+            behavior,
+            inline: 'center',
+            block: 'nearest',
+        });
         updateJourneyItems();
         updateJourneyNavigation();
     }
+
+    function syncIndexFromScroll() {
+        if (!journeyItems.length) return;
+
+        const containerRect = journeyContainer.getBoundingClientRect();
+        const containerCenter = containerRect.left + containerRect.width / 2;
+
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        journeyItems.forEach((item, index) => {
+            const itemRect = item.getBoundingClientRect();
+            const itemCenter = itemRect.left + itemRect.width / 2;
+            const distance = Math.abs(itemCenter - containerCenter);
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+            }
+        });
+
+        if (closestIndex !== currentJourneyIndex) {
+            currentJourneyIndex = closestIndex;
+            updateJourneyItems();
+            updateJourneyNavigation();
+        }
+    }
+
+    journeyContainer.addEventListener(
+        'scroll',
+        () => {
+            if (scrollRaf) cancelAnimationFrame(scrollRaf);
+            scrollRaf = requestAnimationFrame(syncIndexFromScroll);
+        },
+        { passive: true }
+    );
 
     journeyPrev.addEventListener('click', () => {
         if (currentJourneyIndex > 0) scrollJourneyTo(currentJourneyIndex - 1);
@@ -75,46 +101,15 @@ export function initJourneyTimeline(careerJourney) {
         if (currentJourneyIndex < journeyItems.length - 1) scrollJourneyTo(currentJourneyIndex + 1);
     });
 
-    window.addEventListener('resize', () => setTimeout(() => scrollJourneyTo(currentJourneyIndex), 100));
-    window.addEventListener('orientationchange', () =>
-        setTimeout(() => scrollJourneyTo(currentJourneyIndex), 200)
-    );
-
-    let touchStartX = 0;
-    let touchStartTransform = 0;
-
-    journeyTimeline.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-        const transform = journeyTimeline.style.transform;
-        touchStartTransform = transform ? parseInt(transform.match(/-?\d+/)[0], 10) : 0;
-        journeyTimeline.style.transition = 'none';
+    window.addEventListener('resize', () => {
+        setTimeout(() => scrollJourneyTo(currentJourneyIndex, 'auto'), 100);
     });
-
-    journeyTimeline.addEventListener('touchmove', (e) => {
-        if (!touchStartX) return;
-        e.preventDefault();
-        const diff = e.touches[0].clientX - touchStartX;
-        journeyTimeline.style.transform = `translateX(${touchStartTransform + diff}px)`;
-    });
-
-    journeyTimeline.addEventListener('touchend', (e) => {
-        if (!touchStartX) return;
-        const diff = e.changedTouches[0].clientX - touchStartX;
-        journeyTimeline.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-        if (Math.abs(diff) > 50) {
-            if (diff > 0 && currentJourneyIndex > 0) scrollJourneyTo(currentJourneyIndex - 1);
-            else if (diff < 0 && currentJourneyIndex < journeyItems.length - 1)
-                scrollJourneyTo(currentJourneyIndex + 1);
-            else scrollJourneyTo(currentJourneyIndex);
-        } else scrollJourneyTo(currentJourneyIndex);
-        setTimeout(() => {
-            journeyTimeline.style.transition = '';
-        }, 600);
-        touchStartX = 0;
+    window.addEventListener('orientationchange', () => {
+        setTimeout(() => scrollJourneyTo(currentJourneyIndex, 'auto'), 200);
     });
 
     setTimeout(() => {
-        journeyItems = document.querySelectorAll('.journey-item');
-        scrollJourneyTo(currentJourneyIndex);
+        journeyItems = [...journeyTimeline.querySelectorAll('.journey-item')];
+        scrollJourneyTo(currentJourneyIndex, 'auto');
     }, 300);
 }
