@@ -372,10 +372,16 @@ main,
     margin: 0;
 }
 
-/* Mobile — hide hero portrait; use about section background instead */
+/* Mobile — hide hero portrait; use section watermark backgrounds */
 @media (max-width: 899px) {
-    .portfolio-page #about .hero-image {
-        display: none;
+    .portfolio-page .hero-image--desktop {
+        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .portfolio-page #about .hero-content {
@@ -383,21 +389,25 @@ main,
         padding-right: 0;
     }
 
-    .portfolio-page #about-detail {
+    .portfolio-page #about.snap-panel,
+    .portfolio-page #about-detail.snap-panel {
         position: relative;
         overflow: hidden;
+        isolation: isolate;
     }
 
-    .portfolio-page #about-detail::before {
+    .portfolio-page #about.snap-panel::before,
+    .portfolio-page #about-detail.snap-panel::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: url('/shared/images/profilepic.png') center 18% / min(68%, 16rem) no-repeat;
+        background: url('/shared/images/profilepic.png') center 22% / min(72%, 17rem) no-repeat;
         opacity: 0.2;
         pointer-events: none;
         z-index: 0;
     }
 
+    .portfolio-page #about .snap-panel__inner,
     .portfolio-page #about-detail .snap-panel__inner {
         position: relative;
         z-index: 1;
