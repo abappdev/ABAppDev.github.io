@@ -53,3 +53,21 @@
     padding-top: var(--space-lg);
     padding-bottom: calc(var(--space-md) + env(safe-area-inset-bottom, 0px));
 }
+
+@media (max-width: 768px) {
+    .home-page .hero {
+        justify-content: flex-start;
+    }
+
+    .hero-grid {
+        gap: var(--space-lg);
+    }
+
+    .snap-panel--fit .section-head {
+        margin-bottom: var(--space-md);
+    }
+
+    .stats-row {
+        margin-top: var(--space-lg);
+    }
+}

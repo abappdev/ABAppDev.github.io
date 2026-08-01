@@ -238,3 +238,55 @@ html.snap-page body {
         overflow: visible;
     }
 }
+
+/* Mobile: drop fixed viewport panels — content stacks naturally */
+@media (max-width: 768px) {
+    html.snap-page {
+        scroll-snap-type: none;
+    }
+
+    .snap-panel {
+        height: auto;
+        max-height: none;
+        min-height: 0;
+        overflow: visible;
+        scroll-snap-align: none;
+        scroll-snap-stop: normal;
+        justify-content: flex-start;
+        padding-block: var(--space-xl);
+    }
+
+    .snap-panel__inner {
+        max-height: none;
+        overflow: visible;
+        opacity: 1;
+        transform: none;
+        transition: none;
+        justify-content: flex-start;
+    }
+
+    .snap-panel--fit .snap-panel__inner,
+    .snap-panel--end .snap-panel__inner {
+        overflow: visible;
+        padding-block: var(--space-md);
+    }
+
+    .snap-panel--hero {
+        min-height: calc(100svh - var(--nav-height));
+        padding-block: var(--space-lg);
+    }
+
+    .snap-panel--hero .snap-panel__inner {
+        justify-content: flex-start;
+        gap: var(--space-lg);
+    }
+
+    .snap-panel--end {
+        min-height: calc(100svh - var(--nav-height));
+        justify-content: flex-start;
+    }
+
+    .snap-panel--end .snap-panel__inner {
+        flex: 0 1 auto;
+    }
+}
