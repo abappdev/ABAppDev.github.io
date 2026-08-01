@@ -70,4 +70,15 @@
     .stats-row {
         margin-top: var(--space-lg);
     }
+
+    .home-page .snap-panel--end {
+        min-height: 0;
+        padding-top: var(--space-xl);
+        padding-bottom: 0;
+    }
+
+    .home-page .snap-panel--end .snap-panel__inner {
+        justify-content: flex-start;
+        padding-bottom: var(--space-md);
+    }
 }
