@@ -389,26 +389,23 @@ main,
         padding-right: 0;
     }
 
-    .portfolio-page #about.snap-panel,
-    .portfolio-page #about-detail.snap-panel {
+    .portfolio-page #about.snap-panel {
         position: relative;
         overflow: hidden;
         isolation: isolate;
     }
 
-    .portfolio-page #about.snap-panel::before,
-    .portfolio-page #about-detail.snap-panel::before {
+    .portfolio-page #about.snap-panel::before {
         content: '';
         position: absolute;
         inset: 0;
         background: url('/shared/images/profilepic.png') center 22% / min(72%, 17rem) no-repeat;
-        opacity: 0.2;
+        opacity: 0.08;
         pointer-events: none;
         z-index: 0;
     }
 
-    .portfolio-page #about .snap-panel__inner,
-    .portfolio-page #about-detail .snap-panel__inner {
+    .portfolio-page #about .snap-panel__inner {
         position: relative;
         z-index: 1;
     }
