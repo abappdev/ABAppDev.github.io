@@ -256,7 +256,7 @@ main,
 }
 
 .hero-lead,
-.hero-content > p:not(.motto) {
+.hero-content > p {
     font-size: 1.05rem;
     color: var(--text-secondary);
     line-height: 1.75;
@@ -372,48 +372,35 @@ main,
     margin: 0;
 }
 
-/* Mobile hero — small portrait watermark after name */
+/* Mobile — hide hero portrait; use about section background instead */
 @media (max-width: 899px) {
-    .portfolio-page #about .hero {
-        position: relative;
-        display: block;
-        overflow: hidden;
-    }
-
-    .portfolio-page #about .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: none;
-        padding-right: 6.75rem;
-    }
-
     .portfolio-page #about .hero-image {
-        position: absolute;
-        top: clamp(4.25rem, 12vw, 5.5rem);
-        right: max(var(--gutter), env(safe-area-inset-right, 0px));
-        left: auto;
-        width: 5.75rem;
-        height: 5.75rem;
-        margin: 0;
-        display: block;
-        pointer-events: none;
-        z-index: 0;
-        justify-content: flex-end;
-    }
-
-    .portfolio-page #about .profile-image {
-        width: 5.75rem;
-        height: 5.75rem;
-    }
-
-    .portfolio-page #about .profile-image::before {
         display: none;
     }
 
-    .portfolio-page #about .profile-image img {
+    .portfolio-page #about .hero-content {
+        max-width: none;
+        padding-right: 0;
+    }
+
+    .portfolio-page #about-detail {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .portfolio-page #about-detail::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('/shared/images/profilepic.png') center 18% / min(68%, 16rem) no-repeat;
         opacity: 0.2;
-        border-width: 2px;
-        box-shadow: none;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .portfolio-page #about-detail .snap-panel__inner {
+        position: relative;
+        z-index: 1;
     }
 }
 
