@@ -719,14 +719,50 @@ main,
     background: var(--accent) !important;
 }
 
-/* Journey — equal cards, in-card icons, vertical center string */
+/* Journey — equal cards, in-card icons, horizontal timeline behind cards */
+.journey-container {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.journey-container::-webkit-scrollbar {
+    display: none;
+}
+
 .journey-container::before {
     display: none !important;
 }
 
 .journey-timeline {
+    position: relative !important;
     align-items: stretch !important;
     gap: var(--space-md) !important;
+    transform: none !important;
+    transition: none !important;
+    --journey-line-top: calc(var(--space-lg) + var(--space-lg) + 1.375rem);
+}
+
+.journey-timeline::before {
+    content: '' !important;
+    position: absolute !important;
+    top: var(--journey-line-top) !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 2px !important;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        color-mix(in srgb, var(--accent) 35%, transparent) 8%,
+        color-mix(in srgb, var(--accent) 55%, transparent) 50%,
+        color-mix(in srgb, var(--accent) 35%, transparent) 92%,
+        transparent 100%
+    ) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
 }
 
 .journey-item {
@@ -747,6 +783,10 @@ main,
     overflow: hidden !important;
     text-align: center !important;
     transform: none !important;
+    scroll-snap-align: center !important;
+    scroll-snap-stop: always !important;
+    z-index: 1 !important;
+    flex-shrink: 0 !important;
 }
 
 .journey-item:hover {
@@ -754,53 +794,7 @@ main,
 }
 
 .journey-item::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 8% !important;
-    bottom: 8% !important;
-    left: 50% !important;
-    width: 2px !important;
-    height: auto !important;
-    transform: translateX(-50%) !important;
-    background: linear-gradient(
-        180deg,
-        transparent 0%,
-        color-mix(in srgb, var(--accent) 40%, transparent) 12%,
-        color-mix(in srgb, var(--accent) 40%, transparent) 88%,
-        transparent 100%
-    ) !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    z-index: 0 !important;
-    pointer-events: none !important;
-}
-
-.journey-item.current::before {
-    width: 2px !important;
-    height: auto !important;
-    top: 8% !important;
-    background: linear-gradient(
-        180deg,
-        transparent 0%,
-        var(--accent) 12%,
-        var(--accent) 88%,
-        transparent 100%
-    ) !important;
-    box-shadow: none !important;
-}
-
-.journey-item:hover::before {
-    width: 2px !important;
-    height: auto !important;
-    top: 8% !important;
-    background: linear-gradient(
-        180deg,
-        transparent 0%,
-        var(--accent) 12%,
-        var(--accent) 88%,
-        transparent 100%
-    ) !important;
+    display: none !important;
 }
 
 .journey-item-icon {
@@ -873,6 +867,10 @@ main,
 }
 
 @media (max-width: 768px) {
+    .journey-timeline {
+        --journey-line-top: calc(var(--space-lg) + var(--space-md) + 1.25rem);
+    }
+
     .journey-item {
         min-width: 16.25rem !important;
         width: 16.25rem !important;
