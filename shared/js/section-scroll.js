@@ -7,6 +7,13 @@ function prefersReducedMotion() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
+function useNativeScroll() {
+    return (
+        prefersReducedMotion() ||
+        window.matchMedia('(max-width: 768px)').matches
+    );
+}
+
 function getPanels() {
     return [...document.querySelectorAll('.snap-panel')];
 }
@@ -49,6 +56,7 @@ export function initSectionScroll() {
     if (!panels.length) return;
 
     const reduced = prefersReducedMotion();
+    const nativeScroll = useNativeScroll();
 
     panels[0].classList.add('is-active', 'is-initial');
 
@@ -80,7 +88,7 @@ export function initSectionScroll() {
         });
     });
 
-    if (reduced) return;
+    if (nativeScroll) return;
 
     let wheelLocked = false;
     const lockMs = 720;
