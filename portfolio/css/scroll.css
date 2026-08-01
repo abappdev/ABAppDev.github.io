@@ -79,10 +79,6 @@
         gap: var(--space-lg);
     }
 
-    #about .hero-image {
-        margin-top: var(--space-sm);
-    }
-
     .snap-panel--carousel.snap-panel--fit .snap-panel__inner {
         padding-top: var(--space-md);
         padding-bottom: var(--space-lg);

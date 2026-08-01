@@ -240,6 +240,7 @@ main,
 
 .hero-content h1 .name {
     color: var(--accent);
+    text-transform: lowercase;
 }
 
 .hero-content h1 .role {
@@ -369,6 +370,51 @@ main,
 
 .portfolio-page figure.profile-image {
     margin: 0;
+}
+
+/* Mobile hero — small portrait watermark after name */
+@media (max-width: 899px) {
+    .portfolio-page #about .hero {
+        position: relative;
+        display: block;
+        overflow: hidden;
+    }
+
+    .portfolio-page #about .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: none;
+        padding-right: 6.75rem;
+    }
+
+    .portfolio-page #about .hero-image {
+        position: absolute;
+        top: clamp(4.25rem, 12vw, 5.5rem);
+        right: max(var(--gutter), env(safe-area-inset-right, 0px));
+        left: auto;
+        width: 5.75rem;
+        height: 5.75rem;
+        margin: 0;
+        display: block;
+        pointer-events: none;
+        z-index: 0;
+        justify-content: flex-end;
+    }
+
+    .portfolio-page #about .profile-image {
+        width: 5.75rem;
+        height: 5.75rem;
+    }
+
+    .portfolio-page #about .profile-image::before {
+        display: none;
+    }
+
+    .portfolio-page #about .profile-image img {
+        opacity: 0.2;
+        border-width: 2px;
+        box-shadow: none;
+    }
 }
 
 /* Tech stack pills */
@@ -1016,10 +1062,6 @@ main,
     .portfolio-page .hero-content {
         align-items: flex-start;
         text-align: left;
-    }
-
-    .portfolio-page .profile-image {
-        width: min(17.5rem, calc(100vw - 2 * var(--gutter) - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
     }
 
     .tech-strip__list {
