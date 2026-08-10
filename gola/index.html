@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Gola Music</title>
-    <meta name="description" content="Gola Music — a minimalist YouTube playlist radio.">
+    <title>गोलावाला</title>
+    <meta name="description" content="गोलावाला — a minimalist YouTube playlist radio.">
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#1a1018">
     <style>
@@ -26,7 +26,8 @@
             --player-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
             --accent-line: rgba(255, 220, 190, 0.92);
             --accent-line-dim: rgba(255, 255, 255, 0.18);
-            --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Noto Serif Devanagari", Georgia, serif;
+            --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+            --font-devanagari: "Noto Serif Devanagari", "Kohinoor Devanagari", "Devanagari MT", "Mangal", "Nirmala UI", "Segoe UI", sans-serif;
             --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
             --player-max: 600px;
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -248,11 +249,11 @@
         }
 
         .radio-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.4rem, 11vw, 4.2rem);
+            font-family: var(--font-devanagari);
+            font-size: clamp(2.6rem, 12vw, 4.6rem);
             font-weight: 600;
-            line-height: 1.05;
-            letter-spacing: 0.04em;
+            line-height: 1.08;
+            letter-spacing: 0.02em;
             color: var(--text-primary);
             text-shadow:
                 0 2px 18px rgba(0, 0, 0, 0.55),
@@ -308,6 +309,41 @@
         .player.is-visible {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
+        }
+
+        .player.is-started .player-landing {
+            display: none;
+        }
+
+        .player:not(.is-started) .progress,
+        .player:not(.is-started) .controls {
+            display: none;
+        }
+
+        .player-landing {
+            display: flex;
+            justify-content: center;
+            padding-top: 0.15rem;
+        }
+
+        .player-landing__btn {
+            min-width: 8.75rem;
+            min-height: 2.85rem;
+            padding: 0.65rem 1.35rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            background: rgba(255, 252, 248, 0.94);
+            color: #1a1210;
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+            transition: transform 0.2s var(--ease);
+        }
+
+        .player-landing__btn:not(:disabled):active {
+            transform: scale(0.96);
         }
 
         /* Track Metadata */
@@ -524,51 +560,6 @@
             border: 0;
         }
 
-        /* Start overlay */
-        .start-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            background: rgba(10, 8, 12, 0.28);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            transition: opacity 0.32s var(--ease), visibility 0.32s;
-        }
-
-        .start-overlay[hidden] {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .start-overlay__btn {
-            width: 4.25rem;
-            height: 4.25rem;
-            border-radius: 50%;
-            background: rgba(255, 252, 248, 0.96);
-            color: #1a1210;
-            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.32);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s var(--ease);
-        }
-
-        .start-overlay__btn:not(:disabled):active {
-            transform: scale(0.94);
-        }
-
-        .start-overlay__btn svg {
-            width: 1.5rem;
-            height: 1.5rem;
-            fill: currentColor;
-            margin-left: 3px;
-        }
-
         .yt-player {
             position: fixed;
             width: 1px;
@@ -652,7 +643,7 @@
             <time class="topbar__clock" id="clockTime" datetime="">—</time>
             <div class="topbar__status">
                 <span class="live-dot" aria-hidden="true"></span>
-                <span id="topSiteName">Gola Music</span>
+                <span id="topSiteName">गोलावाला</span>
             </div>
             <div class="topbar__volume">
                 <button type="button" class="icon-btn" id="volumeToggle" aria-label="Volume" aria-expanded="false" aria-controls="volumePop" disabled>
@@ -677,7 +668,7 @@
         </header>
 
         <div class="scene__center">
-            <h1 class="radio-title" id="siteName">Gola Music</h1>
+            <h1 class="radio-title" id="siteName">गोलावाला</h1>
         </div>
 
         <p class="caption" id="caption" hidden></p>
@@ -692,6 +683,10 @@
                         <p class="track-index" id="trackIndicator" aria-live="polite"></p>
                         <p class="track-status" id="statusMessage" aria-live="polite">Loading radio…</p>
                     </div>
+                </div>
+
+                <div class="player-landing" id="playerLanding">
+                    <button type="button" class="player-landing__btn" id="landingPlayBtn" disabled>Play Radio</button>
                 </div>
 
                 <div class="progress">
@@ -735,12 +730,6 @@
         </div>
     </div>
 
-    <div class="start-overlay" id="startOverlay">
-        <button type="button" class="start-overlay__btn" id="startBtn" aria-label="Press Play to start the radio">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>
-        </button>
-    </div>
-
     <div class="yt-player" id="ytPlayer" aria-hidden="true"></div>
 
     <script>
@@ -753,7 +742,7 @@
         */
 
         const CONFIG = Object.freeze({
-            siteName: "Gola Music",
+            siteName: "गोलावाला",
             backgroundImage: "./background.jpg",
             backgroundPosition: "center center",
             overlayOpacity: 0.35,
@@ -815,8 +804,8 @@
                 volumeToggle: document.getElementById("volumeToggle"),
                 volumePop: document.getElementById("volumePop"),
                 volumeSlider: document.getElementById("volumeSlider"),
-                startOverlay: document.getElementById("startOverlay"),
-                startBtn: document.getElementById("startBtn"),
+                landingPlayBtn: document.getElementById("landingPlayBtn"),
+                playerLanding: document.getElementById("playerLanding"),
                 ytPlayer: document.getElementById("ytPlayer")
             };
         }
@@ -935,8 +924,23 @@
                 shuffleBtn,
                 queueBtn,
                 volumeToggle,
-                volumeSlider
+                volumeSlider,
+                landingPlayBtn
             } = app.elements;
+
+            landingPlayBtn.disabled = !enabled || app.userStarted;
+
+            if (!app.userStarted) {
+                progressSlider.disabled = true;
+                playPauseBtn.disabled = true;
+                prevBtn.disabled = true;
+                nextBtn.disabled = true;
+                shuffleBtn.disabled = true;
+                queueBtn.disabled = true;
+                volumeToggle.disabled = !enabled;
+                volumeSlider.disabled = !enabled;
+                return;
+            }
 
             progressSlider.disabled = !enabled;
             playPauseBtn.disabled = !enabled;
@@ -946,6 +950,11 @@
             queueBtn.disabled = !enabled;
             volumeToggle.disabled = !enabled;
             volumeSlider.disabled = !enabled;
+        }
+
+        function revealPlayerControls() {
+            app.elements.playerPanel.classList.add("is-started");
+            setControlsEnabled(app.ready);
         }
 
         function updateProgressFill(percent) {
@@ -1133,7 +1142,7 @@
                 updateTrackIndicator();
                 updateDurationDisplay();
                 if (!app.userStarted) {
-                    setStatus("Press Play to start");
+                    setStatus("");
                 }
             }
         }
@@ -1191,7 +1200,7 @@
             updateMuteButton();
 
             if (!app.userStarted) {
-                setStatus("Press Play to start");
+                setStatus("");
             }
         }
 
@@ -1256,7 +1265,7 @@
             }
 
             app.userStarted = true;
-            app.elements.startOverlay.hidden = true;
+            revealPlayerControls();
 
             try {
                 if (app.isMuted) {
@@ -1267,9 +1276,10 @@
                 }
                 app.player.playVideo();
             } catch (error) {
-                setStatus("Press Play to start", "error");
-                app.elements.startOverlay.hidden = false;
+                setStatus("Unable to start radio", "error");
                 app.userStarted = false;
+                app.elements.playerPanel.classList.remove("is-started");
+                setControlsEnabled(app.ready);
             }
         }
 
@@ -1320,7 +1330,7 @@
 
         function bindUiEvents() {
             const {
-                startBtn,
+                landingPlayBtn,
                 playPauseBtn,
                 prevBtn,
                 nextBtn,
@@ -1332,7 +1342,7 @@
                 progressSlider
             } = app.elements;
 
-            startBtn.addEventListener("click", beginPlayback);
+            landingPlayBtn.addEventListener("click", beginPlayback);
             playPauseBtn.addEventListener("click", togglePlayPause);
 
             prevBtn.addEventListener("click", function () {
