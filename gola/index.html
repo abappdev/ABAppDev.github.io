@@ -6,7 +6,7 @@
     <title>गोलावाला</title>
     <meta name="description" content="गोलावाला — a minimalist YouTube playlist radio.">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="theme-color" content="#1a1018">
+    <meta name="theme-color" content="#1a1838">
     <style>
         /* Reset */
         *, *::before, *::after {
@@ -78,10 +78,16 @@
             position: fixed;
             inset: 0;
             z-index: 0;
-            background-color: #120c10;
+            background-color: #141428;
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: var(--background-position);
+            background-position: var(--background-position-mobile, center 40%);
+        }
+
+        @media (min-width: 768px) {
+            .background {
+                background-position: var(--background-position-desktop, center 48%);
+            }
         }
 
         .overlay {
@@ -90,7 +96,14 @@
             z-index: 1;
             pointer-events: none;
             background:
-                linear-gradient(180deg, rgba(8, 6, 10, 0.42) 0%, rgba(8, 6, 10, 0.08) 28%, rgba(8, 6, 10, 0.12) 62%, rgba(8, 6, 10, 0.5) 100%);
+                linear-gradient(
+                    180deg,
+                    rgba(10, 12, 28, 0.28) 0%,
+                    rgba(10, 12, 28, 0.04) 24%,
+                    rgba(10, 12, 28, 0.06) 48%,
+                    rgba(8, 8, 18, 0.38) 78%,
+                    rgba(6, 6, 14, 0.62) 100%
+                );
         }
 
         .scene {
@@ -270,6 +283,10 @@
             gap: 0.75rem;
             width: min(94vw, var(--player-max));
             animation: fadeUp 0.55s var(--ease) 0.14s both;
+        }
+
+        .player-dock .vinyl {
+            pointer-events: auto;
         }
 
         .vinyl {
@@ -765,8 +782,9 @@
         const CONFIG = Object.freeze({
             siteName: "गोलावाला",
             backgroundImage: "./background.jpg",
-            backgroundPosition: "center center",
-            overlayOpacity: 0.35,
+            backgroundPosition: "center 40%",
+            backgroundPositionDesktop: "center 48%",
+            overlayOpacity: 0.22,
             youtubePlaylistUrl: "https://music.youtube.com/playlist?list=PLUGKQJQR9WdU&si=vI7nU-wlCLGC8lAn",
             defaultVolume: 70,
             caption: "",
@@ -844,7 +862,11 @@
             document.title = CONFIG.siteName;
 
             background.style.backgroundImage = "url(" + CONFIG.backgroundImage + ")";
-            document.documentElement.style.setProperty("--background-position", CONFIG.backgroundPosition);
+            document.documentElement.style.setProperty("--background-position-mobile", CONFIG.backgroundPosition);
+            document.documentElement.style.setProperty(
+                "--background-position-desktop",
+                CONFIG.backgroundPositionDesktop || CONFIG.backgroundPosition
+            );
 
             const opacity = Math.min(1, Math.max(0, Number(CONFIG.overlayOpacity) || 0));
             overlay.style.opacity = String(opacity);
