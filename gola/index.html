@@ -242,15 +242,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding-top: clamp(1.5rem, 8vh, 4.5rem);
+            justify-content: center;
+            gap: clamp(1rem, 3vh, 1.6rem);
+            padding-top: clamp(0.5rem, 3vh, 2rem);
             text-align: center;
             pointer-events: none;
         }
 
+        .scene__center .vinyl-stack {
+            pointer-events: auto;
+        }
+
         .radio-title {
             font-family: var(--font-devanagari);
-            font-size: clamp(2.6rem, 12vw, 4.6rem);
+            font-size: clamp(2.2rem, 10vw, 4rem);
             font-weight: 600;
             line-height: 1.08;
             letter-spacing: 0.02em;
@@ -262,11 +267,119 @@
             animation: fadeUp 0.55s var(--ease) 0.08s both;
         }
 
+        /* Vinyl */
+        .vinyl-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.85rem;
+            width: min(100%, 22rem);
+            animation: fadeUp 0.55s var(--ease) 0.14s both;
+        }
+
+        .vinyl {
+            --vinyl-size: clamp(11.5rem, 42vw, 15.5rem);
+            position: relative;
+            width: var(--vinyl-size);
+            height: var(--vinyl-size);
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at center, rgba(18, 12, 16, 0.2) 0 18%, transparent 19%),
+                repeating-radial-gradient(circle at center, #141014 0 2px, #0a080a 2px 4px);
+            box-shadow:
+                0 18px 42px rgba(0, 0, 0, 0.42),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+            transition: transform 0.35s var(--ease);
+        }
+
+        .vinyl.is-playing {
+            animation: vinylSpin 5.5s linear infinite;
+        }
+
+        .vinyl__grooves {
+            position: absolute;
+            inset: 7%;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle, transparent 58%, rgba(255, 255, 255, 0.03) 59%, transparent 60%),
+                radial-gradient(circle, transparent 72%, rgba(255, 255, 255, 0.04) 73%, transparent 74%);
+            pointer-events: none;
+        }
+
+        .vinyl__label {
+            position: absolute;
+            inset: 24%;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow:
+                inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+                0 8px 20px rgba(0, 0, 0, 0.28);
+            background: rgba(255, 255, 255, 0.08);
+            transition: opacity 0.28s var(--ease);
+        }
+
+        .vinyl__label[hidden] {
+            display: block;
+            opacity: 0;
+        }
+
+        .vinyl__play {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 3.35rem;
+            height: 3.35rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1210;
+            background: rgba(255, 252, 248, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+            transition: transform 0.2s var(--ease), background 0.2s ease;
+        }
+
+        .vinyl.is-playing .vinyl__play {
+            background: rgba(255, 252, 248, 0.88);
+            animation: vinylSpinReverse 5.5s linear infinite;
+        }
+
+        .vinyl__play:not(:disabled):active {
+            transform: translate(-50%, -50%) scale(0.94);
+        }
+
+        .vinyl__play svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            fill: currentColor;
+        }
+
+        .vinyl__play .icon-pause {
+            display: none;
+        }
+
+        .vinyl__play.is-playing .icon-play {
+            display: none;
+        }
+
+        .vinyl__play.is-playing .icon-pause {
+            display: block;
+        }
+
+        .vinyl-stack .track-text {
+            width: 100%;
+            max-width: 18rem;
+            pointer-events: none;
+        }
+
         /* Ambient Caption */
         .caption {
             position: absolute;
             left: 50%;
-            bottom: calc(max(28px, env(safe-area-inset-bottom)) + 11.5rem);
+            bottom: calc(max(22px, env(safe-area-inset-bottom)) + 5.2rem);
             transform: translateX(-50%);
             width: min(88vw, var(--player-max));
             text-align: center;
@@ -286,91 +399,140 @@
         /* Player */
         .scene__bottom {
             position: relative;
-            min-height: 0;
+            min-height: 4.5rem;
         }
 
-        .player {
+        .player-pill {
             position: absolute;
             left: 50%;
-            bottom: max(28px, env(safe-area-inset-bottom));
-            transform: translateX(-50%) translateY(18px);
-            width: min(92vw, var(--player-max));
-            padding: 0.95rem 1rem 0.9rem;
-            border-radius: 28px;
-            background: var(--player-bg);
-            border: 1px solid var(--player-border);
-            backdrop-filter: blur(18px) saturate(130%);
-            -webkit-backdrop-filter: blur(18px) saturate(130%);
-            box-shadow: var(--player-shadow);
+            bottom: max(22px, env(safe-area-inset-bottom));
+            transform: translateX(-50%) translateY(14px);
+            width: min(94vw, var(--player-max));
+            min-height: 3.35rem;
+            padding: 0.45rem 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(22px) saturate(140%);
+            -webkit-backdrop-filter: blur(22px) saturate(140%);
+            box-shadow:
+                0 14px 38px rgba(0, 0, 0, 0.24),
+                inset 0 1px 0 rgba(255, 255, 255, 0.14);
             opacity: 0;
-            transition: opacity 0.32s var(--ease), transform 0.32s var(--ease);
+            visibility: hidden;
+            transition: opacity 0.32s var(--ease), transform 0.32s var(--ease), visibility 0.32s;
         }
 
-        .player.is-visible {
+        .player-pill.is-visible {
             opacity: 1;
+            visibility: visible;
             transform: translateX(-50%) translateY(0);
         }
 
-        .player.is-started .player-landing {
-            display: none;
+        .player-pill:not(.is-started) {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
-        .player:not(.is-started) .progress,
-        .player:not(.is-started) .controls {
-            display: none;
-        }
-
-        .player-landing {
-            display: flex;
+        .pill-btn {
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            padding-top: 0.15rem;
+            width: 2.35rem;
+            height: 2.35rem;
+            flex-shrink: 0;
+            border-radius: 50%;
+            color: var(--text-primary);
+            transition: transform 0.18s var(--ease), background 0.18s ease;
         }
 
-        .player-landing__btn {
-            min-width: 8.75rem;
-            min-height: 2.85rem;
-            padding: 0.65rem 1.35rem;
+        .pill-btn:not(:disabled):hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .pill-btn:not(:disabled):active {
+            transform: scale(0.92);
+        }
+
+        .pill-btn svg {
+            width: 1.1rem;
+            height: 1.1rem;
+            fill: currentColor;
+        }
+
+        /* Progress */
+        .player-pill__seek {
+            flex: 1;
+            min-width: 0;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .player-pill__time {
+            font-size: 0.68rem;
+            font-variant-numeric: tabular-nums;
+            color: var(--text-muted);
+            min-width: 2rem;
+        }
+
+        .player-pill__time--end {
+            text-align: right;
+        }
+
+        .progress__bar {
+            display: flex;
+            align-items: center;
+            height: 1.1rem;
+        }
+
+        .progress__slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 3px;
             border-radius: 999px;
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            background: rgba(255, 252, 248, 0.94);
-            color: #1a1210;
-            font-size: 0.92rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
-            transition: transform 0.2s var(--ease);
+            background: linear-gradient(
+                to right,
+                var(--accent-line) 0%,
+                var(--accent-line) var(--fill, 0%),
+                var(--accent-line-dim) var(--fill, 0%),
+                var(--accent-line-dim) 100%
+            );
+            outline: none;
+            cursor: pointer;
+            transition: background 0.2s linear;
         }
 
-        .player-landing__btn:not(:disabled):active {
-            transform: scale(0.96);
+        .progress__slider:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        .progress__slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            border: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.22);
+        }
+
+        .progress__slider::-moz-range-thumb {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            border: none;
         }
 
         /* Track Metadata */
-        .track-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            min-width: 0;
-        }
-
-        .track-art {
-            width: 60px;
-            height: 60px;
-            border-radius: 14px;
-            object-fit: cover;
-            flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
-            transition: opacity 0.28s var(--ease);
-        }
-
-        .track-text {
-            min-width: 0;
-            flex: 1;
-            transition: opacity 0.28s var(--ease);
-        }
 
         .track-text.is-fading {
             opacity: 0.35;
@@ -424,129 +586,6 @@
             color: #f0b0a8;
         }
 
-        /* Progress */
-        .progress {
-            margin-bottom: 0.8rem;
-        }
-
-        .progress__bar {
-            display: flex;
-            align-items: center;
-            height: 1rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .progress__slider {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 2px;
-            border-radius: 999px;
-            background: linear-gradient(
-                to right,
-                var(--accent-line) 0%,
-                var(--accent-line) var(--fill, 0%),
-                var(--accent-line-dim) var(--fill, 0%),
-                var(--accent-line-dim) 100%
-            );
-            outline: none;
-            cursor: pointer;
-            transition: background 0.2s linear;
-        }
-
-        .progress__slider:disabled {
-            opacity: 0.45;
-            cursor: not-allowed;
-        }
-
-        .progress__slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #fff;
-            border: none;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
-        }
-
-        .progress__slider::-moz-range-thumb {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #fff;
-            border: none;
-        }
-
-        .progress__times {
-            font-size: 0.72rem;
-            font-variant-numeric: tabular-nums;
-            color: var(--text-muted);
-            letter-spacing: 0.02em;
-        }
-
-        /* Controls */
-        .controls {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.35rem;
-        }
-
-        .control-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 999px;
-            color: var(--text-primary);
-            transition: transform 0.18s var(--ease), opacity 0.18s ease;
-        }
-
-        .control-btn:not(:disabled):active {
-            transform: scale(0.92);
-        }
-
-        .control-btn svg {
-            width: 1.15rem;
-            height: 1.15rem;
-            fill: currentColor;
-        }
-
-        .control-btn--utility {
-            opacity: 0.82;
-        }
-
-        .control-btn--utility[aria-pressed="true"] {
-            opacity: 1;
-            color: var(--accent-line);
-        }
-
-        .control-btn--play {
-            width: 3.75rem;
-            height: 3.75rem;
-            background: rgba(255, 252, 248, 0.96);
-            color: #1a1210;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
-        }
-
-        .control-btn--play svg {
-            width: 1.35rem;
-            height: 1.35rem;
-        }
-
-        .control-btn--play .icon-pause {
-            display: none;
-        }
-
-        .control-btn--play.is-playing .icon-play {
-            display: none;
-        }
-
-        .control-btn--play.is-playing .icon-pause {
-            display: block;
-        }
-
         /* Volume */
         .sr-only {
             position: absolute;
@@ -569,6 +608,16 @@
             overflow: hidden;
             opacity: 0;
             pointer-events: none;
+        }
+
+        @keyframes vinylSpinReverse {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(-360deg); }
+        }
+
+        @keyframes vinylSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         @keyframes fadeUp {
@@ -595,41 +644,35 @@
 
         /* Responsive */
         @media (max-width: 600px) {
-            .player {
-                width: min(92vw, 100%);
-                padding: 0.85rem 0.85rem 0.8rem;
-                border-radius: 24px;
+            .player-pill {
+                width: min(94vw, 100%);
+                padding: 0.4rem 0.55rem;
+                gap: 0.3rem;
             }
 
-            .track-art {
-                width: 56px;
-                height: 56px;
-                border-radius: 12px;
+            .pill-btn {
+                width: 2.15rem;
+                height: 2.15rem;
+            }
+
+            .player-pill__seek {
+                gap: 0.35rem;
+            }
+
+            .player-pill__time {
+                font-size: 0.64rem;
+                min-width: 1.8rem;
             }
 
             .caption {
-                bottom: calc(max(28px, env(safe-area-inset-bottom)) + 10.8rem);
+                bottom: calc(max(22px, env(safe-area-inset-bottom)) + 4.8rem);
                 width: 90vw;
-            }
-
-            .control-btn {
-                width: 2.35rem;
-                height: 2.35rem;
-            }
-
-            .control-btn--play {
-                width: 3.55rem;
-                height: 3.55rem;
-            }
-
-            .controls {
-                gap: 0.2rem;
             }
         }
 
         @media (min-width: 900px) {
             .caption {
-                bottom: calc(max(28px, env(safe-area-inset-bottom)) + 12rem);
+                bottom: calc(max(22px, env(safe-area-inset-bottom)) + 5.4rem);
             }
         }
     </style>
@@ -669,27 +712,36 @@
 
         <div class="scene__center">
             <h1 class="radio-title" id="siteName">गोलावाला</h1>
+
+            <div class="vinyl-stack">
+                <div class="vinyl" id="vinylDisc">
+                    <div class="vinyl__grooves" aria-hidden="true"></div>
+                    <img class="vinyl__label" id="trackArt" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="120" height="120" hidden>
+                    <button type="button" class="vinyl__play" id="playPauseBtn" aria-label="Play" disabled>
+                        <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+                </div>
+
+                <div class="track-text" id="trackText">
+                    <h2 class="track-title" id="trackTitle">—</h2>
+                    <p class="track-artist" id="trackArtist"></p>
+                    <p class="track-index" id="trackIndicator" aria-live="polite"></p>
+                    <p class="track-status" id="statusMessage" aria-live="polite">Loading radio…</p>
+                </div>
+            </div>
         </div>
 
         <p class="caption" id="caption" hidden></p>
 
         <div class="scene__bottom">
-            <section class="player" id="playerPanel" aria-label="Radio player">
-                <div class="track-meta">
-                    <img class="track-art" id="trackArt" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="60" height="60" hidden>
-                    <div class="track-text" id="trackText">
-                        <h2 class="track-title" id="trackTitle">—</h2>
-                        <p class="track-artist" id="trackArtist"></p>
-                        <p class="track-index" id="trackIndicator" aria-live="polite"></p>
-                        <p class="track-status" id="statusMessage" aria-live="polite">Loading radio…</p>
-                    </div>
-                </div>
+            <section class="player-pill" id="playerPanel" aria-label="Radio controls">
+                <button type="button" class="pill-btn" id="prevBtn" aria-label="Previous track" disabled>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h2v12H6V6zm3.5 6 8.5 6V6l-8.5 6z"/></svg>
+                </button>
 
-                <div class="player-landing" id="playerLanding">
-                    <button type="button" class="player-landing__btn" id="landingPlayBtn" disabled>Play Radio</button>
-                </div>
-
-                <div class="progress">
+                <div class="player-pill__seek">
+                    <span class="player-pill__time" id="currentTime">0:00</span>
                     <div class="progress__bar">
                         <input
                             type="range"
@@ -703,29 +755,12 @@
                             disabled
                         >
                     </div>
-                    <p class="progress__times" aria-hidden="true">
-                        <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
-                    </p>
+                    <span class="player-pill__time player-pill__time--end" id="totalTime">0:00</span>
                 </div>
 
-                <div class="controls">
-                    <button type="button" class="control-btn control-btn--utility" id="shuffleBtn" aria-label="Shuffle" aria-pressed="false" disabled>
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.59 9.17 5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
-                    </button>
-                    <button type="button" class="control-btn" id="prevBtn" aria-label="Previous track" disabled>
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h2v12H6V6zm3.5 6 8.5 6V6l-8.5 6z"/></svg>
-                    </button>
-                    <button type="button" class="control-btn control-btn--play" id="playPauseBtn" aria-label="Play" disabled>
-                        <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>
-                        <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                    </button>
-                    <button type="button" class="control-btn" id="nextBtn" aria-label="Next track" disabled>
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18l8.5-6L6 6v12zm10-12v12h2V6h-2z"/></svg>
-                    </button>
-                    <button type="button" class="control-btn control-btn--utility" id="queueBtn" aria-label="Show track number" aria-pressed="false" disabled>
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg>
-                    </button>
-                </div>
+                <button type="button" class="pill-btn" id="nextBtn" aria-label="Next track" disabled>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18l8.5-6L6 6v12zm10-12v12h2V6h-2z"/></svg>
+                </button>
             </section>
         </div>
     </div>
@@ -787,6 +822,7 @@
                 caption: document.getElementById("caption"),
                 clockTime: document.getElementById("clockTime"),
                 playerPanel: document.getElementById("playerPanel"),
+                vinylDisc: document.getElementById("vinylDisc"),
                 trackArt: document.getElementById("trackArt"),
                 trackText: document.getElementById("trackText"),
                 trackTitle: document.getElementById("trackTitle"),
@@ -799,13 +835,9 @@
                 playPauseBtn: document.getElementById("playPauseBtn"),
                 prevBtn: document.getElementById("prevBtn"),
                 nextBtn: document.getElementById("nextBtn"),
-                shuffleBtn: document.getElementById("shuffleBtn"),
-                queueBtn: document.getElementById("queueBtn"),
                 volumeToggle: document.getElementById("volumeToggle"),
                 volumePop: document.getElementById("volumePop"),
                 volumeSlider: document.getElementById("volumeSlider"),
-                landingPlayBtn: document.getElementById("landingPlayBtn"),
-                playerLanding: document.getElementById("playerLanding"),
                 ytPlayer: document.getElementById("ytPlayer")
             };
         }
@@ -921,39 +953,30 @@
                 playPauseBtn,
                 prevBtn,
                 nextBtn,
-                shuffleBtn,
-                queueBtn,
                 volumeToggle,
-                volumeSlider,
-                landingPlayBtn
+                volumeSlider
             } = app.elements;
 
-            landingPlayBtn.disabled = !enabled || app.userStarted;
+            playPauseBtn.disabled = !enabled;
 
             if (!app.userStarted) {
                 progressSlider.disabled = true;
-                playPauseBtn.disabled = true;
                 prevBtn.disabled = true;
                 nextBtn.disabled = true;
-                shuffleBtn.disabled = true;
-                queueBtn.disabled = true;
                 volumeToggle.disabled = !enabled;
                 volumeSlider.disabled = !enabled;
                 return;
             }
 
             progressSlider.disabled = !enabled;
-            playPauseBtn.disabled = !enabled;
             prevBtn.disabled = !enabled;
             nextBtn.disabled = !enabled;
-            shuffleBtn.disabled = !enabled;
-            queueBtn.disabled = !enabled;
             volumeToggle.disabled = !enabled;
             volumeSlider.disabled = !enabled;
         }
 
         function revealPlayerControls() {
-            app.elements.playerPanel.classList.add("is-started");
+            app.elements.playerPanel.classList.add("is-started", "is-visible");
             setControlsEnabled(app.ready);
         }
 
@@ -967,12 +990,14 @@
         }
 
         function updatePlayPauseButton(isPlaying) {
-            const { playPauseBtn } = app.elements;
+            const { playPauseBtn, vinylDisc } = app.elements;
             if (isPlaying) {
                 playPauseBtn.classList.add("is-playing");
+                vinylDisc.classList.add("is-playing");
                 playPauseBtn.setAttribute("aria-label", "Pause");
             } else {
                 playPauseBtn.classList.remove("is-playing");
+                vinylDisc.classList.remove("is-playing");
                 playPauseBtn.setAttribute("aria-label", "Play");
             }
         }
@@ -1054,11 +1079,7 @@
                 return;
             }
 
-            if (app.elements.queueBtn.getAttribute("aria-pressed") === "true") {
-                app.elements.trackIndicator.textContent = (index + 1) + " / Playlist";
-            } else {
-                app.elements.trackIndicator.textContent = "";
-            }
+            app.elements.trackIndicator.textContent = (index + 1) + " / Playlist";
         }
 
         function updateDurationDisplay() {
@@ -1330,19 +1351,15 @@
 
         function bindUiEvents() {
             const {
-                landingPlayBtn,
                 playPauseBtn,
                 prevBtn,
                 nextBtn,
-                shuffleBtn,
-                queueBtn,
                 volumeToggle,
                 volumePop,
                 volumeSlider,
                 progressSlider
             } = app.elements;
 
-            landingPlayBtn.addEventListener("click", beginPlayback);
             playPauseBtn.addEventListener("click", togglePlayPause);
 
             prevBtn.addEventListener("click", function () {
@@ -1355,17 +1372,6 @@
                 if (app.player && app.ready) {
                     app.player.nextVideo();
                 }
-            });
-
-            shuffleBtn.addEventListener("click", function () {
-                const pressed = shuffleBtn.getAttribute("aria-pressed") === "true";
-                shuffleBtn.setAttribute("aria-pressed", pressed ? "false" : "true");
-            });
-
-            queueBtn.addEventListener("click", function () {
-                const pressed = queueBtn.getAttribute("aria-pressed") === "true";
-                queueBtn.setAttribute("aria-pressed", pressed ? "false" : "true");
-                updateTrackIndicator();
             });
 
             volumeToggle.addEventListener("click", function (event) {
