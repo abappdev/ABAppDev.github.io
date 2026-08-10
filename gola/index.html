@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Gola Music</title>
     <meta name="description" content="Gola Music — a minimalist YouTube playlist radio.">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="theme-color" content="#0c0a09">
+    <meta name="theme-color" content="#1a1018">
     <style>
+        /* Reset */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -15,17 +16,20 @@
         }
 
         :root {
-            --surface: rgba(12, 10, 9, 0.62);
-            --surface-border: rgba(255, 248, 235, 0.12);
-            --text-primary: #faf7f2;
-            --text-secondary: rgba(250, 247, 242, 0.72);
-            --text-muted: rgba(250, 247, 242, 0.48);
-            --accent: #e8c49a;
-            --accent-dim: rgba(232, 196, 154, 0.35);
-            --focus-ring: rgba(232, 196, 154, 0.65);
-            --radius: 18px;
-            --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+            --text-primary: #faf7f4;
+            --text-secondary: rgba(250, 247, 244, 0.78);
+            --text-muted: rgba(250, 247, 244, 0.55);
+            --focus-ring: rgba(255, 255, 255, 0.72);
+            --background-position: center center;
+            --player-bg: rgba(72, 34, 30, 0.46);
+            --player-border: rgba(255, 255, 255, 0.2);
+            --player-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+            --accent-line: rgba(255, 220, 190, 0.92);
+            --accent-line-dim: rgba(255, 255, 255, 0.18);
+            --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Noto Serif Devanagari", Georgia, serif;
             --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            --player-max: 600px;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         html, body {
@@ -37,151 +41,381 @@
         body {
             font-family: var(--font-ui);
             color: var(--text-primary);
-            background-color: #0c0a09;
+            background: #120c10;
         }
 
+        body[data-accent="cool"] {
+            --player-bg: rgba(24, 36, 58, 0.46);
+            --accent-line: rgba(190, 220, 255, 0.92);
+        }
+
+        button {
+            font: inherit;
+            color: inherit;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:focus-visible {
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+
+        button:disabled {
+            opacity: 0.38;
+            cursor: not-allowed;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        /* Scene */
         .background {
             position: fixed;
             inset: 0;
             z-index: 0;
-            background-color: #0c0a09;
+            background-color: #120c10;
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center center;
+            background-position: var(--background-position);
         }
 
         .overlay {
             position: fixed;
             inset: 0;
             z-index: 1;
-            background: #0c0a09;
+            pointer-events: none;
+            background:
+                linear-gradient(180deg, rgba(8, 6, 10, 0.42) 0%, rgba(8, 6, 10, 0.08) 28%, rgba(8, 6, 10, 0.12) 62%, rgba(8, 6, 10, 0.5) 100%);
+        }
+
+        .scene {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            padding:
+                max(14px, env(safe-area-inset-top))
+                max(16px, env(safe-area-inset-right))
+                max(18px, env(safe-area-inset-bottom))
+                max(16px, env(safe-area-inset-left));
+        }
+
+        /* Top Bar */
+        .topbar {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 0.75rem;
+            min-height: 2rem;
+            animation: fadeDown 0.45s var(--ease) both;
+        }
+
+        .topbar__clock {
+            font-size: 0.82rem;
+            font-variant-numeric: tabular-nums;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+        }
+
+        .topbar__status {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #6fe08a;
+            box-shadow: 0 0 10px rgba(111, 224, 138, 0.75);
+            flex-shrink: 0;
+        }
+
+        .topbar__volume {
+            justify-self: end;
+            position: relative;
+        }
+
+        .icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 999px;
+            transition: transform 0.18s var(--ease), background 0.18s ease;
+        }
+
+        .icon-btn:not(:disabled):active {
+            transform: scale(0.94);
+        }
+
+        .icon-btn svg {
+            width: 1.15rem;
+            height: 1.15rem;
+            fill: currentColor;
+        }
+
+        .volume-pop {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.55rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(20, 14, 18, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-4px);
+            transition: opacity 0.22s var(--ease), transform 0.22s var(--ease), visibility 0.22s;
+        }
+
+        .volume-pop.is-open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .volume-pop__slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 7.5rem;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(
+                to right,
+                var(--accent-line) 0%,
+                var(--accent-line) var(--fill, 70%),
+                var(--accent-line-dim) var(--fill, 70%),
+                var(--accent-line-dim) 100%
+            );
+            outline: none;
+            cursor: pointer;
+        }
+
+        .volume-pop__slider:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        .volume-pop__slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            border: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+        }
+
+        .volume-pop__slider::-moz-range-thumb {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #fff;
+            border: none;
+        }
+
+        /* Radio Branding */
+        .scene__center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: clamp(1.5rem, 8vh, 4.5rem);
+            text-align: center;
             pointer-events: none;
         }
 
-        .page {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            min-height: 100dvh;
-            padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
-        }
-
-        .radio {
-            width: min(100%, 26rem);
-            padding: 1.35rem 1.25rem 1.15rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--surface-border);
-            background: var(--surface);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            box-shadow:
-                0 24px 64px rgba(0, 0, 0, 0.45),
-                inset 0 1px 0 rgba(255, 255, 255, 0.06);
-        }
-
-        .radio__brand {
+        .radio-title {
             font-family: var(--font-display);
-            font-size: clamp(1.15rem, 4vw, 1.45rem);
-            font-weight: 500;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            text-align: center;
-            color: var(--accent);
-            margin-bottom: 0.85rem;
+            font-size: clamp(2.4rem, 11vw, 4.2rem);
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: 0.04em;
+            color: var(--text-primary);
+            text-shadow:
+                0 2px 18px rgba(0, 0, 0, 0.55),
+                0 0 40px rgba(0, 0, 0, 0.25);
+            max-width: 92vw;
+            animation: fadeUp 0.55s var(--ease) 0.08s both;
         }
 
-        .radio__label {
-            font-size: 0.68rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
+        /* Ambient Caption */
+        .caption {
+            position: absolute;
+            left: 50%;
+            bottom: calc(max(28px, env(safe-area-inset-bottom)) + 11.5rem);
+            transform: translateX(-50%);
+            width: min(88vw, var(--player-max));
             text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 0.35rem;
-        }
-
-        .radio__title {
             font-family: var(--font-display);
-            font-size: clamp(1.05rem, 3.8vw, 1.28rem);
-            line-height: 1.35;
-            text-align: center;
-            font-weight: 500;
-            margin-bottom: 0.2rem;
-            word-break: break-word;
+            font-size: clamp(0.92rem, 3.4vw, 1.08rem);
+            line-height: 1.45;
+            color: rgba(255, 250, 245, 0.82);
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+            pointer-events: none;
+            animation: fadeUp 0.5s var(--ease) 0.16s both;
         }
 
-        .radio__artist {
-            font-size: 0.88rem;
-            text-align: center;
-            color: var(--text-secondary);
-            margin-bottom: 0.55rem;
-            min-height: 1.25rem;
-            word-break: break-word;
-        }
-
-        .radio__artist:empty {
+        .caption[hidden] {
             display: none;
         }
 
-        .radio__track-indicator {
-            font-size: 0.72rem;
-            letter-spacing: 0.08em;
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 0.9rem;
+        /* Player */
+        .scene__bottom {
+            position: relative;
+            min-height: 0;
         }
 
-        .radio__status {
-            font-size: 0.78rem;
-            text-align: center;
-            color: var(--text-secondary);
-            min-height: 1.1rem;
-            margin-bottom: 0.75rem;
+        .player {
+            position: absolute;
+            left: 50%;
+            bottom: max(28px, env(safe-area-inset-bottom));
+            transform: translateX(-50%) translateY(18px);
+            width: min(92vw, var(--player-max));
+            padding: 0.95rem 1rem 0.9rem;
+            border-radius: 28px;
+            background: var(--player-bg);
+            border: 1px solid var(--player-border);
+            backdrop-filter: blur(18px) saturate(130%);
+            -webkit-backdrop-filter: blur(18px) saturate(130%);
+            box-shadow: var(--player-shadow);
+            opacity: 0;
+            transition: opacity 0.32s var(--ease), transform 0.32s var(--ease);
         }
 
-        .radio__status[data-tone="error"] {
-            color: #f0a8a0;
+        .player.is-visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
-        .progress {
-            display: grid;
-            grid-template-columns: 2.6rem 1fr 2.6rem;
+        /* Track Metadata */
+        .track-meta {
+            display: flex;
             align-items: center;
-            gap: 0.55rem;
-            margin-bottom: 1rem;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            min-width: 0;
         }
 
-        .progress__time {
-            font-size: 0.72rem;
-            font-variant-numeric: tabular-nums;
+        .track-art {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+            transition: opacity 0.28s var(--ease);
+        }
+
+        .track-text {
+            min-width: 0;
+            flex: 1;
+            transition: opacity 0.28s var(--ease);
+        }
+
+        .track-text.is-fading {
+            opacity: 0.35;
+        }
+
+        .track-title {
+            font-size: clamp(1rem, 4.2vw, 1.12rem);
+            font-weight: 700;
+            line-height: 1.25;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .track-artist {
+            margin-top: 0.18rem;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .track-artist:empty {
+            display: none;
+        }
+
+        .track-index {
+            margin-top: 0.2rem;
+            font-size: 0.68rem;
+            letter-spacing: 0.06em;
             color: var(--text-muted);
-            text-align: center;
+        }
+
+        .track-index:empty {
+            display: none;
+        }
+
+        .track-status {
+            margin-top: 0.18rem;
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            min-height: 1rem;
+        }
+
+        .track-status:empty {
+            display: none;
+        }
+
+        .track-status[data-tone="error"] {
+            color: #f0b0a8;
+        }
+
+        /* Progress */
+        .progress {
+            margin-bottom: 0.8rem;
         }
 
         .progress__bar {
-            position: relative;
-            height: 1.25rem;
             display: flex;
             align-items: center;
+            height: 1rem;
+            margin-bottom: 0.35rem;
         }
 
         .progress__slider {
             -webkit-appearance: none;
             appearance: none;
             width: 100%;
-            height: 4px;
+            height: 2px;
             border-radius: 999px;
             background: linear-gradient(
                 to right,
-                var(--accent) 0%,
-                var(--accent) var(--fill, 0%),
-                rgba(255, 255, 255, 0.14) var(--fill, 0%),
-                rgba(255, 255, 255, 0.14) 100%
+                var(--accent-line) 0%,
+                var(--accent-line) var(--fill, 0%),
+                var(--accent-line-dim) var(--fill, 0%),
+                var(--accent-line-dim) 100%
             );
             outline: none;
             cursor: pointer;
+            transition: background 0.2s linear;
         }
 
         .progress__slider:disabled {
@@ -191,153 +425,118 @@
 
         .progress__slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 13px;
-            height: 13px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
-            background: var(--text-primary);
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-dim);
+            background: #fff;
+            border: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
         }
 
         .progress__slider::-moz-range-thumb {
-            width: 13px;
-            height: 13px;
-            border: 2px solid var(--accent);
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
-            background: var(--text-primary);
-            box-shadow: 0 0 0 3px var(--accent-dim);
+            background: #fff;
+            border: none;
         }
 
+        .progress__times {
+            font-size: 0.72rem;
+            font-variant-numeric: tabular-nums;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
+        }
+
+        /* Controls */
         .controls {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
+            justify-content: space-between;
+            gap: 0.35rem;
         }
 
-        .btn {
+        .control-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid transparent;
-            background: transparent;
-            color: var(--text-primary);
-            font: inherit;
-            cursor: pointer;
-            transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-            border-radius: 999px;
-        }
-
-        .btn:focus-visible {
-            outline: 2px solid var(--focus-ring);
-            outline-offset: 3px;
-        }
-
-        .btn:disabled {
-            opacity: 0.38;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .btn:not(:disabled):active {
-            transform: scale(0.96);
-        }
-
-        .btn--nav {
-            width: 2.75rem;
-            height: 2.75rem;
-            border-color: var(--surface-border);
-            background: rgba(255, 255, 255, 0.04);
-            font-size: 1rem;
-        }
-
-        .btn--nav:not(:disabled):hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .btn--play {
-            width: 3.6rem;
-            height: 3.6rem;
-            background: rgba(232, 196, 154, 0.16);
-            border-color: rgba(232, 196, 154, 0.45);
-            font-size: 1.15rem;
-        }
-
-        .btn--play:not(:disabled):hover {
-            background: rgba(232, 196, 154, 0.24);
-        }
-
-        .volume {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            align-items: center;
-            gap: 0.65rem;
-        }
-
-        .btn--mute {
             width: 2.5rem;
             height: 2.5rem;
-            font-size: 1rem;
-            border-color: var(--surface-border);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .btn--mute:not(:disabled):hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .volume__slider {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 4px;
             border-radius: 999px;
-            background: linear-gradient(
-                to right,
-                var(--accent) 0%,
-                var(--accent) var(--fill, 70%),
-                rgba(255, 255, 255, 0.14) var(--fill, 70%),
-                rgba(255, 255, 255, 0.14) 100%
-            );
-            outline: none;
-            cursor: pointer;
+            color: var(--text-primary);
+            transition: transform 0.18s var(--ease), opacity 0.18s ease;
         }
 
-        .volume__slider:disabled {
-            opacity: 0.45;
-            cursor: not-allowed;
+        .control-btn:not(:disabled):active {
+            transform: scale(0.92);
         }
 
-        .volume__slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--text-primary);
-            border: 2px solid var(--accent);
+        .control-btn svg {
+            width: 1.15rem;
+            height: 1.15rem;
+            fill: currentColor;
         }
 
-        .volume__slider::-moz-range-thumb {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--text-primary);
-            border: 2px solid var(--accent);
+        .control-btn--utility {
+            opacity: 0.82;
         }
 
+        .control-btn--utility[aria-pressed="true"] {
+            opacity: 1;
+            color: var(--accent-line);
+        }
+
+        .control-btn--play {
+            width: 3.75rem;
+            height: 3.75rem;
+            background: rgba(255, 252, 248, 0.96);
+            color: #1a1210;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+        }
+
+        .control-btn--play svg {
+            width: 1.35rem;
+            height: 1.35rem;
+        }
+
+        .control-btn--play .icon-pause {
+            display: none;
+        }
+
+        .control-btn--play.is-playing .icon-play {
+            display: none;
+        }
+
+        .control-btn--play.is-playing .icon-pause {
+            display: block;
+        }
+
+        /* Volume */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Start overlay */
         .start-overlay {
             position: fixed;
             inset: 0;
-            z-index: 5;
+            z-index: 8;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1.5rem;
-            background: rgba(12, 10, 9, 0.42);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            transition: opacity 0.35s ease, visibility 0.35s ease;
+            background: rgba(10, 8, 12, 0.28);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            transition: opacity 0.32s var(--ease), visibility 0.32s;
         }
 
         .start-overlay[hidden] {
@@ -347,23 +546,27 @@
         }
 
         .start-overlay__btn {
-            min-width: 8.5rem;
-            min-height: 3.25rem;
-            padding: 0.85rem 1.6rem;
-            border-radius: 999px;
-            border: 1px solid rgba(232, 196, 154, 0.5);
-            background: rgba(12, 10, 9, 0.72);
-            color: var(--text-primary);
-            font-family: var(--font-display);
-            font-size: 1.05rem;
-            letter-spacing: 0.08em;
-            cursor: pointer;
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+            width: 4.25rem;
+            height: 4.25rem;
+            border-radius: 50%;
+            background: rgba(255, 252, 248, 0.96);
+            color: #1a1210;
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.32);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s var(--ease);
         }
 
-        .start-overlay__btn:focus-visible {
-            outline: 2px solid var(--focus-ring);
-            outline-offset: 4px;
+        .start-overlay__btn:not(:disabled):active {
+            transform: scale(0.94);
+        }
+
+        .start-overlay__btn svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            fill: currentColor;
+            margin-left: 3px;
         }
 
         .yt-player {
@@ -377,78 +580,165 @@
             pointer-events: none;
         }
 
-        @media (max-width: 380px) {
-            .radio {
-                padding: 1.1rem 0.95rem 1rem;
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .player {
+                width: min(92vw, 100%);
+                padding: 0.85rem 0.85rem 0.8rem;
+                border-radius: 24px;
+            }
+
+            .track-art {
+                width: 56px;
+                height: 56px;
+                border-radius: 12px;
+            }
+
+            .caption {
+                bottom: calc(max(28px, env(safe-area-inset-bottom)) + 10.8rem);
+                width: 90vw;
+            }
+
+            .control-btn {
+                width: 2.35rem;
+                height: 2.35rem;
+            }
+
+            .control-btn--play {
+                width: 3.55rem;
+                height: 3.55rem;
             }
 
             .controls {
-                gap: 0.55rem;
+                gap: 0.2rem;
             }
+        }
 
-            .btn--play {
-                width: 3.35rem;
-                height: 3.35rem;
+        @media (min-width: 900px) {
+            .caption {
+                bottom: calc(max(28px, env(safe-area-inset-bottom)) + 12rem);
             }
         }
     </style>
 </head>
-<body>
+<body data-accent="warm">
     <div class="background" id="background" aria-hidden="true"></div>
     <div class="overlay" id="overlay" aria-hidden="true"></div>
 
-    <main class="page">
-        <section class="radio" aria-label="Radio player">
-            <h1 class="radio__brand" id="siteName">Gola Music</h1>
-            <p class="radio__label">Now Playing</p>
-            <h2 class="radio__title" id="trackTitle">—</h2>
-            <p class="radio__artist" id="trackArtist"></p>
-            <p class="radio__track-indicator" id="trackIndicator" aria-live="polite"></p>
-            <p class="radio__status" id="statusMessage" aria-live="polite">Loading radio…</p>
-
-            <div class="progress">
-                <span class="progress__time" id="currentTime" aria-hidden="true">0:00</span>
-                <div class="progress__bar">
+    <div class="scene">
+        <header class="topbar">
+            <time class="topbar__clock" id="clockTime" datetime="">—</time>
+            <div class="topbar__status">
+                <span class="live-dot" aria-hidden="true"></span>
+                <span id="topSiteName">Gola Music</span>
+            </div>
+            <div class="topbar__volume">
+                <button type="button" class="icon-btn" id="volumeToggle" aria-label="Volume" aria-expanded="false" aria-controls="volumePop" disabled>
+                    <svg class="icon-volume-high" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4h4l5 5V5L7 10H3zm13.5 2c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.74 2.5-2.26 2.5-4.03zM14 3.23v2.06c2.89 1 5 3.77 5 6.71s-2.11 5.71-5 6.71v2.06c4.01-1.18 7-5.06 7-9.77S18.01 4.41 14 3.23z"/></svg>
+                    <svg class="icon-volume-low" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M18.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM5 10v4h4l5 5V5L9 10H5z"/></svg>
+                    <svg class="icon-volume-mute" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-8.03-7-9.11v2.18c2.89 1 5 3.77 5 6.93zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"/></svg>
+                </button>
+                <div class="volume-pop" id="volumePop" role="group" aria-label="Volume control">
+                    <label class="sr-only" for="volumeSlider">Volume</label>
                     <input
                         type="range"
-                        class="progress__slider"
-                        id="progressSlider"
+                        class="volume-pop__slider"
+                        id="volumeSlider"
                         min="0"
-                        max="1000"
-                        value="0"
+                        max="100"
+                        value="70"
                         step="1"
-                        aria-label="Playback position"
                         disabled
                     >
                 </div>
-                <span class="progress__time" id="totalTime" aria-hidden="true">0:00</span>
             </div>
+        </header>
 
-            <div class="controls">
-                <button type="button" class="btn btn--nav" id="prevBtn" aria-label="Previous track" disabled>⏮</button>
-                <button type="button" class="btn btn--play" id="playPauseBtn" aria-label="Play" disabled>▶</button>
-                <button type="button" class="btn btn--nav" id="nextBtn" aria-label="Next track" disabled>⏭</button>
-            </div>
+        <div class="scene__center">
+            <h1 class="radio-title" id="siteName">Gola Music</h1>
+        </div>
 
-            <div class="volume">
-                <button type="button" class="btn btn--mute" id="muteBtn" aria-label="Mute" disabled>🔊</button>
-                <input
-                    type="range"
-                    class="volume__slider"
-                    id="volumeSlider"
-                    min="0"
-                    max="100"
-                    value="70"
-                    step="1"
-                    aria-label="Volume"
-                    disabled
-                >
-            </div>
-        </section>
-    </main>
+        <p class="caption" id="caption" hidden></p>
+
+        <div class="scene__bottom">
+            <section class="player" id="playerPanel" aria-label="Radio player">
+                <div class="track-meta">
+                    <img class="track-art" id="trackArt" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="60" height="60" hidden>
+                    <div class="track-text" id="trackText">
+                        <h2 class="track-title" id="trackTitle">—</h2>
+                        <p class="track-artist" id="trackArtist"></p>
+                        <p class="track-index" id="trackIndicator" aria-live="polite"></p>
+                        <p class="track-status" id="statusMessage" aria-live="polite">Loading radio…</p>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress__bar">
+                        <input
+                            type="range"
+                            class="progress__slider"
+                            id="progressSlider"
+                            min="0"
+                            max="1000"
+                            value="0"
+                            step="1"
+                            aria-label="Playback position"
+                            disabled
+                        >
+                    </div>
+                    <p class="progress__times" aria-hidden="true">
+                        <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+                    </p>
+                </div>
+
+                <div class="controls">
+                    <button type="button" class="control-btn control-btn--utility" id="shuffleBtn" aria-label="Shuffle" aria-pressed="false" disabled>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.59 9.17 5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+                    </button>
+                    <button type="button" class="control-btn" id="prevBtn" aria-label="Previous track" disabled>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h2v12H6V6zm3.5 6 8.5 6V6l-8.5 6z"/></svg>
+                    </button>
+                    <button type="button" class="control-btn control-btn--play" id="playPauseBtn" aria-label="Play" disabled>
+                        <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>
+                        <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+                    <button type="button" class="control-btn" id="nextBtn" aria-label="Next track" disabled>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18l8.5-6L6 6v12zm10-12v12h2V6h-2z"/></svg>
+                    </button>
+                    <button type="button" class="control-btn control-btn--utility" id="queueBtn" aria-label="Show track number" aria-pressed="false" disabled>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z"/></svg>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <div class="start-overlay" id="startOverlay">
-        <button type="button" class="start-overlay__btn" id="startBtn" aria-label="Press Play to start the radio">Play</button>
+        <button type="button" class="start-overlay__btn" id="startBtn" aria-label="Press Play to start the radio">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>
+        </button>
     </div>
 
     <div class="yt-player" id="ytPlayer" aria-hidden="true"></div>
@@ -468,7 +758,9 @@
             backgroundPosition: "center center",
             overlayOpacity: 0.35,
             youtubePlaylistUrl: "https://music.youtube.com/playlist?list=PLUGKQJQR9WdU&si=vI7nU-wlCLGC8lAn",
-            defaultVolume: 70
+            defaultVolume: 70,
+            caption: "",
+            accentStyle: "warm"
         });
 
         const app = {
@@ -482,7 +774,9 @@
             volume: CONFIG.defaultVolume,
             duration: 0,
             progressTimer: null,
+            clockTimer: null,
             errorSkipInFlight: false,
+            volumeOpen: false,
             elements: {}
         };
 
@@ -500,6 +794,12 @@
                 background: document.getElementById("background"),
                 overlay: document.getElementById("overlay"),
                 siteName: document.getElementById("siteName"),
+                topSiteName: document.getElementById("topSiteName"),
+                caption: document.getElementById("caption"),
+                clockTime: document.getElementById("clockTime"),
+                playerPanel: document.getElementById("playerPanel"),
+                trackArt: document.getElementById("trackArt"),
+                trackText: document.getElementById("trackText"),
                 trackTitle: document.getElementById("trackTitle"),
                 trackArtist: document.getElementById("trackArtist"),
                 trackIndicator: document.getElementById("trackIndicator"),
@@ -510,7 +810,10 @@
                 playPauseBtn: document.getElementById("playPauseBtn"),
                 prevBtn: document.getElementById("prevBtn"),
                 nextBtn: document.getElementById("nextBtn"),
-                muteBtn: document.getElementById("muteBtn"),
+                shuffleBtn: document.getElementById("shuffleBtn"),
+                queueBtn: document.getElementById("queueBtn"),
+                volumeToggle: document.getElementById("volumeToggle"),
+                volumePop: document.getElementById("volumePop"),
                 volumeSlider: document.getElementById("volumeSlider"),
                 startOverlay: document.getElementById("startOverlay"),
                 startBtn: document.getElementById("startBtn"),
@@ -519,21 +822,45 @@
         }
 
         function applyConfiguration() {
-            const { background, overlay, siteName, volumeSlider } = app.elements;
+            const {
+                background,
+                overlay,
+                siteName,
+                topSiteName,
+                caption,
+                volumeSlider,
+                playerPanel
+            } = app.elements;
 
             siteName.textContent = CONFIG.siteName;
+            topSiteName.textContent = CONFIG.siteName;
             document.title = CONFIG.siteName;
 
             background.style.backgroundImage = "url(" + CONFIG.backgroundImage + ")";
-            background.style.backgroundPosition = CONFIG.backgroundPosition;
+            document.documentElement.style.setProperty("--background-position", CONFIG.backgroundPosition);
 
             const opacity = Math.min(1, Math.max(0, Number(CONFIG.overlayOpacity) || 0));
             overlay.style.opacity = String(opacity);
+
+            const accent = CONFIG.accentStyle === "cool" ? "cool" : "warm";
+            document.body.setAttribute("data-accent", accent);
+
+            if (CONFIG.caption && String(CONFIG.caption).trim()) {
+                caption.textContent = String(CONFIG.caption).trim();
+                caption.hidden = false;
+            } else {
+                caption.textContent = "";
+                caption.hidden = true;
+            }
 
             const volume = clampVolume(CONFIG.defaultVolume);
             app.volume = volume;
             volumeSlider.value = String(volume);
             updateVolumeSliderFill(volume);
+
+            window.requestAnimationFrame(function () {
+                playerPanel.classList.add("is-visible");
+            });
         }
 
         function clampVolume(value) {
@@ -570,6 +897,25 @@
             return minutes + ":" + String(remainder).padStart(2, "0");
         }
 
+        function formatClock(date) {
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const h12 = hours % 12 || 12;
+            const ampm = hours >= 12 ? "pm" : "am";
+            return h12 + ":" + String(minutes).padStart(2, "0") + " " + ampm;
+        }
+
+        function updateClock() {
+            const now = new Date();
+            app.elements.clockTime.textContent = formatClock(now);
+            app.elements.clockTime.setAttribute("datetime", now.toISOString());
+        }
+
+        function startClock() {
+            updateClock();
+            app.clockTimer = window.setInterval(updateClock, 30000);
+        }
+
         function setStatus(message, tone) {
             const { statusMessage } = app.elements;
             statusMessage.textContent = message || "";
@@ -586,7 +932,9 @@
                 playPauseBtn,
                 prevBtn,
                 nextBtn,
-                muteBtn,
+                shuffleBtn,
+                queueBtn,
+                volumeToggle,
                 volumeSlider
             } = app.elements;
 
@@ -594,7 +942,9 @@
             playPauseBtn.disabled = !enabled;
             prevBtn.disabled = !enabled;
             nextBtn.disabled = !enabled;
-            muteBtn.disabled = !enabled;
+            shuffleBtn.disabled = !enabled;
+            queueBtn.disabled = !enabled;
+            volumeToggle.disabled = !enabled;
             volumeSlider.disabled = !enabled;
         }
 
@@ -610,26 +960,48 @@
         function updatePlayPauseButton(isPlaying) {
             const { playPauseBtn } = app.elements;
             if (isPlaying) {
-                playPauseBtn.textContent = "⏸";
+                playPauseBtn.classList.add("is-playing");
                 playPauseBtn.setAttribute("aria-label", "Pause");
             } else {
-                playPauseBtn.textContent = "▶";
+                playPauseBtn.classList.remove("is-playing");
                 playPauseBtn.setAttribute("aria-label", "Play");
             }
         }
 
         function updateMuteButton() {
-            const { muteBtn, volumeSlider } = app.elements;
+            const { volumeToggle, volumeSlider } = app.elements;
+            const icons = {
+                high: volumeToggle.querySelector(".icon-volume-high"),
+                low: volumeToggle.querySelector(".icon-volume-low"),
+                mute: volumeToggle.querySelector(".icon-volume-mute")
+            };
+
+            icons.high.hidden = true;
+            icons.low.hidden = true;
+            icons.mute.hidden = true;
+
             if (app.isMuted || Number(volumeSlider.value) === 0) {
-                muteBtn.textContent = "🔇";
-                muteBtn.setAttribute("aria-label", "Unmute");
+                icons.mute.hidden = false;
+                volumeToggle.setAttribute("aria-label", "Unmute");
             } else if (Number(volumeSlider.value) < 35) {
-                muteBtn.textContent = "🔈";
-                muteBtn.setAttribute("aria-label", "Mute");
+                icons.low.hidden = false;
+                volumeToggle.setAttribute("aria-label", "Volume");
             } else {
-                muteBtn.textContent = "🔊";
-                muteBtn.setAttribute("aria-label", "Mute");
+                icons.high.hidden = false;
+                volumeToggle.setAttribute("aria-label", "Volume");
             }
+        }
+
+        function fadeTrackMetadata(callback) {
+            const { trackText, trackArt } = app.elements;
+            trackText.classList.add("is-fading");
+            trackArt.style.opacity = "0.45";
+
+            window.setTimeout(function () {
+                callback();
+                trackText.classList.remove("is-fading");
+                trackArt.style.opacity = "1";
+            }, 160);
         }
 
         function updateTrackMetadata() {
@@ -640,16 +1012,25 @@
             const data = app.player.getVideoData();
             const title = data && data.title ? data.title : "—";
             const author = data && data.author ? data.author : "";
+            const videoId = data && data.video_id ? data.video_id : "";
 
-            app.elements.trackTitle.textContent = title;
+            fadeTrackMetadata(function () {
+                app.elements.trackTitle.textContent = title;
 
-            if (author) {
-                app.elements.trackArtist.textContent = author;
-                app.elements.trackArtist.hidden = false;
-            } else {
-                app.elements.trackArtist.textContent = "";
-                app.elements.trackArtist.hidden = true;
-            }
+                if (author) {
+                    app.elements.trackArtist.textContent = author;
+                    app.elements.trackArtist.hidden = false;
+                } else {
+                    app.elements.trackArtist.textContent = "";
+                    app.elements.trackArtist.hidden = true;
+                }
+
+                if (videoId) {
+                    app.elements.trackArt.src = "https://i.ytimg.com/vi/" + videoId + "/hqdefault.jpg";
+                    app.elements.trackArt.alt = title + " artwork";
+                    app.elements.trackArt.hidden = false;
+                }
+            });
         }
 
         function updateTrackIndicator() {
@@ -664,7 +1045,11 @@
                 return;
             }
 
-            app.elements.trackIndicator.textContent = "Track " + (index + 1);
+            if (app.elements.queueBtn.getAttribute("aria-pressed") === "true") {
+                app.elements.trackIndicator.textContent = (index + 1) + " / Playlist";
+            } else {
+                app.elements.trackIndicator.textContent = "";
+            }
         }
 
         function updateDurationDisplay() {
@@ -908,13 +1293,41 @@
             app.player.playVideo();
         }
 
+        function setVolumeOpen(open) {
+            app.volumeOpen = open;
+            app.elements.volumePop.classList.toggle("is-open", open);
+            app.elements.volumeToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        }
+
+        function toggleMute() {
+            const { volumeSlider } = app.elements;
+
+            if (!app.player || !app.ready) {
+                return;
+            }
+
+            if (app.isMuted) {
+                app.isMuted = false;
+                app.player.unMute();
+                app.player.setVolume(clampVolume(volumeSlider.value));
+            } else {
+                app.isMuted = true;
+                app.player.mute();
+            }
+
+            updateMuteButton();
+        }
+
         function bindUiEvents() {
             const {
                 startBtn,
                 playPauseBtn,
                 prevBtn,
                 nextBtn,
-                muteBtn,
+                shuffleBtn,
+                queueBtn,
+                volumeToggle,
+                volumePop,
                 volumeSlider,
                 progressSlider
             } = app.elements;
@@ -934,21 +1347,37 @@
                 }
             });
 
-            muteBtn.addEventListener("click", function () {
-                if (!app.player || !app.ready) {
+            shuffleBtn.addEventListener("click", function () {
+                const pressed = shuffleBtn.getAttribute("aria-pressed") === "true";
+                shuffleBtn.setAttribute("aria-pressed", pressed ? "false" : "true");
+            });
+
+            queueBtn.addEventListener("click", function () {
+                const pressed = queueBtn.getAttribute("aria-pressed") === "true";
+                queueBtn.setAttribute("aria-pressed", pressed ? "false" : "true");
+                updateTrackIndicator();
+            });
+
+            volumeToggle.addEventListener("click", function (event) {
+                event.stopPropagation();
+                if (!app.ready) {
                     return;
                 }
+                setVolumeOpen(!app.volumeOpen);
+            });
 
-                if (app.isMuted) {
-                    app.isMuted = false;
-                    app.player.unMute();
-                    app.player.setVolume(clampVolume(volumeSlider.value));
-                } else {
-                    app.isMuted = true;
-                    app.player.mute();
+            volumeToggle.addEventListener("dblclick", function (event) {
+                event.preventDefault();
+                toggleMute();
+            });
+
+            document.addEventListener("click", function (event) {
+                if (!app.volumeOpen) {
+                    return;
                 }
-
-                updateMuteButton();
+                if (!volumePop.contains(event.target) && event.target !== volumeToggle && !volumeToggle.contains(event.target)) {
+                    setVolumeOpen(false);
+                }
             });
 
             volumeSlider.addEventListener("input", function () {
@@ -1040,6 +1469,7 @@
             applyConfiguration();
             setControlsEnabled(false);
             setStatus("Loading radio…");
+            startClock();
             bindUiEvents();
             loadYouTubeApi();
         }
