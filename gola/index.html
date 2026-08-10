@@ -467,7 +467,7 @@
             backgroundImage: "./background.jpg",
             backgroundPosition: "center center",
             overlayOpacity: 0.35,
-            youtubePlaylistUrl: "https://www.youtube.com/playlist?list=PL5ssFW1lJpgh5ghGM44mHG4IVJJBETFG5",
+            youtubePlaylistUrl: "https://music.youtube.com/playlist?list=PLUGKQJQR9WdU&si=vI7nU-wlCLGC8lAn",
             defaultVolume: 70
         });
 
@@ -1004,20 +1004,28 @@
             });
 
             document.addEventListener("keydown", function (event) {
-                if (!app.ready || event.target.closest("input, button, textarea, select")) {
-                    if (event.code !== "Space" || event.target.closest("input, textarea, select")) {
-                        return;
-                    }
+                if (!app.ready) {
+                    return;
+                }
+
+                const target = event.target;
+                const tag = target && target.tagName ? target.tagName.toLowerCase() : "";
+                const inputType = target && target.type ? target.type.toLowerCase() : "";
+
+                if (tag === "textarea" || tag === "select" || (tag === "input" && inputType !== "range")) {
+                    return;
                 }
 
                 if (event.code === "Space") {
                     event.preventDefault();
                     togglePlayPause();
+                    return;
                 }
 
                 if (event.code === "ArrowRight" && app.player) {
                     event.preventDefault();
                     app.player.nextVideo();
+                    return;
                 }
 
                 if (event.code === "ArrowLeft" && app.player) {
