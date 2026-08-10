@@ -685,7 +685,7 @@
         <div class="scene__bottom">
             <section class="player" id="playerPanel" aria-label="Radio player">
                 <div class="track-meta">
-                    <img class="track-art" id="trackArt" src="" alt="" width="60" height="60">
+                    <img class="track-art" id="trackArt" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="60" height="60" hidden>
                     <div class="track-text" id="trackText">
                         <h2 class="track-title" id="trackTitle">—</h2>
                         <p class="track-artist" id="trackArtist"></p>
@@ -1028,6 +1028,7 @@
                 if (videoId) {
                     app.elements.trackArt.src = "https://i.ytimg.com/vi/" + videoId + "/hqdefault.jpg";
                     app.elements.trackArt.alt = title + " artwork";
+                    app.elements.trackArt.hidden = false;
                 }
             });
         }
